@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="span12">
+    <h1>Listing entities</h1>
+
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Tags</th>
+        <th>AMAs</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @entities.each do |entity| %>
+          <tr>
+            <td><%= entity.name %></td>
+            <td><%= entity.slug %></td>
+            <td><%= entity.tag_list.count %></td>
+            <td><%= Ama.where(:user_id => entity.users).count %></td>
+            <td><%= link_to 'Public', entity_path(entity) %></td>
+            <td><%= link_to 'Show', admin_entity_path(entity) %></td>
+            <td><%= link_to 'Edit', edit_admin_entity_path(entity) %></td>
+            <td><%= link_to 'Destroy', admin_entity_path(entity), :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <div class="pagination-centered">
+      <%= will_paginate @entities %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'New Entity', new_admin_entity_path, :class => 'btn' %>

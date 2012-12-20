@@ -1,0 +1,80 @@
+<% content_for :title, "Submit :: BestofAMA" %>
+
+<div class="row">
+  <div class="span12">
+    <%= form_tag '/submit', :method => "post", :class => "form-horizontal" do %>
+        <h4 style="margin-left: 180px;">Step 1: Reddit URL</h4>
+
+        <div id="submit_ama_url" class="control-group">
+          <label class="control-label" for="inputWarning">Reddit URL</label>
+
+          <div class="controls">
+            <input id="submit_ama_url_input" name="ama_url" class="span5" type="text">
+            <span class="help-inline"></span>
+            <span class="help-block" style="font-size: 10px;">ex: http://www.reddit.com/r/IAmA/comments/x9pq0/iam_bill_nye_the_science_guy_ama/</span>
+          </div>
+        </div>
+
+        <h4 style="margin-left: 180px;">Step 2: Identity
+          <small>who hosted the AMA?</small>
+        </h4>
+        <div id="submit_wiki_url" class="control-group">
+          <label class="control-label" for="inputSuccess">Wikipedia URL</label>
+
+          <div class="controls">
+            <input id="submit_wiki_url_input" name="wiki_url" class="span5" type="text">
+            <span class="help-inline"></span>
+            <span class="help-block" style="font-size: 10px;">ex: http://en.wikipedia.org/wiki/Bill_Nye</span>
+          </div>
+        </div>
+
+        <div id="submit_step3" class="hidden">
+          <h4 style="margin-left: 180px;">Step 3: Profile</h4>
+
+          <div class="control-group">
+            <label class="control-label" for="inputError">Entity Name</label>
+
+            <div class="controls">
+              <input id="submit_name_input" name="name" class="span5" type="text">
+              <span class="help-inline"></span>
+          <span class="help-block" style="font-size: 10px;">
+            Usually the first words in their wikipedia page in bold font. <br/>
+            ex: William Sanford "Bill" Nye
+          </span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="inputError">Known For</label>
+
+            <div class="controls">
+              <input id="submit_content_input" name="content" class="span5" type="text" placeholder="known as ...">
+              <span class="help-inline"></span>
+          <span class="help-block" style="font-size: 10px;">
+            Most wikipedia pages have a single sentence including "known as" <br/>
+            ex: known as the host of the Disney/PBS children's ... science educator.
+          </span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="inputError">Tags</label>
+
+            <div class="controls">
+              <input id="submit_tags_input" name="tags" class="span5" type="text">
+              <span class="help-inline"></span>
+          <span class="help-block" style="font-size: 10px;">
+            The wikipedia usually lists various adjectives about the entity. Adding more is encouraged.<br/>
+            ex: science educator, comedian, television host, actor, mechanical engineer, writer, scientist
+          </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <%= submit_tag "Submit", :id => "submit_button", :class => "btn btn-inverse" %>
+          <%= link_to "Cancel", root_path, :class => "btn" %>
+        </div>
+    <% end %>
+  </div>
+</div>

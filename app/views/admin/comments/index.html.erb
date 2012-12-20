@@ -1,0 +1,34 @@
+<h1>Listing comments</h1>
+
+<table class="table">
+  <tr>
+    <th>Key</th>
+    <th>User</th>
+    <th>Ama</th>
+    <th>Date</th>
+    <th>Parent ID</th>
+    <th>Parent key</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.key %></td>
+    <td><%= link_to comment.user.username, admin_user_path(comment.user) %></td>
+    <td><%= comment.ama_id %></td>
+    <td><%= comment.date %></td>
+    <td><%= comment.parent_id %></td>
+    <td><%= comment.parent_key %></td>
+    <td><%= link_to 'Show', admin_comment_path(comment) %></td>
+    <td><%= link_to 'Edit', edit_admin_comment_path(comment) %></td>
+    <td><%= link_to 'Destroy', admin_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<div class="pagination-centered">
+  <%= will_paginate @comments %>
+</div>
+

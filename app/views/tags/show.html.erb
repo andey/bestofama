@@ -1,0 +1,13 @@
+<% content_for :title, params[:tag] + " :: BestofAMA" %>
+<div class="row">
+  <div class="span12">
+    <h1><%= params[:tag] %></h1>
+    <table class="table">
+      <% @entities.each do |e| %>
+      <tr>
+        <td><h4><%= link_to e.name, entity_path(e) %><small> <%= e.content %></small></h4></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

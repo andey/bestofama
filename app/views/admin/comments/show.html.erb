@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Key:</b>
+  <%= @comment.key %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @comment.user_id %>
+</p>
+
+<p>
+  <b>Ama:</b>
+  <%= @comment.ama_id %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @comment.date %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @comment.content %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= @comment.parent_id %>
+</p>
+
+<p>
+  <b>Parent key:</b>
+  <%= @comment.parent_key %>
+</p>
+
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

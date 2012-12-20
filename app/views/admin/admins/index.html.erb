@@ -1,0 +1,32 @@
+<h1>Listing Users <small>with Admin Privileges</small></h1>
+<div class="row">
+  <div class="span12">
+    <table class="table">
+      <tr>
+        <th>Record #</th>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Link Karma</th>
+        <th>Comment Karma</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @admins.each do |admin| %>
+          <tr>
+            <td><%= admin.id %></td>
+            <td><%= admin.user_id %></td>
+            <td><%= admin.user.username %></td>
+            <td><%= admin.user.link_karma %></td>
+            <td><%= admin.user.comment_karma %></td>
+            <td><%= link_to 'User', admin_user_path(admin.user) %></td>
+            <td><%= link_to 'Revoke', admin_admin_path(admin), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<br/>
+
+<%= link_to 'New Admin', new_admin_admin_path %>

@@ -1,0 +1,33 @@
+<h1>Listing users</h1>
+
+<table class="table">
+  <tr>
+    <th>Username</th>
+    <th>Modhash</th>
+    <th>Active</th>
+    <th>Link</th>
+    <th>Comment</th>
+    <th>AMAs</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.modhash %></td>
+        <td><%= user.active %></td>
+        <td><%= user.link_karma %></td>
+        <td><%= user.comment_karma %></td>
+        <td><%= user.amas.count %></td>
+        <td><%= link_to 'Show', admin_user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+        <td><%= link_to 'Destroy', admin_user_path(user), :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+</table>
+
+<div class="pagination-centered">
+  <%= will_paginate @users %>
+</div>

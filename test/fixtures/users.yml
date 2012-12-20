@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  username: MyString
+  modhash: MyString
+  active: false
+  link_karma: 1
+  comment_karma: 1
+
+two:
+  username: MyString
+  modhash: MyString
+  active: false
+  link_karma: 1
+  comment_karma: 1

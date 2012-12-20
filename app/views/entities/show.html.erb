@@ -1,0 +1,21 @@
+<% content_for :title, "Directory of " + params[:letter].capitalize + " :: BestofAMA" %>
+<ul class="breadcrumb">
+  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
+  <li class="active">Directory <span class="divider">/</span></li>
+  <li class="active"><%= params[:letter].capitalize %> </li>
+</ul>
+
+<div class="row">
+  <div class="span12">
+    <table class="table">
+      <% @entities.each do |e| %>
+          <tr>
+            <td>
+              <h4><%= link_to e.name, entity_path(e) %>
+                <small> <%= e.content %></small></h4>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

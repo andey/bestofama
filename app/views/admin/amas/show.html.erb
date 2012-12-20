@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>ID:</b>
+  <%= @ama.id %>
+</p>
+
+<p>
+  <b>Key:</b>
+  <%= @ama.key %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @ama.date %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @ama.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @ama.content %>
+</p>
+
+<p>
+  <b>Karma:</b>
+  <%= @ama.karma %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @ama.user_id %>
+</p>
+
+<p>
+  <b>Permalink:</b>
+  <%= @ama.permalink %>
+</p>
+
+<p>
+  <b>Posts:</b>
+  <%= @ama.comments %>
+</p>
+
+<p>
+  <b>Responses:</b>
+  <%= @ama.responses %>
+</p>
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_admin_ama_path(@ama), :class => 'btn' %>
+  <%= link_to 'Clean', clean_admin_amas_path(@ama), :class => 'btn btn-warning' %>
+  <%= link_to 'Delete', admin_ama_path(@ama), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger' %>
+</div>

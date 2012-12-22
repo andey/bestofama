@@ -6,6 +6,7 @@ task :find_old_amas => :environment do
     result = Reddit.get(ENV['url'])
     result["data"]["children"].each do |a|
       if !a["data"]["title"].to_s.match(/ama request/i)
+        puts a["data"]["title"]
         Reddit.save_ama(a["data"])
       end
     end

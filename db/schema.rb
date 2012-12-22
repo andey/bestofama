@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220190722) do
+ActiveRecord::Schema.define(:version => 20121219235836) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id"
@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(:version => 20121220190722) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "modhash"
-    t.boolean  "active",            :default => false
-    t.integer  "comment_karma",     :default => 0
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.boolean  "active"
+    t.integer  "comment_karma"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "link_karma",        :default => 0
     t.string   "persistence_token"
   end

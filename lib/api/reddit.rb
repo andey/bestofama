@@ -88,11 +88,17 @@ module Reddit
 
     # updates the AMA record
     def update_ama(ama, json)
+
+      responses = Comment.where(:ama_id => ama.id).count
+      if responses == 0
+        responses = -1
+      end
+
       ama.update_attributes(
           :karma => json["score"],
           :content => HTMLEntities.new.decode(json["selftext_html"]),
           :comments => json["num_comments"],
-          :responses => Comment.where(:user_id => ama.user_id).count
+          :responses => responses
       )
     end
 

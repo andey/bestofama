@@ -61,6 +61,8 @@ class Admin::AmasController < ApplicationController
   end
 
   # GET /amas/1/clean
+  # deletes all the comments from the ama,
+  # then fetches the comments again.
   def clean
     require 'api/reddit'
     Comment.where(:ama_id => params[:id]).destroy_all

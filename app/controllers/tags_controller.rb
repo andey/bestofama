@@ -8,11 +8,9 @@ class TagsController < ApplicationController
 
   # GET /tag/:tag
   def show
-    if params[:tag]
-      @entities = Entity.tagged_with(params[:tag])
-    else
-      @entities = Entity.all
-    end
+    @entities = Entity.tagged_with(params[:tag])
+    @related_entities = Entity.tagged_with(params[:tag], :on => :tags)
+    @related_tags = @related_entities.collect{|x|x.tags}.flatten.uniq
 
     respond_to do |format|
       format.html

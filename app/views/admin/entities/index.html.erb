@@ -2,8 +2,8 @@
   <div class="span8">
     <h1>Listing entities</h1>
   </div>
-  <div class="span4">
-    <%= link_to 'New Entity', new_admin_entity_path, :class => 'btn' %>
+  <div class="span4" style="padding-top: 20px;">
+    <%= link_to 'New Entity', new_admin_entity_path, :class => 'btn pull-right' %>
   </div>
 </div>
 
@@ -13,6 +13,7 @@
       <tr>
         <th>Name</th>
         <th>Slug</th>
+        <th>Wiki</th>
         <th>Tags</th>
         <th>AMAs</th>
         <th></th>
@@ -25,6 +26,7 @@
           <tr>
             <td><%= entity.name %></td>
             <td><%= entity.slug %></td>
+            <td><%= entity.wikipedia_slug %></td>
             <td><%= entity.tag_list.count %></td>
             <td><%= Ama.where(:user_id => entity.users).count %></td>
             <td><%= link_to 'Public', entity_path(entity) %></td>

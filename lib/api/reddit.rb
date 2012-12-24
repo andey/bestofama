@@ -89,7 +89,7 @@ module Reddit
     # updates the AMA record
     def update_ama(ama, json)
 
-      responses = Comment.where(:ama_id => ama.id).count
+      responses = Comment.where(:ama_id => ama.id, :user_id => ama.user.id).count
       if responses == 0
         responses = -1
       end

@@ -1,6 +1,17 @@
 class AmasController < ApplicationController
   layout 'public'
 
+  def index
+    @order = params[:order]
+    @order ||= 'date'
+    params[:page] ||= 1
+    @amas = Ama.order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def show
     @ama = Ama.find_by_key(params[:key])
 

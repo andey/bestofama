@@ -32,6 +32,7 @@ Bestofama::Application.routes.draw do
   get 'entities/:letter', :controller => :entities, :action => :show, :as => :entities_letter
   get 'entity/:slug', :controller => :entity, :action => :show, :as => :entity
   get 'tag/:tag', :controller => :tags, :action => :show, :as => :tag
+  get 'amas', :controller => :amas, :action => :index, :as => :amas
   post 'submit', :controller => :amas, :action => :create
   get 'submit', :controller => :amas, :action => :new, :as => :submit
   get ":id" => 'pages#show', :as => :page, :format => false

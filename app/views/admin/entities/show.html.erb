@@ -36,11 +36,11 @@
         <td><%= user.amas.count %></td>
         <td><%= link_to 'Show', admin_user_path(user) %></td>
         <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-        <td><%= link_to 'Destroy', delete_user_admin_entities_path(:id => @entity, :username => user), :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
+        <td><%= link_to 'Destroy', admin_entity_user_path(@entity, user), :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
       </tr>
   <% end %>
 </table>
 
-
+<%= link_to 'Add User', new_admin_entity_user_path(@entity) %> |
 <%= link_to 'Edit', edit_admin_entity_path(@entity) %> |
 <%= link_to 'Back', admin_entities_path %>

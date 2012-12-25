@@ -10,9 +10,6 @@ Bestofama::Application.routes.draw do
     end
     resources :entities do
       resources :users, :controller => :entities_users
-      collection do
-        delete ':id/user/:username', :action => :delete_user, :as => :delete_user
-      end
     end
     resources :users
   end

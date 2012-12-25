@@ -32,7 +32,7 @@ class Admin::EntitiesUsersController < ApplicationController
     respond_to do |format|
       if @user
         @entity.users << @user
-        format.html { redirect_to admin_entity_users_path(@entity), :notice => 'User was successfully created.' }
+        format.html { redirect_to admin_entity_path(@entity), :notice => 'User was successfully created.' }
       else
         format.html { render :action => "new" }
       end
@@ -46,7 +46,7 @@ class Admin::EntitiesUsersController < ApplicationController
     @entity.users.destroy(@user)
 
     respond_to do |format|
-      format.html { redirect_to admin_entity_users_path(@entity) }
+      format.html { redirect_to admin_entity_path(@entity) }
     end
   end
 end

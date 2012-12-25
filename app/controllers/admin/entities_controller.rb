@@ -69,14 +69,4 @@ class Admin::EntitiesController < ApplicationController
       format.html { redirect_to admin_entities_url }
     end
   end
-
-  def delete_user
-    @entity = Entity.find_by_slug(params[:id])
-    @user   = User.find_by_username(params[:username])
-    @entity.users.delete(@user)
-
-    respond_to do |format|
-      format.html { redirect_to admin_entity_path(@entity) }
-    end
-  end
 end

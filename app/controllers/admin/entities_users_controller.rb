@@ -1,4 +1,5 @@
 class Admin::EntitiesUsersController < ApplicationController
+  before_filter :require_admin
   layout 'admin'
 
   # GET entities/:entity_id/users

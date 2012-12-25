@@ -12,10 +12,19 @@
           <tr>
             <td>
               <h4><%= link_to e.name, entity_path(e) %>
-                <small> <%= e.content %></small></h4>
+                <small> <%= e.content %></small>
+              </h4>
             </td>
           </tr>
       <% end %>
     </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="pagination-centered">
+      <%= will_paginate @entities %>
+    </div>
   </div>
 </div>

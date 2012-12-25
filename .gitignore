@@ -5,6 +5,7 @@
 /db/*.sqlite3
 /log/*.log
 /tmp
+/public/sitemaps
 
 #Rubymine IDE
 /.idea

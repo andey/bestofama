@@ -32,6 +32,7 @@ Bestofama::Application.routes.draw do
   get 'amas', :controller => :amas, :action => :index, :as => :amas
   post 'submit', :controller => :amas, :action => :create
   get 'submit', :controller => :amas, :action => :new, :as => :submit
+  get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz')
   get ":id" => 'pages#show', :as => :page, :format => false
   root :to => 'tags#index'
 end

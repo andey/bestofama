@@ -13,7 +13,9 @@ gem 'high_voltage'
 gem 'acts-as-taggable-on'
 gem 'htmlentities'
 gem 'awesome_print'
-gem "sitemap_generator", "~> 3.4"
+gem 'sitemap_generator', '~> 3.4'
+gem 'carrierwave'
+gem 'fog'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>module AmasHelper - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/amas_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-ama_path">#ama_path</a>
+    
+    <li><a href="#method-i-karma_meter">#karma_meter</a>
+    
+    <li><a href="#method-i-print_comments">#print_comments</a>
+    
+    <li><a href="#method-i-wiki_decode">#wiki_decode</a>
+    
+    <li><a href="#method-i-wiki_encode">#wiki_encode</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/AdminsController.html">Admin::AdminsController</a>
+  
+    <li><a href="./Admin/AdminsHelper.html">Admin::AdminsHelper</a>
+  
+    <li><a href="./Admin/AmasController.html">Admin::AmasController</a>
+  
+    <li><a href="./Admin/CommentsController.html">Admin::CommentsController</a>
+  
+    <li><a href="./Admin/EntitiesController.html">Admin::EntitiesController</a>
+  
+    <li><a href="./Admin/EntitiesUsersController.html">Admin::EntitiesUsersController</a>
+  
+    <li><a href="./Admin/EntitiesUsersHelper.html">Admin::EntitiesUsersHelper</a>
+  
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/AmasController.html">Api::AmasController</a>
+  
+    <li><a href="./Api/AmasHelper.html">Api::AmasHelper</a>
+  
+    <li><a href="./Api/EntitiesController.html">Api::EntitiesController</a>
+  
+    <li><a href="./Api/EntitiesHelper.html">Api::EntitiesHelper</a>
+  
+    <li><a href="./Ama.html">Ama</a>
+  
+    <li><a href="./AmasController.html">AmasController</a>
+  
+    <li><a href="./AmasHelper.html">AmasHelper</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Comment.html">Comment</a>
+  
+    <li><a href="./EntitiesController.html">EntitiesController</a>
+  
+    <li><a href="./EntitiesHelper.html">EntitiesHelper</a>
+  
+    <li><a href="./Entity.html">Entity</a>
+  
+    <li><a href="./EntityController.html">EntityController</a>
+  
+    <li><a href="./EntityHelper.html">EntityHelper</a>
+  
+    <li><a href="./JSON.html">JSON</a>
+  
+    <li><a href="./PagesController.html">PagesController</a>
+  
+    <li><a href="./Reddit.html">Reddit</a>
+  
+    <li><a href="./RedditHelper.html">RedditHelper</a>
+  
+    <li><a href="./Slugs.html">Slugs</a>
+  
+    <li><a href="./TagsController.html">TagsController</a>
+  
+    <li><a href="./TagsHelper.html">TagsHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserSession.html">UserSession</a>
+  
+    <li><a href="./UserSessionsController.html">UserSessionsController</a>
+  
+    <li><a href="./UserSessionsHelper.html">UserSessionsHelper</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module AmasHelper</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-ama_path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ama_path</span><span
+            class="method-args">(a)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ama_path-source">
+            <pre><span class="ruby-comment"># File app/helpers/amas_helper.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ama_path</span>(<span class="ruby-identifier">a</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">ama_full_path</span>(<span class="ruby-value">:username=</span><span class="ruby-operator">&gt;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">username</span>, <span class="ruby-value">:key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">key</span>, <span class="ruby-value">:slug</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">title</span>.<span class="ruby-identifier">parameterize</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- ama_path-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- ama_path-method -->
+
+    
+      <div id="method-i-karma_meter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">karma_meter</span><span
+            class="method-args">(karma)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="karma_meter-source">
+            <pre><span class="ruby-comment"># File app/helpers/amas_helper.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">karma_meter</span>(<span class="ruby-identifier">karma</span>)
+  <span class="ruby-identifier">s</span> = <span class="ruby-string">''</span>
+  <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">image_tag</span> <span class="ruby-identifier">asset_path</span>(<span class="ruby-string">&quot;triangle_up.svg&quot;</span>), <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;up_vote&quot;</span>, <span class="ruby-value">:alt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;triangle up vote&quot;</span>
+  <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-string">'&lt;br /&gt;&lt;b&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">karma</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">'&lt;/b&gt;&lt;br /&gt;'</span>
+  <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">image_tag</span> <span class="ruby-identifier">asset_path</span>(<span class="ruby-string">&quot;triangle_down.svg&quot;</span>), <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;down_vote&quot;</span>, <span class="ruby-value">:alt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;triangle down vote&quot;</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- karma_meter-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- karma_meter-method -->
+
+    
+      <div id="method-i-print_comments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">print_comments</span><span
+            class="method-args">(ama, parent, depth)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Helps /IAmA/:key display the comments</p>
+          
+
+          
+          <div class="method-source-code" id="print_comments-source">
+            <pre><span class="ruby-comment"># File app/helpers/amas_helper.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_comments</span>(<span class="ruby-identifier">ama</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">depth</span>)
+  <span class="ruby-identifier">string</span> = <span class="ruby-string">''</span>
+  <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:parent_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">key</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:karma</span>).<span class="ruby-identifier">reverse_order</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">comment</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">user_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">ama</span>.<span class="ruby-identifier">user_id</span>
+      <span class="ruby-identifier">string</span> <span class="ruby-operator">+=</span> <span class="ruby-string">'&lt;div class=&quot;row&quot; style=&quot;margin-bottom: 5px;&quot;&gt;&lt;div class=&quot;span9 halfoffset'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">depth</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">'&quot;&gt;&lt;p&gt;&lt;span class=&quot;label label-info&quot;&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">username</span>, <span class="ruby-identifier">user_path</span>(<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">user</span>)) <span class="ruby-operator">+</span> <span class="ruby-string">'&lt;/span&gt; &lt;span class=&quot;muted&quot;&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">karma</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">' points, '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">time_ago_in_words</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">date</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">ama</span>.<span class="ruby-identifier">date</span>)) <span class="ruby-operator">+</span> <span class="ruby-string">' after&lt;/span&gt;&lt;/p&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">content</span> <span class="ruby-operator">+</span> <span class="ruby-string">'&lt;/div&gt;&lt;/div&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">print_comments</span>(<span class="ruby-identifier">ama</span>, <span class="ruby-identifier">comment</span>, <span class="ruby-identifier">depth</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">string</span> <span class="ruby-operator">+=</span> <span class="ruby-string">'&lt;div class=&quot;row&quot; style=&quot;margin-bottom: 5px;&quot;&gt;&lt;div class=&quot;span9 halfoffset'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">depth</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">'&quot;&gt;&lt;p&gt;&lt;span&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">username</span>, <span class="ruby-identifier">reddit_user_path</span>(<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">username</span>), <span class="ruby-value">:rel</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:nofollow</span>) <span class="ruby-operator">+</span> <span class="ruby-string">'&lt;/span&gt; &lt;span class=&quot;muted&quot;&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">karma</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">' points, '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">time_ago_in_words</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">date</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">ama</span>.<span class="ruby-identifier">date</span>)) <span class="ruby-operator">+</span> <span class="ruby-string">' after&lt;/span&gt;&lt;/p&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">content</span> <span class="ruby-operator">+</span> <span class="ruby-string">'&lt;/div&gt;&lt;/div&gt;'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">print_comments</span>(<span class="ruby-identifier">ama</span>, <span class="ruby-identifier">comment</span>, <span class="ruby-identifier">depth</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- print_comments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- print_comments-method -->
+
+    
+      <div id="method-i-wiki_decode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">wiki_decode</span><span
+            class="method-args">(slug)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="wiki_decode-source">
+            <pre><span class="ruby-comment"># File app/helpers/amas_helper.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">wiki_decode</span>(<span class="ruby-identifier">slug</span>)
+  <span class="ruby-identifier">slug</span> = <span class="ruby-constant">HTMLEntities</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">slug</span>)
+  <span class="ruby-identifier">slug</span> = <span class="ruby-constant">CGI</span><span class="ruby-operator">::</span><span class="ruby-identifier">unescape</span>(<span class="ruby-identifier">slug</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">slug</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- wiki_decode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- wiki_decode-method -->
+
+    
+      <div id="method-i-wiki_encode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">wiki_encode</span><span
+            class="method-args">(slug)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="wiki_encode-source">
+            <pre><span class="ruby-comment"># File app/helpers/amas_helper.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">wiki_encode</span>(<span class="ruby-identifier">slug</span>)
+  <span class="ruby-identifier">slug</span> = <span class="ruby-identifier">slug</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">slug</span> = <span class="ruby-constant">HTMLEntities</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">slug</span>)
+  <span class="ruby-identifier">slug</span> = <span class="ruby-constant">CGI</span><span class="ruby-operator">::</span><span class="ruby-identifier">escape</span>(<span class="ruby-identifier">slug</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">slug</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- wiki_encode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- wiki_encode-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

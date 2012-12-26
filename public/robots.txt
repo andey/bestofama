@@ -1,2 +1,2 @@
 # robots.txt for http://bestofama.com/
-Sitemap: https://s3.bestofama.com/sitemaps/sitemap_index.xml.gz
+Sitemap: http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz

@@ -46,7 +46,7 @@ module Reddit
       data = {
           :key => ama_json["id"],
           :date => Time.at(ama_json["created_utc"]),
-          :title => ama_json["title"],
+          :title => ama_json["title"].to_s.truncate(250, :omission => "..."),
           :karma => ama_json["score"],
           :user_id => find_user(ama_json["author"]).id,
           :permalink => ama_json["permalink"],
@@ -72,7 +72,7 @@ module Reddit
         data = {
             :key => key,
             :date => Time.at(ama_json["created_utc"]),
-            :title => ama_json["title"],
+            :title => ama_json["title"].to_s.truncate(250, :omission => "..."),
             :karma => ama_json["score"],
             :user_id => op_user.id,
             :permalink => ama_json["permalink"],

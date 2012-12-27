@@ -12,6 +12,7 @@ Bestofama::Application.routes.draw do
       resources :users, :controller => :entities_users
     end
     resources :users
+    resources :meta
   end
 
   namespace :api do

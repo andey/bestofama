@@ -8,7 +8,6 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    ap params
     if params[:user_session][:username] != '' && params[:user_session][:password] != ''
       require 'api/reddit'
       query = {:user => params[:user_session][:username], :passwd => params[:user_session][:password], :api_type => 'json'}

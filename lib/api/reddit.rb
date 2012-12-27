@@ -31,11 +31,11 @@ module Reddit
     # create user and then return user
     # @return user
     def find_user(username)
-      if User.find_by_username(username)
-        return User.find_by_username(username)
+      user = User.find_by_username(username)
+      if user
+        return user
       else
-        User.create(:username => username)
-        return User.find_by_username(username)
+        return User.create(:username => username)
       end
     end
 

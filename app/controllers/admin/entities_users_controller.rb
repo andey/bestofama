@@ -26,9 +26,6 @@ class Admin::EntitiesUsersController < ApplicationController
     @entity = Entity.find_by_slug(params[:entity_id])
     @user = User.find_by_username(params[:username])
 
-    ap params
-    ap @user
-
     respond_to do |format|
       if @user
         @entity.users << @user

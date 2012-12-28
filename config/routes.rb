@@ -1,25 +1,5 @@
 Bestofama::Application.routes.draw do
 
-  namespace :admin do
-    resources :admins
-    resources :comments
-    resources :amas do
-      collection do
-        get ':id/clean', :action => :clean, :as => :clean
-      end
-    end
-    resources :entities do
-      resources :users, :controller => :entities_users
-    end
-    resources :users
-    resources :meta
-  end
-
-  namespace :api do
-    get 'ama/find_by_key', :controller => :amas, :action => :find_by_key
-    get 'entities/find_by_wiki_slug', :controller => :entities, :action => :find_by_wiki_slug
-  end
-
   resource :session, :controller => :user_sessions, :path_names => {:new => 'login'} do
     collection do
       get 'logout', :action => :destroy, :as => :logout
@@ -36,4 +16,5 @@ Bestofama::Application.routes.draw do
   get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz')
   get ":id" => 'pages#show', :as => :page, :format => false
   root :to => 'tags#index'
+
 end

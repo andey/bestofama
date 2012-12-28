@@ -14,45 +14,45 @@
 ActiveRecord::Schema.define(:version => 20121226185549) do
 
   create_table "admins", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "amas", :force => true do |t|
-    t.string   "key"
-    t.datetime "date"
-    t.string   "title"
+    t.string   "key",                       :null => false
+    t.datetime "date",                      :null => false
+    t.string   "title",                     :null => false
     t.text     "content"
-    t.integer  "karma"
-    t.integer  "user_id"
+    t.integer  "karma",      :default => 0
+    t.integer  "user_id",                   :null => false
     t.string   "permalink"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "comments"
-    t.integer  "responses"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "comments",   :default => 0
+    t.integer  "responses",  :default => 0
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "ama_id"
-    t.string   "key"
-    t.integer  "user_id"
+    t.integer  "ama_id",                    :null => false
+    t.string   "key",                       :null => false
+    t.integer  "user_id",                   :null => false
     t.text     "content"
-    t.string   "parent_key"
-    t.datetime "date"
-    t.integer  "karma"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "parent_key",                :null => false
+    t.datetime "date",                      :null => false
+    t.integer  "karma",      :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "parent_id"
   end
 
   create_table "entities", :force => true do |t|
-    t.string   "name"
+    t.string   "name",           :null => false
     t.string   "wikipedia_slug"
     t.string   "content"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "slug"
+    t.string   "slug",           :null => false
   end
 
   create_table "entities_users", :id => false, :force => true do |t|
@@ -85,12 +85,12 @@ ActiveRecord::Schema.define(:version => 20121226185549) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
+    t.string   "username",                             :null => false
     t.string   "modhash"
-    t.boolean  "active"
-    t.integer  "comment_karma"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.boolean  "active",            :default => false
+    t.integer  "comment_karma",     :default => 0
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.integer  "link_karma",        :default => 0
     t.string   "persistence_token"
   end

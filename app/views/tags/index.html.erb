@@ -4,7 +4,7 @@
     <h3>Tag Cloud</h3>
 
     <div id="tag_cloud" class="well">
-      <% tag_cloud Entity.tag_counts, %w[s m l] do |tag, css_class| %>
+      <% tag_cloud Entity.tag_counts.limit(100), %w[s m l] do |tag, css_class| %>
           <%= link_to tag.name, tag_path(tag.name), class: css_class %>,
       <% end %>
     </div>

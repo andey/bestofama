@@ -1,30 +1,44 @@
-<% content_for :title, "Directory of " + params[:letter].capitalize + " :: BestofAMA" %>
-<ul class="breadcrumb">
-  <li><%= link_to "Home", root_path %> <span class="divider">/</span></li>
-  <li class="active">Directory <span class="divider">/</span></li>
-  <li class="active"><%= params[:letter].capitalize %> </li>
-</ul>
-
+<% content_for :title, @entity.name + " :: BestofAMA" %>
 <div class="row">
   <div class="span12">
-    <table class="table">
-      <% @entities.each do |e| %>
-          <tr>
-            <td>
-              <h4><%= link_to e.name, entity_path(e) %>
-                <small> <%= e.content %></small>
-              </h4>
-            </td>
-          </tr>
+    <h1><%= @entity.name %></h1>
+
+    <p>
+      <b>Associated Usernames:</b>
+      <% @entity.users.group(:id).each do |u| %>
+          <%= link_to u.username, user_path(u) %>
       <% end %>
-    </table>
+    </p>
+
+    <p>
+      <b>Tags:</b>
+      <%= @entity.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %>
+    </p>
+
+    <div class="well" style="margin-bottom: 5px;"><%= @entity.content %></div>
+    <p class="muted">
+      <b>Date Added:</b> <%= @entity.created_at %> | <b>Last Updated:</b> <%= @entity.updated_at %>
+      <%= link_to "wikipedia", wikipedia_url(@entity.wikipedia_slug), :class => "pull-right" %>
+    </p>
   </div>
 </div>
-
+<hr/>
 <div class="row">
   <div class="span12">
-    <div class="pagination-centered">
-      <%= will_paginate @entities %>
-    </div>
+    <% @amas.each do |a| %>
+        <div class="row">
+          <div class="span1 ama-karma-meter-small">
+            <%= karma_meter(a.karma).html_safe %>
+          </div>
+          <div class="span11">
+            <h4><%= link_to a.title, ama_path(a) %></h4>
+
+            <p class="muted">
+              <b>Comments:</b> <%= a.comments %> | <b>Responses:</b> <%= a.responses %> |
+              <b>Date:</b> <%= a.date %>
+            </p>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>

@@ -2,7 +2,8 @@ class EntitiesController < ApplicationController
   layout 'public'
 
   def show
-    @entities = Entity.where("name ilike ?", "#{params[:letter]}%").order(:updated_at).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @entity = Entity.find_by_slug(params[:slug])
+    @amas = Ama.where(:user_id => @entity.users).order(:date).reverse_order
 
     respond_to do |format|
       format.html

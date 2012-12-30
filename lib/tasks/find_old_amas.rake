@@ -5,13 +5,14 @@ task :find_old_amas => :environment do
   #get query variables to build reddit query
   count = Metum.find_by_name("find_old_ama-count")
   after = Metum.find_by_name("find_old_ama-after")
+  time = Metum.find_by_name("find_old_ama-time")
 
   puts "========================"
   puts "find_old_amas"
   puts "count: " + count.value
   puts "after: " + after.value
 
-  result = Reddit.get("http://www.reddit.com/r/IAmA/top/.json?sort=top&count=" + count.value + "&after=" + after.value + "&t=all")
+  result = Reddit.get("http://www.reddit.com/r/IAmA/top/.json?sort=top&count=" + count.value + "&after=" + after.value + "&t=" + time.value)
   result["data"]["children"].each do |a|
 
     #if not an "ama request"

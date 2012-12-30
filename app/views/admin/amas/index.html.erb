@@ -10,7 +10,7 @@
       </tr>
 
       <% @amas.each do |ama| %>
-          <tr>
+          <tr <% if ama.user.entities.count < 1 %> class="warning" <% end %>>
             <td>
               <strong><%= link_to truncate(ama.title, :length => 100), ama_path(ama) %></strong><br />
               <span class="muted"><%= ama.date %> by <%= link_to ama.user.username, admin_user_path(ama.user) %> | <%= link_to 'admin link', admin_ama_path(ama) %></span>

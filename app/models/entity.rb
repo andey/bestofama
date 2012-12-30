@@ -12,6 +12,8 @@
 #
 
 class Entity < ActiveRecord::Base
+  before_save { |entity| entity.slug = entity.slug.parameterize }
+
   def to_param
     slug
   end

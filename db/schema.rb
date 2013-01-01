@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121231214055) do
+ActiveRecord::Schema.define(:version => 20121231214454) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20121231214055) do
     t.integer  "responses",  :default => 0
   end
 
+  add_index "amas", ["key"], :name => "index_amas_on_key", :unique => true
+
   create_table "amas_users", :id => false, :force => true do |t|
     t.integer "ama_id"
     t.integer "user_id"
@@ -51,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20121231214055) do
     t.integer  "parent_id"
   end
 
+  add_index "comments", ["key"], :name => "index_comments_on_key"
+
   create_table "entities", :force => true do |t|
     t.string   "name",           :null => false
     t.string   "wikipedia_slug"
@@ -59,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20121231214055) do
     t.datetime "updated_at",     :null => false
     t.string   "slug",           :null => false
   end
+
+  add_index "entities", ["slug"], :name => "index_entities_on_slug", :unique => true
 
   create_table "entities_users", :id => false, :force => true do |t|
     t.integer "entity_id"
@@ -71,6 +77,8 @@ ActiveRecord::Schema.define(:version => 20121231214055) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "meta", ["name"], :name => "index_meta_on_name", :unique => true
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -99,5 +107,7 @@ ActiveRecord::Schema.define(:version => 20121231214055) do
     t.integer  "link_karma",        :default => 0
     t.string   "persistence_token"
   end
+
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end

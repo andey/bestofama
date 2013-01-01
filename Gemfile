@@ -17,6 +17,8 @@ gem 'sitemap_generator', '~> 3.4'
 gem 'carrierwave'
 gem 'fog'
 gem 'newrelic_rpm'
+gem 'memcachier'
+gem 'dalli'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

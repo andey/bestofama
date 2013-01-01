@@ -4,6 +4,10 @@ class TagsController < ApplicationController
   # HOME PAGE
   def index
     @amas = Ama.where('responses > ?', 0).order(:date).limit(5).reverse_order
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /tag/:tag

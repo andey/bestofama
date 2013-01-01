@@ -14,6 +14,7 @@ class AmasController < ApplicationController
 
   def show
     @ama = Ama.find_by_key(params[:key])
+    @users = @ama.users
 
     respond_to do |format|
       format.html

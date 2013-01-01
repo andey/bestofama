@@ -4,6 +4,7 @@ Bestofama::Application.routes.draw do
     resources :admins
     resources :comments
     resources :amas do
+      resources :users, :controller => :amas_users
       collection do
         get ':id/clean', :action => :clean, :as => :clean
       end

@@ -127,6 +127,9 @@ module Reddit
 
           if post["data"]["author"] == ama.user.username
             is_op = true
+          elsif ama.users.any?{|u| u.username == post["data"]["author"] }
+            puts "WORKS BITCH"
+            is_op = true
           end
 
           begin

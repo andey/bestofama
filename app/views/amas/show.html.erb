@@ -21,6 +21,28 @@
   </div>
 </div>
 
+<% if @ama.users.count > 0 %>
+    <div class="row" style="margin-top: 15px;">
+      <div class="span12">
+        <h4>Participants</h4>
+        <ul>
+          <% @users.each do |user| %>
+              <li>
+                <% if user.entities.count > 0 %>
+                    <h4>
+                      <%= user.entities.group(:id).map! { |e| link_to e.name, entity_path(e) }.join(" & ").html_safe %>
+                      <small>as <%= link_to user.username, user_path(user) %></small>
+                    </h4>
+                <% else %>
+                    <%= link_to user.username, user_path(user) %>
+                <% end %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+<% end %>
+
 <div class="row" style="margin-top: 15px;">
   <div class="span12">
     <h4>Comments</h4>

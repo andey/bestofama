@@ -21,4 +21,5 @@ class Ama < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :key, :permalink, :title, :user_id
   validates_uniqueness_of :key
+  has_and_belongs_to_many :users
 end

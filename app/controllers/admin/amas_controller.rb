@@ -68,6 +68,11 @@ class Admin::AmasController < ApplicationController
     Comment.where(:ama_id => params[:id]).destroy_all
     @ama = Ama.find(params[:id])
     @ama.update_attribute(:responses, 0)
+
+    #expire the AMA comments cache
+    expire_fragment('ama_' + @ama.id.to_s + '_comments_cache')
+
+    #repopulate the AMA
     Reddit.populate_ama(@ama)
 
     respond_to do |format|

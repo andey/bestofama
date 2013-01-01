@@ -43,10 +43,12 @@
     </div>
 <% end %>
 
-<div class="row" style="margin-top: 15px;">
-  <div class="span12">
-    <h4>Comments</h4>
-    <hr/>
-    <%= print_comments(@ama, @ama, 0).html_safe %>
-  </div>
-</div>
+<% cache('ama_' + @ama.id.to_s + '_comments_cache') do %>
+    <div class="row" style="margin-top: 15px;">
+      <div class="span12">
+        <h4>Comments</h4>
+        <hr/>
+        <%= print_comments(@ama, @ama, 0).html_safe %>
+      </div>
+    </div>
+<% end %>

@@ -1,10 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>AMA</h1>
 
-<h3>AMAs</h3>
-<p>
-  <b>Title:</b>
-  <%= @ama.title %>
-</p>
+<h4><%= link_to truncate(@ama.title, :length => 100), ama_path(@ama) %></h4>
 
 <p>
   <b>Date:</b>
@@ -46,7 +42,7 @@
   <%= @ama.responses %>
 </p>
 
-<h3>Users</h3>
+<h2 style="margin-top: 50px;">Users</h2>
 <table class="table">
   <tr>
     <th>Username</th>

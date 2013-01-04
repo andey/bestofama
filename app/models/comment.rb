@@ -16,6 +16,16 @@
 #
 
 class Comment < ActiveRecord::Base
+
+  # Correct all "/r/subreddit" internal links within comments
+  before_save :correct_reddit_relative_links
+  def correct_reddit_relative_links
+    matches = self.content.match(/href="(\/r\/[a-zA-Z0-9]*)"/)
+    if matches
+      self.content = self.content.gsub('href="' + matches[1], 'href="http://www.reddit.com' + matches[1])
+    end
+  end
+
   attr_accessible :ama_id, :content, :date, :key, :parent_id, :parent_key, :user_id, :karma
   belongs_to :user
   validates_presence_of :ama_id, :key, :parent_key, :user_id

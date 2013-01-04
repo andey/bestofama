@@ -89,7 +89,11 @@ module Reddit
     # updates the AMA record
     def update_ama(ama, json)
 
-      responses = Comment.where(:ama_id => ama.id, :user_id => ama.user.id).count
+      #The sum of OP & Participant comments
+      op_responses = Comment.where(:ama_id => ama.id, :user_id => ama.user.id).count
+      participants_responses = Comment.where(:ama_id => ama, :user_id => ama.users).count
+      responses = op_responses + participants_responses
+
       if responses == 0
         responses = -1
       end
@@ -127,7 +131,7 @@ module Reddit
 
           if post["data"]["author"] == ama.user.username
             is_op = true
-          elsif ama.users.any?{|u| u.username == post["data"]["author"] }
+          elsif ama.users.any? { |u| u.username == post["data"]["author"] }
             puts "WORKS BITCH"
             is_op = true
           end

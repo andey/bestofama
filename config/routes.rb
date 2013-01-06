@@ -16,6 +16,7 @@ Bestofama::Application.routes.draw do
 
   # Entity path
   get 'entity/:slug', :controller => :entities, :action => :show, :as => :entity
+  get 'entities', :controller => :entities, :action => :index, :as => :entities
 
   # Tag path
   get 'tag/:tag', :controller => :tags, :action => :show, :as => :tag

@@ -1,0 +1,24 @@
+<% content_for :title, "Entities Directory Page " + params[:page].to_s + " :: BestofAMA" %>
+<div class="row">
+  <div class="span12">
+    <h1>Entities</h1>
+    <table class="table">
+      <% @entities.each do |e| %>
+      <tr>
+        <td>
+          <h4><%= link_to e.name, entity_path(e) %><small> <%= e.content %></small></h4>
+          <p><%= e.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="pagination-centered">
+      <%= will_paginate @entities %>
+    </div>
+  </div>
+</div>

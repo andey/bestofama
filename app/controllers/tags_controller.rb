@@ -13,8 +13,6 @@ class TagsController < ApplicationController
   # GET /tag/:tag
   def show
     @entities = Entity.tagged_with(params[:tag]).order(:updated_at).reverse_order.paginate(:page => params[:page], :per_page => 25)
-    @related_entities = Entity.tagged_with(params[:tag], :on => :tags)
-    @related_tags = @related_entities.collect{|x|x.tags}.flatten.uniq
 
     respond_to do |format|
       format.html

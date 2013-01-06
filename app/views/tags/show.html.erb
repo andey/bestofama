@@ -2,11 +2,13 @@
 <div class="row">
   <div class="span12">
     <h1><%= params[:tag] %></h1>
-    <p><b>Related Tags:</b> <% @related_tags.each do |tag| %> <%= link_to tag.name, tag_path(tag.name) %> <% end %></p>
     <table class="table">
       <% @entities.each do |e| %>
       <tr>
-        <td><h4><%= link_to e.name, entity_path(e) %><small> <%= e.content %></small></h4></td>
+        <td>
+          <h4><%= link_to e.name, entity_path(e) %><small> <%= e.content %></small></h4>
+          <p><%= e.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+        </td>
       </tr>
       <% end %>
     </table>

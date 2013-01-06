@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <%= csrf_meta_tags %>
   <title><%= h yield(:title) %></title>
   <%= stylesheet_link_tag "application", :media => "all" %>
@@ -12,7 +12,10 @@
     <div class="navbar-inner">
       <div class="container">
         <%= link_to "BestofAMA", root_path, :class => "brand" %>
-        <ul class="nav pull-right">
+        <ul class="nav">
+          <li><%= link_to "AMAs", amas_path %></li>
+          <li><%= link_to "Entities", entities_path %></li>
+          <li><%= link_to "Submit", submit_path %></li>
           <li id="li-navbar-search-button">
             <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Search</a>
           </li>
@@ -22,7 +25,8 @@
               <input type="text" name="q" class="search-query" placeholder="Search">
             </form>
           </li>
-          <li><%= link_to "Submit", submit_path %></li>
+        </ul>
+        <ul class="nav pull-right">
           <% if current_user_session %>
               <li class="dropdown">
                 <a id="current_user_username" href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %>

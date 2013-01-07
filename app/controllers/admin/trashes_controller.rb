@@ -1,4 +1,5 @@
 class Admin::TrashesController < ApplicationController
+  before_filter :require_admin
   layout 'admin'
 
   # GET /trashes

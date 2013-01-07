@@ -28,6 +28,9 @@ Bestofama::Application.routes.draw do
   # Sitemap Redirect
   get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz')
 
+  # Redirect all r/:subreddit links to reddit.com
+  get 'r/:subreddit', to: redirect('http://www.reddit.com/r/%{subreddit}' )
+
   # Pages
   get ":id" => 'pages#show', :as => :page, :format => false
 

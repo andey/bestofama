@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121231214454) do
+ActiveRecord::Schema.define(:version => 20130107050358) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -96,6 +96,14 @@ ActiveRecord::Schema.define(:version => 20121231214454) do
   create_table "tags", :force => true do |t|
     t.string "name"
   end
+
+  create_table "trashes", :force => true do |t|
+    t.string   "key",        :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "trashes", ["key"], :name => "index_trashes_on_key", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username",                             :null => false

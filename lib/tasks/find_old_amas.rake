@@ -16,13 +16,13 @@ task :find_old_amas => :environment do
   result["data"]["children"].each do |a|
 
     #if not an "ama request"
-    if !a["data"]["title"].to_s.match(/ama request/i)
+    if a["data"]["score"].to_i > 100 && !a["data"]["title"].to_s.match(/ama request/i) && !Trash.find_by_key(a["data"]["id"])
       puts a["data"]["title"]
       Reddit.save_ama(a["data"])
     end
   end
 
   #update the query variables for the next run
-  count.update_attribute(:value, count.value.to_i + 25 )
+  count.update_attribute(:value, count.value.to_i + 25)
   after.update_attribute(:value, result["data"]["after"])
 end

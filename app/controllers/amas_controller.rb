@@ -30,9 +30,9 @@ class AmasController < ApplicationController
   end
 
   def create
-    if params[:ama_url] != ''
+    ama_key = params[:ama_url].match('\/comments\/([a-z0-9]{5,6})\/')[1]
+    if params[:ama_url] != '' && !Trash.find_by_key(ama_key)
       require 'api/reddit'
-      ama_key = params[:ama_url].match('\/comments\/([a-z0-9]{5,6})\/')[1]
       @ama = Reddit.create_ama(ama_key)
 
       respond_to do |format|
@@ -43,7 +43,7 @@ class AmasController < ApplicationController
         end
       end
     else
-      redirect_to submit_path, :notice => "No url provided"
+      redirect_to submit_path, :notice => "Invalid or Blacklisted URL"
     end
   end
 end

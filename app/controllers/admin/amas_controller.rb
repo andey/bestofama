@@ -1,5 +1,5 @@
 class Admin::AmasController < ApplicationController
-  before_filter :require_admin
+  #before_filter :require_admin
   layout 'admin'
 
   # GET /amas
@@ -82,8 +82,14 @@ class Admin::AmasController < ApplicationController
 
   # DELETE /amas/1
   def destroy
-    Comment.where(:ama_id => params[:id]).destroy_all
     @ama = Ama.find(params[:id])
+
+    #Delete Comments
+    Comment.where(:ama_id => @ama.id).destroy_all
+
+    #Add AMA key to Trash
+    Trash.create(:key => @ama.key)
+
     @ama.destroy
 
     respond_to do |format|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108041442) do
+ActiveRecord::Schema.define(:version => 20130108065137) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -56,12 +56,11 @@ ActiveRecord::Schema.define(:version => 20130108041442) do
   add_index "comments", ["key"], :name => "index_comments_on_key"
 
   create_table "entities", :force => true do |t|
-    t.string   "name",           :null => false
-    t.string   "wikipedia_slug"
+    t.string   "name",       :null => false
     t.string   "content"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "slug",           :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "slug",       :null => false
   end
 
   add_index "entities", ["slug"], :name => "index_entities_on_slug", :unique => true

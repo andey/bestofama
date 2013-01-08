@@ -13,7 +13,6 @@
       <tr>
         <th>Name</th>
         <th>Slug</th>
-        <th>Wiki</th>
         <th>Tags</th>
         <th>AMAs</th>
         <th></th>
@@ -26,7 +25,6 @@
           <tr>
             <td><%= entity.name %></td>
             <td><%= entity.slug %></td>
-            <td><%= entity.wikipedia_slug %></td>
             <td><%= entity.tag_list.count %></td>
             <td><%= Ama.where(:user_id => entity.users).count %></td>
             <td><%= link_to 'Public', entity_path(entity) %></td>

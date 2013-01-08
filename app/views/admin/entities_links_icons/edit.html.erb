@@ -1,0 +1,34 @@
+<h1>Editing entities_links_icon</h1>
+
+<%= form_for(@entities_links_icon, :url => admin_link_icon_path(@entities_links_icon)) do |f| %>
+    <% if @entities_links_icon.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@entities_links_icon.errors.count, "error") %> prohibited this entities_links_icon from
+            being saved:</h2>
+
+          <ul>
+            <% @entities_links_icon.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <br/>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :source %>
+      <br/>
+      <%= f.text_field :source %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+
+<%= link_to 'Show', admin_link_icon_path(@entities_links_icon) %> |
+<%= link_to 'Back', admin_link_icons_path %>

@@ -1,0 +1,31 @@
+<h1>Editing entities_link</h1>
+
+<%= form_for(@entities_link, :url => admin_entity_link_path(@entity, @entities_link)) do |f| %>
+    <% if @entities_link.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@entities_link.errors.count, "error") %> prohibited this entities_link from being saved:</h2>
+
+          <ul>
+            <% @entities_link.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %>
+      <br/>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :link %>
+      <br/>
+      <%= f.text_field :link %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+<%= link_to 'Back', admin_entity_path(@entity) %>

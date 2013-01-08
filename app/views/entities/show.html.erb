@@ -4,7 +4,7 @@
     <h1><%= @entity.name %></h1>
 
     <p>
-      <b>Associated Usernames:</b>
+      <b>Reddit Usernames:</b>
       <% @entity.users.group(:id).each do |u| %>
           <%= link_to u.username, user_path(u) %>
       <% end %>
@@ -16,9 +16,14 @@
     </p>
 
     <div class="well" style="margin-bottom: 5px;"><%= @entity.content %></div>
-    <p class="muted">
-      <b>Date Added:</b> <%= @entity.created_at %> | <b>Last Updated:</b> <%= @entity.updated_at %>
-      <%= link_to "wikipedia", wikipedia_url(@entity.wikipedia_slug), :class => "pull-right" %>
+    <p>
+      <span class="muted">
+         <b>Date Added:</b> <%= @entity.created_at %> | <b>Last Updated:</b> <%= @entity.updated_at %>
+      </span>
+
+      <span class="pull-right">
+        <%= @entity.entities_links.map { |l| link_to image_tag("links/24x24/24x24-#{l.icon.source}.png"), l.link }.join(' ').html_safe %>
+      </span>
     </p>
   </div>
 </div>

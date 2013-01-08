@@ -18,10 +18,11 @@ class Entity < ActiveRecord::Base
     slug
   end
 
-  attr_accessible :content, :name, :slug, :wikipedia_slug, :tag_list
+  attr_accessible :content, :name, :slug, :tag_list
   has_and_belongs_to_many :users
+  has_many :entities_links
   acts_as_taggable
 
-  validates_presence_of :name, :slug, :wikipedia_slug
-  validates_uniqueness_of :slug, :wikipedia_slug
+  validates_presence_of :name, :slug
+  validates_uniqueness_of :slug
 end

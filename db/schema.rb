@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107050358) do
+ActiveRecord::Schema.define(:version => 20130108041442) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -65,6 +65,24 @@ ActiveRecord::Schema.define(:version => 20130107050358) do
   end
 
   add_index "entities", ["slug"], :name => "index_entities_on_slug", :unique => true
+
+  create_table "entities_links", :force => true do |t|
+    t.integer  "entity_id"
+    t.integer  "entities_links_icon_id"
+    t.string   "title",                  :null => false
+    t.string   "link",                   :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  create_table "entities_links_icons", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "source",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "entities_links_icons", ["name"], :name => "index_entities_links_icons_on_name", :unique => true
 
   create_table "entities_users", :id => false, :force => true do |t|
     t.integer "entity_id"

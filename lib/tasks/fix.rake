@@ -25,4 +25,15 @@ namespace :fix do
     end
   end
 
+  task :migrate_entities_links => :environment do
+    Entity.all.each do |e|
+      puts e.wikipedia_slug
+      EntitiesLink.create(
+          :entity_id => e.id,
+          :entities_links_icon_id => 1,
+          :title => e.name.to_s + ' wikipedia page',
+          :link => 'http://en.wikipedia.org/wiki/' + e.wikipedia_slug
+      )
+    end
+  end
 end

@@ -11,10 +11,12 @@ Bestofama::Application.routes.draw do
     end
     resources :entities do
       resources :users, :controller => :entities_users
+      resources :links, :controller => :entities_links
     end
     resources :users
     resources :trashes
     resources :meta
+    resources :link_icons, :controller => :entities_links_icons
   end
 
 end

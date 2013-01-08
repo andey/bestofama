@@ -11,6 +11,10 @@ module AmasHelper
     return ama_full_path(:username => a.user.username, :key => a.key, :slug => a.title.parameterize)
   end
 
+  def ama_url(a)
+    return ama_full_url(:username => a.user.username, :key => a.key, :slug => a.title.parameterize)
+  end
+
   # Helps /IAmA/:key display the comments
   def print_comments(ama, parent, depth)
     string = ''

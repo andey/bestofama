@@ -93,12 +93,5 @@
   </div>
 </div>
 <%= javascript_include_tag "application" %>
-<script>
-    function goToAnchor() {
-        document.body.scrollTop = document.documentElement.scrollTop =
-                $(window.location.hash.substring(1)).offsetTop - window.innerHeight / 2;
-    }
-    goToAnchor();
-</script>
 </body>
 </html>

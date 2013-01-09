@@ -43,7 +43,7 @@
     </div>
 <% end %>
 
-<% cache('ama_' + @ama.id.to_s + '_comments_cache') do %>
+<% cache(@ama.key) do %>
     <div class="row" style="margin-top: 15px;">
       <div class="span12">
         <h4>Comments</h4>

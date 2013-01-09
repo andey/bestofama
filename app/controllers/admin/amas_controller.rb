@@ -70,7 +70,7 @@ class Admin::AmasController < ApplicationController
     @ama.update_attribute(:responses, 0)
 
     #expire the AMA comments cache
-    expire_fragment('ama_' + @ama.id.to_s + '_comments_cache')
+    expire_fragment(@ama.key)
 
     #repopulate the AMA
     Reddit.populate_ama(@ama)

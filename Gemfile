@@ -19,6 +19,8 @@ gem 'fog'
 gem 'newrelic_rpm'
 gem 'memcachier'
 gem 'dalli'
+gem 'paperclip', '~> 3.0'
+gem 'aws-sdk'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

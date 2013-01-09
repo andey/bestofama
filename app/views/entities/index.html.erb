@@ -2,16 +2,35 @@
 <div class="row">
   <div class="span12">
     <h1>Entities</h1>
-    <table class="table">
-      <% @entities.each do |e| %>
-      <tr>
-        <td>
-          <h4><%= link_to e.name, entity_path(e) %><small> <%= e.content %></small></h4>
-          <p><%= e.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+    <% @entities.each do |e| %>
+        <hr/>
+        <% if e.avatar? %>
+            <div class="row">
+              <div class="span2" style="text-align: center;">
+                <% if e.avatar? %>
+                    <%= image_tag e.avatar.url(:thumb), :class => 'img-polaroid' %>
+                <% end %>
+              </div>
+              <div class="span10">
+                <h4><%= link_to e.name, entity_path(e) %></h4>
+
+                <p><%= e.content %></p>
+
+                <p><%= e.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+              </div>
+            </div>
+        <% else %>
+            <div class="row">
+              <div class="span12">
+                <h4><%= link_to e.name, entity_path(e) %></h4>
+
+                <p><%= e.content %></p>
+
+                <p><%= e.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></p>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
   </div>
 </div>
 

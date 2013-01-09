@@ -17,7 +17,8 @@ class Entity < ActiveRecord::Base
     slug
   end
 
-  attr_accessible :content, :name, :slug, :tag_list
+  has_attached_file :avatar, :styles => { :medium => "230x230#", :thumb => "100x100#" }
+  attr_accessible :content, :name, :slug, :tag_list, :avatar
   has_and_belongs_to_many :users
   has_many :entities_links
   acts_as_taggable

@@ -1,7 +1,7 @@
 Bestofama::Application.configure do
   config.cache_classes = false
   config.whiny_nils = true
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
   config.action_mailer.raise_delivery_errors = true
   config.active_support.deprecation = :log
@@ -11,6 +11,14 @@ Bestofama::Application.configure do
   config.assets.compress = false
   config.assets.debug = true
   config.log_level = :warn
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 's3.bestofama.com',
+          :access_key_id => ENV['S3_KEY'],
+          :secret_access_key => ENV['S3_SECRET']
+      }
+  }
 
   ActsAsTaggableOn.remove_unused_tags = true
   ActsAsTaggableOn.force_lowercase = true

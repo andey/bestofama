@@ -19,8 +19,4 @@ Bestofama::Application.configure do
           :secret_access_key => ENV['S3_SECRET']
       }
   }
-
-  ActsAsTaggableOn.remove_unused_tags = true
-  ActsAsTaggableOn.force_lowercase = true
-  ActsAsTaggableOn.force_parameterize = true
 end

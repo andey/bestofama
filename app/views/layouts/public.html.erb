@@ -73,24 +73,33 @@
     </div>
   </div>
 
+  <style>
+      #footer-links a {
+          margin-right: 20px;
+      }
+  </style>
+
   <div id="footer">
     <div class="container">
+      <hr/>
       <div class="row">
-        <div class="span12">
-          <hr/>
-          <footer class="pull-left">
-            Copyright © 2012 BestofAMA.com, All rights reserved.
+        <div id="footer-links" class="span10 pull-left">
+          <%= link_to "Privacy Policy", page_path(:id => "privacy"), :rel => :nofollow %>
+          <%= link_to "Terms of Service", page_path(:id => "terms"), :rel => :nofollow %>
+          <%= link_to "Source Code", "https://github.com/andey/bestofama" %>
+          <%= link_to "Contact", page_path(:id => "contact"), :rel => :nofollow %>
+          <footer>
+            Copyright © 2013 BestofAMA.com, All rights reserved.
           </footer>
-          <ul class="nav nav-pills pull-right">
-            <li><%= link_to "Privacy Policy", page_path(:id => "privacy"), :rel => :nofollow %></li>
-            <li><%= link_to "Terms of Service", page_path(:id => "terms"), :rel => :nofollow %></li>
-            <li><a href="https://github.com/andey/bestofama">Source Code</a></li>
-            <li><%= link_to "Contact", page_path(:id => "contact"), :rel => :nofollow %></li>
-          </ul>
+        </div>
+        <div class="span2" style="text-align: right;">
+          <%= link_to image_tag('links/32x32/32x32-twitter.png'), 'https://twitter.com/BestofAMAs', :alt => "Follow us on Twitter" %>
+          <%= link_to image_tag('links/32x32/32x32-rss.png'), 'http://feeds.feedburner.com/bestofama', :alt => "Follow our RSS feed" %>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 <%= javascript_include_tag "application" %>
 </body>

@@ -1,6 +1,15 @@
 class AmasController < ApplicationController
   layout 'public'
 
+  def homepage
+    @featured = Ama.where('responses > ? AND karma > ?', 0, 1000).order(:date).limit(5).reverse_order
+    @recent = Ama.where('responses > ?', 0).order(:date).limit(5).reverse_order
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def index
     @order = params[:order]
     @order ||= 'date'

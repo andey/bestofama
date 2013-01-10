@@ -10,7 +10,7 @@ Bestofama::Application.configure do
   config.log_level = :error
   config.action_mailer.raise_delivery_errors = false
   config.i18n.fallbacks = true
-  config.active_support.deprecation = :notify
+  config.active_support.deprecation = :silence
   config.paperclip_defaults = {
       :storage => :s3,
       :s3_credentials => {

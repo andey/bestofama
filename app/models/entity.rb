@@ -2,12 +2,19 @@
 #
 # Table name: entities
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)      not null
-#  content    :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  slug       :string(255)      not null
+#  id                  :integer          not null, primary key
+#  name                :string(255)      not null
+#  content             :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  slug                :string(255)      not null
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  wikipedia_hits      :integer          default(0)
+#  link_karma          :integer          default(0)
+#  comment_karma       :integer          default(0)
 #
 
 class Entity < ActiveRecord::Base
@@ -18,7 +25,7 @@ class Entity < ActiveRecord::Base
   end
 
   has_attached_file :avatar, :styles => { :medium => "230x230#", :thumb => "100x100#" }
-  attr_accessible :content, :name, :slug, :tag_list, :avatar
+  attr_accessible :content, :name, :slug, :tag_list, :avatar, :wikipedia_hits, :link_karma, :comment_karma
   has_and_belongs_to_many :users
   has_many :entities_links
   acts_as_taggable

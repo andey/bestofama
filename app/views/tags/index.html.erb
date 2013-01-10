@@ -1,33 +1,29 @@
-<% content_for :title, "Archive of Ask me Anything's :: BestofAMA" %>
+<% content_for :title, "Popular Tags Page " + params[:page].to_s + " :: BestofAMA" %>
 <div class="row">
   <div class="span12">
-    <h3>Tag Cloud</h3>
+    <h1>Most Popular Tags</h1>
+    <% @tags.each do |t| %>
+        <hr/>
+        <h3><%= link_to t, tag_path(t.name) %>
+          <small><%= t.count %> results</small>
+        </h3>
 
-    <div id="tag_cloud" class="well">
-      <% tag_cloud Entity.tag_counts.limit(100), %w[s m l] do |tag, css_class| %>
-          <%= link_to tag.name, tag_path(tag.name), class: css_class %>,
-      <% end %>
-    </div>
+        <ul class="thumbnails">
+          <% Entity.tagged_with(t).where("entities.avatar_file_name != ''").sample(6).each do |e| %>
+              <li class="span2">
+                <%= link_to image_tag(e.avatar.url(:medium)), entity_path(e), :class => 'thumbnail' %>
+                <h5 class="muted" style="text-align: center;"><%= e.name %></h5>
+              </li>
+          <% end %>
+        </ul>
+    <% end %>
   </div>
 </div>
 
 <div class="row">
   <div class="span12">
-    <h3>Recently added "Ask me Anything's"</h3>
-    <% @amas.each do |a| %>
-        <div class="row">
-          <div class="span1 ama-karma-meter-small">
-            <%= karma_meter(a.karma).html_safe %>
-          </div>
-          <div class="span11">
-            <h4><%= link_to a.title, ama_path(a) %></h4>
-
-            <p class="muted">
-              <b>Comments:</b> <%= a.comments %> | <b>Responses:</b> <%= a.responses %> |
-              <b>Date:</b> <%= a.date %>
-            </p>
-          </div>
-        </div>
-    <% end %>
+    <div class="pagination-centered">
+      <%= will_paginate @tags %>
+    </div>
   </div>
 </div>

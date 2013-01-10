@@ -1,19 +1,20 @@
 <% content_for :title, "AMA Directory Ordered By '" + @order.to_s + "' Page " + params[:page].to_s + " :: BestofAMA" %>
 
 <div class="row">
-  <div class="span7">
-    <h3>AMA's Directory</h3>
+  <div class="span6">
+    <h1>AMA's Directory</h1>
   </div>
-  <div class="span5" style="padding-top: 25px;">
-    <p class="pull-right"><b>Order by:</b>
-      <%= link_to "Date", amas_path %> |
-      <%= link_to "Karma Score", amas_path(:order => "karma") %> |
-      <%= link_to "Comments", amas_path(:order => "comments") %> |
-      <%= link_to "Responses", amas_path(:order => "responses") %>
-    </p>
+  <div class="span6" style="padding-top: 15px;">
+    <ul class="breadcrumb">
+      <li><strong>Order by:</strong></li>
+      <li style="margin-left: 20px;"><%= link_to "Date", amas_path %> <span class="divider">|</span></li>
+      <li><%= link_to "Karma Score", amas_path(:order => "karma") %> <span class="divider">|</span></li>
+      <li><%= link_to "Comments", amas_path(:order => "comments") %> <span class="divider">|</span></li>
+      <li><%= link_to "Responses", amas_path(:order => "responses") %></li>
+    </ul>
   </div>
 </div>
-
+<hr />
 <div class="row">
   <div class="span12">
     <% @amas.each do |a| %>

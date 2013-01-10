@@ -21,6 +21,7 @@ Bestofama::Application.routes.draw do
 
   # Tag path
   get 'tag/:tag', :controller => :tags, :action => :show, :as => :tag
+  get 'tags', :controller => :tags, :action => :index, :as => :tags
 
   # Submissions
   post 'submit', :controller => :amas, :action => :create

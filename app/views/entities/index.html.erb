@@ -8,11 +8,11 @@
             <div class="row">
               <div class="span2" style="text-align: center;">
                 <% if e.avatar? %>
-                    <%= image_tag e.avatar.url(:thumb), :class => 'img-polaroid' %>
+                    <%= image_tag e.avatar.url(:medium), :class => 'img-polaroid' %>
                 <% end %>
               </div>
               <div class="span10">
-                <h4><%= link_to e.name, entity_path(e) %></h4>
+                <h3><%= link_to e.name, entity_path(e) %></h3>
 
                 <p><%= e.content %></p>
 
@@ -22,7 +22,7 @@
         <% else %>
             <div class="row">
               <div class="span12">
-                <h4><%= link_to e.name, entity_path(e) %></h4>
+                <h3><%= link_to e.name, entity_path(e) %></h3>
 
                 <p><%= e.content %></p>
 

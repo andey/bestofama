@@ -3,7 +3,7 @@ class TagsController < ApplicationController
 
   # HOME PAGE
   def index
-    @amas = Ama.where('responses > ?', 0).order(:date).limit(5).reverse_order
+    @tags = Entity.tag_counts_on(:tags).order(:count, :name).reverse_order.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html

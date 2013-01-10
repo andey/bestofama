@@ -19,9 +19,13 @@
     <p>
       <b>Tags:</b>
       <%= @entity.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %>
+      <a class="edit" href="<%= entity_edit_path() %>"><i class="icon-plus"></i></a>
     </p>
 
-    <div class="well" style="margin-bottom: 5px;"><%= @entity.content %></div>
+    <div class="well" style="margin-bottom: 5px;"><%= @entity.content %>
+      <a class="edit" href="<%= entity_edit_path() %>"><i class="icon-pencil pull-right"></i></a>
+    </div>
+
     <p>
       <span class="muted pull-right">
          <b>Date Added:</b> <%= @entity.created_at %> | <b>Last Updated:</b> <%= @entity.updated_at %>

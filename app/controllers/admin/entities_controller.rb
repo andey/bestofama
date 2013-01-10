@@ -4,7 +4,7 @@ class Admin::EntitiesController < ApplicationController
 
   # GET /entities
   def index
-    @entities = Entity.order(:id).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @entities = Entity.order(:wikipedia_hits, :comment_karma).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # index.html.erb

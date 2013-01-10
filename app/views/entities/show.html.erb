@@ -16,11 +16,38 @@
             <h4><%= link_to a.title, ama_path(a) %></h4>
 
             <p class="muted">
-              <b>Comments:</b> <%= a.comments %> | <b>Responses:</b> <%= a.responses %> |
+              <b>Comments:</b> <%= a.comments %> |
+              <b>Responses:</b> <%= a.responses %> |
               <b>Date:</b> <%= a.date %>
             </p>
           </div>
         </div>
     <% end %>
   </div>
+
+  <% if current_user_session %>
+      <div style="display:none">
+        <div id="edit-box">
+          <%= form_for(@entity, :url => entity_path(@entity)) do |f| %>
+              <h4>Name
+                <small>full name</small>
+              </h4>
+              <%= f.text_field :name, :class => 'input-xxlarge' %>
+              <h4>Tags
+                <small>comma separated</small>
+              </h4>
+              <%= f.text_field :tag_list, :class => 'input-xxlarge' %>
+              <h4>Picture
+                <small>leave blank to keep the current picture</small>
+              </h4>
+              <%= f.file_field :avatar %>
+              <h4>Description
+                <small>limit to 255 characters</small>
+              </h4>
+              <%= f.text_area :content, :class => 'input-xxlarge', :style => 'height: 100px;' %>
+              <%= f.submit "Edit #{@entity.name}", :class => 'btn btn-large btn-block' %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
 </div>

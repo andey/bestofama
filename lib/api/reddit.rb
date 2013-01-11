@@ -132,7 +132,6 @@ module Reddit
           if post["data"]["author"] == ama.user.username
             is_op = true
           elsif ama.users.any? { |u| u.username == post["data"]["author"] }
-            puts "WORKS BITCH"
             is_op = true
           end
 
@@ -142,14 +141,16 @@ module Reddit
             end
           end
 
-          if keep_post
+          if keep_post || is_op
             has_op_child = true
-            save_comment(ama.id, post["data"])
-            puts depth + ' [' + post["data"]["author"] + ']'
-          elsif is_op
-            has_op_child = true;
-            save_comment(ama.id, post["data"])
-            puts depth + ' [' + post["data"]["author"] + ']'
+            comment = Comment.find_by_key(post["data"]["id"])
+            if comment
+              update_comment(comment, post["data"])
+              puts depth + ' [' + post["data"]["author"] + '] UPDATED'
+            else
+              save_comment(ama.id, post["data"])
+              puts depth + ' [' + post["data"]["author"] + '] SAVED'
+            end
           else
             puts depth + ' ' + post["data"]["author"]
           end
@@ -176,6 +177,18 @@ module Reddit
       }
 
       comment = Comment.create(data)
+      return comment
+    end
+
+    # update an AMA comment
+    # @return comment
+    def update_comment(comment, post)
+      data = {
+          :content => HTMLEntities.new.decode(post["body_html"]),
+          :date => Time.at(post["created_utc"]),
+          :karma => post["ups"].to_i - post["downs"].to_i
+      }
+      comment.update_attributes(data)
       return comment
     end
   end

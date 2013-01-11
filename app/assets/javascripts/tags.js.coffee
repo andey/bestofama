@@ -1,3 +1,2 @@
 jQuery ->
-  $('.edit').fancybox()
-  $('.badge').popover()
+  $('.thumbnail').popover()

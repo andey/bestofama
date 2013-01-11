@@ -1,17 +1,42 @@
 <% content_for :title, "Entities Directory Page " + params[:page].to_s + " :: BestofAMA" %>
 <div class="row">
-  <div class="span12">
+  <div class="span6">
     <h1>Entities</h1>
+  </div>
+  <div class="span6" style="padding-top: 15px;">
+    <ul class="breadcrumb">
+      <li><strong>Order by:</strong></li>
+      <li style="margin-left: 20px;"><%= image_tag("badges/grey.png") %> <%= link_to "Popularity", entities_path %>
+        <span class="divider">|</span></li>
+      <li><%= image_tag("badges/blue.png") %> <%= link_to "Comment Karma", entities_path(:order => "comment_karma") %>
+        <span class="divider">|</span></li>
+      <li><%= image_tag("badges/green.png") %> <%= link_to "Link Karma", entities_path(:order => "link_karma") %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
     <% @entities.each do |e| %>
         <hr/>
         <% if e.avatar? %>
             <div class="row">
               <div class="span2" style="text-align: center;">
-                <% if e.avatar? %>
-                    <%= image_tag e.avatar.url(:medium), :class => 'img-polaroid' %>
-                <% end %>
+                <%= image_tag e.avatar.url(:medium), :class => 'img-polaroid' %>
               </div>
               <div class="span10">
+                <div class="pull-right" style="margin-top: 20px;">
+
+                  <% if e.wikipedia_hits > 0 %>
+                      <span class="badge" data-trigger="hover" data-placement="bottom" data-title="Wikipedia Traffic" data-content="This figure is the 90 day cumulative wikipedia traffic, and the default statistic to rank the famous redditors."><%= number_with_delimiter(e.wikipedia_hits, :delimiter => ',') %></span>
+                  <% end %>
+                  <% if e.comment_karma > 0 %>
+                      <span class="badge badge-info" data-trigger="hover" data-placement="bottom" data-title="Comment Karma" data-content="This figure is the cumulative comment karma of all known reddit.com usernames."><%= number_with_delimiter(e.comment_karma, :delimiter => ',') %></span>
+                  <% end %>
+                  <% if e.link_karma > 1 %>
+                      <span class="badge badge-success" data-trigger="hover" data-placement="bottom" data-title="Link Karma" data-content="This figure is the cumulative link karma of all known reddit.com usernames. Link karma cannot be earned from IAmA."><%= number_with_delimiter(e.link_karma, :delimiter => ',') %></span>
+                  <% end %>
+
+                </div>
                 <h3><%= link_to e.name, entity_path(e) %></h3>
 
                 <p><%= e.content %></p>
@@ -22,6 +47,19 @@
         <% else %>
             <div class="row">
               <div class="span12">
+                <div class="pull-right" style="margin-top: 20px;">
+
+                  <% if e.wikipedia_hits > 0 %>
+                      <span class="badge" data-trigger="hover" data-placement="bottom" data-title="Wikipedia Traffic" data-content="This figure is the 90 day cumulative wikipedia traffic, and the default statistic to rank the famous redditors."><%= number_with_delimiter(e.wikipedia_hits, :delimiter => ',') %></span>
+                  <% end %>
+                  <% if e.comment_karma > 0 %>
+                      <span class="badge badge-info" data-trigger="hover" data-placement="bottom" data-title="Comment Karma" data-content="This figure is the cumulative comment karma of all known reddit.com usernames."><%= number_with_delimiter(e.comment_karma, :delimiter => ',') %></span>
+                  <% end %>
+                  <% if e.link_karma > 1 %>
+                      <span class="badge badge-success" data-trigger="hover" data-placement="bottom" data-title="Link Karma" data-content="This figure is the cumulative link karma of all known reddit.com usernames. Link karma cannot be earned from IAmA."><%= number_with_delimiter(e.link_karma, :delimiter => ',') %></span>
+                  <% end %>
+
+                </div>
                 <h3><%= link_to e.name, entity_path(e) %></h3>
 
                 <p><%= e.content %></p>

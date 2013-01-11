@@ -11,7 +11,10 @@ class EntitiesController < ApplicationController
   end
 
   def index
-    @entities = Entity.order(:wikipedia_hits, :comment_karma).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @order = params[:order]
+    @order ||= 'wikipedia_hits, comment_karma'
+    params[:page] ||= 1
+    @entities = Entity.order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html

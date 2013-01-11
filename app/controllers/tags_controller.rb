@@ -12,7 +12,10 @@ class TagsController < ApplicationController
 
   # GET /tag/:tag
   def show
-    @entities = Entity.tagged_with(params[:tag]).order(:wikipedia_hits, :comment_karma).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @order = params[:order]
+    @order ||= 'wikipedia_hits, comment_karma'
+    params[:page] ||= 1
+    @entities = Entity.tagged_with(params[:tag]).order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html

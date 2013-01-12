@@ -55,6 +55,9 @@
       <% end %>
       <%= f.text_field :username, :class => "input-block-level", :placeholder => "Reddit.com Username" %>
       <%= f.password_field :password, :class => "input-block-level", :placeholder => "Reddit.com Password" %>
+      <p><strong>Notice:</strong> Your reddit.com password <b style="color: red;">is not</b> stored, saved, or
+        logged. Please refer to our <%= link_to "Privacy Policy", page_path(:id => "privacy") %>.
+      </p>
       <%= f.submit "Sign in", :class => "btn btn-large btn-primary" %>
   <% end %>
 

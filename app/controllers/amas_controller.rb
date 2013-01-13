@@ -1,6 +1,15 @@
 class AmasController < ApplicationController
   layout 'public'
 
+  def redirect
+    @ama = Ama.find_by_key(params[:key])
+    if @ama
+      redirect_to ama_full_path(:username => @ama.user.username, :key => @ama.key, :slug => @ama.title.parameterize), :status => :moved_permanently
+    else
+      redirect_to root_path, :notice => "AMA has been removed"
+    end
+  end
+
   def homepage
     @featured = Ama.where('responses > ? AND karma > ?', 0, 1000).order(:date).limit(5).reverse_order
     @recent = Ama.where('responses > ?', 0).order(:date).limit(5).reverse_order
@@ -24,10 +33,14 @@ class AmasController < ApplicationController
 
   def show
     @ama = Ama.find_by_key(params[:key])
-    @users = @ama.users
 
     respond_to do |format|
-      format.html
+      if @ama
+        @users = @ama.users
+        format.html
+      else
+        format.html { redirect_to root_path, :notice => "AMA has been removed" }
+      end
     end
   end
 

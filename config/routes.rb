@@ -10,10 +10,6 @@ Bestofama::Application.routes.draw do
   # User path
   get 'user/:username', :controller => :users, :action => :show, :as => :user
 
-  # AMA path
-  get 'user/:username/ama/:key/:slug/', :controller => :amas, :action => :show, :as => :ama_full
-  get 'amas', :controller => :amas, :action => :index, :as => :amas
-
   # Entity path
   get 'entity/:slug', :controller => :entities, :action => :show, :as => :entity
   put 'entity/:slug', :controller => :entities, :action => :update
@@ -30,8 +26,17 @@ Bestofama::Application.routes.draw do
   # Sitemap Redirect
   get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz')
 
-  # Redirect all r/:subreddit links to reddit.com
-  get 'r/:subreddit', to: redirect('http://www.reddit.com/r/%{subreddit}' )
+  # Redirect all u/:username and r/:subreddit links to reddit.com
+  get 'r/:subreddit', to: redirect('http://www.reddit.com/r/%{subreddit}')
+  get 'u/:username', to: redirect('http://www.reddit.com/u/%{username}')
+
+  #Redirect old Directory Paths
+  get 'directory/:category', to: redirect('/')
+
+  # AMA path
+  get 'user/:username/ama/:key/:slug/', :controller => :amas, :action => :show, :as => :ama_full
+  get 'amas', :controller => :amas, :action => :index, :as => :amas
+  get ':entity/:key', :controller => :amas, :action => :redirect # old URL structure
 
   # Pages
   get ":id" => 'pages#show', :as => :page, :format => false

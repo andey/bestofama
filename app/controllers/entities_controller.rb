@@ -1,4 +1,5 @@
 class EntitiesController < ApplicationController
+  before_filter :require_user, :only => :update
   layout 'public'
 
   def show

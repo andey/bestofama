@@ -29,7 +29,7 @@ class Entity < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :entities_links, :dependent => :destroy
   acts_as_taggable
-  has_paper_trail :ignore => [:updated_at, :wikipedia_hits, :comment_karma, :link_karma]
+  has_paper_trail :ignore => [:updated_at, :wikipedia_hits, :comment_karma, :link_karma, :tag_list]
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
 end

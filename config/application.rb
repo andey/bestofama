@@ -15,6 +15,6 @@ module Bestofama
     config.assets.enabled = true
     config.assets.version = '1.0'
     config.paths["config/routes"] << Rails.root.join('config/routes/admin.rb')
-    config.paths["config/routes"] << Rails.root.join('config/routes/api.rb')
+    config.paths["config/routes"] << Rails.root.join('config/routes/public.rb') #The old AMA paths, directly conflict with admin panel routes
   end
 end

@@ -17,6 +17,11 @@ Bestofama::Application.routes.draw do
     resources :trashes
     resources :meta
     resources :link_icons, :controller => :entities_links_icons
+    resources :versions do
+      collection do
+        post ':id/revert', :action => :revert, :as => 'revert'
+      end
+    end
   end
 
 end

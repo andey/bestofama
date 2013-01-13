@@ -16,4 +16,5 @@ class EntitiesLink < ActiveRecord::Base
   validates_presence_of :entity_id, :link, :title, :entities_links_icon_id
   belongs_to :entity
   belongs_to :icon, :class_name => "EntitiesLinksIcon" ,:foreign_key => :entities_links_icon_id
+  has_paper_trail
 end

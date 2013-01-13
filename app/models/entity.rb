@@ -24,12 +24,12 @@ class Entity < ActiveRecord::Base
     slug
   end
 
-  has_attached_file :avatar, :styles => { :medium => "230x230#", :thumb => "100x100#" }
+  has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
   attr_accessible :content, :name, :slug, :tag_list, :avatar, :wikipedia_hits, :link_karma, :comment_karma
   has_and_belongs_to_many :users
-  has_many :entities_links
+  has_many :entities_links, :dependent => :destroy
   acts_as_taggable
-
+  has_paper_trail :ignore => :updated_at
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
 end

@@ -65,7 +65,6 @@ class Admin::AmasController < ApplicationController
   # then fetches the comments again.
   def clean
     require 'api/reddit'
-    Comment.where(:ama_id => params[:id]).destroy_all
     @ama = Ama.find(params[:id])
     @ama.update_attribute(:responses, 0)
 

@@ -31,4 +31,5 @@ class Comment < ActiveRecord::Base
   belongs_to :ama
   validates_presence_of :ama_id, :key, :parent_key, :user_id
   validates_uniqueness_of :key
+  has_paper_trail :only => :content, :on => [:update, :destroy]
 end

@@ -19,7 +19,6 @@
         <th>Link</th>
         <th></th>
         <th></th>
-        <th></th>
       </tr>
 
       <% @entities.each do |entity| %>
@@ -31,7 +30,6 @@
             <td><%= entity.comment_karma %></td>
             <td><%= entity.link_karma %></td>
             <td><%= link_to 'Show', admin_entity_path(entity) %></td>
-            <td><%= link_to 'Edit', edit_admin_entity_path(entity) %></td>
             <td><%= link_to 'Destroy', admin_entity_path(entity), :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>
           </tr>
       <% end %>

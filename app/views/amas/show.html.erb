@@ -10,7 +10,7 @@
           <small>as <%= link_to @ama.user.username, user_path(@ama.user) %></small>
         </h2>
     <% end %>
-    <h5><%= @ama.title %></h5>
+    <h5><%= @ama.title.html_safe %></h5>
     <% if !@ama.content.blank? %>
         <div class="well" style="margin-bottom: 5px;"><%= @ama.content.html_safe %></div>
     <% end %>

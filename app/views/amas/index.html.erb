@@ -23,7 +23,7 @@
             <%= karma_meter(a.karma).html_safe %>
           </div>
           <div class="span11">
-            <h4><%= link_to a.title, ama_path(a) %></h4>
+            <h4><%= link_to a.title.html_safe, ama_path(a) %></h4>
 
             <p class="muted">
               <b>Comments:</b> <%= a.comments %> | <b>Responses:</b> <%= a.responses %> |

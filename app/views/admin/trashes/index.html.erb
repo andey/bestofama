@@ -1,23 +1,35 @@
 <h1>Listing trashes</h1>
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @trashes.each do |trash| %>
+<div class="row">
+  <div class="span6">
+    <table class="table">
       <tr>
-        <td><%= trash.key %></td>
-        <td><%= link_to 'Show', admin_trash_path(trash) %></td>
-        <td><%= link_to 'Edit', edit_admin_trash_path(trash) %></td>
-        <td><%= link_to 'Destroy', admin_trash_path(trash), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <th>Added</th>
+        <th>Key</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-  <% end %>
-</table>
 
-<br/>
+      <% @trashes.each do |trash| %>
+          <tr>
+            <td><%= trash.created_at %></td>
+            <td><%= trash.key %></td>
+            <td><%= link_to 'Show', admin_trash_path(trash) %></td>
+            <td><%= link_to 'Edit', edit_admin_trash_path(trash) %></td>
+            <td><%= link_to 'Destroy', admin_trash_path(trash), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="pagination-centered">
+      <%= will_paginate @trashes %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'New Trash', new_admin_trash_path %>

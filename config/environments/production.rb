@@ -1,5 +1,5 @@
 Bestofama::Application.configure do
-  config.cache_store = :dalli_store
+  config.cache_store = :iron_cache, {project_id: ENV['IRON_CACHE_PROJECT_ID'], token: ENV['IRON_CACHE_TOKEN']}
   config.cache_classes = true
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true

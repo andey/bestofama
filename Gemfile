@@ -17,12 +17,11 @@ gem 'sitemap_generator', '~> 3.4'
 gem 'carrierwave'
 gem 'fog'
 gem 'newrelic_rpm'
-gem 'memcachier'
-gem 'dalli'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'paper_trail', '~> 2'
 gem 'awesome_nested_fields'
+gem 'iron_cache_rails'
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

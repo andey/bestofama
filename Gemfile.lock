@@ -57,7 +57,6 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     daemons (1.1.9)
-    dalli (2.6.0)
     erubis (2.7.0)
     eventmachine (1.0.0)
     excon (0.16.10)
@@ -81,6 +80,12 @@ GEM
       multi_json (~> 1.0)
       multi_xml
     i18n (0.6.1)
+    iron_cache (1.3.0)
+      iron_core (>= 0.4.2)
+    iron_cache_rails (0.1.4)
+      iron_cache (>= 1)
+    iron_core (0.5.1)
+      rest (>= 2.2.0)
     journey (1.0.4)
     jquery-rails (2.1.4)
       railties (>= 3.0, < 5.0)
@@ -90,10 +95,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memcachier (0.0.2)
     mime-types (1.19)
     multi_json (1.5.0)
     multi_xml (0.5.1)
+    net-http-persistent (2.8)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.2)
@@ -135,6 +140,11 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
+    rest (2.2.0)
+      net-http-persistent
+      rest-client (>= 0.3.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     ruby-hmac (0.4.0)
     sass (3.2.3)
     sass-rails (3.2.5)
@@ -177,12 +187,11 @@ DEPENDENCIES
   bootstrap-will_paginate
   carrierwave
   coffee-rails (~> 3.2.1)
-  dalli
   fog
   high_voltage
   htmlentities
+  iron_cache_rails
   jquery-rails
-  memcachier
   newrelic_rpm
   paper_trail (~> 2)
   paperclip (~> 3.0)

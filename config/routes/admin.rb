@@ -2,8 +2,8 @@ Bestofama::Application.routes.draw do
 
   namespace :admin do
     resources :admins
-    resources :comments
     resources :amas do
+      resources :comments
       resources :users, :controller => :amas_users
       collection do
         get ':id/clean', :action => :clean, :as => :clean

@@ -41,11 +41,13 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:return_to] = request.url
+    if params[:return_to]
+      session[:return_to] = params[:return_to]
+    end
   end
 
   def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
+    redirect_to ( session[:return_to] || default )
     session[:return_to] = nil
   end
 end

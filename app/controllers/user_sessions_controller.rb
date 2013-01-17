@@ -2,6 +2,7 @@ class UserSessionsController < ApplicationController
   layout false
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
+  before_filter :store_location
 
   def new
     @user_session = UserSession.new
@@ -18,7 +19,8 @@ class UserSessionsController < ApplicationController
         user.update_attributes(:modhash => login["json"]["data"]["modhash"], :active => true, :link_karma => info["data"]["link_karma"], :comment_karma => info["data"]["comment_karma"])
         @user_session = UserSession.create(user, true)
         if @user_session.save
-          redirect_to root_path, :notice => "Login successful!"
+          flash[:notice] = "Successfully Logged In"
+          redirect_back_or_default root_path
         else
           redirect_to new_session_path, :notice => "Oops, not sure what went wrong, try again!"
         end
@@ -32,6 +34,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy
-    redirect_to root_path, :notice => "Logout successful!"
+    flash[:notice] = "Successfully Logged Out"
+    redirect_back_or_default root_path
   end
 end

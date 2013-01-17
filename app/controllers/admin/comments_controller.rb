@@ -4,7 +4,8 @@ class Admin::CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.order(:id).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @ama = Ama.find(params[:ama_id])
+    @comments = Comment.where(:ama_id => @ama.id).order(:id).reverse_order.paginate(:page => params[:page], :per_page => 100)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,6 +14,7 @@ class Admin::CommentsController < ApplicationController
 
   # GET /comments/1
   def show
+    @ama = Ama.find(params[:ama_id])
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -22,6 +24,7 @@ class Admin::CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    @ama = Ama.find(params[:ama_id])
     @comment = Comment.new
 
     respond_to do |format|
@@ -29,13 +32,9 @@ class Admin::CommentsController < ApplicationController
     end
   end
 
-  # GET /comments/1/edit
-  def edit
-    @comment = Comment.find(params[:id])
-  end
-
   # POST /comments
   def create
+    @ama = Ama.find(params[:ama_id])
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
@@ -47,26 +46,14 @@ class Admin::CommentsController < ApplicationController
     end
   end
 
-  # PUT /comments/1
-  def update
-    @comment = Comment.find(params[:id])
-
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment, :notice => 'Comment was successfully updated.' }
-      else
-        format.html { render :action => "edit" }
-      end
-    end
-  end
-
   # DELETE /comments/1
   def destroy
+    @ama = Ama.find(params[:ama_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+      format.html { redirect_to admin_comments_url }
     end
   end
 end

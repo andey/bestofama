@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <b>Parent key:</b>
+  <%= @comment.parent_key %>
+</p>
+
+<p>
   <b>User:</b>
   <%= @comment.user_id %>
 </p>
@@ -22,19 +27,9 @@
 
 <p>
   <b>Content:</b>
-  <%= @comment.content %>
 </p>
+<div class="well">
+  <%= @comment.content.html_safe %>
+</div>
 
-<p>
-  <b>Parent:</b>
-  <%= @comment.parent_id %>
-</p>
-
-<p>
-  <b>Parent key:</b>
-  <%= @comment.parent_key %>
-</p>
-
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Back', admin_ama_comments_path(@ama) %>

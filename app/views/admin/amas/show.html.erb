@@ -33,8 +33,13 @@
 </p>
 
 <p>
-  <b>Posts:</b>
+  <b>Comemnts:</b>
   <%= @ama.comments %>
+</p>
+
+<p>
+  <b>Saved Comments:</b>
+  <%= link_to Comment.where(:ama_id => @ama.id).count, admin_ama_comments_path(@ama) %>
 </p>
 
 <p>

@@ -2,7 +2,9 @@
 
 <div class="row">
   <div class="span12">
-    <h1>Submit AMA <small>please enter a reddit.com url linking to the comments</small></h1>
+    <h1>Submit AMA
+      <small>please enter a reddit.com url linking to the comments</small>
+    </h1>
 
     <%= form_tag '/submit', :method => "post", :class => "form-horizontal" do %>
         <input id="submit_ama_url_input" name="ama_url" class="span10" style="height: 35px; font-size: 25px;" type="text">

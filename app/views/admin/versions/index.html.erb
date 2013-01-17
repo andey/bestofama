@@ -13,7 +13,9 @@
   <% @versions.each do |version| %>
       <tr>
         <td><%= version.id %></td>
-        <td><% if version.whodunnit %><%= User.find(version.whodunnit).username %><% end %></td>
+        <td>
+          <% if version.whodunnit %><%= User.find(version.whodunnit).username %>
+          <% end %></td>
         <td><%= version.created_at %></td>
         <td><%= version.item_type %>#<%= version.event %></td>
         <td><%= version.item_id %></td>

@@ -4,22 +4,24 @@
   <tr>
     <th>Name</th>
     <th>Source</th>
+    <th>Regex</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @entities_links_icons.each do |entities_links_icon| %>
-  <tr>
-    <td><%= entities_links_icon.name %></td>
-    <td><%= entities_links_icon.source %></td>
-    <td><%= link_to 'Show', admin_link_icon_path(entities_links_icon) %></td>
-    <td><%= link_to 'Edit', edit_admin_link_icon_path(entities_links_icon) %></td>
-    <td><%= link_to 'Destroy', admin_link_icon_path(entities_links_icon), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @entities_links_icons.each do |entities_links_icon| %>
+      <tr>
+        <td><%= entities_links_icon.name %></td>
+        <td><%= entities_links_icon.source %></td>
+        <td><%= entities_links_icon.regex %></td>
+        <td><%= link_to 'Show', admin_link_icon_path(entities_links_icon) %></td>
+        <td><%= link_to 'Edit', edit_admin_link_icon_path(entities_links_icon) %></td>
+        <td><%= link_to 'Destroy', admin_link_icon_path(entities_links_icon), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Entities links icon', new_admin_link_icon_path %>

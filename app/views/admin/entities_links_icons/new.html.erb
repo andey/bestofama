@@ -3,7 +3,8 @@
 <%= form_for(@entities_links_icon, :url => admin_link_icons_path) do |f| %>
     <% if @entities_links_icon.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@entities_links_icon.errors.count, "error") %> prohibited this entities_links_icon from being saved:</h2>
+          <h2><%= pluralize(@entities_links_icon.errors.count, "error") %> prohibited this entities_links_icon from
+            being saved:</h2>
 
           <ul>
             <% @entities_links_icon.errors.full_messages.each do |msg| %>
@@ -14,12 +15,19 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label :name %>
+      <br/>
       <%= f.text_field :name %>
     </div>
     <div class="field">
-      <%= f.label :source %><br />
+      <%= f.label :source %>
+      <br/>
       <%= f.text_field :source %>
+    </div>
+    <div class="field">
+      <%= f.label :regex %>
+      <br/>
+      <%= f.text_field :regex %>
     </div>
     <div class="actions">
       <%= f.submit %>

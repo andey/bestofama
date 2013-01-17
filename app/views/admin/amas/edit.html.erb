@@ -1,57 +1,66 @@
 <h1>Editing ama</h1>
 
 <%= form_for(@ama, :url => admin_ama_path(@ama)) do |f| %>
-  <% if @ama.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ama.errors.count, "error") %> prohibited this ama from being saved:</h2>
+    <% if @ama.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@ama.errors.count, "error") %> prohibited this ama from being saved:</h2>
 
-      <ul>
-      <% @ama.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @ama.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :key %>
+      <br/>
+      <%= f.text_field :key %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :key %><br />
-    <%= f.text_field :key %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, :class => 'span12' %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, :class => 'span12' %>
-  </div>
-  <div class="field">
-    <%= f.label :karma %><br />
-    <%= f.number_field :karma %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :permalink %><br />
-    <%= f.text_field :permalink %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.number_field :comments %>
-  </div>
-  <div class="field">
-    <%= f.label :responses %><br />
-    <%= f.number_field :responses %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :date %>
+      <br/>
+      <%= f.datetime_select :date %>
+    </div>
+    <div class="field">
+      <%= f.label :title %>
+      <br/>
+      <%= f.text_field :title, :class => 'span12' %>
+    </div>
+    <div class="field">
+      <%= f.label :content %>
+      <br/>
+      <%= f.text_area :content, :class => 'span12' %>
+    </div>
+    <div class="field">
+      <%= f.label :karma %>
+      <br/>
+      <%= f.number_field :karma %>
+    </div>
+    <div class="field">
+      <%= f.label :user_id %>
+      <br/>
+      <%= f.number_field :user_id %>
+    </div>
+    <div class="field">
+      <%= f.label :permalink %>
+      <br/>
+      <%= f.text_field :permalink %>
+    </div>
+    <div class="field">
+      <%= f.label :comments %>
+      <br/>
+      <%= f.number_field :comments %>
+    </div>
+    <div class="field">
+      <%= f.label :responses %>
+      <br/>
+      <%= f.number_field :responses %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
 
 

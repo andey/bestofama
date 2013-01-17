@@ -19,6 +19,7 @@ class Comment < ActiveRecord::Base
 
   # Correct all "/r/subreddit" internal links within comments
   before_save :correct_reddit_relative_links
+
   def correct_reddit_relative_links
     matches = self.content.match(/href="(\/r\/[a-zA-Z0-9]*)"/)
     if matches

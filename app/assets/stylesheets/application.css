@@ -12,4 +12,6 @@
  *= require_tree .
  */
 
-.hidden{display: none;}
+.hidden {
+    display: none;
+}

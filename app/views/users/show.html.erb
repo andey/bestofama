@@ -9,12 +9,13 @@
           <%= link_to e.name, entity_path(e) %>
       <% end %>
     </p>
+
     <p>
       <%= link_to reddit_user_path(@user.username), reddit_user_path(@user.username) %>
     </p>
   </div>
 </div>
-<hr />
+<hr/>
 <div class="row">
   <div class="span12">
     <% @amas.each do |a| %>

@@ -22,7 +22,7 @@ class EntitiesControllerTest < ActionController::TestCase
 
   test "should create entity" do
     assert_difference('Entity.count') do
-      post :create, entity: { content: @entity.content, name: @entity.name, slug: @entity.slug }
+      post :create, entity: {content: @entity.content, name: @entity.name, slug: @entity.slug}
     end
 
     assert_redirected_to entity_path(assigns(:entity))
@@ -39,7 +39,7 @@ class EntitiesControllerTest < ActionController::TestCase
   end
 
   test "should update entity" do
-    put :update, id: @entity, entity: { content: @entity.content, name: @entity.name, slug: @entity.slug }
+    put :update, id: @entity, entity: {content: @entity.content, name: @entity.name, slug: @entity.slug}
     assert_redirected_to entity_path(assigns(:entity))
   end
 

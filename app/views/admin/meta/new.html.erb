@@ -1,29 +1,31 @@
 <h1>New metum</h1>
 
 <%= form_for(@metum, :url => admin_meta_path) do |f| %>
-  <% if @metum.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@metum.errors.count, "error") %> prohibited this metum from being saved:</h2>
+    <% if @metum.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@metum.errors.count, "error") %> prohibited this metum from being saved:</h2>
 
-      <ul>
-      <% @metum.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @metum.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <br/>
+      <%= f.text_field :name %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br />
-    <%= f.text_field :value %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :value %>
+      <br/>
+      <%= f.text_field :value %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
 
 

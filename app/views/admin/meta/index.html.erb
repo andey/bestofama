@@ -9,17 +9,17 @@
     <th></th>
   </tr>
 
-<% @meta.each do |metum| %>
-  <tr>
-    <td><%= metum.name %></td>
-    <td><%= metum.value %></td>
-    <td><%= link_to 'Show', admin_metum_path(metum) %></td>
-    <td><%= link_to 'Edit', edit_admin_metum_path(metum) %></td>
-    <td><%= link_to 'Destroy', admin_metum_path(metum), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @meta.each do |metum| %>
+      <tr>
+        <td><%= metum.name %></td>
+        <td><%= metum.value %></td>
+        <td><%= link_to 'Show', admin_metum_path(metum) %></td>
+        <td><%= link_to 'Edit', edit_admin_metum_path(metum) %></td>
+        <td><%= link_to 'Destroy', admin_metum_path(metum), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
 <%= link_to 'New Metum', new_admin_metum_path %>

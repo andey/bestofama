@@ -10,6 +10,6 @@
 #
 
 class EntitiesLinksIcon < ActiveRecord::Base
-  attr_accessible :name, :source
+  attr_accessible :name, :source, :regex
   has_many :entities_links
 end

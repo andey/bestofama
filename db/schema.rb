@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113015851) do
+ActiveRecord::Schema.define(:version => 20130117044603) do
 
   create_table "admins", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(:version => 20130113015851) do
   create_table "entities_links", :force => true do |t|
     t.integer  "entity_id"
     t.integer  "entities_links_icon_id"
-    t.string   "title",                  :null => false
     t.string   "link",                   :null => false
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
@@ -86,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130113015851) do
     t.string   "source",     :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "regex"
   end
 
   add_index "entities_links_icons", ["name"], :name => "index_entities_links_icons_on_name", :unique => true

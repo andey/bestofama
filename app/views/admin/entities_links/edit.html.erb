@@ -3,7 +3,8 @@
 <%= form_for(@entities_link, :url => admin_entity_link_path(@entity, @entities_link)) do |f| %>
     <% if @entities_link.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@entities_link.errors.count, "error") %> prohibited this entities_link from being saved:</h2>
+          <h2><%= pluralize(@entities_link.errors.count, "error") %> prohibited this entities_link from being
+            saved:</h2>
 
           <ul>
             <% @entities_link.errors.full_messages.each do |msg| %>

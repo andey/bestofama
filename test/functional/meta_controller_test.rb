@@ -18,7 +18,7 @@ class MetaControllerTest < ActionController::TestCase
 
   test "should create metum" do
     assert_difference('Metum.count') do
-      post :create, metum: { name: @metum.name, value: @metum.value }
+      post :create, metum: {name: @metum.name, value: @metum.value}
     end
 
     assert_redirected_to metum_path(assigns(:metum))
@@ -35,7 +35,7 @@ class MetaControllerTest < ActionController::TestCase
   end
 
   test "should update metum" do
-    put :update, id: @metum, metum: { name: @metum.name, value: @metum.value }
+    put :update, id: @metum, metum: {name: @metum.name, value: @metum.value}
     assert_redirected_to metum_path(assigns(:metum))
   end
 

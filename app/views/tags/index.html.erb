@@ -11,7 +11,7 @@
         <ul class="thumbnails">
           <% Entity.tagged_with(t).where("entities.avatar_file_name != ''").sample(6).each do |e| %>
               <li class="span2">
-                <%= link_to image_tag(e.avatar.url(:medium)), entity_path(e), :class => 'thumbnail', :data => { :trigger => 'hover', :placement => 'bottom', :title => e.name, :content => e.content } %>
+                <%= link_to image_tag(e.avatar.url(:medium)), entity_path(e), :class => 'thumbnail', :data => {:trigger => 'hover', :placement => 'bottom', :title => e.name, :content => e.content} %>
                 <h5 class="muted" style="text-align: center;"><%= e.name %></h5>
               </li>
           <% end %>

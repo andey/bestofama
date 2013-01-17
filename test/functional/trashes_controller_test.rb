@@ -18,7 +18,7 @@ class TrashesControllerTest < ActionController::TestCase
 
   test "should create trash" do
     assert_difference('Trash.count') do
-      post :create, trash: { key: @trash.key }
+      post :create, trash: {key: @trash.key}
     end
 
     assert_redirected_to trash_path(assigns(:trash))
@@ -35,7 +35,7 @@ class TrashesControllerTest < ActionController::TestCase
   end
 
   test "should update trash" do
-    put :update, id: @trash, trash: { key: @trash.key }
+    put :update, id: @trash, trash: {key: @trash.key}
     assert_redirected_to trash_path(assigns(:trash))
   end
 

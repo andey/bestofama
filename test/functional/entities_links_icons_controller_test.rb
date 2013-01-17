@@ -18,7 +18,7 @@ class EntitiesLinksIconsControllerTest < ActionController::TestCase
 
   test "should create entities_links_icon" do
     assert_difference('EntitiesLinksIcon.count') do
-      post :create, entities_links_icon: { name: @entities_links_icon.name, source: @entities_links_icon.source }
+      post :create, entities_links_icon: {name: @entities_links_icon.name, source: @entities_links_icon.source}
     end
 
     assert_redirected_to entities_links_icon_path(assigns(:entities_links_icon))
@@ -35,7 +35,7 @@ class EntitiesLinksIconsControllerTest < ActionController::TestCase
   end
 
   test "should update entities_links_icon" do
-    put :update, id: @entities_links_icon, entities_links_icon: { name: @entities_links_icon.name, source: @entities_links_icon.source }
+    put :update, id: @entities_links_icon, entities_links_icon: {name: @entities_links_icon.name, source: @entities_links_icon.source}
     assert_redirected_to entities_links_icon_path(assigns(:entities_links_icon))
   end
 

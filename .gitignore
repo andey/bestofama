@@ -1,7 +1,6 @@
 #Rails
 /config/database.yml
 /.bundle
-/db/backup
 /db/*.sqlite3
 /log/*.log
 /tmp

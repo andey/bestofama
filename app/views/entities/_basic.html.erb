@@ -1,5 +1,10 @@
 <div class="row">
   <div class="span12">
+    <div class="pull-right" style="margin-top: 20px;">
+      <a class="edit" href="<%= entity_edit_path() %>" role="button" data-toggle="modal">edit
+        <i class="icon-pencil"></i>
+      </a>
+    </div>
     <h1><%= @entity.name %></h1>
 
     <p>
@@ -12,11 +17,10 @@
     <p>
       <b>Tags:</b>
       <%= @entity.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe %>
-      <a class="edit" href="<%= entity_edit_path() %>"><i class="icon-plus"></i></a>
     </p>
 
-    <div class="well" style="margin-bottom: 5px;"><%= @entity.content %>
-      <a class="edit" href="<%= entity_edit_path() %>"><i class="icon-pencil pull-right"></i></a>
+    <div class="well" style="margin-bottom: 5px;">
+      <%= @entity.content %>
     </div>
 
     <p>

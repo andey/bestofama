@@ -1,3 +1,3 @@
 jQuery ->
-  $('.edit').fancybox()
   $('.badge').popover()
+  $('#edit-box form').nestedFields()

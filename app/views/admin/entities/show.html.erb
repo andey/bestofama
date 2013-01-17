@@ -3,6 +3,11 @@
     <h1><%= @entity.name %></h1>
 
     <p>
+      <b>Avatar:</b>
+      <%= @entity.avatar %>
+    </p>
+
+    <p>
       <b>Slug:</b>
       <%= @entity.slug %>
     </p>
@@ -63,7 +68,6 @@
   <div class="span12">
     <table class="table">
       <tr>
-        <th>Title</th>
         <th>Link</th>
         <th>Icon</th>
         <th></th>
@@ -72,7 +76,6 @@
       </tr>
       <% @entity.entities_links.each do |link| %>
           <tr>
-            <td><%= link.title %></td>
             <td><%= link.link %></td>
             <td><%= link.icon.name %></td>
             <td class="span1"><%= link_to 'Show', admin_entity_link_path(@entity, link) %></td>

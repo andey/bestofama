@@ -18,7 +18,7 @@ class EntitiesLinksControllerTest < ActionController::TestCase
 
   test "should create entities_link" do
     assert_difference('EntitiesLink.count') do
-      post :create, entities_link: { entity_id: @entities_link.entity_id, link: @entities_link.link, title: @entities_link.title }
+      post :create, entities_link: {entity_id: @entities_link.entity_id, link: @entities_link.link, title: @entities_link.title}
     end
 
     assert_redirected_to entities_link_path(assigns(:entities_link))
@@ -35,7 +35,7 @@ class EntitiesLinksControllerTest < ActionController::TestCase
   end
 
   test "should update entities_link" do
-    put :update, id: @entities_link, entities_link: { entity_id: @entities_link.entity_id, link: @entities_link.link, title: @entities_link.title }
+    put :update, id: @entities_link, entities_link: {entity_id: @entities_link.entity_id, link: @entities_link.link, title: @entities_link.title}
     assert_redirected_to entities_link_path(assigns(:entities_link))
   end
 

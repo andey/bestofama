@@ -18,7 +18,7 @@ class Admin::AdminsControllerTest < ActionController::TestCase
 
   test "should create admin_admin" do
     assert_difference('Admin::Admin.count') do
-      post :create, admin_admin: { user_id: @admin_admin.user_id }
+      post :create, admin_admin: {user_id: @admin_admin.user_id}
     end
 
     assert_redirected_to admin_admin_path(assigns(:admin_admin))
@@ -35,7 +35,7 @@ class Admin::AdminsControllerTest < ActionController::TestCase
   end
 
   test "should update admin_admin" do
-    put :update, id: @admin_admin, admin_admin: { user_id: @admin_admin.user_id }
+    put :update, id: @admin_admin, admin_admin: {user_id: @admin_admin.user_id}
     assert_redirected_to admin_admin_path(assigns(:admin_admin))
   end
 

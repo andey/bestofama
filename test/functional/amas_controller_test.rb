@@ -18,7 +18,7 @@ class AmasControllerTest < ActionController::TestCase
 
   test "should create ama" do
     assert_difference('Ama.count') do
-      post :create, ama: { content: @ama.content, date: @ama.date, karma: @ama.karma, key: @ama.key, permalink: @ama.permalink, comments: @ama.comments, responses: @ama.responses, title: @ama.title, user_id: @ama.user_id }
+      post :create, ama: {content: @ama.content, date: @ama.date, karma: @ama.karma, key: @ama.key, permalink: @ama.permalink, comments: @ama.comments, responses: @ama.responses, title: @ama.title, user_id: @ama.user_id}
     end
 
     assert_redirected_to ama_path(assigns(:ama))
@@ -35,7 +35,7 @@ class AmasControllerTest < ActionController::TestCase
   end
 
   test "should update ama" do
-    put :update, id: @ama, ama: { content: @ama.content, date: @ama.date, karma: @ama.karma, key: @ama.key, permalink: @ama.permalink, comments: @ama.comments, responses: @ama.responses, title: @ama.title, user_id: @ama.user_id }
+    put :update, id: @ama, ama: {content: @ama.content, date: @ama.date, karma: @ama.karma, key: @ama.key, permalink: @ama.permalink, comments: @ama.comments, responses: @ama.responses, title: @ama.title, user_id: @ama.user_id}
     assert_redirected_to ama_path(assigns(:ama))
   end
 

@@ -1,5 +1,7 @@
 module EntitiesHelper
 
+  # Display mondal edit box if logged in.
+  # If not, redirect user to login form.
   def entity_edit_path()
     if current_user_session
       return '#edit-box'

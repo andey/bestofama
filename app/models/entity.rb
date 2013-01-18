@@ -24,7 +24,7 @@ class Entity < ActiveRecord::Base
     slug
   end
 
-  has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
+
   attr_accessible :content, :name, :slug, :tag_list, :avatar, :wikipedia_hits, :link_karma, :comment_karma, :entities_links_attributes
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
@@ -33,6 +33,12 @@ class Entity < ActiveRecord::Base
   has_many :entities_links, :dependent => :destroy
   accepts_nested_attributes_for :entities_links, :reject_if => lambda { |a| a[:link].blank? }, :allow_destroy => true
 
+  # can be tagged using "acts_as_taggable" gem
   acts_as_taggable
+
+  # paper_trail gem to record changes
   has_paper_trail :ignore => [:updated_at, :wikipedia_hits, :comment_karma, :link_karma, :tag_list]
+
+  # paperclip gem to store avatars, in the following sizes
+  has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
 end

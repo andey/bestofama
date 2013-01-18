@@ -1,3 +1,5 @@
+#== Reddit.com API library
+
 module Reddit
   require "net/http"
   require 'open-uri'
@@ -6,8 +8,8 @@ module Reddit
 
   class << self
 
-    # generic http GET request, parses json
-    # @return json
+    # generic http GET request, parses json.
+    # returns json
     def get(url)
       http = Net::HTTP.new("www.reddit.com")
       request = Net::HTTP::Get.new(url)
@@ -16,8 +18,8 @@ module Reddit
       return JSON.parse(response.read_body)
     end
 
-    # generic http POST request, parses json
-    # @return json
+    # generic http POST request, parses json.
+    # returns json
     def post(url, query)
       http = Net::HTTP.new("www.reddit.com")
       request = Net::HTTP::Post.new(url)
@@ -29,7 +31,7 @@ module Reddit
 
     # Will return user if found, else
     # create user and then return user
-    # @return user
+    # returns user
     def find_user(username)
       user = User.find_by_username(username)
       if user
@@ -40,8 +42,8 @@ module Reddit
     end
 
     # Creates an AMA record.
-    # Expects the record "data"
-    # @return ama
+    # Expects the record "data" from reddit.com api json.
+    # returns ama
     def save_ama(ama_json)
       data = {
           :key => ama_json["id"],
@@ -60,7 +62,7 @@ module Reddit
     # Creates the original AMA record.
     # It does not fetch the comments.
     # Comments are fetched on a rake cronjob
-    # @return ama
+    # returns ama
     def create_ama(key)
       begin
         result = get("http://www.reddit.com/by_id/t3_" + key + ".json")
@@ -86,7 +88,7 @@ module Reddit
       end
     end
 
-    # updates the AMA record
+    # updates an AMA record
     def update_ama(ama, json)
 
       #The sum of OP & Participant comments
@@ -162,7 +164,7 @@ module Reddit
 
 
     # saves an AMA comment
-    # @return comment
+    # return comment
     def save_comment(ama_id, post)
       current_user = find_user(post["author"])
       parent_key = /_(.*)/.match(post["parent_id"])[1]
@@ -181,7 +183,7 @@ module Reddit
     end
 
     # update an AMA comment
-    # @return comment
+    # return comment
     def update_comment(comment, post)
       data = {
           :content => HTMLEntities.new.decode(post["body_html"]),

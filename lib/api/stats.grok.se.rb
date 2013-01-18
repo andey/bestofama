@@ -1,3 +1,5 @@
+#== Wikipedia Stats API library
+
 module Grokse
   require 'net/http'
   require 'open-uri'

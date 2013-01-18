@@ -1,4 +1,5 @@
 Bestofama::Application.configure do
+
   config.cache_classes = false
   config.whiny_nils = true
   config.consider_all_requests_local = true
@@ -11,6 +12,8 @@ Bestofama::Application.configure do
   config.assets.compress = false
   config.assets.debug = true
   config.log_level = :warn
+
+  # Default paperclip config
   config.paperclip_defaults = {
       :storage => :s3,
       :path => "/entities/avatars/:id_partition/:style/:basename.:extension",

@@ -1,6 +1,6 @@
 namespace :cache do
 
-  # Build the cache of AMA comments
+  # Build the cache of all AMA comments
   task :build => :environment do
     require 'cache_builder'
 

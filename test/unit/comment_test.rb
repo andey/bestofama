@@ -12,7 +12,6 @@
 #  karma      :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  parent_id  :integer
 #
 
 require 'test_helper'

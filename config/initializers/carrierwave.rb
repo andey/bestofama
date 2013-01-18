@@ -1,4 +1,7 @@
 # config/initializers/carrierwave.rb
+#
+# Used by paperclip to upload avatars to Amazon AWS S3
+
 CarrierWave.configure do |config|
   config.cache_dir = "#{Rails.root}/tmp/"
   config.storage = :fog

@@ -1,4 +1,6 @@
 module AmasHelper
+
+  # Prints the "up" and "down" triangles with the karma score in between.
   def karma_meter(karma)
     s = ''
     s += image_tag asset_path("triangle_up.svg"), :class => "up_vote", :alt => "triangle up vote"
@@ -7,15 +9,17 @@ module AmasHelper
     return s
   end
 
+  # Simplify the AMA route path.
   def ama_path(a)
     return ama_full_path(:username => a.user.username, :key => a.key, :slug => a.title.parameterize)
   end
 
+  # Simplify the AMA route URL.
   def ama_url(a)
     return ama_full_url(:username => a.user.username, :key => a.key, :slug => a.title.parameterize)
   end
 
-  # Helps /IAmA/:key display the comments
+  # Builds the comments for an AMA view.
   def print_comments(ama, parent, depth)
     string = ''
     Comment.where(:parent_key => parent.key).order(:karma).reverse_order.each do |comment|
@@ -28,18 +32,5 @@ module AmasHelper
       end
     end
     return string
-  end
-
-  def wiki_encode(slug)
-    slug = slug.to_s
-    slug = HTMLEntities.new.encode(slug)
-    slug = CGI::escape(slug)
-    return slug
-  end
-
-  def wiki_decode(slug)
-    slug = HTMLEntities.new.decode(slug)
-    slug = CGI::unescape(slug)
-    return slug
   end
 end

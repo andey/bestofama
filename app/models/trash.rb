@@ -2,6 +2,8 @@
 #
 # Table name: trashes
 #
+# List of all the AMA keys which have been blacklisted from being saved
+#
 #  id         :integer          not null, primary key
 #  key        :string(255)      not null
 #  created_at :datetime         not null

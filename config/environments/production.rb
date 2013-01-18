@@ -1,6 +1,9 @@
 Bestofama::Application.configure do
+
+  # use cache servers by iron.io/cache
   config.cache_store = :iron_cache, {project_id: ENV['IRON_CACHE_PROJECT_ID'], token: ENV['IRON_CACHE_TOKEN']}
   config.cache_classes = true
+
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   config.serve_static_assets = true
@@ -11,6 +14,8 @@ Bestofama::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.i18n.fallbacks = true
   config.active_support.deprecation = :silence
+
+  # Default paperclip config
   config.paperclip_defaults = {
       :storage => :s3,
       :path => "/entities/avatars/:id_partition/:style/:basename.:extension",

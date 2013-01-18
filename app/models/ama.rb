@@ -18,9 +18,15 @@
 
 class Ama < ActiveRecord::Base
   attr_accessible :content, :date, :karma, :key, :permalink, :comments, :responses, :title, :user_id
-  belongs_to :user
   validates_presence_of :key, :permalink, :title, :user_id
   validates_uniqueness_of :key
+
+  # has one "user" as the owner of the AMA
+  belongs_to :user
+
+  # has many "users", that are guest speakers
   has_and_belongs_to_many :users
+
+  # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 end

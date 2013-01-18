@@ -5,7 +5,6 @@
 #  id                     :integer          not null, primary key
 #  entity_id              :integer
 #  entities_links_icon_id :integer
-#  title                  :string(255)      not null
 #  link                   :string(255)      not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -25,7 +24,9 @@ class EntitiesLink < ActiveRecord::Base
   before_validation :find_entities_links_icon
 
   private
-  # Make sure the link matches the REGEX of an icon
+  # Make sure the link submitted matches a REGEX of an icon.
+  # If no match is found, self.entities_links_icon_id will not be assigned.
+  # Therefore the validation will fail, rejecting the save
   def find_entities_links_icon
     EntitiesLinksIcon.all.each do |icon|
       reg = Regexp.new(icon.regex)

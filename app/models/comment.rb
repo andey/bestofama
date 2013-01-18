@@ -12,7 +12,6 @@
 #  karma      :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  parent_id  :integer
 #
 
 class Comment < ActiveRecord::Base
@@ -28,9 +27,13 @@ class Comment < ActiveRecord::Base
   end
 
   attr_accessible :ama_id, :content, :date, :key, :parent_id, :parent_key, :user_id, :karma
+
   belongs_to :user
   belongs_to :ama
+
   validates_presence_of :ama_id, :key, :parent_key, :user_id
   validates_uniqueness_of :key
+
+  # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 end

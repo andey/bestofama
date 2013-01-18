@@ -33,5 +33,21 @@
           </div>
         </div>
     <% end %>
+    <% @user.amas_participated.each do |a| %>
+        <div class="row">
+          <div class="span1 ama-karma-meter-small">
+            <%= karma_meter(a.karma).html_safe %>
+          </div>
+          <div class="span11">
+            <h4><%= link_to a.title.html_safe, ama_path(a) %></h4>
+
+            <p class="muted">
+              <b>Comments:</b> <%= a.comments %> |
+              <b>Responses:</b> <%= a.responses %> |
+              <b>Date:</b> <%= a.date %>
+            </p>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>

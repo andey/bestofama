@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :active, :comment_karma, :link_karma, :modhash, :username, :persistence_token
   has_and_belongs_to_many :entities
+  has_and_belongs_to_many :amas_participated, :class_name => "Ama", :foreign_key => :user_id
   has_many :comments
   has_many :amas
 

@@ -38,7 +38,8 @@ namespace :update do
     if @ama
       Reddit.populate_ama(@ama)
       ActionController::Base.new.expire_fragment(@ama.key, options = nil)
-      CacheBuilder.build_ama(@ama)
+      request = CacheBuilder.build_ama(@ama)
+      puts request.code
     end
   end
 
@@ -51,7 +52,8 @@ namespace :update do
     if @ama
       Reddit.populate_ama(@ama)
       ActionController::Base.new.expire_fragment(@ama.key, options = nil)
-      CacheBuilder.build_ama(@ama)
+      request = CacheBuilder.build_ama(@ama)
+      puts request.code
     end
   end
 end

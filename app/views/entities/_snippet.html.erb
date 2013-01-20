@@ -1,0 +1,7 @@
+<% cache(entity_snippet_key(e)) do %>
+    <% if e.avatar? %>
+        <%= render :partial => 'entities/snippet-advanced', :locals => {:e => e} %>
+    <% else %>
+        <%= render :partial => 'entities/snippet-basic', :locals => {:e => e} %>
+    <% end %>
+<% end %>

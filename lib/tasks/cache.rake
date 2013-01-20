@@ -4,7 +4,7 @@ namespace :cache do
   task :build => :environment do
     require 'cache_builder'
 
-    Ama.order(:karma).reverse_order.each do |a|
+    Ama.order(:updated_at).each do |a|
       puts '--------------'
       puts a.title
       response = CacheBuilder.build_ama(a)

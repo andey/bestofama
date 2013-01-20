@@ -1,0 +1,72 @@
+<div id="edit-box" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <%= form_for(@entity, :url => entity_path(@entity)) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Edit <%= @entity.name %></h3>
+      </div>
+      <div class="modal-body">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Basics</a></li>
+            <li><a href="#tab2" data-toggle="tab">Picture</a></li>
+            <li><a href="#tab3" data-toggle="tab">Social Media</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <h4>Name
+                <small>full name</small>
+              </h4>
+              <%= f.text_field :name, :class => 'input-mondal-size' %>
+              <h4>Tags
+                <small>comma separated</small>
+              </h4>
+              <%= f.text_field :tag_list, :class => 'input-mondal-size' %>
+              <h4>Description
+                <small>limit to 255 characters</small>
+              </h4>
+              <%= f.text_area :content, :class => 'input-mondal-size', :style => 'height: 100px' %>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <h4>Picture
+                <small>leave blank to keep the current picture</small>
+              </h4>
+              <%= f.file_field :avatar %>
+            </div>
+            <div class="tab-pane" id="tab3">
+              <h4>Social Media
+                <small><%= link_to "Add Link", "#", :id => 'add-entities_link', :class => 'btn btn-mini add' %></small>
+              </h4>
+
+              <div class="items">
+                <%= f.nested_fields_for :entities_links do |f| %>
+
+                    <div class="form-horizontal" style="margin-top: 15px;">
+                      <fieldset class="item">
+                        <%= f.text_field :link, :class => 'span5' %>
+                        <%= f.hidden_field :id %>
+                        <%= f.hidden_field :_destroy %>
+                        <%= link_to "Delete", "#", :class => 'btn btn-small btn-danger remove' %>
+                      </fieldset>
+                    </div>
+
+                <% end %>
+              </div>
+
+              <h5>Links Allowed:</h5>
+              <ul>
+                <li>Wikipedia</li>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Google+</li>
+                <li>Youtube</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+        <%= f.submit "Submit", :class => 'btn btn-primary' %>
+      </div>
+  <% end %>
+</div>

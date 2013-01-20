@@ -37,7 +37,6 @@ namespace :update do
     @ama = Ama.where("date > ?", Time.now - 5.days).order(:updated_at).first
     if @ama
       Reddit.populate_ama(@ama)
-      ActionController::Base.new.expire_fragment(@ama.key, options = nil)
       request = CacheBuilder.build_ama(@ama)
       puts request.code
     end
@@ -51,7 +50,6 @@ namespace :update do
     @ama = Ama.where("date > ?", Time.now - 12.hours).order(:updated_at).first
     if @ama
       Reddit.populate_ama(@ama)
-      ActionController::Base.new.expire_fragment(@ama.key, options = nil)
       request = CacheBuilder.build_ama(@ama)
       puts request.code
     end

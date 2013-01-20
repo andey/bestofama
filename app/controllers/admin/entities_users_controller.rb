@@ -29,6 +29,11 @@ class Admin::EntitiesUsersController < ApplicationController
     respond_to do |format|
       if @user
         @entity.users << @user
+
+        @user.amas.each do |ama|
+          expire_fragment(ama, options=nil)
+        end
+
         format.html { redirect_to admin_entity_path(@entity), :notice => 'User was successfully created.' }
       else
         format.html { render :action => "new" }
@@ -41,6 +46,10 @@ class Admin::EntitiesUsersController < ApplicationController
     @entity = Entity.find_by_slug(params[:entity_id])
     @user = User.find_by_username(params[:id])
     @entity.users.destroy(@user)
+
+    @user.amas.each do |ama|
+      expire_fragment(ama, options=nil)
+    end
 
     respond_to do |format|
       format.html { redirect_to admin_entity_path(@entity) }

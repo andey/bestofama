@@ -10,4 +10,8 @@ module EntitiesHelper
     end
   end
 
+  def entity_snippet_key(entity)
+    return entity.cache_key + '/snippet'
+  end
+
 end

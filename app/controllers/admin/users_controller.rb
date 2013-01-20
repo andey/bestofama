@@ -31,7 +31,7 @@ class Admin::UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
   end
 
   # POST /users
@@ -40,7 +40,7 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, :notice => 'User was successfully created.' }
+        format.html { redirect_to admin_user_path(@user), :notice => 'User was successfully created.' }
       else
         format.html { render :action => "new" }
       end
@@ -49,11 +49,11 @@ class Admin::UsersController < ApplicationController
 
   # PUT /users/1
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, :notice => 'User was successfully updated.' }
+        format.html { redirect_to admin_user_path(@user), :notice => 'User was successfully updated.' }
       else
         format.html { render :action => "edit" }
       end
@@ -62,7 +62,7 @@ class Admin::UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
     @user.destroy
 
     respond_to do |format|

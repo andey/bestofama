@@ -53,7 +53,7 @@ class Admin::AmasController < ApplicationController
 
     respond_to do |format|
       if @ama.update_attributes(params[:ama])
-        format.html { redirect_to @ama, :notice => 'Ama was successfully updated.' }
+        format.html { redirect_to admin_ama_path(@ama), :notice => 'Ama was successfully updated.' }
       else
         format.html { render :action => "edit" }
       end
@@ -67,9 +67,6 @@ class Admin::AmasController < ApplicationController
     require 'api/reddit'
     @ama = Ama.find(params[:id])
     @ama.update_attribute(:responses, 0)
-
-    #expire the AMA comments cache
-    expire_fragment(@ama.key)
 
     #repopulate the AMA
     Reddit.populate_ama(@ama)

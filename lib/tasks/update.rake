@@ -4,7 +4,10 @@ namespace :update do
   task :entity => :environment do
 
     # select Entity
-    @entity = Entity.order(:updated_at).first
+    @entity = Entity.where(:comment_karma => 0, :wikipedia_hits => 0).first
+    @entity ||= Entity.order(:updated_at).first
+    puts "UPDATE ENTITY: #{@entity.name}"
+
     url = @entity.entities_links.where(:entities_links_icon_id => 1).first
 
     #acquire

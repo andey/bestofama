@@ -2,13 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 gem 'pg'
-#gem 'sqlite3'
 gem 'thin'
 gem 'jquery-rails'
 gem 'authlogic'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'wikipedia-client'
 gem 'high_voltage'
 gem 'acts-as-taggable-on'
 gem 'htmlentities'
@@ -16,12 +14,23 @@ gem 'awesome_print'
 gem 'sitemap_generator', '~> 3.4'
 gem 'carrierwave'
 gem 'fog'
-gem 'newrelic_rpm'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'paper_trail', '~> 2'
 gem 'awesome_nested_fields'
-gem 'iron_cache_rails'
+
+group :production do
+  gem 'newrelic_rpm'
+  gem 'iron_cache_rails'
+end
+
+gem 'rspec-rails', :group => [:test, :development]
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'rb-inotify', '~> 0.8.8'
+end
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'

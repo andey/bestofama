@@ -6,6 +6,7 @@ namespace :update do
     # select Entity
     @entity = Entity.where(:comment_karma => 0, :wikipedia_hits => 0).first
     @entity ||= Entity.order(:updated_at).first
+    @entity.touch
     puts "UPDATE ENTITY: #{@entity.name}"
 
     url = @entity.entities_links.where(:entities_links_icon_id => 1).first

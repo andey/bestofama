@@ -52,6 +52,9 @@ class EntitiesController < ApplicationController
       if @entity.update_attributes(params[:entity])
         format.html { redirect_to entity_path(@entity), :notice => 'Entity was successfully updated.' }
       else
+        if @entity.errors.any?
+          flash[:error] = @entity.errors.full_messages.to_sentence
+        end
         format.html { redirect_to entity_path(@entity), :notice => 'Entity was unable to update.' }
       end
     end

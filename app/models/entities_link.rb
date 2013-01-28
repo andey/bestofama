@@ -14,7 +14,8 @@ require 'uri'
 class EntitiesLink < ActiveRecord::Base
   attr_accessible :entity_id, :link, :entities_links_icon_id
   validates_format_of :link, :with => URI.regexp
-  validates_presence_of :entity_id, :link, :entities_links_icon_id
+  validates_presence_of :entity_id, :link
+  validates_presence_of :entities_links_icon_id, :message => "URL not allowed"
 
   belongs_to :entity
   belongs_to :icon, :class_name => "EntitiesLinksIcon", :foreign_key => :entities_links_icon_id

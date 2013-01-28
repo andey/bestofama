@@ -70,6 +70,16 @@
             </div>
           </div>
       <% end %>
+      <% if flash[:error] %>
+          <div class="row">
+            <div class="span12">
+              <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <%= flash[:error] %>
+              </div>
+            </div>
+          </div>
+      <% end %>
       <%= yield %>
     </div>
   </div>

@@ -15,19 +15,9 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :title %>
-      <br/>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
       <%= f.label :link %>
       <br/>
       <%= f.text_field :link %>
-    </div>
-    <div class="field">
-      <%= f.label :entities_links_icon_id %>
-      <br/>
-      <%= collection_select(:entities_link, :entities_links_icon_id, EntitiesLinksIcon.all, :id, :name) %>
     </div>
     <div class="actions">
       <%= f.submit %>

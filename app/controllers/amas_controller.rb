@@ -83,27 +83,33 @@ class AmasController < ApplicationController
   # will match and accept any url /comment/:key/
   def create
 
-    # Find Reddit.com Key
-    ama_key = params[:ama_url].match('\/comments\/([a-z0-9]{5,6})\/')[1]
+    if !params[:ama_url].empty?
 
-    # If a key is found, and the key is not in the trash bin
-    if params[:ama_url] != '' && !Trash.find_by_key(ama_key)
+      # Find Reddit.com Key
+      ama_key = params[:ama_url].match('\/comments\/([a-z0-9]{5,6})\/')
 
-      # Send to reddit api library to create @ama
-      require 'api/reddit'
-      @ama = Reddit.create_ama(ama_key)
+      # If a key is found, and the key is not in the trash bin
+      if ama_key && !Trash.find_by_key(ama_key[1])
 
-      respond_to do |format|
-        if @ama.save
-          format.html { redirect_to ama_full_path(:username => @ama.user.username, :key => @ama.key, :slug => @ama.title.parameterize), :notice => "Thank you for your submission, this AMA has now been put in the process queue." }
-        else
-          format.html { redirect_to submit_path, :notice => "Internal error, AMA was unable to save." }
+        # Send to reddit api library to create @ama
+        require 'api/reddit'
+        @ama = Reddit.create_ama(ama_key[1])
+
+        respond_to do |format|
+          if @ama.save
+            format.html { redirect_to ama_full_path(:username => @ama.user.username, :key => @ama.key, :slug => @ama.title.parameterize), :notice => "Thank you for your submission, this AMA has now been put in the process queue." }
+          else
+            @ama = Ama.find_by_key(ama_key[1])
+            format.html { redirect_to ama_full_path(:username => @ama.user.username, :key => @ama.key, :slug => @ama.title.parameterize), :notice => "AMA already added" }
+          end
         end
-      end
 
-    # fallback catch clause if no key was found, or key is in the trash bin
+        # fallback catch clause if no key was found, or key is in the trash bin
+      else
+        redirect_to submit_path, :notice => "Invalid or Blacklisted AMA"
+      end
     else
-      redirect_to submit_path, :notice => "Invalid or Blacklisted URL"
+      redirect_to submit_path, :notice => "No URL was submitted"
     end
   end
 end

@@ -42,6 +42,6 @@ Bestofama::Application.routes.draw do
   get ":id" => 'pages#show', :as => :page, :format => false
 
   # Root
-  root :to => 'amas#homepage'
+  root :to => 'amas#index'
 
 end

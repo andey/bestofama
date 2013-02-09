@@ -13,21 +13,6 @@ class AmasController < ApplicationController
     end
   end
 
-  # GET /
-  #
-  # The current root_path, which displays:
-  # - 5 x AMAs over 1000 karma
-  # - 5 x most recent AMAs
-
-  def homepage
-    @featured = Ama.where('responses > ? AND karma > ?', 0, 1000).order(:date).limit(5).reverse_order
-    @recent = Ama.where('responses > ?', 0).order(:date).limit(5).reverse_order
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
   # GET /amas
   #
   # List AMAs, can be ordered by:

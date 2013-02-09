@@ -98,6 +98,10 @@ GEM
     guard-rspec (2.4.0)
       guard (>= 1.1)
       rspec (~> 2.11)
+    guard-spork (1.4.1)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
+      spork (>= 0.8.4)
     high_voltage (1.2.1)
     hike (1.2.1)
     htmlentities (4.3.1)
@@ -209,6 +213,7 @@ GEM
     sitemap_generator (3.4)
       builder
     slop (3.4.3)
+    spork (0.9.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -249,6 +254,7 @@ DEPENDENCIES
   factory_girl_rails
   fog
   guard-rspec
+  guard-spork
   high_voltage
   htmlentities
   iron_cache_rails
@@ -262,6 +268,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   sitemap_generator (~> 3.4)
+  spork
   thin
   uglifier (>= 1.0.3)
   will_paginate

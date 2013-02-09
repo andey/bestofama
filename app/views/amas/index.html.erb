@@ -1,10 +1,9 @@
 <% content_for :title, "AMA Directory Ordered By '" + @order.to_s + "' Page " + params[:page].to_s + " :: BestofAMA" %>
 
 <div class="row">
-  <div class="span6">
-    <h1>AMA's Directory</h1>
-  </div>
+  <%= image_tag "homepage.png", :class => "span3", :alt => "Created by Rashik Patel (http://rashikpateldesign.co)" %>
   <div class="span6" style="padding-top: 15px;">
+    <h1>BestofAMA Directory</h1>
     <ul class="breadcrumb">
       <li><strong>Order by:</strong></li>
       <li style="margin-left: 20px;"><%= link_to "Date", amas_path %> <span class="divider">|</span></li>

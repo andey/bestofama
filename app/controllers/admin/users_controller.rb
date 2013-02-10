@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(:id).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @users = User.order(:username).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # index.html.erb

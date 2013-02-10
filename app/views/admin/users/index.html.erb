@@ -4,10 +4,9 @@
   <tr>
     <th>Username</th>
     <th>Modhash</th>
-    <th>Active</th>
+    <th>Banned</th>
     <th>Link</th>
     <th>Comment</th>
-    <th>AMAs</th>
     <th></th>
     <th></th>
     <th></th>
@@ -20,7 +19,6 @@
         <td><%= user.active %></td>
         <td><%= user.link_karma %></td>
         <td><%= user.comment_karma %></td>
-        <td><%= user.amas.count %></td>
         <td><%= link_to 'Show', admin_user_path(user) %></td>
         <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
         <td><%= link_to 'Destroy', admin_user_path(user), :method => :delete, :data => {:confirm => 'Are you sure?'} %></td>

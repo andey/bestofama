@@ -32,7 +32,7 @@ class UserSessionsController < ApplicationController
 
         # Update users, reddit.com stats
         info = Reddit.get('http://www.reddit.com/user/' + user.username + '/about.json')
-        user.update_attributes(:modhash => login["json"]["data"]["modhash"], :active => true, :link_karma => info["data"]["link_karma"], :comment_karma => info["data"]["comment_karma"])
+        user.update_attributes(:modhash => login["json"]["data"]["modhash"], :link_karma => info["data"]["link_karma"], :comment_karma => info["data"]["comment_karma"])
 
         # Create user session
         @user_session = UserSession.create(user, true)

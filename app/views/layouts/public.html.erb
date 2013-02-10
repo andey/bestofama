@@ -56,6 +56,8 @@
           <%= link_to "Terms of Service", page_path(:id => "terms"), :rel => :nofollow %>
           <%= link_to "Source Code", "https://github.com/andey/bestofama" %>
           <%= link_to "Contact", page_path(:id => "contact"), :rel => :nofollow %>
+          <% if current_user %><%= link_to "Admin Panel", admin_amas_path %>
+          <% end %>
           <footer>
             Copyright © 2013 BestofAMA.com, All rights reserved.
           </footer>

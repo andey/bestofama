@@ -12,7 +12,7 @@
     <p>
       <b>Reddit Usernames:</b>
       <% @entity.users.group(:id).each do |u| %>
-          <%= link_to u.username, user_path(u) %>
+          <%= link_to u.username, reddit_user_path(u.username) %>
       <% end %>
     </p>
 

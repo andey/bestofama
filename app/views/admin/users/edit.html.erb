@@ -1,4 +1,4 @@
-<h1>Editing user</h1>
+<h1>Editing <%= @user.username %></h1>
 
 <%= form_for(@user, :url => admin_user_path(@user)) do |f| %>
     <% if @user.errors.any? %>
@@ -13,11 +13,6 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :username %>
-      <br/>
-      <%= f.text_field :username %>
-    </div>
     <div class="field">
       <%= f.label :link_karma %>
       <br/>

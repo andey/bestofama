@@ -1,0 +1,25 @@
+.row
+  .col-span-12
+    h1 Listing amas
+    table.table
+      tr
+        th
+        th AMA
+        th Comments
+        th Responses
+      - @amas.each do |ama|
+        tr
+          td
+            - if ama.user.ops.count > 0
+              span.glyphicon.glyphicon-ok
+          td
+            strong= link_to truncate(ama.title, :length => 100), ama_path(ama)
+            br/
+            span.muted
+              = ama.date
+              | &nbsp;by #{link_to ama.user.username, admin_user_path(ama.user)}&nbsp;
+              | | #{link_to 'admin link', admin_ama_path(ama)}
+          td= ama.comments
+          td= ama.responses
+.center
+  = will_paginate @amas

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130525203422) do
+ActiveRecord::Schema.define(version: 20130526041246) do
 
   create_table "amas", force: true do |t|
     t.string   "key",                    null: false
@@ -75,11 +75,11 @@ ActiveRecord::Schema.define(version: 20130525203422) do
   add_index "ops", ["slug"], name: "index_ops_on_slug", unique: true, using: :btree
 
   create_table "ops_links", force: true do |t|
-    t.integer  "entity_id"
-    t.integer  "entities_links_icon_id"
-    t.string   "link",                   null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "op_id"
+    t.integer  "site_id"
+    t.string   "link",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ops_users", id: false, force: true do |t|

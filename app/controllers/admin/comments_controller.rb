@@ -4,7 +4,7 @@ class Admin::CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @comments = Comment.where(:ama_id => @ama.id).order(:id).reverse_order.paginate(:page => params[:page], :per_page => 100)
 
     respond_to do |format|

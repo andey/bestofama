@@ -18,7 +18,7 @@ module AmasHelper
       elsif ama.users.include?(comment.user)
         string += '<div class="row ama-comment"><div id="' + comment.key + '" class="col-span-9 col-half-offset-' + depth.to_s + '"><p><span class="label label-warning">' + link_to(comment.user.username, user_path(comment.user)) + '</span> <small class="text-muted">' + comment.karma.to_s + ' karma, ' + time_ago_in_words(Time.now - (comment.date - ama.date)) + ' after</small></p>' + comment.content + '</div></div>' + print_comments(ama, comment, depth + 1)
       else
-        string += '<div class="row ama-comment"><div id="' + comment.key + '" class="col-span-9 col-half-offset-' + depth.to_s + '"><p><span>' + link_to(comment.user.username, reddit_user_path(comment.user.username), :rel => :nofollow) + '</span> <small class="text-muted">' + comment.karma.to_s + ' karma, ' + time_ago_in_words(Time.now - (comment.date - ama.date)) + ' after</small></p>' + comment.content + '</div></div>' + print_comments(ama, comment, depth + 1)
+        string += '<div class="row ama-comment"><div id="' + comment.key + '" class="col-span-9 col-half-offset-' + depth.to_s + '"><p><span>' + link_to(comment.user.username, user_path(comment.user.username), :rel => :nofollow) + '</span> <small class="text-muted">' + comment.karma.to_s + ' karma, ' + time_ago_in_words(Time.now - (comment.date - ama.date)) + ' after</small></p>' + comment.content + '</div></div>' + print_comments(ama, comment, depth + 1)
       end
     end
     return string

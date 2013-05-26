@@ -27,7 +27,7 @@ class AmasController < ApplicationController
   # - @users are users who "participated" (guest speakers) in an AMA.
 
   def show
-    @ama = Ama.find(params[:id])
+    @ama = Ama.find_by_key(params[:id])
     @users = @ama.users
 
     respond_to do |format|

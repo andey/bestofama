@@ -28,6 +28,7 @@ class Op < ActiveRecord::Base
   attr_accessor :avatar
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
+  has_many :ops_links
 
   has_and_belongs_to_many :users
   #accepts_nested_attributes_for :entities_links, :reject_if => lambda { |a| a[:link].blank? }, :allow_destroy => true

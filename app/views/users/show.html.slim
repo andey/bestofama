@@ -10,22 +10,24 @@
     p
       = link_to reddit_user_path(@user.username), reddit_user_path(@user.username)
 
-h3.pull-left AMAs
-.clearfix
+- if @user.amas.count > 0
 
-.list-group
-  - @user.amas.each do |ama|
-    = link_to ama_path(ama), :class => 'list-group-item' do
-      .row
-        .col-span-1
-          .karma-meter= karma_meter(ama.karma).html_safe
-        .col-span-11
-          h4.ama-title.list-group-item-heading= ama.title
-          p.list-group-item-text
-            | Comments:&nbsp;
-            =ama.comments
-            |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-            =ama.responses
-            |  &nbsp;&bull;&nbsp; Date:&nbsp;
-            =ama.date
-        .clearfix
+  h3.pull-left AMAs
+  .clearfix
+
+  .list-group
+    - @user.amas.each do |ama|
+      = link_to ama_path(ama), :class => 'list-group-item' do
+        .row
+          .col-span-1
+            .karma-meter= karma_meter(ama.karma).html_safe
+          .col-span-11
+            h4.ama-title.list-group-item-heading= ama.title
+            p.list-group-item-text
+              | Comments:&nbsp;
+              =ama.comments
+              |  &nbsp;&bull;&nbsp; Responses:&nbsp;
+              =ama.responses
+              |  &nbsp;&bull;&nbsp; Date:&nbsp;
+              =ama.date
+          .clearfix

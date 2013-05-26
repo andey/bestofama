@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(:username).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @users = User.order(:username).paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -52,7 +52,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find_by_username(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(params.require(:user).permit(:link_karma, :comment_karma))
         format.html { redirect_to admin_user_path(@user), :notice => 'User was successfully updated.' }
       else
         format.html { render :action => "edit" }

@@ -44,13 +44,13 @@ class Ama < ActiveRecord::Base
   def update_ops
 
     # Owner entity
-    self.user.entities.each do |e|
+    self.user.ops.each do |e|
       e.touch
     end
 
     # Entities participating
     self.users.each do |u|
-      u.entities.each do |e|
+      u.ops.each do |e|
         e.touch
       end
     end

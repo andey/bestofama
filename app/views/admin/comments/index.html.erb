@@ -3,21 +3,19 @@
 <table class="table">
   <tr>
     <th>Key</th>
-    <th>User</th>
-    <th>Ama</th>
-    <th>Date</th>
     <th>Parent key</th>
+    <th>User</th>
+    <th>Date</th>
     <th></th>
     <th></th>
   </tr>
 
   <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.key %></td>
+        <td id="<%= comment.key %>"><%= comment.key %></td>
+        <td><%= link_to comment.parent_key, "##{comment.key}" %></td>
         <td><%= link_to comment.user.username, admin_user_path(comment.user) %></td>
-        <td><%= comment.ama_id %></td>
         <td><%= comment.date %></td>
-        <td><%= comment.parent_key %></td>
         <td><%= link_to 'Show', admin_ama_comment_path(@ama, comment) %></td>
         <td><%= link_to 'Destroy', admin_ama_comment_path(@ama, comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>

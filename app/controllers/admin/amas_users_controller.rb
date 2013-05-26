@@ -1,6 +1,6 @@
 class Admin::AmasUsersController < ApplicationController
-  before_filter :require_admin
-  layout 'admin'
+  http_basic_authenticate_with :name => 'admin', :password => 'password'
+  layout 'v3-admin'
 
   # GET entities/:ama_id/users
   def index

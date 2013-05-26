@@ -1,0 +1,11 @@
+- content_for :title, "Popular Tags Page " + params[:page].to_s + " :: BestofAMA"
+
+h1 Tags
+.list-group
+  - @tags.each do |t|
+    = link_to t.name, tag_path(t.name), :class => 'list-group-item'
+
+.row
+  .col-span-12
+    .center
+      = will_paginate @tags

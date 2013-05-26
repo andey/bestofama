@@ -1,13 +1,18 @@
-<h1>Listing trashes</h1>
+<div class="row">
+  <div class="col-span-8">
+    <h1>Listing Trashes</h1>
+  </div>
+  <div class="col-span-4" style="padding-top: 20px;">
+    <%= link_to 'Add Key', new_admin_trash_path, :class => 'btn pull-right' %>
+  </div>
+</div>
 
 <div class="row">
-  <div class="span6">
+  <div class="col-span-6">
     <table class="table">
       <tr>
         <th>Added</th>
         <th>Key</th>
-        <th></th>
-        <th></th>
         <th></th>
       </tr>
 
@@ -15,8 +20,6 @@
           <tr>
             <td><%= trash.created_at %></td>
             <td><%= trash.key %></td>
-            <td><%= link_to 'Show', admin_trash_path(trash) %></td>
-            <td><%= link_to 'Edit', edit_admin_trash_path(trash) %></td>
             <td><%= link_to 'Destroy', admin_trash_path(trash), method: :delete, data: {confirm: 'Are you sure?'} %></td>
           </tr>
       <% end %>
@@ -25,11 +28,7 @@
 </div>
 
 <div class="row">
-  <div class="span12">
-    <div class="pagination-centered">
-      <%= will_paginate @trashes %>
-    </div>
+  <div class="center">
+    <%= will_paginate @trashes %>
   </div>
 </div>
-
-<%= link_to 'New Trash', new_admin_trash_path %>

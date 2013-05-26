@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="span8">
+  <div class="col-span-8">
     <h1>Listing entities</h1>
   </div>
-  <div class="span4" style="padding-top: 20px;">
+  <div class="col-span-4" style="padding-top: 20px;">
     <%= link_to 'New Entity', new_admin_entity_path, :class => 'btn pull-right' %>
   </div>
 </div>
 
 <div class="row">
-  <div class="span12">
+  <div class="col-span-12">
     <table class="table">
       <tr>
         <th>Name</th>
@@ -36,9 +36,10 @@
     </table>
   </div>
 </div>
+
 <div class="row">
-  <div class="span12">
-    <div class="pagination-centered">
+  <div class="col-span-12">
+    <div class="center">
       <%= will_paginate @entities %>
     </div>
   </div>

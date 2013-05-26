@@ -17,7 +17,7 @@
 #
 
 class Ama < ActiveRecord::Base
-  attr_accessible :content, :date, :karma, :key, :permalink, :comments, :responses, :title, :user_id
+  #attr_accessible :content, :date, :karma, :key, :permalink, :comments, :responses, :title, :user_id
   validates_presence_of :key, :permalink, :title, :user_id
   validates_uniqueness_of :key
 
@@ -30,14 +30,18 @@ class Ama < ActiveRecord::Base
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 
-  after_save :update_entities
+  after_save :update_ops
+
+  def to_param
+    key
+  end
 
   private
 
   # After an AMA is updated,
   # update all associated entities.
   # Which ultimately updates entity.cache_key
-  def update_entities
+  def update_ops
 
     # Owner entity
     self.user.entities.each do |e|

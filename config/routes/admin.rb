@@ -9,13 +9,10 @@ Bestofama::Application.routes.draw do
         get ':id/clean', :action => :clean, :as => :clean
       end
     end
-    resources :entities do
-      resources :users, :controller => :entities_users
-      resources :links, :controller => :entities_links
-    end
     resources :users
     resources :trashes
     resources :meta
+    resources :upcomings
     resources :link_icons, :controller => :entities_links_icons
     resources :versions do
       collection do

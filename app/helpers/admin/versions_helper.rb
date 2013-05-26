@@ -1,2 +1,0 @@
-module Admin::VersionsHelper
-end

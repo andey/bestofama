@@ -1,4 +1,11 @@
-<h1>Social Link Icons</h1>
+<div class="row">
+  <div class="col-span-8">
+    <h1>Social Link Icons</h1>
+  </div>
+  <div class="col-span-4" style="padding-top: 20px;">
+    <%= link_to 'New Icon', new_admin_link_icon_path, :class => 'btn pull-right' %>
+  </div>
+</div>
 
 <table class="table">
   <tr>
@@ -21,7 +28,3 @@
       </tr>
   <% end %>
 </table>
-
-<br/>
-
-<%= link_to 'New Entities links icon', new_admin_link_icon_path %>

@@ -1,0 +1,23 @@
+h1 Listing upcomings
+
+table
+  tr
+    th Who
+    th Date
+    th Description
+    th
+    th
+    th
+
+  - @upcomings.each do |upcoming|
+    tr
+      td = upcoming.who
+      td = upcoming.date
+      td = upcoming.description
+      td = link_to 'Show', upcoming
+      td = link_to 'Edit', edit_upcoming_path(upcoming)
+      td = link_to 'Destroy', upcoming, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Upcoming', new_upcoming_path

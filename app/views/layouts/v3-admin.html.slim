@@ -1,0 +1,36 @@
+doctype html
+html lang="en"
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    title Admin Panel
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+
+  body.admin-body
+
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-brand Admin Panel
+        .nav-collapse.collapse
+          ul.nav
+            li= link_to "AMAs", admin_amas_path
+            li= link_to "Entities", admin_entities_path
+            li= link_to "Users", admin_users_path
+            li= link_to "Versions", admin_versions_path
+          ul.nav.pull-right
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown"
+                | Dropdown
+                b.caret
+              ul.dropdown-menu
+                li= link_to "Meta", admin_meta_path
+                li= link_to "Icons", admin_link_icons_path
+                li= link_to "Trash", admin_trashes_path
+
+    .container.body-container
+      .row
+        .col-span-12
+          .content
+            = yield
+
+    = javascript_include_tag "application"

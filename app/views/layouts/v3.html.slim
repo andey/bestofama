@@ -1,0 +1,45 @@
+doctype html
+html lang="en"
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    title= h yield(:title)
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+
+  body id="#{params[:controller]}/#{params[:action]}"
+    .container
+
+      .row
+        .col-span-12
+          .top-ad
+            img src="http://placehold.it/728x90"
+
+      .row
+        .col-span-12
+          .navbar
+            = link_to "BestofAMA", root_path, :class => 'navbar-brand'
+            .nav-collapse.collapse
+              ul.nav
+                li= link_to "AMAs", amas_path
+                li= link_to "OPs",  ops_path
+                li= link_to "Tags", tags_path
+
+              ul.nav.pull-right
+                li= link_to image_tag('layout/icon-twitter.png'), 'https://twitter.com/BestofAMAs'
+                li= link_to image_tag('layout/icon-rss.png'), 'http://feeds.feedburner.com/bestofama'
+
+      .row
+        .col-span-12
+          .content
+            = yield
+
+    #footer
+      ul
+        li= link_to "Submit AMA", new_ama_path
+        li= link_to "Privacy Policy", page_path(:id => "privacy"), :rel => :nofollow
+        li= link_to "Terms of Service", page_path(:id => "terms"), :rel => :nofollow
+        li= link_to "Source Code", "https://github.com/andey/bestofama"
+        li= link_to "Contact", 'https://twitter.com/andey_', :rel => :nofollow
+      p Copyright &copy 2013 BestofAMA.com, All rights reserved.
+
+    = javascript_include_tag "application"

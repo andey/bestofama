@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Who:
+  = @upcoming.who
+p
+  strong Date:
+  = @upcoming.date
+p
+  strong Description:
+  = @upcoming.description
+
+= link_to 'Edit', edit_upcoming_path(@upcoming)
+'|
+= link_to 'Back', upcomings_path

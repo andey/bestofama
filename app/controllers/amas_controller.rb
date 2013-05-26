@@ -1,17 +1,5 @@
 class AmasController < ApplicationController
-  layout 'public'
-
-  # Used by routes to match old URL structure, and then redirect the user to the new current URL
-  # - if a key is not found, then user will be redirected back to the root_path
-
-  def redirect
-    @ama = Ama.find_by_key(params[:key])
-    if @ama
-      redirect_to ama_full_path(:username => @ama.user.username, :key => @ama.key, :slug => @ama.title.parameterize), :status => :moved_permanently
-    else
-      redirect_to root_path, :notice => "AMA has been removed"
-    end
-  end
+  layout 'v3'
 
   # GET /amas
   #
@@ -32,26 +20,22 @@ class AmasController < ApplicationController
     end
   end
 
-  # GET /user/:user_id/ama/:key/:title
+  # GET /amas/:id
   #
   # Show an AMA
   # - Comments are cached and built in the view
   # - @users are users who "participated" (guest speakers) in an AMA.
 
   def show
-    @ama = Ama.find_by_key(params[:key])
+    @ama = Ama.find(params[:id])
+    @users = @ama.users
 
     respond_to do |format|
-      if @ama
-        @users = @ama.users
-        format.html
-      else
-        format.html { redirect_to root_path, :notice => "AMA has been removed" }
-      end
+      format.html
     end
   end
 
-  # GET /submit
+  # GET /amas/new
   #
   # form to submit an AMA url
   def new
@@ -62,7 +46,7 @@ class AmasController < ApplicationController
     end
   end
 
-  # POST /submit
+  # POST /amas
   #
   # expects params "ama_url"
   # will match and accept any url /comment/:key/
@@ -97,4 +81,5 @@ class AmasController < ApplicationController
       redirect_to submit_path, :notice => "No URL was submitted"
     end
   end
+
 end

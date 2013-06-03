@@ -1,9 +1,9 @@
 h1 Listing upcomings
 
-table
+table.table
   tr
-    th Who
     th Date
+    th Title
     th Description
     th
     th
@@ -11,13 +11,13 @@ table
 
   - @upcomings.each do |upcoming|
     tr
-      td = upcoming.who
       td = upcoming.date
+      td = upcoming.title
       td = upcoming.description
-      td = link_to 'Show', upcoming
-      td = link_to 'Edit', edit_upcoming_path(upcoming)
-      td = link_to 'Destroy', upcoming, :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Show', admin_upcoming_path(upcoming)
+      td = link_to 'Edit', edit_admin_upcoming_path(upcoming)
+      td = link_to 'Destroy', admin_upcoming_path(upcoming), :confirm => 'Are you sure?', :method => :delete
 
 br
 
-= link_to 'New Upcoming', new_upcoming_path
+= link_to 'New Upcoming', new_admin_upcoming_path

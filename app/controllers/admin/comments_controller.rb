@@ -14,7 +14,7 @@ class Admin::CommentsController < ApplicationController
 
   # GET /comments/1
   def show
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -24,7 +24,7 @@ class Admin::CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @comment = Comment.new
 
     respond_to do |format|
@@ -34,7 +34,7 @@ class Admin::CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
@@ -48,12 +48,12 @@ class Admin::CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_comments_url }
+      format.html { redirect_to admin_ama_comments_path(@ama) }
     end
   end
 end

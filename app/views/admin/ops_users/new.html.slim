@@ -1,0 +1,11 @@
+h1
+  = @op.name
+  | &nbsp;
+  small add user
+
+= form_tag  admin_op_users_path, :method => :post do |f|
+  .field
+    = label_tag :username
+    = text_field_tag :username
+  .actions
+    = submit_tag

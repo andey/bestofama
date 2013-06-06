@@ -1,0 +1,31 @@
+.row
+  .col-span-8
+    h1 Listing Op's
+  .col-span-4 style="padding-top: 20px;"
+    = link_to 'New Entity', new_admin_op_path, :class => 'btn pull-right'
+.row
+  .col-span-12
+    table.table
+      tr
+        th Name
+        th Tags
+        th AMAs
+        th Wikipedia
+        th Comment
+        th Link
+        th
+        th
+      - @ops.each do |op|
+        tr
+          td= link_to op.name, op_path(op)
+          td= op.tag_list.count
+          td= Ama.where(:user_id => op.users).count
+          td= op.wikipedia_hits
+          td= op.comment_karma
+          td= op.link_karma
+          td= link_to 'Show', admin_op_path(op)
+          td= link_to 'Destroy', admin_op_path(op), :method => :delete, :data =>  confirm='Are you sure?'
+.row
+  .col-span-12
+    .center
+      = will_paginate @ops

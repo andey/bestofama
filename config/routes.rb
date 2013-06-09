@@ -1,6 +1,7 @@
 Bestofama::Application.routes.draw do
   instance_eval(File.read(Rails.root.join("config/routes/admin.rb")))
   instance_eval(File.read(Rails.root.join("config/routes/public.rb")))
+  instance_eval(File.read(Rails.root.join("config/routes/reroute.rb")))
 end
 #== Route Map
 # Generated on 25 May 2013 21:24

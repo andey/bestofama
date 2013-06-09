@@ -1,15 +1,16 @@
 class TagsController < ApplicationController
-  layout 'public'
+  layout 'v3'
 
   # GET /tags
   #
   # Tag index, ordered by tagging count
 
   def index
-    @tags = Entity.tag_counts_on(:tags).order(:count, :name).reverse_order.paginate(:page => params[:page], :per_page => 10)
+    @tags = Op.tag_counts_on(:tags, :order => "count desc").paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html
+      format.json { render json: @tags}
     end
   end
 
@@ -24,10 +25,11 @@ class TagsController < ApplicationController
     @order = params[:order]
     @order ||= 'wikipedia_hits, comment_karma'
     params[:page] ||= 1
-    @entities = Entity.tagged_with(params[:tag]).order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @ops = Op.tagged_with(params[:id]).order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html
+      format.json { render json: @entities}
     end
   end
 end

@@ -1,23 +1,29 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+ruby '2.0.0'
+
+gem "rails", "~> 4.0.0.rc1"
 gem 'pg'
+#gem 'sqlite3'
 gem 'thin'
 gem 'jquery-rails'
-gem 'authlogic'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'slim-rails'
+gem 'uglifier', '~> 1.3'
+gem 'jbuilder', '~> 1.0.1'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-gem 'high_voltage'
-gem 'acts-as-taggable-on'
+gem "bootstrap-will_paginate", "~> 0.0.9"
+gem "high_voltage", "~> 1.2.2"
+gem "acts-as-taggable-on", "~> 2.4.1"
 gem 'htmlentities'
 gem 'awesome_print'
 gem 'sitemap_generator', '~> 3.4'
 gem 'carrierwave'
 gem 'fog'
-gem 'paperclip', '~> 3.0'
+gem "paperclip", "~> 3.4.2"
 gem 'aws-sdk'
-gem 'paper_trail', '~> 2'
-gem 'awesome_nested_fields'
+gem 'paper_trail', :git => "git://github.com/airblade/paper_trail.git", :branch => "rails4"
 
 group :production do
   gem 'newrelic_rpm'
@@ -32,10 +38,4 @@ group :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'rb-inotify', '~> 0.8.8'
-end
-
-group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
 end

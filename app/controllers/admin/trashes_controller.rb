@@ -1,6 +1,6 @@
 class Admin::TrashesController < ApplicationController
-  before_filter :require_admin
-  layout 'admin'
+  http_basic_authenticate_with :name => ENV["ADMIN_USER"], :password => ENV["ADMIN_PASS"]
+  layout 'v3-admin'
 
   # GET /trashes
   def index

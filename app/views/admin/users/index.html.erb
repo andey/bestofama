@@ -3,8 +3,6 @@
 <table class="table">
   <tr>
     <th>Username</th>
-    <th>Modhash</th>
-    <th>Banned</th>
     <th>Link</th>
     <th>Comment</th>
     <th></th>
@@ -15,8 +13,6 @@
   <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= user.modhash %></td>
-        <td><%= user.active %></td>
         <td><%= user.link_karma %></td>
         <td><%= user.comment_karma %></td>
         <td><%= link_to 'Show', admin_user_path(user) %></td>
@@ -26,6 +22,6 @@
   <% end %>
 </table>
 
-<div class="pagination-centered">
+<div class="center">
   <%= will_paginate @users %>
 </div>

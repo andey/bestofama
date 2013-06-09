@@ -4,7 +4,7 @@ class IncreasePostgresPerformanceByAddingIndexes < ActiveRecord::Migration
     add_index :users, :username
     add_index :amas, :key, :unique => true
     add_index :comments, :key
-    add_index :entities, :slug, :unique => true
+    add_index :ops, :slug, :unique => true
     add_index :meta, :name, :unique => true
   end
 end

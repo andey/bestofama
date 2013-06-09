@@ -1,0 +1,30 @@
+- content_for :title, @ama.title + " by " + @ama.user.username + " :: BestofAMA"
+
+.row
+  .col-span-1
+    .karma-meter-large= karma_meter(@ama.karma).html_safe
+
+  .col-span-11
+    .page-header
+      h4= @ama.title
+
+    - if !@ama.content.blank?
+      .well.well-small.ama-content= @ama.content.html_safe
+      p.ama-meta
+        strong Comments
+        | :&nbsp;
+        = @ama.comments
+        | &nbsp;&bull;&nbsp;
+        strong Responses:&nbsp;
+        = @ama.responses
+        |  &nbsp;&bull;&nbsp;
+        strong Date:
+        | &nbsp;
+        = @ama.date
+        = link_to "source", reddit_ama_path(@ama.permalink), :class => "pull-right", :rel => :nofollow
+
+.row
+  .col-span-12
+    .page-header
+      h4 Comments
+    = print_comments(@ama, @ama, 0).html_safe

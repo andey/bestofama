@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @upcoming.title
+p
+  strong Date:
+  = @upcoming.date
+p
+  strong Description:
+  = @upcoming.description
+p
+  strong Url:
+  = @upcoming.url
+
+= link_to 'Edit', edit_admin_upcoming_path(@upcoming)
+'|
+= link_to 'Back', admin_upcomings_path

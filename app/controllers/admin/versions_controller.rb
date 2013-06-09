@@ -1,6 +1,6 @@
 class Admin::VersionsController < ApplicationController
-  before_filter :require_admin
-  layout 'admin'
+  http_basic_authenticate_with :name => ENV["ADMIN_USER"], :password => ENV["ADMIN_PASS"]
+  layout 'v3-admin'
 
   def index
     @versions = Version.order(:created_at).reverse_order.paginate(:page => params[:page], :per_page => 25)

@@ -1,6 +1,6 @@
 class CreateEntitiesLinks < ActiveRecord::Migration
   def change
-    create_table :entities_links do |t|
+    create_table :ops_links do |t|
       t.integer :entity_id
       t.integer :entities_links_icon_id
       t.string :title, :null => false

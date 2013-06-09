@@ -1,10 +1,10 @@
 class Admin::AmasUsersController < ApplicationController
-  before_filter :require_admin
-  layout 'admin'
+  http_basic_authenticate_with :name => ENV["ADMIN_USER"], :password => ENV["ADMIN_PASS"]
+  layout 'v3-admin'
 
   # GET entities/:ama_id/users
   def index
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @users = @ama.users
 
     respond_to do |format|
@@ -14,7 +14,7 @@ class Admin::AmasUsersController < ApplicationController
 
   # GET entities/:ama_id/users/new
   def new
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -24,7 +24,7 @@ class Admin::AmasUsersController < ApplicationController
   # POST entities/:ama_id/users
   def create
     require 'api/reddit'
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @user = Reddit.find_user(params[:username])
 
     respond_to do |format|
@@ -39,7 +39,7 @@ class Admin::AmasUsersController < ApplicationController
 
   # DELETE /entities/:ama_id/users/:id
   def destroy
-    @ama = Ama.find(params[:ama_id])
+    @ama = Ama.find_by_key(params[:ama_id])
     @user = User.find_by_username(params[:id])
     @ama.users.destroy(@user)
 

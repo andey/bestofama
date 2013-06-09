@@ -14,6 +14,7 @@ Bestofama::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.i18n.fallbacks = true
   config.active_support.deprecation = :silence
+  config.eager_load = true
 
   # Default paperclip config
   config.paperclip_defaults = {

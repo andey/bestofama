@@ -1,0 +1,20 @@
+- content_for :title, params[:id] + " :: BestofAMA"
+.row
+  .col-span-12
+    h2
+      = params[:id]
+      small style="margin-left: 10px;"
+        = @ops.count
+        | &nbsp;results found
+
+.list-group
+  - @ops.each do |op|
+    = link_to op, :class => 'list-group-item' do
+      .row
+        .col-span-12
+          = op.name
+
+.row
+  .col-span-12
+    .center
+      = will_paginate @ops

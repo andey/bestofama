@@ -9,14 +9,13 @@ Bestofama::Application.routes.draw do
         get ':id/clean', :action => :clean, :as => :clean
       end
     end
-    resources :entities do
-      resources :users, :controller => :entities_users
-      resources :links, :controller => :entities_links
+    resources :ops do
+      resources :users, :controller => :ops_users
     end
     resources :users
     resources :trashes
     resources :meta
-    resources :link_icons, :controller => :entities_links_icons
+    resources :upcomings
     resources :versions do
       collection do
         post ':id/revert', :action => :revert, :as => 'revert'

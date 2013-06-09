@@ -1,6 +1,6 @@
 class Admin::AmasController < ApplicationController
-  before_filter :require_admin
-  layout 'admin'
+  http_basic_authenticate_with :name => ENV["ADMIN_USER"], :password => ENV["ADMIN_PASS"]
+  layout 'v3-admin'
 
   # GET /amas
   def index
@@ -13,7 +13,7 @@ class Admin::AmasController < ApplicationController
 
   # GET /amas/1
   def show
-    @ama = Ama.find(params[:id])
+    @ama = Ama.find_by_key(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +31,7 @@ class Admin::AmasController < ApplicationController
 
   # GET /amas/1/edit
   def edit
-    @ama = Ama.find(params[:id])
+    @ama = Ama.find_by_key(params[:id])
   end
 
   # POST /amas
@@ -49,7 +49,7 @@ class Admin::AmasController < ApplicationController
 
   # PUT /amas/1
   def update
-    @ama = Ama.find(params[:id])
+    @ama = Ama.find_by_key(params[:id])
 
     respond_to do |format|
       if @ama.update_attributes(params[:ama])
@@ -65,7 +65,7 @@ class Admin::AmasController < ApplicationController
   # then fetches the comments again.
   def clean
     require 'api/reddit'
-    @ama = Ama.find(params[:id])
+    @ama = Ama.find_by_key(params[:id])
     @ama.update_attribute(:responses, 0)
 
     #repopulate the AMA
@@ -78,7 +78,7 @@ class Admin::AmasController < ApplicationController
 
   # DELETE /amas/1
   def destroy
-    @ama = Ama.find(params[:id])
+    @ama = Ama.find_by_key(params[:id])
 
     #Delete Comments
     Comment.where(:ama_id => @ama.id).destroy_all

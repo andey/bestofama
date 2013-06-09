@@ -1,0 +1,25 @@
+- content_for :title, "OP Directory Page " + params[:page].to_s + " :: BestofAMA"
+
+
+h2.pull-left OP Directory
+
+.btn-group.pull-right.filter
+  button.btn Order
+  button.btn.dropdown-toggle data-toggle="dropdown"
+    span.caret
+  ul.dropdown-menu
+    li= link_to "Wikipedia Traffic", "#"
+    li= link_to "Alphabetical A -> Z", ops_path(:order => "name DESC")
+    li= link_to "Alphabetical Z -> A", ops_path(:order => "name")
+    li= link_to "Comment Karma", ops_path(:order => "comment_karma")
+    li= link_to "Link Karma", ops_path(:order => "link_karma")
+
+.clearfix
+
+
+.list-group
+  - @ops.each do |op|
+    = link_to op.name, op, :class => 'list-group-item'
+
+.center
+  = will_paginate @ops

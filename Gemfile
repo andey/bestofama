@@ -30,6 +30,11 @@ group :production do
   gem 'iron_cache_rails'
 end
 
+group :heroku do
+  gem 'rails_log_stdout', github: 'heroku/rails_log_stdout'
+  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+end
+
 gem 'rspec-rails', :group => [:test, :development]
 group :test do
   gem 'factory_girl_rails'

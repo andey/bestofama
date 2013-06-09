@@ -1,5 +1,5 @@
 class Admin::OpsUsersController < ApplicationController
-  http_basic_authenticate_with :name => 'admin', :password => 'password'
+  http_basic_authenticate_with :name => ENV["ADMIN_USER"], :password => ENV["ADMIN_PASS"]
   layout 'v3-admin'
 
   # GET entities/:op_id/users/new

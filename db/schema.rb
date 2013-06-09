@@ -113,10 +113,9 @@ ActiveRecord::Schema.define(version: 20130526041246) do
   add_index "trashes", ["key"], name: "index_trashes_on_key", unique: true, using: :btree
 
   create_table "upcomings", force: true do |t|
-    t.string   "title"
+    t.string   "who"
     t.datetime "date"
     t.string   "description"
-    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

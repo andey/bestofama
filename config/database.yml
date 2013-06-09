@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: bestofama
+  pool: 5
+  host: localhost
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: bestofama
+  host: localhost
+  pool: 5
+  username: postgres
+  password: password
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: bestofama
+  pool: 5
+  username: postgres
+  password: password

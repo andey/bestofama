@@ -16,7 +16,7 @@ table.table
       td = upcoming.description
       td = link_to 'Show', admin_upcoming_path(upcoming)
       td = link_to 'Edit', edit_admin_upcoming_path(upcoming)
-      td = link_to 'Destroy', admin_upcoming_path(upcoming), :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Destroy', admin_upcoming_path(upcoming), :data => { :confirm => 'Are you sure?' }, :method => :delete
 
 br
 

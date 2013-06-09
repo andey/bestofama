@@ -2,28 +2,26 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails', :git => "git://github.com/rails/rails.git"
+gem "rails", "~> 4.0.0.rc1"
 gem 'pg'
 #gem 'sqlite3'
 gem 'thin'
-#gem 'turbolinks'
 gem 'jquery-rails'
-#gem 'jquery-turbolinks'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'slim-rails'
 gem 'uglifier', '~> 1.3'
 gem 'jbuilder', '~> 1.0.1'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate', :git => "git://github.com/yrgoldteeth/bootstrap-will_paginate.git"
-gem 'high_voltage', :git => "git://github.com/thoughtbot/high_voltage.git"
-gem 'acts-as-taggable-on', :git => "git://github.com/tvdeyen/acts-as-taggable-on.git", :branch => "rails4"
+gem "bootstrap-will_paginate", "~> 0.0.9"
+gem "high_voltage", "~> 1.2.2"
+gem "acts-as-taggable-on", "~> 2.4.1"
 gem 'htmlentities'
 gem 'awesome_print'
 gem 'sitemap_generator', '~> 3.4'
 gem 'carrierwave'
 gem 'fog'
-#gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git", :branch => "rails-4"
+gem "paperclip", "~> 3.4.2"
 gem 'aws-sdk'
 gem 'paper_trail', :git => "git://github.com/airblade/paper_trail.git", :branch => "rails4"
 

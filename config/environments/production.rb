@@ -1,7 +1,7 @@
 Bestofama::Application.configure do
 
   # use cache servers by iron.io/cache
-  config.cache_store = :iron_cache, {project_id: ENV['IRON_CACHE_PROJECT_ID'], token: ENV['IRON_CACHE_TOKEN']}
+  config.cache_store = :iron_cache_store, {project_id: ENV['IRON_CACHE_PROJECT_ID'], token: ENV['IRON_CACHE_TOKEN']}
   config.cache_classes = true
 
   config.consider_all_requests_local = false

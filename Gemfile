@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem "rails", "~> 4.0.0.rc1"
 gem 'pg'
 #gem 'sqlite3'
-gem 'thin'
+#gem 'thin'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'coffee-rails'

@@ -7,7 +7,7 @@
 
     .col-span-11
       .page-header
-        h4= @ama.title
+        h4= @ama.title.html_safe
 
       - if !@ama.content.blank?
         .well.well-small.ama-content= @ama.content.html_safe

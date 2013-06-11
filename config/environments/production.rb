@@ -10,6 +10,7 @@ Bestofama::Application.configure do
   config.assets.compress = true
   config.assets.compile = true
   config.assets.digest = true
+  config.assets.logger = false
   config.log_level = :error
   config.action_mailer.raise_delivery_errors = false
   config.i18n.fallbacks = true

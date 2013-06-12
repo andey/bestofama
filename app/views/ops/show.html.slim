@@ -1,6 +1,6 @@
 - content_for :title, @op.name + " :: BestofAMA"
 
-- cache ["show", @op.cache_key], :expires_in => 12.hours
+- cache ["show", @op], :expires_in => 12.hours do
   .row
     .col-span-12
       h1= @op.name

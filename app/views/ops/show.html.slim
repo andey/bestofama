@@ -1,41 +1,42 @@
 - content_for :title, @op.name + " :: BestofAMA"
 
-.row
-  .col-span-12
-    h1= @op.name
-    p
-      b Reddit Usernames:&nbsp;
-      - @op.users.group(:id).each do |u|
-        = link_to u.username, user_path(u)
-    p
-      b Tags:&nbsp;
-      = @op.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
-    .well style="margin-bottom: 5px;"
-      = @op.content
-    p
-      span.muted
-        b Date Added:&nbsp;
-        = @op.created_at
-        | &nbsp;
-        b Last Updated:&nbsp;
-        = @op.updated_at
+- cache ["show", @op], :expires_in => 12.hours
+  .row
+    .col-span-12
+      h1= @op.name
+      p
+        b Reddit Usernames:&nbsp;
+        - @op.users.group(:id).each do |u|
+          = link_to u.username, user_path(u)
+      p
+        b Tags:&nbsp;
+        = @op.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
+      .well style="margin-bottom: 5px;"
+        = @op.content
+      p
+        span.muted
+          b Date Added:&nbsp;
+          = @op.created_at
+          | &nbsp;
+          b Last Updated:&nbsp;
+          = @op.updated_at
 
-h3.pull-left AMAs
-.clearfix
+  h3.pull-left AMAs
+  .clearfix
 
-.list-group
-  - @amas.each do |ama|
-    = link_to ama_path(ama), :class => 'list-group-item' do
-      .row
-        .col-span-1
-          .karma-meter= karma_meter(ama.karma).html_safe
-        .col-span-11
-          h4.ama-title.list-group-item-heading= ama.title
-          p.list-group-item-text
-            | Comments:&nbsp;
-            =ama.comments
-            |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-            =ama.responses
-            |  &nbsp;&bull;&nbsp; Date:&nbsp;
-            =ama.date
-        .clearfix
+  .list-group
+    - @amas.each do |ama|
+      = link_to ama_path(ama), :class => 'list-group-item' do
+        .row
+          .col-span-1
+            .karma-meter= karma_meter(ama.karma).html_safe
+          .col-span-11
+            h4.ama-title.list-group-item-heading= ama.title
+            p.list-group-item-text
+              | Comments:&nbsp;
+              =ama.comments
+              |  &nbsp;&bull;&nbsp; Responses:&nbsp;
+              =ama.responses
+              |  &nbsp;&bull;&nbsp; Date:&nbsp;
+              =ama.date
+          .clearfix

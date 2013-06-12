@@ -1,35 +1,36 @@
 - content_for :title, "AMA Directory Ordered By '#{@order}' Page #{params[:page]} :: BestofAMA"
 
-h2.pull-left AMAs Directory
+- cache ["amas", @order, params[:page]], :expires_in => 15.minutes do
+  h2.pull-left AMAs Directory
 
-.btn-group.pull-right.filter
-  button.btn Order
-  button.btn.dropdown-toggle data-toggle="dropdown"
-    span.caret
-  ul.dropdown-menu
-    li= link_to "Date", "#"
-    li= link_to "Karma", amas_path(:order => "karma")
-    li= link_to "Comment", amas_path(:order => "comments")
-    li= link_to "Responses", amas_path(:order => "responses")
+  .btn-group.pull-right.filter
+    button.btn Order
+    button.btn.dropdown-toggle data-toggle="dropdown"
+      span.caret
+    ul.dropdown-menu
+      li= link_to "Date", "#"
+      li= link_to "Karma", amas_path(:order => "karma")
+      li= link_to "Comment", amas_path(:order => "comments")
+      li= link_to "Responses", amas_path(:order => "responses")
 
-.clearfix
+  .clearfix
 
-.list-group
-  - @amas.each do |ama|
-    = link_to ama_path(ama), :class => 'list-group-item' do
-      .row
-        .col-span-1
-          .karma-meter= karma_meter(ama.karma).html_safe
-        .col-span-11
-          h4.ama-title.list-group-item-heading= ama.title
-          p.list-group-item-text
-            | Comments:&nbsp;
-            =ama.comments
-            |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-            =ama.responses
-            |  &nbsp;&bull;&nbsp; Date:&nbsp;
-            =ama.date
-        .clearfix
+  .list-group
+    - @amas.each do |ama|
+      = link_to ama_path(ama), :class => 'list-group-item' do
+        .row
+          .col-span-1
+            .karma-meter= karma_meter(ama.karma).html_safe
+          .col-span-11
+            h4.ama-title.list-group-item-heading= ama.title
+            p.list-group-item-text
+              | Comments:&nbsp;
+              =ama.comments
+              |  &nbsp;&bull;&nbsp; Responses:&nbsp;
+              =ama.responses
+              |  &nbsp;&bull;&nbsp; Date:&nbsp;
+              =ama.date
+          .clearfix
 
-.center
-  = will_paginate @amas
+  .center
+    = will_paginate @amas

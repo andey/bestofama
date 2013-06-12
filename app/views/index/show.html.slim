@@ -1,49 +1,20 @@
-- content_for :title, "BestofAMA"
-
-/.row
-  .col-span-12
-    .carousel.slide
-      ol.carousel-indicators
-        li data-target="#myCarousel" data-slide-to="0"
-        li.active data-target="#myCarousel" data-slide-to="1"
-        li data-target="#myCarousel" data-slide-to="2"
-
-      .carousel-inner
-        .item
-          a href="/amas"
-            img src="http://placehold.it/1125x400"
-            .carousel-caption
-              h3 BORING
-              p wha the fuck is shit
-        .item.active
-          a href="/amas"
-            img src="http://placehold.it/1125x400"
-            .carousel-caption BORING2
-        .item
-          a href="/amas"
-            img src="http://placehold.it/1125x400"
-            .carousel-caption BORING3
-
-      a.carousel-control.left href="#myCarousel" data-slide="prev"
-        span.glyphicon.glyphicon-chevron-left
-
-      a.carousel-control.right href="#myCarousel" data-slide="next"
-        span.glyphicon.glyphicon-chevron-right
+- content_for :title, "BestofAMA ::  The Unofficial /r/IAmA Indexer"
 
 .row
   .col-span-8
     .panel.panel-warning
       .panel-heading Upcoming AMA's
       ul.list-group.list-group-flush.panel-header-flush
-        - @upcomings.each do |upcoming|
-          li.list-group-item
-            .row
-              .col-span-8
-                h5.ama-title.list-group-item-heading= upcoming.title
-                p.list-group-item-text.text-muted= upcoming.description
-              .col-span-4
-                p.list-group-item-text.pull-right style="margin-top: 15px;"
-                  = time_ago_in_words(upcoming.date)
+        - cache ["index-upcomings"], :expires_in => 5.minutes do
+          - @upcomings.each do |upcoming|
+            li.list-group-item
+              .row
+                .col-span-8
+                  h5.ama-title.list-group-item-heading= upcoming.title
+                  p.list-group-item-text.text-muted= upcoming.description
+                .col-span-4
+                  p.list-group-item-text.pull-right style="margin-top: 15px;"
+                    = time_ago_in_words(upcoming.date)
 
 
 
@@ -58,18 +29,19 @@
     .panel
       .panel-heading Recent AMA's
       ul.list-group.list-group-flush.panel-header-flush
-        - @amas.each do |ama|
-          = link_to ama_path(ama), :class => 'list-group-item' do
-              .row
-                .col-span-1
-                  .karma-meter= karma_meter(ama.karma).html_safe
-                .col-span-11
-                  h4.ama-title.list-group-item-heading= ama.title
-                  p.list-group-item-text
-                    | Comments:&nbsp;
-                    =ama.comments
-                    |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-                    =ama.responses
-                    |  &nbsp;&bull;&nbsp; Date:&nbsp;
-                    =ama.date
-                .clearfix
+        - cache ["index-amas"], :expires_in => 5.minutes do
+          - @amas.each do |ama|
+            = link_to ama_path(ama), :class => 'list-group-item' do
+                .row
+                  .col-span-1
+                    .karma-meter= karma_meter(ama.karma).html_safe
+                  .col-span-11
+                    h4.ama-title.list-group-item-heading= ama.title
+                    p.list-group-item-text
+                      | Comments:&nbsp;
+                      =ama.comments
+                      |  &nbsp;&bull;&nbsp; Responses:&nbsp;
+                      =ama.responses
+                      |  &nbsp;&bull;&nbsp; Date:&nbsp;
+                      =ama.date
+                  .clearfix

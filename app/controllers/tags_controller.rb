@@ -6,6 +6,7 @@ class TagsController < ApplicationController
   # Tag index, ordered by tagging count
 
   def index
+    params[:page] ||= 1
     @tags = Op.tag_counts_on(:tags, :order => "count desc").paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|

@@ -3,6 +3,6 @@ class IndexController < ApplicationController
 
   def show
     @amas = Ama.limit(5).reverse_order
-    @upcomings = Upcoming.order(:date).limit(5)
+    @upcomings = Upcoming.where('date > ?', Time.now).order(:date).limit(5)
   end
 end

@@ -10,7 +10,7 @@ task :generate_sitemap => :environment do
     # SITEMAP OF AMAS
     group(:sitemaps_path => 'sitemaps/amas/') do
       Ama.where('responses > ?', 0).each do |ama|
-        add ama, :changefreq => 'never'
+        add ama_path(ama.key), :changefreq => 'never'
       end
     end
 
@@ -24,7 +24,7 @@ task :generate_sitemap => :environment do
     #SITEMAP OF ENTITIES
     group(:sitemaps_path => 'sitemaps/ops/') do
       Op.all.each do |op|
-        add op, :changefreq => 'monthly'
+        add op_path(op.slug), :changefreq => 'monthly'
       end
     end
 

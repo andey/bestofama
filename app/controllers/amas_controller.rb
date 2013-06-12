@@ -27,7 +27,7 @@ class AmasController < ApplicationController
   # - @users are users who "participated" (guest speakers) in an AMA.
 
   def show
-    @ama = Ama.find_by_key(params[:id])
+    @ama = Ama.find_by_key(params[:id]) || raise_404
     @users = @ama.users
 
     respond_to do |format|
@@ -66,10 +66,10 @@ class AmasController < ApplicationController
 
         respond_to do |format|
           if @ama.save
-            format.html { redirect_to ama_full_path(:username => @ama.user.username, :key => @ama.key, :slug => @ama.title.parameterize), :notice => "Thank you for your submission, this AMA has now been put in the process queue." }
+            format.html { redirect_to ama_path(@ama), :notice => "Thank you for your submission, this AMA has now been put in the process queue." }
           else
             @ama = Ama.find_by_key(ama_key[1])
-            format.html { redirect_to ama_full_path(:username => @ama.user.username, :key => @ama.key, :slug => @ama.title.parameterize), :notice => "AMA already added" }
+            format.html { redirect_to ama_path(@ama), :notice => "AMA already added" }
           end
         end
 

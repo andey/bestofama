@@ -9,7 +9,7 @@ class OpsController < ApplicationController
 
   def show
 
-    @op = Op.find_by_slug(params[:id])
+    @op = Op.find_by_slug(params[:id]) || raise_404
     @amas = Ama.where('responses > 0').where(:user_id => @op.users).order(:date).reverse_order
 
     respond_to do |format|

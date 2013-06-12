@@ -15,7 +15,7 @@ class TagsController < ApplicationController
     end
   end
 
-  # GET /tag/:tag
+  # GET /tags/:id
   #
   # list of entities tagged by :tag sortable by:
   # - wikipedia_hits
@@ -26,7 +26,7 @@ class TagsController < ApplicationController
     @order = params[:order]
     @order ||= 'wikipedia_hits, comment_karma'
     params[:page] ||= 1
-    @ops = Op.tagged_with(params[:id]).order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @ops = Op.tagged_with(params[:id]).order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25) || raise_404
 
     respond_to do |format|
       format.html

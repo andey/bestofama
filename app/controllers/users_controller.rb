@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # Show basic information about the user, and list all AMAs hosted/participated in.
   # Link to reddit.com user can be found on this page as well.
   def show
-    @user = User.find_by_username(params[:id])
+    @user = User.find_by_username(params[:id]) || raise_404
 
     respond_to do |format|
       format.html

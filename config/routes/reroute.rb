@@ -8,6 +8,7 @@ Bestofama::Application.routes.draw do
   get 'r/:subreddit' => redirect('http://www.reddit.com/r/%{subreddit}')
   get 'u/:username' => redirect('http://www.reddit.com/u/%{username}')
 
+  get 'user/:username' => redirect("/users/%{username}")
   get 'user/:username/ama/:key/:slug/' => redirect("/amas/%{key}")
   get ':entity/:key' => redirect('/amas/%{key}')
 

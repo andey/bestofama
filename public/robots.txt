@@ -1,2 +1,3 @@
 # robots.txt for http://bestofama.com/
 Sitemap: http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz
+Disallow: /cdn-cgi/

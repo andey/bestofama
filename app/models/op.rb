@@ -40,5 +40,5 @@ class Op < ActiveRecord::Base
   has_paper_trail :ignore => [:updated_at, :wikipedia_hits, :comment_karma, :link_karma, :tag_list]
 
   # paperclip gem to store avatars, in the following sizes
-  #has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
+  has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
 end

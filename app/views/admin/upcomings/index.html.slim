@@ -18,6 +18,5 @@ table.table
       td = link_to 'Edit', edit_admin_upcoming_path(upcoming)
       td = link_to 'Destroy', admin_upcoming_path(upcoming), :data => { :confirm => 'Are you sure?' }, :method => :delete
 
-br
-
-= link_to 'New Upcoming', new_admin_upcoming_path
+.center
+  = will_paginate @amas

@@ -5,7 +5,7 @@
     .col-span-12
       h1= @user.username
       p
-        b Associated Entities:&nbsp;
+        b Associated Ops:&nbsp;
         - @user.ops.group(:id).each do |op|
           = link_to op.name, op
       p

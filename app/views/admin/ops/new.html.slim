@@ -1,0 +1,33 @@
+h1 New entity
+
+= form_for(@op, :url => admin_ops_path) do |f|
+  - if @op.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@op.errors.count, "error")
+        | prohibited this entity from being saved:
+      ul
+        - @op.errors.full_messages.each do |msg|
+          li= msg
+  .field
+    = f.label :name
+    br/
+    = f.text_field :name
+  .field
+    = f.label :slug
+    br/
+    = f.text_field :slug
+  .field
+    = f.label :tag_list, "Tags (separated by commas)"
+    br/
+    = f.text_field :tag_list
+  .field
+    = f.label :content
+    br/
+    = f.text_area :content, :class => "span6"
+  .field
+    = f.file_field :avatar
+  .actions
+    = f.submit
+
+= link_to 'Back', admin_ops_path

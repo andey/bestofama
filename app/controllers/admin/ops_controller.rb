@@ -2,7 +2,7 @@ class Admin::OpsController < ApplicationController
   http_basic_authenticate_with :name => ENV["ADMIN_USER"], :password => ENV["ADMIN_PASS"]
   layout 'v3-admin'
 
-  # GET /users
+  # GET /ops
   def index
     @ops = Op.order(:updated_at).paginate(:page => params[:page], :per_page => 25)
 
@@ -11,7 +11,7 @@ class Admin::OpsController < ApplicationController
     end
   end
 
-  # GET /users/1
+  # GET /admin/ops/1
   def show
     @op = Op.find_by_slug(params[:id])
 
@@ -20,7 +20,7 @@ class Admin::OpsController < ApplicationController
     end
   end
 
-  # GET /users/new
+  # GET /admin/ops/new
   def new
     @op = Op.new
 
@@ -29,14 +29,14 @@ class Admin::OpsController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
+  # GET /admin/ops/1/edit
   def edit
     @op = Op.find_by_slug(params[:id])
   end
 
-  # POST /users
+  # POST /ops
   def create
-    @op = Op.new(params[:user].permit!)
+    @op = Op.new(params[:op].permit!)
 
     respond_to do |format|
       if @op.save
@@ -47,12 +47,12 @@ class Admin::OpsController < ApplicationController
     end
   end
 
-  # PUT /users/1
+  # PUT /admin/ops/1
   def update
     @op = Op.find_by_slug(params[:id])
 
     respond_to do |format|
-      if @op.update_attributes(params[:user].permit!)
+      if @op.update_attributes(params[:op].permit!)
         format.html { redirect_to admin_op_path(@op), :notice => 'Op was successfully updated.' }
       else
         format.html { render :action => "edit" }
@@ -60,7 +60,7 @@ class Admin::OpsController < ApplicationController
     end
   end
 
-  # DELETE /users/1
+  # DELETE /admin/ops/1
   def destroy
     @op = Op.find_by_slug(params[:id])
     @op.destroy

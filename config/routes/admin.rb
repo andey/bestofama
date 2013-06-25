@@ -11,6 +11,7 @@ Bestofama::Application.routes.draw do
     end
     resources :ops do
       resources :users, :controller => :ops_users
+      resources :links, :controller => :ops_links
     end
     resources :users
     resources :trashes

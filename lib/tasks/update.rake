@@ -9,7 +9,7 @@ namespace :update do
     @op.touch
     puts "UPDATE ENTITY: #{@op.name}"
 
-    url = @op.ops_links.where(:site_id => 1).first
+    url = @op.links.where(:site_id => 1).first
 
     #acquire
     if url

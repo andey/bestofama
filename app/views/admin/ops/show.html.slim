@@ -1,6 +1,9 @@
 .row
-  .col-span-12
+  .col-span-8
     h1= @op.name
+  .col-span-4
+    = link_to 'Edit',  edit_admin_op_path(@op), :class => 'btn btn-mini pull-right', :style => 'margin-top: 45px;'
+  .col-span-12
     p
       b Created at:&nbsp;
       = @op.created_at
@@ -43,3 +46,27 @@
           td.span1= link_to 'Show', admin_user_path(user)
           td.span1= link_to 'Edit', edit_admin_user_path(user)
           td.span1= link_to 'Destroy', admin_op_user_path(@op, user), :method => :delete, :data => {:confirm => 'Are you sure?'}
+
+
+.row
+  .col-span-8
+    h3 Links
+  .col-span-4
+    = link_to 'Add Link',  new_admin_op_link_path(@op), :class => 'btn btn-mini pull-right', :style => 'margin-top: 20px;'
+  .col-span-12
+    table.table
+      tr
+        th ID
+        th Date
+        th Site
+        th Link
+        th
+        th
+      - @op.links.each do |link|
+        tr
+          td= link.id
+          td= link.created_at
+          td= link.site
+          th= link.link
+          td.span1= link_to 'Edit', edit_admin_op_link_path(@op, link)
+          td.span1= link_to 'Destroy', admin_op_link_path(@op, link), :method => :delete, :data => {:confirm => 'Are you sure?'}

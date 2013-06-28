@@ -1,0 +1,19 @@
+.col-span-3
+  = image_tag @op.avatar.url(:medium), :class => 'img-rounded pull-right', :style => 'margin-top: 10px;'
+.col-span-9
+  h1= @op.name
+  p
+    b Reddit Usernames:&nbsp;
+    = @op.users.group(:id).map { |u| link_to u.username, user_path(u) }.join(', ').html_safe
+  p
+    b Tags:&nbsp;
+    = @op.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
+  .well style="margin-bottom: 5px;"
+    = @op.content
+  p
+    span.muted
+      b Date Added:&nbsp;
+      = @op.created_at
+      | &nbsp;
+      b Last Updated:&nbsp;
+      = @op.updated_at

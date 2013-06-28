@@ -4,12 +4,14 @@
   .row
     .col-span-12
       h1= @user.username
+      - if @user.ops.count > 0
+        p
+          b Associated Ops:&nbsp;
+          - @user.ops.group(:id).each do |op|
+            = link_to op.name, op
+            | &nbsp;
       p
-        b Associated Ops:&nbsp;
-        - @user.ops.group(:id).each do |op|
-          = link_to op.name, op
-      p
-        = link_to reddit_user_path(@user.username), reddit_user_path(@user.username)
+        = link_to reddit_user_path(@user.username), reddit_user_path(@user.username), :rel => 'nofollow'
 
   - if @user.amas.count > 0
 

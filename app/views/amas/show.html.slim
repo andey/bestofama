@@ -1,11 +1,11 @@
 - content_for :title, @ama.title + " by " + @ama.user.username + " :: BestofAMA"
 
 - cache ["info", @ama] do
-  .row
-    .col-span-1
+  .row.ama
+    .col-2.col-sm-2.col-lg-1
       .karma-meter-large= karma_meter(@ama.karma).html_safe
 
-    .col-span-11
+    .col-10.col-sm-10.col-lg-11
       .page-header
         h4= @ama.title.html_safe
 
@@ -25,8 +25,8 @@
           = link_to "source", reddit_ama_path(@ama.permalink), :class => "pull-right", :rel => :nofollow
 
 - cache ["comments", @ama] do
-  .row
-    .col-span-12
+  .row.ama.ama-comments
+    .col-12.col-sm-12.col-lg-12
       .page-header
         h4 Comments
       = print_comments(@ama, @ama, 0).html_safe

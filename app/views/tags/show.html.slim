@@ -2,7 +2,7 @@
 
 - cache ["tag", params[:id], @order, params[:page]], :expires_in => 12.hours do
   .row
-    .col-span-12
+    .col-12.col-sm-12.col-lg-12
       h2
         = params[:id]
         small style="margin-left: 10px;"
@@ -13,10 +13,10 @@
     - @ops.each do |op|
       = link_to op, :class => 'list-group-item' do
         .row
-          .col-span-12
+          .col-12.col-sm-12.col-lg-12
             = op.name
 
   .row
-    .col-span-12
+    .col-12.col-sm-12.col-lg-12
       .center
         = will_paginate @ops

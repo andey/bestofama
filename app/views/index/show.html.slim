@@ -1,7 +1,7 @@
 - content_for :title, "BestofAMA ::  The Unofficial /r/IAmA Indexer"
 
 .row
-  .col-span-8
+  .col-12.col-sm-12.col-lg-8
     .panel.panel-warning
       .panel-heading Upcoming AMA's
       ul.list-group.list-group-flush.panel-header-flush
@@ -9,33 +9,33 @@
           - @upcomings.each do |upcoming|
             li.list-group-item
               .row
-                .col-span-8
+                .col-8.col-sm-8.col-lg-8
                   h5.ama-title.list-group-item-heading= upcoming.title
                   p.list-group-item-text.text-muted= upcoming.description
-                .col-span-4
+                .col-4.col-sm-4.col-lg-4
                   p.list-group-item-text.pull-right style="margin-top: 15px;"
                     = time_ago_in_words(upcoming.date)
 
 
 
-  .col-span-4.hidden-phone
+  .col-12.col-sm-12.col-lg-4
     .panel.ad-index-square
       .panel-heading style="margin-bottom: 0px" Advertisement
       p.list-group-item-text
         = render :file => 'layouts/ad-index-square'
 
 .row
-  .col-span-12
+  .col-12.col-sm-12.col-lg-12
     .panel
       .panel-heading Recent AMA's
       ul.list-group.list-group-flush.panel-header-flush
         - cache ["index-amas"], :expires_in => 5.minutes do
           - @amas.each do |ama|
             = link_to ama_path(ama), :class => 'list-group-item' do
-                .row
-                  .col-span-1
+                .row.ama
+                  .col-1.col-sm-1.col-lg-1
                     .karma-meter= karma_meter(ama.karma).html_safe
-                  .col-span-11
+                  .col-11.col-sm-11.col-lg-11
                     h4.ama-title.list-group-item-heading= ama.title
                     p.list-group-item-text
                       | Comments:&nbsp;

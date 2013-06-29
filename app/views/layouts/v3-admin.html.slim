@@ -11,25 +11,24 @@ html lang="en"
     .navbar.navbar-inverse.navbar-fixed-top
       .container
         .navbar-brand Admin Panel
-        .nav-collapse.collapse
-          ul.nav
-            li= link_to "AMAs", admin_amas_path
-            li= link_to "Upcomings", admin_upcomings_path
-            li= link_to "Ops", admin_ops_path
-            li= link_to "Users", admin_users_path
-            li= link_to "Versions", admin_versions_path
-          ul.nav.pull-right
-            li.dropdown
-              a.dropdown-toggle data-toggle="dropdown"
-                | Dropdown
-                b.caret
-              ul.dropdown-menu
-                li= link_to "Meta", admin_meta_path
-                li= link_to "Trash", admin_trashes_path
+        ul.nav.navbar-nav
+          li= link_to "AMAs", admin_amas_path
+          li= link_to "Upcomings", admin_upcomings_path
+          li= link_to "Ops", admin_ops_path
+          li= link_to "Users", admin_users_path
+          li= link_to "Versions", admin_versions_path
+        ul.nav.navbar-nav.pull-right
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown"
+              | Dropdown
+              b.caret
+            ul.dropdown-menu
+              li= link_to "Meta", admin_meta_path
+              li= link_to "Trash", admin_trashes_path
 
     .container.body-container
       .row
-        .col-span-12
+        .col-12.col-sm-12.col-lg-12
           .content
             = yield
 

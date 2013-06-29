@@ -1,9 +1,9 @@
 .row
-  .col-span-8
+  .col-8.col-sm-8.col-lg-8
     h1= @op.name
-  .col-span-4
+  .col-4.col-sm-4.col-lg-4
     = link_to 'Edit',  edit_admin_op_path(@op), :class => 'btn btn-mini pull-right', :style => 'margin-top: 45px;'
-  .col-span-12
+  .col-12.col-sm-12.col-lg-12
     p
       b Created at:&nbsp;
       = @op.created_at
@@ -23,11 +23,11 @@
       b Content:&nbsp;
       = @op.content
 .row
-  .col-span-8
+  .col-8.col-sm-8.col-lg-8
     h3 Users
-  .col-span-4
+  .col-4.col-sm-4.col-lg-4
     = link_to 'Add User',  new_admin_op_user_path(@op), :class => 'btn btn-mini pull-right', :style => 'margin-top: 20px;'
-  .col-span-12
+  .col-12.col-sm-12.col-lg-12
     table.table
       tr
         th Username
@@ -49,11 +49,11 @@
 
 
 .row
-  .col-span-8
+  .col-8.col-sm-8.col-lg-8
     h3 Links
-  .col-span-4
+  .col-4.col-sm-4.col-lg-4
     = link_to 'Add Link',  new_admin_op_link_path(@op), :class => 'btn btn-mini pull-right', :style => 'margin-top: 20px;'
-  .col-span-12
+  .col-12.col-sm-12.col-lg-12
     table.table
       tr
         th ID

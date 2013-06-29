@@ -2,6 +2,7 @@ doctype html
 html lang="en"
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     title= h yield(:title)
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
@@ -10,26 +11,30 @@ html lang="en"
     .container
 
       .row
-        .col-span-12
+        .col-12.col-sm-12.col-lg-12
           .top-ad
             = render :file => 'layouts/ad-header-banner'
 
       .row
-        .col-span-12
+        .col-12.col-sm-12.col-lg-12
           .navbar
+            button.navbar-toggle type="button" data-toggle="collapse" data-target=".nav-collapse"
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
             = link_to "BestofAMA", root_path, :class => 'navbar-brand'
             .nav-collapse.collapse
-              ul.nav
+              ul.nav.navbar-nav
                 li= link_to "AMAs", amas_path
                 li= link_to "OPs",  ops_path
                 li= link_to "Tags", tags_path
 
-              ul.nav.pull-right
-                li= link_to image_tag('layout/icon-twitter.png'), 'https://twitter.com/BestofAMAs'
-                li= link_to image_tag('layout/icon-rss.png'), 'http://feeds.feedburner.com/bestofama'
+            ul.nav.navbar-nav.hidden-sm.pull-right
+              li= link_to image_tag('layout/icon-twitter.png'), 'https://twitter.com/BestofAMAs'
+              li= link_to image_tag('layout/icon-rss.png'), 'http://feeds.feedburner.com/bestofama'
 
       .row
-        .col-span-12
+        .col-12.col-sm-12.col-lg-12
           .content
             = yield
 

@@ -14,10 +14,10 @@
     .list-group
       - @amas.each do |ama|
         = link_to ama_path(ama), :class => 'list-group-item' do
-          .row
-            .col-span-1
+          .row.ama
+            .col-1.col-sm-1.col-lg-1
               .karma-meter= karma_meter(ama.karma).html_safe
-            .col-span-11
+            .col-11.col-sm-11.col-lg-11
               h4.ama-title.list-group-item-heading= ama.title
               p.list-group-item-text
                 | Comments:&nbsp;

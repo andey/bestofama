@@ -7,7 +7,7 @@ html lang="en"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
 
-  body.public id="#{params[:controller]}/#{params[:action]}"
+  body.public id="#{params[:controller]}_#{params[:action]}"
     .container
 
       .row

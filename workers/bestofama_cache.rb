@@ -22,7 +22,7 @@ loop do
   res.check
   res.each do |row|
     updated_at = Time.parse(row['updated_at'])
-    timestamp = updated_at.utc.strftime('%Y%m%d%H%M%S')
+    timestamp = updated_at.utc.strftime('%Y%m%d%H%M%S%9N')
     cache_key = "views/comments/amas/#{row['id']}-#{timestamp}"
     puts cache_key
     puts bucket.get(cache_key)

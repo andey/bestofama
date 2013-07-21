@@ -26,6 +26,7 @@
           = link_to "source", reddit_ama_path(@ama.permalink), :class => "pull-right", :rel => :nofollow
 
 - cache ["comments", @ama], :skip_digest => true do
+  #ama_comments_cache_key.hide= ActiveSupport::Cache.expand_cache_key(["comments", @ama], :views)
   .row.ama.ama-comments
     .col-12.col-sm-12.col-lg-12
       .page-header

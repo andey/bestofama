@@ -10,7 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery-2.0.2.min
+//= require jquery-2.0.3.min
 //= require jquery_ujs
 //= require bootstrap-3.0.0.min
 //= require_tree .

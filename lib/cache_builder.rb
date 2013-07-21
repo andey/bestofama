@@ -9,8 +9,8 @@ module CacheBuilder
 
     # Visit bestofama.com to build the cache
     def build_ama(a)
-      http = Net::HTTP.new('bestofama.com')
-      request = Net::HTTP::Get.new('http://bestofama.com' + ama_path(a))
+      http = Net::HTTP.new('bestofama.herokuapp.com')
+      request = Net::HTTP::Get.new('http://bestofama.herokuapp.com' + ama_path(a))
       return http.request(request)
     end
 

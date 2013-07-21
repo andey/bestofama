@@ -1,0 +1,13 @@
+runtime "ruby"
+full_remote_build true
+
+gem "pg"
+gem "yaml"
+gem "iron_core"
+gem "iron_cache"
+gem "iron_worker_ng"
+
+file '.pg.yaml'
+file '.iron.json'
+
+exec "bestofama_cache.rb"

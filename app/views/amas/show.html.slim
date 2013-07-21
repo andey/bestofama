@@ -1,4 +1,4 @@
-- content_for :title, @ama.title + " by " + @ama.user.username + " :: BestofAMA"
+- content_for :title, "#{@ama.title} :: BestofAMA"
 
 - cache ["info", @ama] do
   .row.ama
@@ -24,7 +24,7 @@
           = @ama.date
           = link_to "source", reddit_ama_path(@ama.permalink), :class => "pull-right", :rel => :nofollow
 
-- cache ["comments", @ama] do
+- cache ["comments", @ama], :skip_digest => true do
   .row.ama.ama-comments
     .col-12.col-sm-12.col-lg-12
       .page-header

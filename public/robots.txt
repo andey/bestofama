@@ -1,5 +1,6 @@
 # robots.txt for http://bestofama.com/
 Sitemap: http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz
+User-agent: *
 Disallow: /cdn-cgi/
 Disallow: /u/
 Disallow: /r/

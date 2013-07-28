@@ -1,33 +1,54 @@
-h1 New entity
+.row
+  .col-12
+    h1 New entity
 
-= form_for(@op, :url => admin_ops_path) do |f|
-  - if @op.errors.any?
-    #error_explanation
-      h2
-        = pluralize(@op.errors.count, "error")
-        | prohibited this entity from being saved:
-      ul
-        - @op.errors.full_messages.each do |msg|
-          li= msg
-  .field
-    = f.label :name
-    br/
-    = f.text_field :name
-  .field
-    = f.label :slug
-    br/
-    = f.text_field :slug
-  .field
-    = f.label :tag_list, "Tags (separated by commas)"
-    br/
-    = f.text_field :tag_list
-  .field
-    = f.label :content
-    br/
-    = f.text_area :content, :class => "span6"
-  .field
-    = f.file_field :avatar
-  .actions
-    = f.submit
+.row
+  .col-4
+    .panel.panel-primary
+      .panel-heading New Entity
 
-= link_to 'Back', admin_ops_path
+      = form_for(@op, :url => admin_ops_path) do |f|
+        - if @op.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@op.errors.count, "error")
+              | prohibited this entity from being saved:
+            ul
+              - @op.errors.full_messages.each do |msg|
+                li= msg
+
+        .field
+          label User
+          br/
+          = User.find(params[:user_id]).username
+          = hidden_field_tag :user_id, params[:user_id]
+        .field
+          = f.label :name
+          = f.text_field :name
+        .field
+          = f.label :tag_list, "Tags"
+          = f.text_field :tag_list
+        .field
+          = f.label :content
+          = f.text_area :content, :style => 'height: 150px;'
+        .field
+          = f.label :avatar
+          br/
+          = f.file_field :avatar
+        .field
+          label Wikipedia URL
+          = text_field_tag :wikipedia_url
+        .actions
+          = f.submit 'Add OP', :class => 'btn btn-primary pull-right'
+        .clearfix
+
+  .col-8
+    .panel.panel-info
+      .panel-heading Query
+      = text_field_tag :q, params[:title], :id => :query
+
+    .panel.iframe
+      .panel-heading
+        | DuckDuckGo Search
+        span.pull-right= link_to "Image Search", "https://www.google.com/search?q=tbm=isch&=#{params[:title]}", :id => 'googleimages_link', :target => '_blank'
+      iframe#duckduckgo src="https://duckduckgo.com/?q=#{params[:title]}+site%3Awikipedia.org"

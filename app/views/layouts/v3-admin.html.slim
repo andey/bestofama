@@ -6,7 +6,7 @@ html lang="en"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
 
-  body.admin-body
+  body.admin-body id="#{params[:controller].parameterize}_#{params[:action]}"
 
     .navbar.navbar-inverse.navbar-fixed-top
       .container

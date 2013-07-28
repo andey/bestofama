@@ -40,6 +40,16 @@ class Admin::OpsController < ApplicationController
 
     respond_to do |format|
       if @op.save
+
+        if params[:user_id] && user = User.find(params[:user_id])
+          @op.users << user
+        end
+
+        if params[:wikipedia_url]
+          link = OpsLink.create(:site_id => 1, :link => params[:wikipedia_url])
+          @op.links << link
+        end
+
         format.html { redirect_to admin_op_path(@op), :notice => 'Op was successfully created.' }
       else
         format.html { render :action => "new" }

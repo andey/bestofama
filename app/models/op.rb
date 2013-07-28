@@ -19,6 +19,13 @@
 
 class Op < ActiveRecord::Base
   before_save { |op| op.slug = op.slug.parameterize }
+  before_validation :default_slug
+
+  def default_slug
+    if self.slug.nil? || self.slug.empty?
+      self.slug = self.name
+    end
+  end
 
   def to_param
     slug

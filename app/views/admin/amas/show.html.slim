@@ -36,7 +36,7 @@
           = @ama.karma
         li
           b User:
-          = link_to @ama.user.username, new_admin_op_path(:user_id => @ama.user.id)
+          = link_to @ama.user.username, new_admin_op_path(:user_id => @ama.user.id, :title => @ama.title)
         li
           b Comments:
           = @ama.comments
@@ -69,3 +69,7 @@
             td= user.comment_karma
             td= user.amas.count
             td= link_to 'Remove', admin_ama_user_path(@ama, user), :method => :delete, :data =>  confirm='Are you sure?'
+
+    .panel.panel-success
+      .panel-heading Content
+      = @ama.content.html_safe

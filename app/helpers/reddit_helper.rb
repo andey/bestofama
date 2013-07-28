@@ -10,7 +10,7 @@ module RedditHelper
     return 'http://www.reddit.com' + permalink + 'c5' + key
   end
 
-  # Format reddit comment link
+  # Format reddit ama link
   def reddit_ama_path(permalink)
     return 'http://www.reddit.com' + permalink
   end

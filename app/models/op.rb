@@ -31,6 +31,8 @@ class Op < ActiveRecord::Base
 
   # Associating OP social profile links
   has_many :links, :class_name => 'OpsLink'
+  has_many :amas, through: :users
+  has_many :comments, through: :users
 
   has_and_belongs_to_many :users
   #accepts_nested_attributes_for :entities_links, :reject_if => lambda { |a| a[:link].blank? }, :allow_destroy => true

@@ -27,6 +27,8 @@ class Ama < ActiveRecord::Base
   # has many "users", that are guest speakers
   has_and_belongs_to_many :users
 
+  has_many :children, :class_name => 'Comment', :primary_key => :key, :foreign_key => :parent_key, :order => 'karma DESC'
+
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 

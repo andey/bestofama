@@ -2,28 +2,101 @@
 
 - cache ["show", @op], :expires_in => 12.hours do
   .row
-    - if @op.avatar
+    - if @op.avatar.exists?
       = render 'profile_with_avatar'
     - else
       = render 'profile_without_avatar'
 
-  - if @amas.count > 0
-    h3.pull-left AMAs
-    .clearfix
+  - tab_taken = false
+  .row
+    .col-12.col-sm-12.col-lg-12
+      .nav.nav-tabs
 
-    .list-group
-      - @amas.each do |ama|
-        = link_to ama_path(ama), :class => 'list-group-item' do
-          .row.ama
-            .col-1.col-sm-1.col-lg-1
-              .karma-meter= karma_meter(ama.karma).html_safe
-            .col-11.col-sm-11.col-lg-11
-              h4.ama-title.list-group-item-heading= ama.title
-              p.list-group-item-text
-                | Comments:&nbsp;
-                =ama.comments
-                |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-                =ama.responses
-                |  &nbsp;&bull;&nbsp; Date:&nbsp;
-                =ama.date
-            .clearfix
+        - if @amas.count > 0
+          li rel='amas'
+            a href="#amas" AMAs
+
+        - if @comments.count > 0
+          li rel='comments'
+            - tab_taken = true
+            a href="#comments" Top Comments
+
+        li rel='info'
+          - tab_taken = true
+          a href="#info" Info
+
+  .row
+    .col-12.col-sm-12.col-lg-12
+      - if @amas.count > 0
+        #amas.tab-content.hide rel='amas'
+            .list-group
+              - @amas.each do |ama|
+                = link_to ama_path(ama), :class => 'list-group-item' do
+                  .row.ama
+                    .col-1.col-sm-1.col-lg-1
+                      .karma-meter= karma_meter(ama.karma).html_safe
+                    .col-11.col-sm-11.col-lg-11
+                      h4.ama-title.list-group-item-heading= ama.title
+                      p.list-group-item-text
+                        | Comments:&nbsp;
+                        =ama.comments
+                        |  &nbsp;&bull;&nbsp; Responses:&nbsp;
+                        =ama.responses
+                        |  &nbsp;&bull;&nbsp; Date:&nbsp;
+                        =ama.date
+                    .clearfix
+
+      - if @comments.count > 0
+        #comments.tab-content.hide.ama.ama-comments rel='comments'
+          - @comments.each do |c|
+            - if c.parent
+              = render 'comments/show', :comment => c.parent, :depth => 0
+              = render 'comments/show', :comment => c, :depth => 1
+            - else
+              = render 'comments/show', :comment => c, :depth => 0
+
+      #info.tab-content.hide rel='info'
+        .row
+          .col-12.col-sm-12.col-lg-4
+            .panel.panel-info
+              .panel-heading Random Stats
+              table.table-borderless
+                tr
+                  td
+                    strong Comment Karma:
+                  td.table-value= @op.comment_karma
+                tr
+                  td
+                    strong Link Karma:
+                  td.table-value= @op.link_karma
+                tr
+                  td
+                    strong # AMA's:
+                  td.table-value= @op.amas.count
+                tr
+                  td
+                    strong # Comments:
+                  td.table-value= @op.comments.count
+                tr
+                  td
+                    strong Comment AVG Karma
+                  td.table-value= @op.comments.average('karma').to_i
+                tr
+                  td
+                    strong Wikipedia 90 Day Traffic
+                  td.table-value= @op.wikipedia_hits
+
+            - if @op.links.count > 0
+              .panel.panel-primary
+                .panel-heading Social Profile
+                ul
+                 - @op.links.each do |profile|
+                  li= link_to profile.site, profile.link, :rel => 'nofollow'
+
+          - if @op.links.where(:site_id => 1).count > 0
+            .col-12.col-sm-12.col-lg-8
+              .panel#wikipedia
+                .panel-heading
+                  | Wikipedia
+                  span.pull-right= link_to "link", @op.links.where(:site_id => 1).first.link, :rel => 'nofollow'
+                iframe data-url=wikipedia_mobile(@op.links.where(:site_id => 1).first.link)

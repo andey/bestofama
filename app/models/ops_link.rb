@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: ops_links
+#
+#  id         :integer          not null, primary key
+#  op_id      :integer
+#  site_id    :integer
+#  link       :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class OpsLink < ActiveRecord::Base
 
   SITES = [

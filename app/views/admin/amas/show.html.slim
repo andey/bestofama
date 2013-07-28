@@ -5,13 +5,16 @@
   .col-4.action-buttons
     = link_to edit_admin_ama_path(@ama) do
       button.btn.btn-default.btn-mini.pull-right
-        span.glyphicon.glyphicon-plus-sign Edit
+        span.glyphicon.glyphicon-wrench
+        | Edit
     = link_to clean_admin_amas_path(@ama) do
       button.btn.btn-warning.btn-mini.pull-right
-        span.glyphicon.glyphicon-plus-sign Rebuild
+        span.glyphicon.glyphicon-repeat
+        | Rebuild
     = link_to admin_ama_path(@ama), :method => :delete, :data => {:confirm => 'Are you sure?'} do
       button.btn.btn-danger.btn-mini.pull-right
-        span.glyphicon.glyphicon-plus-sign Delete
+        span.glyphicon.glyphicon-trash
+        | Delete
 
 .row
   .col-12

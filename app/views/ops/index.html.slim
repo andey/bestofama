@@ -1,35 +1,35 @@
 - content_for :title, "OP Directory Page " + params[:page].to_s + " :: BestofAMA"
 
-- cache ["ops", @order, params[:page]], :expires_in => 15.minutes do
-  .row
-    .col-12
-      h2.pull-left OP Directory
+.row
+  .col-12
+    h2.pull-left OP Directory
 
-      .btn-group.pull-right.filter
-        button.btn Order
-        button.btn.dropdown-toggle data-toggle="dropdown"
-          span.caret
-        ul.dropdown-menu
-          li= link_to "Wikipedia Traffic", "#"
-          li= link_to "Alphabetical A -> Z", ops_path(:order => "name DESC")
-          li= link_to "Alphabetical Z -> A", ops_path(:order => "name")
-          li= link_to "Comment Karma", ops_path(:order => "comment_karma")
-          li= link_to "Link Karma", ops_path(:order => "link_karma")
+    .btn-group.pull-right.filter
+      button.btn Order
+      button.btn.dropdown-toggle data-toggle="dropdown"
+        span.caret
+      ul.dropdown-menu
+        li= link_to "Wikipedia Traffic", "#"
+        li= link_to "Alphabetical A -> Z", ops_path(:order => "name DESC")
+        li= link_to "Alphabetical Z -> A", ops_path(:order => "name")
+        li= link_to "Comment Karma", ops_path(:order => "comment_karma")
+        li= link_to "Link Karma", ops_path(:order => "link_karma")
 
-  .row
-    .col-12.col-sm-8.col-lg-9
-      .list-group
+.row
+  .col-12.col-sm-8.col-lg-9
+    .list-group
+      - cache ["ops", @order, params[:page]], :expires_in => 15.minutes do
         - @ops.each do |op|
           = link_to op.name, op, :class => 'list-group-item'
 
-    .col-12.col-sm-4.col-lg-3
-      .panel
-        .panel-heading Advertisement
-        .center
-          = render :file => 'layouts/ad-skyscraper'
-
-
-  .row
-    .col-12
+  .col-12.col-sm-4.col-lg-3
+    .panel
+      .panel-heading Advertisement
       .center
-        = will_paginate @ops
+        = render :file => 'layouts/ad-skyscraper'
+
+
+.row
+  .col-12
+    .center
+      = will_paginate @ops

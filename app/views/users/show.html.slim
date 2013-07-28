@@ -1,28 +1,28 @@
 - content_for :title, @user.username + " :: BestofAMA"
 
-- cache ["show", @user], :expires_in => 12.hours do
-  .row
-    .col-12.col-sm-12.col-lg-4
-      .panel.ad-index-square
-        .panel-heading style="margin-bottom: 0px" Advertisement
-        p.list-group-item-text
-          = render :file => 'layouts/ad-index-square'
+.row
+  .col-12.col-sm-12.col-lg-4
+    .panel.ad-index-square
+      .panel-heading style="margin-bottom: 0px" Advertisement
+      p.list-group-item-text
+        = render :file => 'layouts/ad-index-square'
 
-    .col-12.col-sm-12.col-lg-8
-      h1= @user.username
-      - if @user.ops.count > 0
-        p
-          b Associated Ops:&nbsp;
-          = @user.ops.group(:id).map { |op| link_to op.name, op }.join(', ').html_safe
+  .col-12.col-sm-12.col-lg-8
+    h1= @user.username
+    - if @user.ops.count > 0
       p
-        = link_to reddit_user_path(@user.username), reddit_user_path(@user.username), :rel => 'nofollow'
+        b Associated Ops:&nbsp;
+        = @user.ops.group(:id).map { |op| link_to op.name, op }.join(', ').html_safe
+    p
+      = link_to reddit_user_path(@user.username), reddit_user_path(@user.username), :rel => 'nofollow'
 
-  - if @user.amas.count > 0
+- if @user.amas.count > 0
 
-    h3.pull-left AMAs
-    .clearfix
+  h3.pull-left AMAs
+  .clearfix
 
-    .list-group
+  .list-group
+    - cache ["show", "amas", @user] do
       - @user.amas.each do |ama|
         = link_to ama_path(ama), :class => 'list-group-item' do
           .row.ama

@@ -1,23 +1,23 @@
 - content_for :title, "Popular Tags Page " + params[:page].to_s + " :: BestofAMA"
 
-- cache ["tags", params[:page]], :expires_in => 12.hours do
-  .row
-    .col-12
-      h1 Tags
+.row
+  .col-12
+    h1 Tags
 
-  .row
-    .col-12.col-sm-8.col-lg-9
-      .list-group
+.row
+  .col-12.col-sm-8.col-lg-9
+    .list-group
+      - cache ["tags", params[:page]], :expires_in => 12.hours do
         - @tags.each do |t|
           = link_to t.name, tag_path(t.name), :class => 'list-group-item'
 
-    .col-12.col-sm-4.col-lg-3
-      .panel
-        .panel-heading Advertisement
-        .center
-          = render :file => 'layouts/ad-skyscraper'
-
-  .row
-    .col-12.col-sm-12.col-lg-12
+  .col-12.col-sm-4.col-lg-3
+    .panel
+      .panel-heading Advertisement
       .center
-        = will_paginate @tags
+        = render :file => 'layouts/ad-skyscraper'
+
+.row
+  .col-12.col-sm-12.col-lg-12
+    .center
+      = will_paginate @tags

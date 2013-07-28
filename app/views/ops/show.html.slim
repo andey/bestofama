@@ -1,32 +1,32 @@
 - content_for :title, @op.name + " :: BestofAMA"
 
-- cache ["show", @op], :expires_in => 12.hours do
-  .row
-    - if @op.avatar.exists?
-      = render 'profile_with_avatar'
-    - else
-      = render 'profile_without_avatar'
+.row
+  - if @op.avatar.exists?
+    = render 'profile_with_avatar'
+  - else
+    = render 'profile_without_avatar'
 
-  - tab_taken = false
-  .row
-    .col-12.col-sm-12.col-lg-12
-      .nav.nav-tabs
+- tab_taken = false
+.row
+  .col-12.col-sm-12.col-lg-12
+    .nav.nav-tabs
 
-        - if @amas.count > 0
-          li rel='amas'
-            a href="#amas" AMAs
+      - if @amas.count > 0
+        li rel='amas'
+          a href="#amas" AMAs
 
-        - if @comments.count > 0
-          li rel='comments'
-            - tab_taken = true
-            a href="#comments" Top Comments
-
-        li rel='info'
+      - if @comments.count > 0
+        li rel='comments'
           - tab_taken = true
-          a href="#info" Info
+          a href="#comments" Top Comments
 
-  .row
-    .col-12.col-sm-12.col-lg-12
+      li rel='info'
+        - tab_taken = true
+        a href="#info" Info
+
+.row
+  .col-12.col-sm-12.col-lg-12
+    - cache ["show", "amas", @op] do
       - if @amas.count > 0
         #amas.tab-content.hide rel='amas'
             .list-group
@@ -46,6 +46,7 @@
                         =ama.date
                     .clearfix
 
+    - cache ["show", "comments", @op] do
       - if @comments.count > 0
         #comments.tab-content.hide.ama.ama-comments rel='comments'
           - @comments.each do |c|
@@ -55,6 +56,7 @@
             - else
               = render 'comments/show', :comment => c, :depth => 0
 
+    - cache ["show", "info", @op] do
       #info.tab-content.hide rel='info'
         .row
           .col-12.col-sm-12.col-lg-4

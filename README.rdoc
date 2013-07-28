@@ -1,6 +1,7 @@
 == V3
 
 Now with:
-* Rails 4.x
-* jQuery 2.x
-* Bootstrap 3.x
+* Ruby 2.0.0
+* Rails 4.0.0
+* Bootstrap 3.0.0.rc1
+* jQuery 2.0.x

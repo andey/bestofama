@@ -14,7 +14,7 @@
         tr
           td
             - if ama.user.ops.count > 0
-              span.glyphicon.glyphicon-ok
+              span.glyphicon.glyphicon-user
           td
             strong= link_to truncate(ama.title, :length => 100), admin_ama_path(ama)
             br/

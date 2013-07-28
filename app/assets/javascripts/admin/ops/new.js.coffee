@@ -12,7 +12,11 @@ jQuery ->
   if $('#admin-ops_new').length > 0
     $('#query').change (event) ->
       event.preventDefault()
-      duckduckgo_string = 'https://duckduckgo.com/?q=' + encodeURIComponent($('#query').val()) + '+site%3Awikipedia.org'
+      value = $('#query').val()
+      encoded = encodeURIComponent(value)
+
+      duckduckgo_string = 'https://duckduckgo.com/?q=' + encoded + '+site%3Awikipedia.org'
       $('#duckduckgo').attr('src', duckduckgo_string)
-      googleimages_string = 'https://www.google.com/search?tbm=isch&q=' + encodeURIComponent($('#query').val())
+      googleimages_string = 'https://www.google.com/search?tbm=isch&q=' + encoded
       $('#googleimages_link').attr('href', googleimages_string)
+      $('#op_name').val(value)

@@ -56,22 +56,23 @@
         = text_field_tag :username
 
   .col-8
-    .panel
-      .panel-heading Users
-      table.table.table-borderless
-        tr
-          th Username
-          th Link
-          th Comment
-          th AMAs
-          th
-        - @ama.users.each do |user|
+    - if @ama.users.count > 0
+      .panel
+        .panel-heading Users
+        table.table.table-borderless
           tr
-            td= link_to user.username, admin_user_path(user)
-            td= user.link_karma
-            td= user.comment_karma
-            td= user.amas.count
-            td= link_to 'Remove', admin_ama_user_path(@ama, user), :method => :delete, :data =>  confirm='Are you sure?'
+            th Username
+            th Link
+            th Comment
+            th AMAs
+            th
+          - @ama.users.each do |user|
+            tr
+              td= link_to user.username, admin_user_path(user)
+              td= user.link_karma
+              td= user.comment_karma
+              td= user.amas.count
+              td= link_to 'Remove', admin_ama_user_path(@ama, user), :method => :delete, :data =>  confirm='Are you sure?'
 
     .panel.panel-success
       .panel-heading Content

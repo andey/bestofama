@@ -1,3 +1,7 @@
 == V3
 
-New Redesign
+Now with:
+* Ruby 2.0.0
+* Rails 4.0.0
+* Bootstrap 3.0.0.rc1
+* jQuery 2.0.x

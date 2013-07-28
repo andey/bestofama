@@ -19,11 +19,6 @@ class Admin::OpsUsersController < ApplicationController
     respond_to do |format|
       if @user
         @op.users << @user
-
-        @user.amas.each do |ama|
-          expire_fragment(ama, options=nil)
-        end
-
         format.html { redirect_to admin_op_path(@op), :notice => 'User was successfully created.' }
       else
         format.html { render :action => "new" }

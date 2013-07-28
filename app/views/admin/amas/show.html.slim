@@ -1,0 +1,71 @@
+.row
+  .col-8
+    h1 AMA
+
+  .col-4.action-buttons
+    = link_to edit_admin_ama_path(@ama) do
+      button.btn.btn-default.btn-mini.pull-right
+        span.glyphicon.glyphicon-plus-sign Edit
+    = link_to clean_admin_amas_path(@ama) do
+      button.btn.btn-warning.btn-mini.pull-right
+        span.glyphicon.glyphicon-plus-sign Rebuild
+    = link_to admin_ama_path(@ama), :method => :delete, :data => {:confirm => 'Are you sure?'} do
+      button.btn.btn-danger.btn-mini.pull-right
+        span.glyphicon.glyphicon-plus-sign Delete
+
+.row
+  .col-12
+    h3= truncate(@ama.title, :length => 100)
+
+.row
+  .col-4
+    .panel.panel-info
+      .panel-heading AMA
+      ul.list-unstyled
+        li
+          b Date:
+          = @ama.date
+        li
+          b ID:
+          = @ama.id
+        li
+          b Key:
+          = @ama.key
+        li
+          b Karma:
+          = @ama.karma
+        li
+          b User:
+          = link_to @ama.user.username, new_admin_op_path(:user_id => @ama.user.id)
+        li
+          b Comments:
+          = @ama.comments
+        li
+          b Saved Comments:
+          = link_to Comment.where(:ama_id => @ama.id).count, admin_ama_comments_path(@ama)
+        li
+          b Responses:
+          = @ama.responses
+
+    .panel.panel-primary
+      .panel-heading Add User
+      = form_tag admin_ama_users_path(:ama_id => @ama.key), :method => :post do |f|
+        = text_field_tag :username
+
+  .col-8
+    .panel
+      .panel-heading Users
+      table.table.table-borderless
+        tr
+          th Username
+          th Link
+          th Comment
+          th AMAs
+          th
+        - @ama.users.each do |user|
+          tr
+            td= link_to user.username, admin_user_path(user)
+            td= user.link_karma
+            td= user.comment_karma
+            td= user.amas.count
+            td= link_to 'Remove', admin_ama_user_path(@ama, user), :method => :delete, :data =>  confirm='Are you sure?'

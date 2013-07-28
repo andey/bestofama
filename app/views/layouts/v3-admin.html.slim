@@ -27,9 +27,7 @@ html lang="en"
               li= link_to "Trash", admin_trashes_path
 
     .container.body-container
-      .row
-        .col-12.col-sm-12.col-lg-12
-          .content
-            = yield
+      .content
+        = yield
 
     = javascript_include_tag "application"

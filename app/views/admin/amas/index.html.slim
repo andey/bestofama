@@ -1,6 +1,9 @@
 .row
-  .col-12.col-sm-12.col-lg-12
+  .col-12
     h1 Listing amas
+
+.row
+  .col-12
     table.table
       tr
         th
@@ -13,13 +16,15 @@
             - if ama.user.ops.count > 0
               span.glyphicon.glyphicon-ok
           td
-            strong= link_to truncate(ama.title, :length => 100), ama_path(ama)
+            strong= link_to truncate(ama.title, :length => 100), admin_ama_path(ama)
             br/
             span.muted
               = ama.date
               | &nbsp;by #{link_to ama.user.username, admin_user_path(ama.user)}&nbsp;
-              | | #{link_to 'admin link', admin_ama_path(ama)}
+              | | #{link_to 'public view', ama_path(ama)}
           td= ama.comments
           td= ama.responses
-.center
-  = will_paginate @amas
+.row
+  .col-12
+    .center
+      = will_paginate @amas

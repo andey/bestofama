@@ -20,31 +20,9 @@ class Admin::AmasController < ApplicationController
     end
   end
 
-  # GET /amas/new
-  def new
-    @ama = Ama.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
-  end
-
   # GET /amas/1/edit
   def edit
     @ama = Ama.find_by_key(params[:id])
-  end
-
-  # POST /amas
-  def create
-    @ama = Ama.new(params[:ama])
-
-    respond_to do |format|
-      if @ama.save
-        format.html { redirect_to @ama, :notice => 'Ama was successfully created.' }
-      else
-        format.html { render :action => "new" }
-      end
-    end
   end
 
   # PUT /amas/1

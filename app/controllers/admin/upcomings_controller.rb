@@ -4,7 +4,7 @@ class Admin::UpcomingsController < ApplicationController
 
   # GET /meta
   def index
-    @upcomings = Upcoming.order(:id).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @upcomings = Upcoming.order(:date).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # index.html.erb

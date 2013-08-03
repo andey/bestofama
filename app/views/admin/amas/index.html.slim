@@ -21,7 +21,6 @@
             span.muted
               = ama.date
               | &nbsp;by #{link_to ama.user.username, admin_user_path(ama.user)}&nbsp;
-              | | #{link_to 'public view', ama_path(ama)}
           td= ama.comments
           td= ama.responses
 .row

@@ -31,17 +31,4 @@
       ul.list-group.list-group-flush.panel-header-flush
         - cache ["index-amas"], :expires_in => 5.minutes do
           - @amas.each do |ama|
-            = link_to ama_path(ama), :class => 'list-group-item' do
-                .row.ama
-                  .col-1.col-sm-1.col-lg-1
-                    .karma-meter= karma_meter(ama.karma).html_safe
-                  .col-11.col-sm-11.col-lg-11
-                    h4.ama-title.list-group-item-heading= ama.title
-                    p.list-group-item-text
-                      | Comments:&nbsp;
-                      =ama.comments
-                      |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-                      =ama.responses
-                      |  &nbsp;&bull;&nbsp; Date:&nbsp;
-                      =ama.date
-                  .clearfix
+            = render partial: 'amas/snippet', locals: { ama: ama }

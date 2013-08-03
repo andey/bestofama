@@ -8,6 +8,10 @@
         = @taggings.count
         | &nbsp;results found
 
+    - if @tag.description
+      blockquote
+        = @tag.description
+
 .row
   .col-12.col-sm-12.col-lg-9
     .list-group

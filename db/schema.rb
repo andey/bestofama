@@ -102,9 +102,10 @@ ActiveRecord::Schema.define(version: 20130803205601) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: true do |t|
-    t.string "name"
-    t.string "definition"
-    t.string "wikipedia_url"
+    t.string  "name"
+    t.string  "description"
+    t.string  "wikipedia_url"
+    t.boolean "meaningless"
   end
 
   create_table "trashes", force: true do |t|

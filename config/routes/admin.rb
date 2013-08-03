@@ -15,6 +15,7 @@ Bestofama::Application.routes.draw do
     end
     resources :users
     resources :trashes
+    resources :tags
     resources :meta
     resources :upcomings
     resources :versions do

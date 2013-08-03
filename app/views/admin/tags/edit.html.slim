@@ -1,0 +1,25 @@
+h1= "Editing: #{@tag.name}"
+
+= form_for @tag, :url => admin_tag_path(@tag) do |f|
+  - if @tag.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@tag.errors.count, "error")} prohibited this upcoming from being saved:"
+      ul
+        - @tag.errors.full_messages.each do |message|
+          li = message
+
+  fieldset
+
+    .form-group
+      = f.label :wikipedia_url
+      = f.text_field :wikipedia_url, :class => 'form-control'
+
+    .form-group
+      = f.label :description
+      = f.text_field :description, :class => 'form-control'
+
+    .checkbox
+      = f.label :meaningless
+      = f.check_box :meaningless
+
+    = f.submit 'Save', :class => 'btn btn-primary'

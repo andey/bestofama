@@ -1,0 +1,24 @@
+h1 Listing upcomings
+
+table.table
+  tr
+    th
+    th
+    th Name
+    th Description
+    th
+
+  - @tags.each do |tag|
+    tr
+      td
+        - if !tag.wikipedia_url.nil?
+          span.glyphicon.glyphicon-globe
+      td
+        - if tag.meaningless
+          span.glyphicon.glyphicon-remove
+      td = link_to tag.name, tag_path(tag.name)
+      td = tag.description
+      td = link_to 'edit', edit_admin_tag_path(tag)
+
+.center
+  = will_paginate @tags

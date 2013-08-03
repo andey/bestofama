@@ -74,4 +74,30 @@ namespace :update do
       Upcoming.create(:title => title, :description => content, :date => date, :url => url)
     end
   end
+
+  task :tag => :environment do
+    require 'api/duckduckgo.com'
+    @tag = Tag.where(:meaningless => nil, :description => nil).first
+    if @tag
+      puts "----------------------------"
+      puts "Updating Tag: #{@tag.name}"
+
+      result = DuckDuckGo.search(@tag.name)
+      if result["AbstractSource"] == 'Wikipedia'
+        puts "Set the AbstractSource"
+        @tag.update_attribute(:wikipedia_url, result["AbstractURL"])
+      end
+
+      if result["AbstractText"] != ''
+        puts "Used AbstractText"
+        @tag.update_attribute(:description, result["AbstractText"])
+      elsif result["RelatedTopics"] && result["RelatedTopics"][0]
+        puts "Used Related Topics"
+        @tag.update_attribute(:description, result["RelatedTopics"][0]["Text"])
+      else
+        puts "??????????"
+        @tag.update_attribute(:meaningless, true)
+      end
+    end
+  end
 end

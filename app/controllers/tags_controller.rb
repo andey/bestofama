@@ -29,7 +29,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @entities}
+      format.json { render json: @taggings}
     end
   end
 end

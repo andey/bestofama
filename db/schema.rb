@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130526041246) do
+ActiveRecord::Schema.define(version: 20130803205601) do
 
   create_table "amas", force: true do |t|
     t.string   "key",                    null: false
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20130526041246) do
     t.string   "tagger_type"
     t.string   "context",       limit: 128
     t.datetime "created_at"
+    t.integer  "karma"
   end
 
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
@@ -102,6 +103,8 @@ ActiveRecord::Schema.define(version: 20130526041246) do
 
   create_table "tags", force: true do |t|
     t.string "name"
+    t.string "definition"
+    t.string "wikipedia_url"
   end
 
   create_table "trashes", force: true do |t|

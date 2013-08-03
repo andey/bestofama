@@ -25,7 +25,7 @@ class TagsController < ApplicationController
   def show
     params[:page] ||= 1
     @tag = Tag.find_by_name(params[:id]) || raise_404
-    @taggings = @tag.taggings.order(:created_at).reverse_order.paginate(:page => params[:page], :per_page => 25)
+    @taggings = @tag.taggings.order(:karma).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html

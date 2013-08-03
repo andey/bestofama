@@ -18,15 +18,11 @@
 #
 
 class Op < ActiveRecord::Base
-  before_save { |op| op.slug = op.slug.parameterize }
   before_validation :default_slug
+  before_save { |op| op.slug = op.slug.parameterize }
+  after_save :update_taggings
 
-  def default_slug
-    if self.slug.nil? || self.slug.empty?
-      self.slug = self.name
-    end
-  end
-
+  # default id
   def to_param
     slug
   end
@@ -40,6 +36,7 @@ class Op < ActiveRecord::Base
   has_many :links, :class_name => 'OpsLink'
   has_many :amas, through: :users
   has_many :comments, through: :users
+  has_many :taggings, foreign_key: :taggable_id
 
   has_and_belongs_to_many :users
   #accepts_nested_attributes_for :entities_links, :reject_if => lambda { |a| a[:link].blank? }, :allow_destroy => true
@@ -52,4 +49,18 @@ class Op < ActiveRecord::Base
 
   # paperclip gem to store avatars, in the following sizes
   has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
+
+  # Create a OP slug
+  def default_slug
+    if self.slug.nil? || self.slug.empty?
+      self.slug = self.name
+    end
+  end
+
+  # Update Tagging's karma
+  def update_taggings
+    self.taggings.each do |tagging|
+      tagging.update_attribute(:karma, self.comment_karma)
+    end
+  end
 end

@@ -36,6 +36,7 @@ class Ama < ActiveRecord::Base
   has_paper_trail :only => :content, :on => [:update, :destroy]
 
   after_save :update_ops
+  after_save :update_taggings
 
   def to_param
     key
@@ -60,5 +61,12 @@ class Ama < ActiveRecord::Base
       end
     end
 
+  end
+
+  # Update Tagging's karma
+  def update_taggings
+    self.taggings.each do |tagging|
+      tagging.update_attribute(:karma, self.karma)
+    end
   end
 end

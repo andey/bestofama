@@ -3,6 +3,11 @@
     h1 AMA
 
   .col-4.action-buttons
+    = link_to ama_path(@ama) do
+      button.btn.btn-primary.pull-right
+        span.glyphicon.glyphicon-eye-open
+        | Public View
+  
     = link_to edit_admin_ama_path(@ama) do
       button.btn.btn-default.btn-mini.pull-right
         span.glyphicon.glyphicon-wrench

@@ -27,7 +27,9 @@
 .row
   .col-12.col-sm-12.col-lg-12
     .panel
-      .panel-heading Recent AMA's
+      .panel-heading
+        | Recent AMA's
+        small.pull-right= link_to 'View All', amas_path
       ul.list-group.list-group-flush.panel-header-flush
         - cache ["index-amas"], :expires_in => 5.minutes do
           - @amas.each do |ama|

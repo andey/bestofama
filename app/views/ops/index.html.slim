@@ -20,16 +20,17 @@
     .list-group
       - cache ["ops", @order, params[:page]], :expires_in => 15.minutes do
         - @ops.each do |op|
-          = link_to op.name, op, :class => 'list-group-item'
+          = render partial: 'snippet', locals: { op: op }
 
   .col-12.col-sm-4.col-lg-3
-    .panel
-      .panel-heading Advertisement
-      .center
-        = render :file => 'layouts/ad-skyscraper'
+    .sticky
+      .panel
+        .panel-heading Advertisement
+        .center
+          = render :file => 'layouts/ad-skyscraper'
 
 
-.row
+.row.sticky-scroll-bottom
   .col-12
     .center
       = will_paginate @ops

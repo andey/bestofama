@@ -13,4 +13,5 @@
 //= require jquery-2.0.3.min
 //= require jquery_ujs
 //= require bootstrap-3.0.0.min
+//= require jquery.sticky-1.0.0.js
 //= require_tree .

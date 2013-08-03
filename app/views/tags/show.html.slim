@@ -13,18 +13,16 @@
     .list-group
         - cache ["tag", params[:id], @order, params[:page]], :expires_in => 12.hours do
           - @ops.each do |op|
-            = link_to op, :class => 'list-group-item' do
-              .row
-                .col-12.col-sm-12.col-lg-12
-                  = op.name
+            = render partial: 'ops/snippet', locals: { op: op }
 
   .col-12.col-sm-4.col-lg-3
-    .panel
-      .panel-heading Advertisement
-      .center
-        = render :file => 'layouts/ad-skyscraper'
+    .sticky
+      .panel
+        .panel-heading Advertisement
+        .center
+          = render :file => 'layouts/ad-skyscraper'
 
-.row
+.row.sticky-scroll-bottom
   .col-12.col-sm-12.col-lg-12
     .center
       = will_paginate @ops

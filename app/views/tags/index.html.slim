@@ -12,12 +12,13 @@
           = link_to t.name, tag_path(t.name), :class => 'list-group-item'
 
   .col-12.col-sm-4.col-lg-3
-    .panel
-      .panel-heading Advertisement
-      .center
-        = render :file => 'layouts/ad-skyscraper'
+    .sticky
+      .panel
+        .panel-heading Advertisement
+        .center
+          = render :file => 'layouts/ad-skyscraper'
 
-.row
+.row.sticky-scroll-bottom
   .col-12.col-sm-12.col-lg-12
     .center
       = will_paginate @tags

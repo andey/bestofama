@@ -1,6 +1,6 @@
 - content_for :title, @op.name + " :: BestofAMA"
 
-section.row itemscope='itemscope' itemtype="http://schema.org/Person"
+section itemscope='itemscope' itemtype="http://schema.org/Person"
   .row
     - if @op.avatar.exists?
       = render 'profile_with_avatar'

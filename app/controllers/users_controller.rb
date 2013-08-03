@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id]) || raise_404
 
     respond_to do |format|
-      format.html
+      format.html { if @user.belongs_to_only_one_op? then redirect_to op_path(@user.ops.first) end }
     end
   end
 end

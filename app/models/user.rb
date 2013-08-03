@@ -25,4 +25,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
 
+  def belongs_to_only_one_op?
+    self.ops.uniq.count == 1
+  end
 end

@@ -1,8 +1,13 @@
 - cache ["show", "snippet", @op] do
+
+  .col-12.col-sm-12.col-lg-3
+    .center
+      = render :file => 'layouts/ad-square-alt'
+
   .col-6.col-sm-4.col-lg-3#thumbnail
     = image_tag @op.avatar.url(:medium), :class => 'img-rounded pull-right op-avatar', :itemprop => 'image'
 
-  .col-12.col-sm-8.col-lg-5
+  .col-12.col-sm-8.col-lg-6
     h1 itemprop='name'
       = @op.name
     p
@@ -15,9 +20,3 @@
 
     .well itemprop='description'
       = @op.content
-
-.col-12.col-sm-12.col-lg-4
-  .panel.ad-index-square
-    .panel-heading style="margin-bottom: 0px" Advertisement
-    p.list-group-item-text
-      = render :file => 'layouts/ad-index-square'

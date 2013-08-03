@@ -7,13 +7,13 @@ jQuery ->
       $('.placeholder-skyscrapper').attr('src', 'http://placehold.it/160x600')
       $('.placeholder-skyscrapper-alt').attr('src', 'http://placehold.it/160x600')
       $('.placeholder-index-square').attr('src', 'http://placehold.it/336x280')
-      $('.placeholder-index-square-alt').attr('src', 'http://placehold.it/250x250').css('padding-top', 15)
+      $('.placeholder-index-square-alt').attr('src', 'http://placehold.it/250x250')
 
     if (width >= 992 && width < 1200)
       $('.placeholder-skyscrapper').attr('src', 'http://placehold.it/160x600')
       $('.placeholder-skyscrapper-alt').attr('src', 'http://placehold.it/160x600')
       $('.placeholder-index-square').attr('src', 'http://placehold.it/250x250')
-      $('.placeholder-index-square-alt').attr('src', 'http://placehold.it/200x200').css('padding-top', 15)
+      $('.placeholder-index-square-alt').attr('src', 'http://placehold.it/200x200')
 
     if (width >= 768 && width < 992)
       $('.placeholder-skyscrapper').attr('src', 'http://placehold.it/160x600')

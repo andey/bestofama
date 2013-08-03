@@ -7,6 +7,7 @@
     table.table
       tr
         th
+        th
         th AMA
         th Comments
         th Responses
@@ -15,6 +16,9 @@
           td
             - if ama.user.ops.count > 0
               span.glyphicon.glyphicon-user
+          td
+            - if ama.tags.count > 0
+              span.glyphicon.glyphicon-tag
           td
             strong= link_to truncate(ama.title, :length => 100), admin_ama_path(ama)
             br/

@@ -30,7 +30,7 @@ class Admin::AmasController < ApplicationController
     @ama = Ama.find_by_key(params[:id])
 
     respond_to do |format|
-      if @ama.update_attributes(params[:ama])
+      if @ama.update_attributes(params[:ama].permit!)
         format.html { redirect_to admin_ama_path(@ama), :notice => 'Ama was successfully updated.' }
       else
         format.html { render :action => "edit" }

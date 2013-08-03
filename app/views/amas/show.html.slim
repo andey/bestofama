@@ -8,6 +8,8 @@
     .col-10.col-sm-10.col-lg-11
       .page-header
         h4= @ama.title.html_safe
+        p= @ama.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
+
         = render 'share'
 
       - if !@ama.content.blank?

@@ -9,15 +9,15 @@
         | Public View
   
     = link_to edit_admin_ama_path(@ama) do
-      button.btn.btn-default.btn-mini.pull-right
+      button.btn.btn-default.pull-right
         span.glyphicon.glyphicon-wrench
         | Edit
     = link_to clean_admin_amas_path(@ama) do
-      button.btn.btn-warning.btn-mini.pull-right
+      button.btn.btn-warning.pull-right
         span.glyphicon.glyphicon-repeat
         | Rebuild
     = link_to admin_ama_path(@ama), :method => :delete, :data => {:confirm => 'Are you sure?'} do
-      button.btn.btn-danger.btn-mini.pull-right
+      button.btn.btn-danger.pull-right
         span.glyphicon.glyphicon-trash
         | Delete
 
@@ -55,10 +55,18 @@
           b Responses:
           = @ama.responses
 
+    .panel.panel-danger
+      .panel-heading Add Tags
+      .form-inline
+        = form_for @ama, :url => admin_ama_path(@ama), :method => :put do |f|
+          = f.text_field :tag_list, :class => 'form-control'
+
+
     .panel.panel-primary
       .panel-heading Add User
-      = form_tag admin_ama_users_path(:ama_id => @ama.key), :method => :post do |f|
-        = text_field_tag :username
+      .form-inline
+        = form_tag admin_ama_users_path(:ama_id => @ama.key), :method => :post do |f|
+          = text_field_tag :username, nil, :class => 'form-control'
 
   .col-8
     - if @ama.users.count > 0

@@ -5,24 +5,27 @@
     h2
       = params[:id]
       small style="margin-left: 10px;"
-        = @ops.count
+        = @taggings.count
         | &nbsp;results found
 
 .row
-  .col-12.col-sm-8.col-lg-9
+  .col-12.col-sm-12.col-lg-9
     .list-group
-        - cache ["tag", params[:id], @order, params[:page]], :expires_in => 12.hours do
-          - @ops.each do |op|
-            = render partial: 'ops/snippet', locals: { op: op }
+      - cache ["tag", params[:id], params[:page]], :expires_in => 12.hours do
+        - @taggings.each do |tagging|
+          - if tagging.taggable_type == 'Op'
+            = render partial: 'ops/snippet', locals: { op: Op.find(tagging.taggable_id) }
+          - elsif tagging.taggable_type == 'Ama'
+            = render partial: 'amas/snippet', locals: { ama: Ama.find(tagging.taggable_id) }
 
-  .col-12.col-sm-4.col-lg-3
+  .col-12.col-sm-12.col-lg-3
     .sticky
       .panel
         .panel-heading Advertisement
         .center
-          = render :file => 'layouts/ad-skyscraper'
+          = render :file => 'layouts/ad-skyscraper-alt'
 
 .row.sticky-scroll-bottom
   .col-12.col-sm-12.col-lg-12
     .center
-      = will_paginate @ops
+      = will_paginate @taggings

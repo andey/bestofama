@@ -23,10 +23,9 @@ class TagsController < ApplicationController
   # - link_karma
 
   def show
-    @order = params[:order]
-    @order ||= 'wikipedia_hits, comment_karma'
     params[:page] ||= 1
-    @ops = Op.tagged_with(params[:id]).order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25) || raise_404
+    @tag = Tag.find_by_name(params[:id]) || raise_404
+    @taggings = @tag.taggings.order(:created_at).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html

@@ -39,7 +39,6 @@ class Admin::OpsLinksController < ApplicationController
 
   # PUT /entities_links/1
   def update
-    ap params[:ops_link]
     @op = Op.find_by_slug(params[:op_id])
     @op_link = OpsLink.find(params[:id])
 

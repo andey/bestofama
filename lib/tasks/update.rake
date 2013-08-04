@@ -79,24 +79,30 @@ namespace :update do
     require 'api/duckduckgo.com'
     @tag = Tag.where(:meaningless => nil, :description => nil).first
     if @tag
-      puts "----------------------------"
-      puts "Updating Tag: #{@tag.name}"
+      begin
+        puts "----------------------------"
+        puts "Updating Tag: #{@tag.name}"
 
-      result = DuckDuckGo.search(@tag.name)
-      if result["AbstractSource"] == 'Wikipedia'
-        puts "Set the AbstractSource"
-        @tag.update_attribute(:wikipedia_url, result["AbstractURL"])
-      end
+        result = DuckDuckGo.search(@tag.name)
+        if result["AbstractSource"] == 'Wikipedia'
+          puts "Set the AbstractSource"
+          @tag.update_attribute(:wikipedia_url, result["AbstractURL"])
+        end
 
-      if result["AbstractText"] != ''
-        puts "Used AbstractText"
-        @tag.update_attribute(:description, result["AbstractText"])
-      elsif result["RelatedTopics"] && result["RelatedTopics"][0]
-        puts "Used Related Topics"
-        @tag.update_attribute(:description, result["RelatedTopics"][0]["Text"])
-      else
-        puts "??????????"
+        if result["AbstractText"] != ''
+          puts "Used AbstractText"
+          @tag.update_attribute(:description, result["AbstractText"].truncate(250, :omission => "..."))
+        elsif result["RelatedTopics"] && result["RelatedTopics"][0]
+          puts "Used Related Topics"
+          @tag.update_attribute(:description, result["RelatedTopics"][0]["Text"].truncate(250, :omission => "..."))
+        else
+          puts "??????????"
+          @tag.update_attribute(:meaningless, true)
+        end
+      rescue
         @tag.update_attribute(:meaningless, true)
+      ensure
+        puts "done"
       end
     end
   end

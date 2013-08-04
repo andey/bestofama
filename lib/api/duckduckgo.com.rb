@@ -18,7 +18,7 @@ module DuckDuckGo
     end
 
     def search(word)
-      return self.get("http://api.duckduckgo.com/?q=#{word.gsub(/-/, ' ')}&format=json")
+      return self.get("http://api.duckduckgo.com/?q=#{word.gsub(/-/, '+')}&format=json")
     end
   end
 end

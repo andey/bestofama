@@ -9,6 +9,7 @@ module AmasHelper
     return s
   end
 
+  # Print the AMA comments
   def print_comments(parent, depth, ac=ActionController::Base.new())
     string = ''
     Comment.where(:parent_key => parent.key).order(:karma).reverse_order.each do |comment|

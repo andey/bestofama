@@ -15,17 +15,21 @@
 #
 
 class Comment < ActiveRecord::Base
+
+  # Relations
   belongs_to :user
   belongs_to :ama
   belongs_to :parent, :class_name => 'Comment', :primary_key => :key, :foreign_key => :parent_key
   has_many :children, :class_name => 'Comment', :primary_key => :parent_key, :foreign_key => :key, :order => 'karma DESC'
 
+  # Validations
   validates_presence_of :ama_id, :key, :parent_key, :user_id
   validates_uniqueness_of :key
 
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 
+  # Will return Bootstrap 3.0.0 label class
   def which_label?
     if self.user_id == self.ama.user_id
       return 'label label-info'

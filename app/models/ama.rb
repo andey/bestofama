@@ -17,7 +17,8 @@
 #
 
 class Ama < ActiveRecord::Base
-  #attr_accessible :content, :date, :karma, :key, :permalink, :comments, :responses, :title, :user_id
+
+  # Basic validations
   validates_presence_of :key, :permalink, :title, :user_id
   validates_uniqueness_of :key
 
@@ -30,12 +31,16 @@ class Ama < ActiveRecord::Base
   # can be tagged using "acts_as_taggable" gem
   acts_as_taggable
 
+  # AMA 'comments'
   has_many :children, :class_name => 'Comment', :primary_key => :key, :foreign_key => :parent_key, :order => 'karma DESC'
 
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 
+  # Update OP caches
   after_save :update_ops
+
+  # Update tagging karma score
   after_save :update_taggings
 
   def to_param

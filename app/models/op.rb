@@ -18,6 +18,8 @@
 #
 
 class Op < ActiveRecord::Base
+
+  # Hooks
   before_validation :default_slug
   before_save { |op| op.slug = op.slug.parameterize }
   after_save :update_taggings
@@ -27,19 +29,17 @@ class Op < ActiveRecord::Base
     slug
   end
 
-  #attr_accessible :content, :name, :slug, :tag_list, :avatar, :wikipedia_hits, :link_karma, :comment_karma, :entities_links_attributes
-  attr_accessor :avatar
+  # Validations
+  attr_accessor :avatar #Paperclip
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
 
-  # Associating OP social profile links
+  # Relations
   has_many :links, :class_name => 'OpsLink'
   has_many :amas, through: :users
   has_many :comments, through: :users
   has_many :taggings, foreign_key: :taggable_id
-
   has_and_belongs_to_many :users
-  #accepts_nested_attributes_for :entities_links, :reject_if => lambda { |a| a[:link].blank? }, :allow_destroy => true
 
   # can be tagged using "acts_as_taggable" gem
   acts_as_taggable
@@ -49,6 +49,8 @@ class Op < ActiveRecord::Base
 
   # paperclip gem to store avatars, in the following sizes
   has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
+
+  private
 
   # Create a OP slug
   def default_slug

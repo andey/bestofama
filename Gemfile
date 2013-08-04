@@ -31,6 +31,7 @@ end
 
 group :development do
   gem 'awesome_print'
+  gem 'annotate'
 end
 
 group :heroku do

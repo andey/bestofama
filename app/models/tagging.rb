@@ -10,6 +10,7 @@
 #  tagger_type   :string(255)
 #  context       :string(128)
 #  created_at    :datetime
+#  karma         :integer
 #
 
 class Tagging < ActiveRecord::Base

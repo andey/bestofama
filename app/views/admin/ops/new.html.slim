@@ -17,27 +17,27 @@
               - @op.errors.full_messages.each do |msg|
                 li= msg
 
-        .field
-          label User
-          br/
-          = User.find(params[:user_id]).username
-          = hidden_field_tag :user_id, params[:user_id]
-        .field
+        label User
+        br/
+        = User.find(params[:user_id]).username
+        = hidden_field_tag :user_id, params[:user_id]
+        .form-group
           = f.label :name
-          = f.text_field :name
-        .field
+          = f.text_field :name, :class => "form-control"
+        .form-group
           = f.label :tag_list, "Tags"
-          = f.text_field :tag_list
-        .field
+          = f.text_field :tag_list, :class => "form-control"
+        .form-group
           = f.label :content
-          = f.text_area :content, :style => 'height: 150px;'
-        .field
+          span.pull-right#count= '0'
+          = f.text_area :content, :class => "form-control", :style => 'height: 150px;'
+        .form-group
           = f.label :avatar
           br/
           = f.file_field :avatar
-        .field
+        .form-group
           label Wikipedia URL
-          = text_field_tag :wikipedia_url
+          = text_field_tag :wikipedia_url, nil, :class => "form-control"
         .actions
           = f.submit 'Add OP', :class => 'btn btn-primary pull-right'
         .clearfix

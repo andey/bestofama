@@ -20,3 +20,8 @@ jQuery ->
       googleimages_string = 'https://www.google.com/search?tbm=isch&q=' + encoded
       $('#googleimages_link').attr('href', googleimages_string)
       $('#op_name').val(value)
+
+    $('#op_content').keyup (event) ->
+      $('#count').text($(this).val().length)
+      if $(this).val().length > 250
+        $('#count').css('color', 'red')

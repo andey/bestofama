@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(:username).paginate(:page => params[:page], :per_page => 25)
+    @users = User.order(:updated_at).paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,46 +17,6 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-    end
-  end
-
-  # GET /users/new
-  def new
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
-  end
-
-  # GET /users/1/edit
-  def edit
-    @user = User.find_by_username(params[:id])
-  end
-
-  # POST /users
-  def create
-    @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to admin_user_path(@user), :notice => 'User was successfully created.' }
-      else
-        format.html { render :action => "new" }
-      end
-    end
-  end
-
-  # PUT /users/1
-  def update
-    @user = User.find_by_username(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params.require(:user).permit(:link_karma, :comment_karma))
-        format.html { redirect_to admin_user_path(@user), :notice => 'User was successfully updated.' }
-      else
-        format.html { render :action => "edit" }
-      end
     end
   end
 

@@ -1,0 +1,26 @@
+.row
+  .col-12
+    h1 Latest Users
+
+.row
+  .col-12
+    table.table
+      tr
+        th Username
+        th Link
+        th Comment
+        th
+        th
+
+      - @users.each do |user|
+          tr
+            td= user.username
+            td= user.link_karma
+            td= user.comment_karma
+            td= link_to 'Show', admin_user_path(user)
+            td= link_to 'Destroy', admin_user_path(user), :method => :delete, :data => {:confirm => 'Are you sure?'}
+
+.row
+  .col-12
+    .center
+      = will_paginate @users

@@ -4,7 +4,7 @@ class Admin::TagsController < ApplicationController
 
   # GET /tags
   def index
-    @tags = Tag.order(:id).paginate(:page => params[:page], :per_page => 25)
+    @tags = Tag.order(:name).paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # index.html.erb

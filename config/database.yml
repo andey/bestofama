@@ -15,9 +15,5 @@ development:
   password: password
 
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: bestofama
-  pool: 5
-  username: postgres
-  password: password
+  adapter: sqlite3
+  database: db/test.sqlite3

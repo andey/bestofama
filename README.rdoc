@@ -1,4 +1,6 @@
 == V3
+{<img src="https://gemnasium.com/andey/bestofama.png" alt="Dependency Status" />}[https://gemnasium.com/andey/bestofama]
+{<img src="https://codeclimate.com/github/andey/bestofama.png" />}[https://codeclimate.com/github/andey/bestofama]
 
 Now with:
 * Ruby 2.0.0

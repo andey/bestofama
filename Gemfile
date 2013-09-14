@@ -12,7 +12,7 @@ gem 'slim-rails'
 gem 'uglifier', '~> 1.3'
 gem 'jbuilder', '~> 1.0.1'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
+gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git' # Bootstrap 3
 gem "high_voltage", "~> 1.2.2"
 gem "acts-as-taggable-on", "~> 2.4.1"
 gem 'htmlentities'
@@ -21,7 +21,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'paperclip'
 gem 'aws-sdk'
-gem 'paper_trail', :git => "git://github.com/airblade/paper_trail.git", :branch => "rails4"
+gem 'paper_trail', '>= 3.0.0.beta1'
 gem 'airbrake'
 gem 'httparty'
 

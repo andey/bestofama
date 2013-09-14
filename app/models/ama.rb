@@ -32,7 +32,7 @@ class Ama < ActiveRecord::Base
   acts_as_taggable
 
   # AMA 'comments'
-  has_many :children, :class_name => 'Comment', :primary_key => :key, :foreign_key => :parent_key, :order => 'karma DESC'
+  has_many :children, -> { where order: 'karma DESC' }, class_name: 'Comment', primary_key: :key, foreign_key: :parent_key
 
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]

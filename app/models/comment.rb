@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :ama
   belongs_to :parent, :class_name => 'Comment', :primary_key => :key, :foreign_key => :parent_key
-  has_many :children, :class_name => 'Comment', :primary_key => :parent_key, :foreign_key => :key, :order => 'karma DESC'
+  has_many :children, -> { where order: 'karma DESC' }, class_name: 'Comment', primary_key: :parent_key, foreign_key: :key
 
   # Validations
   validates_presence_of :ama_id, :key, :parent_key, :user_id

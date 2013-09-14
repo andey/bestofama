@@ -1,9 +1,7 @@
 #Rails
 /.bundle
-/db/*.sqlite3
 /log/*.log
 /tmp
-/public/sitemaps
 
 # Docs can be found at http://andey.github.com/bestofama
 /doc

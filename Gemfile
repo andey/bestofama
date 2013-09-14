@@ -9,14 +9,14 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'slim-rails'
-gem 'uglifier', '~> 1.3'
-gem 'jbuilder', '~> 1.0.1'
+gem 'uglifier'
+gem 'jbuilder'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git' # Bootstrap 3
-gem "high_voltage", "~> 1.2.2"
-gem "acts-as-taggable-on", "~> 2.4.1"
+gem "high_voltage"
+gem "acts-as-taggable-on"
 gem 'htmlentities'
-gem 'sitemap_generator', '~> 3.4'
+gem 'sitemap_generator'
 gem 'carrierwave'
 gem 'fog'
 gem 'paperclip'
@@ -47,5 +47,5 @@ group :test do
   gem 'spork'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'rb-inotify', '~> 0.8.8'
+  gem 'rb-inotify'
 end

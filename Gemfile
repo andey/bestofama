@@ -23,6 +23,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'paper_trail', :git => "git://github.com/airblade/paper_trail.git", :branch => "rails4"
 gem 'airbrake'
+gem 'httparty'
 
 group :production do
   gem 'newrelic_rpm'

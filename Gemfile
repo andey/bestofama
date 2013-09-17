@@ -44,8 +44,4 @@ group :test do
   gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'spork'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'rb-inotify'
 end

@@ -1,0 +1,6 @@
+<% 10.times do |n| %>
+<%= "user_#{n}" %>:
+  username: <%= "username_#{n}" %>
+  comment_karma: <%= Random.rand(1..1000) %>
+  link_karma: <%= Random.rand(1..1000) %>
+<% end %>

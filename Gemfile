@@ -12,7 +12,7 @@ gem 'slim-rails'
 gem 'uglifier'
 gem 'jbuilder'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git' # Bootstrap 3
+gem 'bootstrap-will_paginate'
 gem "high_voltage"
 gem "acts-as-taggable-on"
 gem 'htmlentities'

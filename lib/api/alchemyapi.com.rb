@@ -10,10 +10,6 @@ class AlchemyApi
   def TextGetRankedKeywords(text)
     options = {:query => {:apikey => @apikey, :text => text, :outputMode => 'json'}}
     response = self.class.post('/calls/text/TextGetRankedKeywords', options)
-    if response.code == 200
-      return JSON.parse(response.body)
-    else
-      return nil
-    end
+    return response.code == 200 ? JSON.parse(response.body) : nil
   end
 end

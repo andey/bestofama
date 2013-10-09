@@ -6,7 +6,7 @@ Bestofama::Application.routes.draw do
   resources :ops
 
   get 'r/:subreddit', to: redirect('http://www.reddit.com/r/%{subreddit}')
-  get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap_index.xml.gz')
+  get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap.xml.gz')
 
   root :to => 'index#show'
 

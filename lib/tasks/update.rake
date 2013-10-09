@@ -35,28 +35,14 @@ namespace :update do
 
   # Finally check of AMAs within 5 days old
   task :ama_hourly => :environment do
-    require 'api/reddit'
-    require 'cache_builder'
-
     @ama = Ama.where("date > ?", Time.now - 5.days).order(:updated_at).first
-    if @ama
-      Reddit.populate_ama(@ama)
-      request = CacheBuilder.build_ama(@ama)
-      puts request.code
-    end
+    @ama.fetch() unless !@ama
   end
 
   # Rapidly update new AMAs
   task :ama_rapid => :environment do
-    require 'api/reddit'
-    require 'cache_builder'
-
     @ama = Ama.where("date > ?", Time.now - 12.hours).order(:updated_at).first
-    if @ama
-      Reddit.populate_ama(@ama)
-      request = CacheBuilder.build_ama(@ama)
-      puts request.code
-    end
+    @ama.fetch() unless !@ama
   end
 
   task :upcoming => :environment do
@@ -75,6 +61,7 @@ namespace :update do
     end
   end
 
+  # Update Tag with DuckDuckGo abstract definition
   task :tag => :environment do
     require 'api/duckduckgo.com'
     @tag = Tag.where(:meaningless => nil, :description => nil).first

@@ -25,23 +25,26 @@ gem 'paper_trail', '>= 3.0.0.beta1'
 gem 'airbrake'
 gem 'httparty'
 
+group :heroku do
+  gem 'rails_12factor'
+end
+
 group :production do
   gem 'newrelic_rpm'
   gem 'iron_cache_rails'
 end
 
 group :development do
-  gem 'awesome_print'
   gem 'annotate'
 end
 
-group :heroku do
-  gem 'rails_12factor'
+group :development, :test do
+  gem 'awesome_print'
+  gem 'rspec-rails'
 end
 
-gem 'rspec-rails', :group => [:test, :development]
 group :test do
   gem 'sqlite3'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
   gem 'capybara'
 end

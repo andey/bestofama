@@ -29,6 +29,34 @@ class Comment < ActiveRecord::Base
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 
+  # creates an AMA comment
+  # returns comment
+  def create_by_json(ama_id, json)
+    data = {
+        :ama_id => ama_id,
+        :key => json["id"],
+        :user_id => User.find_or_create_by(username: json["author"]).id,
+        :content => HTMLEntities.new.decode(json["body_html"]),
+        :parent_key => /_(.*)/.match(json["parent_id"])[1],
+        :date => Time.at(json["created_utc"]),
+        :karma => json["ups"].to_i - json["downs"].to_i
+      } 
+    return Comment.create(data)
+  end
+  
+  # updates an AMA comment
+  # returns comment
+  def update_by_json(json)
+    data = {
+        :content => HTMLEntities.new.decode(post["body_html"]),
+        :date => Time.at(json["created_utc"]),
+        :karma => json["ups"].to_i - json["downs"].to_i
+      }
+    return self.update_attributes(data)
+  end 
+  
+  protected
+  
   # Will return Bootstrap 3.0.0 label class
   def which_label?
     if self.user_id == self.ama.user_id
@@ -39,4 +67,5 @@ class Comment < ActiveRecord::Base
       return ''
     end
   end
+
 end

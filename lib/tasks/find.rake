@@ -4,22 +4,24 @@ namespace :find do
   
   # Find NEW AMAs
   task :new => :environment do
-    result = Reddit.getAMAs()
+    reddit = Reddit.new
+    result = reddit.getIAMAs()
     result["data"]["children"].each do |a| 
  
       # Create AMA if :
       # * Karma greater than 100
-      # * Isn't a AMA Request
+      # * Isn't an AMA Request
       # * Isn't in the Trash
       if a["data"]["score"].to_i > 100 && !a["data"]["title"].to_s.match(/ama request/i) && !Trash.find_by_key(a["data"]["id"])
-        Ama.create_by_json(a["data"]) unless Ama.find_by_key(a["data"]["id"]) 
+        @ama = Ama.new
+        @ama.create_by_json(a["data"]) unless Ama.find_by_key(a["data"]["id"]) 
       end      
     end
 
   end
   
   # Find OLD AMAs
-  # NOTE: DOES NOT WORK
+  # NOTE: This function does not work
   task :old => :environment do
   
     #get query variables to build reddit query
@@ -37,12 +39,11 @@ namespace :find do
   
       # Create AMA if :
       # * Karma greater than 100
-      # * Isn't a AMA Request
+      # * Isn't an AMA Request
       # * Isn't in the Trash
-      if a["data"]["score"].to
       if a["data"]["score"].to_i > 100 && !a["data"]["title"].to_s.match(/ama request/i) && !Trash.find_by_key(a["data"]["id"])
-        puts a["data"]["title"]
-        Reddit.save_ama(a["data"])
+        @ama = Ama.new
+        @ama.create_by_json(a["data"]) unless Ama.find_by_key(a["data"]["id"]) 
       end
     end
   

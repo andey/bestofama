@@ -11,15 +11,6 @@ class Admin::TrashesController < ApplicationController
     end
   end
 
-  # GET /trashes/1
-  def show
-    @trash = Trash.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
   # GET /trashes/new
   def new
     @trash = Trash.new
@@ -27,11 +18,6 @@ class Admin::TrashesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
     end
-  end
-
-  # GET /trashes/1/edit
-  def edit
-    @trash = Trash.find(params[:id])
   end
 
   # POST /trashes
@@ -43,19 +29,6 @@ class Admin::TrashesController < ApplicationController
         format.html { redirect_to admin_trash_path(@trash), notice: 'Trash was successfully created.' }
       else
         format.html { render action: "new" }
-      end
-    end
-  end
-
-  # PUT /trashes/1
-  def update
-    @trash = Trash.find(params[:id])
-
-    respond_to do |format|
-      if @trash.update_attributes(params[:trash])
-        format.html { redirect_to admin_trash_path(@trash), notice: 'Trash was successfully updated.' }
-      else
-        format.html { render action: "edit" }
       end
     end
   end

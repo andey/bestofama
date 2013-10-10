@@ -35,7 +35,6 @@ namespace :update do
 
   task :ama, [:hours] => [:environment] do |t, args|
     @ama = Ama.where("date > ?", Time.now - args[:hours].to_i.hours).order(:updated_at).first
-    ap @ama
     @ama.fetch() unless !@ama
   end
 

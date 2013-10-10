@@ -33,15 +33,9 @@ namespace :update do
     @op.update_attributes(:link_karma => link_karma, :comment_karma => comment_karma)
   end
 
-  # Finally check of AMAs within 5 days old
-  task :ama_hourly => :environment do
-    @ama = Ama.where("date > ?", Time.now - 5.days).order(:updated_at).first
-    @ama.fetch() unless !@ama
-  end
-
-  # Rapidly update new AMAs
-  task :ama_rapid => :environment do
-    @ama = Ama.where("date > ?", Time.now - 12.hours).order(:updated_at).first
+  task :ama, [:hours] => [:environment] do |t, args|
+    @ama = Ama.where("date > ?", Time.now - args[:hours].to_i.hours).order(:updated_at).first
+    ap @ama
     @ama.fetch() unless !@ama
   end
 

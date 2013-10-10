@@ -55,8 +55,6 @@ class Comment < ActiveRecord::Base
     return self.update_attributes(data)
   end 
   
-  protected
-  
   # Will return Bootstrap 3.0.0 label class
   def which_label?
     if self.user_id == self.ama.user_id

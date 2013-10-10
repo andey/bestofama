@@ -1,5 +1,5 @@
 namespace :cache do
-  # Build the cache of all AMA comments
+  # Build the cache of all AMAs
   task :build => :environment do
     require 'cache_builder'
     offset = ENV['offset'] ? ENV['offset'].to_i : 0

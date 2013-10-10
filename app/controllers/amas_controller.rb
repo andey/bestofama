@@ -69,9 +69,9 @@ class AmasController < ApplicationController
     if response      
       @ama = Ama.new
       @ama = @ama.create_by_json(response[0]["data"]["children"][0]["data"])
-      redirect_to ama_path(@ama), :notice => "Thank you for your submission, this AMA has now been put in the process queue.")
+      redirect_to ama_path(@ama), :notice => "Thank you for your submission, this AMA has now been put in the process queue."
     else
-      redirect_to(submit_path, :notice => "Unable to fetch AMA")
+      redirect_to submit_path, :notice => "Unable to fetch AMA"
     end
 
   end

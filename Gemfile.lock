@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/mongoid/mongoid.git
+  revision: 60a46908c248572c24a062e8a482be13c6d4bff9
+  specs:
+    mongoid (4.0.0)
+      activemodel (~> 4.0.0)
+      moped (~> 2.0.beta3)
+      origin (~> 1.0)
+      tzinfo (~> 0.3.37)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,8 +49,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
-    bootstrap-will_paginate (0.0.10)
-      will_paginate
+    bson (2.0.0.rc3)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -109,6 +118,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     minitest (4.7.5)
+    moped (2.0.0.beta3)
+      bson (~> 2.0.0.rc3)
+      optionable (~> 0.1.1)
     multi_json (1.8.1)
     multi_xml (0.5.5)
     net-http-persistent (2.9)
@@ -117,6 +129,8 @@ GEM
     net-ssh (2.7.0)
     newrelic_rpm (3.6.8.164)
     nokogiri (1.5.10)
+    optionable (0.1.1)
+    origin (1.1.0)
     paper_trail (3.0.0.beta1)
       activerecord (>= 3.0, < 5.0)
     paperclip (3.5.1)
@@ -221,7 +235,7 @@ DEPENDENCIES
   annotate
   awesome_print
   aws-sdk (>= 1.21.0)
-  bootstrap-will_paginate
+  bson (~> 2.0.0.rc2)
   capybara
   carrierwave
   coffee-rails
@@ -233,6 +247,7 @@ DEPENDENCIES
   iron_cache_rails
   jbuilder
   jquery-rails
+  mongoid!
   newrelic_rpm
   paper_trail (>= 3.0.0.beta1)
   paperclip

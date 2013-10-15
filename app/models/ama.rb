@@ -47,21 +47,20 @@ class Ama < ActiveRecord::Base
   def to_param
     key
   end
-  
+
   # Fetch AMA JSON from Reddit API
   def fetch
     begin
       reddit = Reddit.new
       response = reddit.getAMA(self.key)
       if response
+        Archive.create(response) rescue "Failed to Archive AMA #{self.key}"
         self.find_responses(response[1]["data"]["children"], '-')
         self.update_by_json(response[0]["data"]["children"][0]["data"])
-      else
-        puts "FAILED AMA FETCH #{self.key}"
       end
     end
   end
-  
+
   # Creates an AMA record.
   # Expects the record "data" from reddit.com api json.
   # returns ama
@@ -76,7 +75,7 @@ class Ama < ActiveRecord::Base
         :content => HTMLEntities.new.decode(json["selftext_html"]),
         :comments => json["num_comments"],
         :responses => 0
-      }   
+    }
     return self.save ? self : false
   end
 
@@ -107,51 +106,51 @@ class Ama < ActiveRecord::Base
       tagging.update_attribute(:karma, self.karma)
     end
   end
-  
+
   # Updates an AMA from Reddit AMA JSON
   def update_by_json(json)
-    
+
     #The sum of OP & Participant comments
     op_responses = Comment.where(:ama_id => self, :user_id => self.user).count
     participants_responses = Comment.where(:ama_id => self, :user_id => self.users).count
     responses = op_responses + participants_responses
-    
+
     if responses == 0
       responses = -1
     end
-    
+
     self.update_attributes(
-      :karma => json["score"],
-      :content => HTMLEntities.new.decode(json["selftext_html"]),
-      :comments => json["num_comments"],
-      :responses => responses
+        :karma => json["score"],
+        :content => HTMLEntities.new.decode(json["selftext_html"]),
+        :comments => json["num_comments"],
+        :responses => responses
     )
   end
-  
+
   # Recursive function, which selects and saves relevant responses.
   def find_responses(posts, depth)
-    
+
     has_op_child = false
-    
+
     posts.each do |post|
-      
+
       if post["kind"] != "more"
-        
+
         keep_post = false
         is_op = false
-        
+
         if post["data"]["author"] == self.user.username
           is_op = true
         elsif self.users.any? { |u| u.username == post["data"]["author"] }
           is_op = true
         end
-        
+
         begin
           if post["data"].has_key?("replies") and post["data"]["replies"] != ''
             keep_post = self.find_responses(post["data"]["replies"]["data"]["children"], depth + '-')
           end
         end
-        
+
         if keep_post || is_op
           has_op_child = true
           comment = Comment.find_by_key(post["data"]["id"])
@@ -168,7 +167,7 @@ class Ama < ActiveRecord::Base
         end
       end
     end
-    
+
     return has_op_child
   end
 end

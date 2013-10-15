@@ -48,7 +48,7 @@ class Comment < ActiveRecord::Base
   # returns comment
   def update_by_json(json)
     data = {
-        :content => HTMLEntities.new.decode(post["body_html"]),
+        :content => HTMLEntities.new.decode(json["body_html"]),
         :date => Time.at(json["created_utc"]),
         :karma => json["ups"].to_i - json["downs"].to_i
       }

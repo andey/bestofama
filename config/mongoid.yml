@@ -1,0 +1,22 @@
+production:
+  sessions:
+    default:
+      database: bestofama
+      username: <%= ENV["MONGO_USER"] %>
+      password: <%= ENV["MONGO_PASS"] %>
+      hosts:
+        - <%= ENV["MONGO_HOST"] %>
+
+development:
+  sessions:
+    default:
+      database: bestofama
+      hosts:
+        - localhost:27017
+
+test:
+  sessions:
+    default:
+      database: bestofama_test
+      hosts:
+        - localhost:27017

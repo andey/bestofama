@@ -47,6 +47,7 @@ end
 
 group :test do
   gem 'sqlite3'
-  gem 'factory_girl_rails', :require => false
+  gem 'factory_girl_rails', require: false
   gem 'capybara'
+  gem 'coveralls', require: false
 end

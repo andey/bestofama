@@ -12,7 +12,7 @@ Bestofama::Application.configure do
   config.assets.compress = false
   config.assets.debug = true
   config.assets.logger = false
-  config.log_level = :warn
+  config.log_level = :debug
   config.eager_load = false
 
   # Default paperclip config

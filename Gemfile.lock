@@ -1,4 +1,22 @@
 GIT
+  remote: git://github.com/gregbell/active_admin.git
+  revision: fe7d6a6e1bafc9e9dd765dfb3a09245ccd0b3cfd
+  specs:
+    activeadmin (0.6.1)
+      arbre (~> 1.0)
+      bourbon
+      coffee-rails
+      devise (~> 3.0)
+      formtastic (~> 2.3.0.rc2)
+      inherited_resources (~> 1.3)
+      jquery-rails
+      jquery-ui-rails
+      kaminari (~> 0.13)
+      rails (>= 3.2, < 4.1)
+      ransack (~> 1.0)
+      sass-rails
+
+GIT
   remote: https://github.com/mongoid/mongoid.git
   revision: 60a46908c248572c24a062e8a482be13c6d4bff9
   specs:
@@ -42,6 +60,8 @@ GEM
       json
     annotate (2.5.0)
       rake
+    arbre (1.0.1)
+      activesupport (>= 3.0.0)
     arel (4.0.0)
     atomic (1.1.14)
     awesome_print (1.2.0)
@@ -49,6 +69,10 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
+    bcrypt-ruby (3.1.2)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     bson (2.0.0.rc3)
     builder (3.1.4)
     capybara (2.1.0)
@@ -78,6 +102,12 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    devise (3.1.1)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     excon (0.25.3)
@@ -98,6 +128,11 @@ GEM
       nokogiri (~> 1.5)
       ruby-hmac
     formatador (0.2.4)
+    formtastic (2.3.0.rc2)
+      actionpack (>= 3.0)
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     high_voltage (2.0.0)
     hike (1.2.3)
     htmlentities (4.3.1)
@@ -105,6 +140,9 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.6.5)
+    inherited_resources (1.4.1)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
     iron_cache (1.4.0)
       iron_core (>= 0.5.1)
     iron_cache_rails (0.1.5)
@@ -117,7 +155,12 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.5)
+      railties (>= 3.1.0)
     json (1.8.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -137,6 +180,7 @@ GEM
     nokogiri (1.5.10)
     optionable (0.1.1)
     origin (1.1.0)
+    orm_adapter (0.4.0)
     paper_trail (3.0.0.beta1)
       activerecord (>= 3.0, < 5.0)
     paperclip (3.5.1)
@@ -145,6 +189,8 @@ GEM
       cocaine (~> 0.5.0)
       mime-types
     pg (0.17.0)
+    polyamorous (0.6.4)
+      activerecord (>= 3.0)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -169,6 +215,12 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.0)
+    ransack (1.0.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
+    responders (1.0.0)
+      railties (>= 3.2, < 5)
     rest (2.6.3)
       net-http-persistent
       rest-client (>= 0.3.0)
@@ -235,6 +287,8 @@ GEM
       rack
       raindrops (~> 0.7)
     uuidtools (2.1.4)
+    warden (1.2.3)
+      rack (>= 1.0)
     will_paginate (3.0.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -243,6 +297,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeadmin!
   acts-as-taggable-on
   airbrake
   annotate

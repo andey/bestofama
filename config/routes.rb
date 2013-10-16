@@ -1,5 +1,7 @@
 Bestofama::Application.routes.draw do
-  instance_eval(File.read(Rails.root.join("config/routes/admin.rb")))
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  instance_eval(File.read(Rails.root.join("config/routes/moderate.rb")))
   instance_eval(File.read(Rails.root.join("config/routes/public.rb")))
   instance_eval(File.read(Rails.root.join("config/routes/reroute.rb")))
 end

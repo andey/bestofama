@@ -26,6 +26,7 @@ gem 'aws-sdk', '>= 1.21.0'
 gem 'paper_trail', '>= 3.0.0.beta1'
 gem 'airbrake'
 gem 'httparty'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :heroku do
   gem 'rails_12factor'

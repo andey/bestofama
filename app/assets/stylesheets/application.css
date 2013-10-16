@@ -11,5 +11,7 @@
  *= require_self
  *= require bootstrap-3.0.0.min
  *= require bootstrap-glyphicons-1.0.0
- *= require_tree .
+ *= require v3
+ *= require amas
+ *= require ops
  */

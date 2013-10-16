@@ -1,0 +1,31 @@
+.row
+  .col-8.col-sm-8.col-lg-8
+    h1 Listing Op's
+  .col-4.col-sm-4.col-lg-4 style="padding-top: 20px;"
+    = link_to 'New Entity', new_moderate_op_path, :class => 'btn pull-right'
+.row
+  .col-12.col-sm-12.col-lg-12
+    table.table
+      tr
+        th Name
+        th Tags
+        th AMAs
+        th Wikipedia
+        th Comment
+        th Link
+        th
+        th
+      - @ops.each do |op|
+        tr
+          td= link_to op.name, op_path(op)
+          td= op.tag_list.count
+          td= Ama.where(:user_id => op.users).count
+          td= op.wikipedia_hits
+          td= op.comment_karma
+          td= op.link_karma
+          td= link_to 'Show', moderate_op_path(op)
+          td= link_to 'Destroy', moderate_op_path(op), :method => :delete, :data =>  confirm='Are you sure?'
+.row
+  .col-12.col-sm-12.col-lg-12
+    .center
+      = will_paginate @ops

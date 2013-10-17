@@ -143,6 +143,21 @@ class Ama < ActiveRecord::Base
     )
   end
 
+  # Is the username an OP or a notable participant?
+  def is_op?(username)
+    username == self.user.username || self.users.any? { |u| u.username == username }
+  end
+
+  def find_or_create_comment_by_json(data)
+    comment = Comment.find_by_key(data["id"])
+    if comment
+      comment.update_by_json(data)
+    else
+      comment = Comment.new
+      comment.create_by_json(self.id, data)
+    end
+  end
+
   # Recursive function, which selects and saves relevant responses.
   def find_responses(posts, depth)
 
@@ -153,13 +168,7 @@ class Ama < ActiveRecord::Base
       if post["kind"] != "more"
 
         keep_post = false
-        is_op = false
-
-        if post["data"]["author"] == self.user.username
-          is_op = true
-        elsif self.users.any? { |u| u.username == post["data"]["author"] }
-          is_op = true
-        end
+        is_op = self.is_op?(post["data"]["author"])
 
         begin
           if post["data"].has_key?("replies") and post["data"]["replies"] != ''
@@ -169,18 +178,9 @@ class Ama < ActiveRecord::Base
 
         if keep_post || is_op
           has_op_child = true
-          comment = Comment.find_by_key(post["data"]["id"])
-          if comment
-            comment.update_by_json(post["data"])
-            # puts depth + ' [' + post["data"]["author"] + '] UPDATED'
-          else
-            comment = Comment.new
-            comment.create_by_json(self.id, post["data"])
-            # puts depth + ' [' + post["data"]["author"] + '] SAVED'
-          end
-        else
-          # puts depth + ' ' + post["data"]["author"]
+          self.find_or_create_comment_by_json(post["data"])
         end
+
       end
     end
 

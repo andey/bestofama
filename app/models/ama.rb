@@ -44,6 +44,15 @@ class Ama < ActiveRecord::Base
   # Update tagging karma score
   after_save :update_taggings
 
+  # Moderation Queue
+  scope :queue, -> { where 'amas.id NOT IN ( SELECT taggable_id from taggings ) AND amas.user_id NOT IN ( SELECT user_id from ops_users )' }
+
+  # Tagless AMAs
+  scope :tagless, -> { where 'amas.id NOT IN ( SELECT taggable_id from taggings )' }
+
+  # Opless AMAs
+  scope :opless, -> { where 'amas.user_id NOT IN ( SELECT user_id from ops_users )' }
+
   def to_param
     key
   end
@@ -77,6 +86,13 @@ class Ama < ActiveRecord::Base
         :responses => 0
     }
     return self.save ? self : false
+  end
+
+  # Trash an AMA
+  def trash
+    Comment.where(:ama_id => self.id).destroy_all
+    Trash.create(:key => self.key)
+    self.destroy
   end
 
   protected

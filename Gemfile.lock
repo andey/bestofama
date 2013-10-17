@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 5f24d8084ead27db2782e1d02243569f61ce90ee
+  revision: 754838f6cb07a9b8cad42921679b51c48a7835a7
   specs:
     activeadmin (0.6.1)
       arbre (~> 1.0)
@@ -89,9 +89,9 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.2)
       climate_control (>= 0.0.3, < 1.0)
-    coffee-rails (4.0.0)
+    coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0.beta, < 5.0)
+      railties (>= 4.0.0, < 5.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -158,7 +158,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (4.0.5)
       railties (>= 3.1.0)
-    json (1.8.0)
+    json (1.8.1)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)

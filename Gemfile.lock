@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 754838f6cb07a9b8cad42921679b51c48a7835a7
+  revision: ecfb8bb04d2d85f16d46f2e36e2f9098e4195f6b
   specs:
     activeadmin (0.6.1)
       arbre (~> 1.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/mongoid/mongoid.git
-  revision: ddfe7773d4689473525e2925d232889b4d6d6f90
+  revision: e3539830c2c00eea134951eb3cd9eef669ddef99
   specs:
     mongoid (4.0.0)
       activemodel (~> 4.0.0)
@@ -65,7 +65,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     awesome_print (1.2.0)
-    aws-sdk (1.21.0)
+    aws-sdk (1.22.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)

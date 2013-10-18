@@ -52,7 +52,7 @@ class Op < ActiveRecord::Base
   has_many :comments, through: :users
   has_many :taggings, foreign_key: :taggable_id
 
-  has_and_belongs_to_many :users, autosave: true
+  has_and_belongs_to_many :users
   accepts_nested_attributes_for :users, :allow_destroy => true, :reject_if => lambda { |l| l[:username].blank? }
 
   # How to deal with user nested attributes

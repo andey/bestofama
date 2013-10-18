@@ -1,8 +1,0 @@
-h1= @ama.title
-.panel
-  h3 Content
-  .panel-contents= @ama.content.html_safe
-
-= semantic_form_for [:admin, @ama] do |f|
-  = f.inputs :tag_list
-  = f.actions

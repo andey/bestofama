@@ -28,6 +28,19 @@ class Ama < ActiveRecord::Base
 
   # has many "users", that are guest speakers
   has_and_belongs_to_many :users
+  accepts_nested_attributes_for :users, :allow_destroy => true, :reject_if => lambda { |l| l[:username].blank? }
+
+  # How to deal with user nested attributes
+  def users_attributes=(users)
+    users.values.each do |params|
+      user = User.find_by_id(params[:id]) || User.find_by_username(params[:username]) || User.create(username: params[:username])
+      if params[:_destroy].to_i == 1
+        self.users.destroy(user)
+      else
+        self.users << user unless self.users.include?(user)
+      end
+    end
+  end
 
   # can be tagged using "acts_as_taggable" gem
   acts_as_taggable

@@ -1,6 +1,6 @@
 ActiveAdmin.register Ama do
 
-  actions :all, :except => [:destroy]
+  actions :all, :except => [:destroy, :new]
 
   action_item :only => :show do
     link_to 'Public', ama
@@ -25,13 +25,24 @@ ActiveAdmin.register Ama do
     redirect_to admin_ama_path(ama)
   end
 
-  form :partial => "tags"
+  form do |f|
+    f.semantic_errors *f.object.errors.keys
+    f.inputs "Tag List" do
+      f.input :tag_list
+    end
+    f.inputs "Participants" do
+      f.has_many :users, :allow_destroy => true do |u|
+        u.input :username
+      end
+    end
+    f.buttons
+  end
 
   controller do
     defaults :finder => :find_by_key
 
     def permitted_params
-      params.permit(:ama => [:tag_list])
+      params.permit(:ama => [:tag_list, :users_attributes => [:username, :_destroy, :id]])
     end
   end
 
@@ -45,10 +56,10 @@ ActiveAdmin.register Ama do
       end
       row :tag_list
       row :op do
-        link_to ama.user.username, new_moderate_op_path(user_id: ama.user.id)
+        link_to ama.user.username, new_admin_op_path(user_id: ama.user.id)
       end
       row :participants do
-        ama.users.map{|u| link_to u.username, new_moderate_op_path(user_id: u.id)}.join(", ").html_safe
+        ama.users.map{|u| link_to u.username, new_admin_op_path(user_id: u.id)}.join(", ").html_safe
       end
       row :karma
       row :permalink

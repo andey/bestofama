@@ -4,7 +4,7 @@ ActiveAdmin.register Op do
     defaults :finder => :find_by_slug
 
     def permitted_params
-      params.permit(:op => [:name, :content, :tag_list, :avatar, :links_attributes => [:link, :_destroy, :id]])
+      params.permit(:op => [:name, :content, :tag_list, :avatar, :links_attributes => [:link, :_destroy, :id], :users_attributes => [:username, :_destroy, :id]])
     end
   end
 
@@ -20,9 +20,15 @@ ActiveAdmin.register Op do
       f.input :avatar
     end
 
-    f.inputs do
-      f.has_many :links, :allow_destroy => true do |cf|
-        cf.input :link
+    f.inputs "Links" do
+      f.has_many :links, :allow_destroy => true do |l|
+        l.input :link
+      end
+    end
+
+    f.inputs "Users" do
+      f.has_many :users, :allow_destroy => true do |u|
+        u.input :username
       end
     end
 

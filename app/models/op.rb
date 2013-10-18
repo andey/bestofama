@@ -34,16 +34,6 @@ class Op < ActiveRecord::Base
   validates_presence_of :name, :slug
   validates_uniqueness_of :slug
 
-  # Relations
-  has_many :links, :class_name => 'OpsLink'
-  accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => lambda { |l| l[:link].blank? }
-
-  has_many :amas, through: :users
-  has_many :comments, through: :users
-  has_many :taggings, foreign_key: :taggable_id
-  has_and_belongs_to_many :users
-
-
   # can be tagged using "acts_as_taggable" gem
   acts_as_taggable
 
@@ -52,6 +42,30 @@ class Op < ActiveRecord::Base
 
   # paperclip gem to store avatars, in the following sizes
   has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
+
+
+  # Relations
+  has_many :links, :class_name => 'OpsLink'
+  accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => lambda { |l| l[:link].blank? }
+
+  has_many :amas, through: :users
+  has_many :comments, through: :users
+  has_many :taggings, foreign_key: :taggable_id
+
+  has_and_belongs_to_many :users, autosave: true
+  accepts_nested_attributes_for :users, :allow_destroy => true, :reject_if => lambda { |l| l[:username].blank? }
+
+  # How to deal with user nested attributes
+  def users_attributes=(users)
+    users.values.each do |params|
+      user = User.find_by_id(params[:id]) || User.find_by_username(params[:username]) || User.create(username: params[:username])
+      if params[:_destroy].to_i == 1
+        self.users.destroy(user)
+      else
+        self.users << user unless self.users.include?(user)
+      end
+    end
+  end
 
   private
 

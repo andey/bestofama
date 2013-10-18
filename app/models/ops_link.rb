@@ -25,7 +25,7 @@ class OpsLink < ActiveRecord::Base
       [9, 'IMDB', 'imdb.com']
   ]
 
-  before_create :select_site
+  before_validation :select_site
   validates_presence_of :link, :op_id, :site_id
 
   def site

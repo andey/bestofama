@@ -36,10 +36,13 @@ class Op < ActiveRecord::Base
 
   # Relations
   has_many :links, :class_name => 'OpsLink'
+  accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => lambda { |l| l[:link].blank? }
+
   has_many :amas, through: :users
   has_many :comments, through: :users
   has_many :taggings, foreign_key: :taggable_id
   has_and_belongs_to_many :users
+
 
   # can be tagged using "acts_as_taggable" gem
   acts_as_taggable

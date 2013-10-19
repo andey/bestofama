@@ -33,9 +33,8 @@ class Ama < ActiveRecord::Base
   # How to deal with user nested attributes
   def users_attributes=(users)
     users.values.each do |params|
-      user = User.find_or_create_by(username: params[:username])
-      self.users << user unless self.users.include?(user)
-      self.users.destroy(user) if params[:_destroy].to_i == 1
+      User.find_or_create_by(username: params[:username])
+      params[:_destroy].to_i == 1 ? self.remove_user(user) : self.add_user(user)
     end
   end
 
@@ -105,6 +104,16 @@ class Ama < ActiveRecord::Base
     self.destroy
   end
 
+  # Add an user to AMA
+  def add_user(user)
+    self.users << user unless self.users.include?(user)
+  end
+
+  # Remove user from AMA
+  def remove_user(user)
+    self.users.destroy(user)
+  end
+
   protected
 
   # After an AMA is updated,
@@ -168,8 +177,16 @@ class Ama < ActiveRecord::Base
     end
   end
 
+  def keep_comment?(data)
+    if data.has_key?("replies") and data["replies"] != ''
+      return self.find_responses(data["replies"]["data"]["children"])
+    else
+      return false
+    end
+  end
+
   # Recursive function, which selects and saves relevant responses.
-  def find_responses(posts, depth)
+  def find_responses(posts)
 
     has_op_child = false
 
@@ -177,16 +194,7 @@ class Ama < ActiveRecord::Base
 
       if post["kind"] != "more"
 
-        keep_post = false
-        is_op = self.is_op?(post["data"]["author"])
-
-        begin
-          if post["data"].has_key?("replies") and post["data"]["replies"] != ''
-            keep_post = self.find_responses(post["data"]["replies"]["data"]["children"], depth + '-')
-          end
-        end
-
-        if keep_post || is_op
+        if self.keep_comment?(post["data"]) || self.is_op?(post["data"]["author"])
           has_op_child = true
           self.find_or_create_comment_by_json(post["data"])
         end

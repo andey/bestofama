@@ -33,12 +33,9 @@ class Ama < ActiveRecord::Base
   # How to deal with user nested attributes
   def users_attributes=(users)
     users.values.each do |params|
-      user = User.find_by_id(params[:id]) || User.find_by_username(params[:username]) || User.create(username: params[:username])
-      if params[:_destroy].to_i == 1
-        self.users.destroy(user)
-      else
-        self.users << user unless self.users.include?(user)
-      end
+      user = User.find_or_create_by(username: params[:username])
+      self.users << user unless self.users.include?(user)
+      self.users.destroy(user) if params[:_destroy].to_i == 1
     end
   end
 

@@ -58,13 +58,20 @@ class Op < ActiveRecord::Base
   # How to deal with user nested attributes
   def users_attributes=(users)
     users.values.each do |params|
-      user = User.find_or_create_by(username: params[:username])
-      self.users << user unless self.users.include?(user)
-      self.users.destroy(user) if params[:_destroy].to_i == 1
+      User.find_or_create_by(username: params[:username])
+      params[:_destroy].to_i == 1 ? self.remove_user(user) : self.add_user(user)
     end
   end
 
   private
+
+  def add_user(user)
+    self.users << user unless self.users.include?(user)
+  end
+
+  def remove_user(user)
+    self.users.destroy(user)
+  end
 
   # Create a OP slug
   def default_slug

@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/mongoid/mongoid.git
-  revision: e3539830c2c00eea134951eb3cd9eef669ddef99
+  revision: a9b962f17de359d3173cf0ece813c9020803d3af
   specs:
     mongoid (4.0.0)
       activemodel (~> 4.0.0)
@@ -65,7 +65,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     awesome_print (1.2.0)
-    aws-sdk (1.22.0)
+    aws-sdk (1.22.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)

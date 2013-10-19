@@ -17,6 +17,8 @@
 #
 
 require 'api/reddit.com'
+require 'iron_worker_ng'
+
 class Ama < ActiveRecord::Base
 
   # Basic validations
@@ -51,7 +53,7 @@ class Ama < ActiveRecord::Base
   # after_save :update_ops
 
   # Update tagging karma score
-  after_save :update_taggings
+  after_save :update_taggings, :build_cache
 
   # Moderation Queue
   scope :queue, -> { where 'amas.id NOT IN ( SELECT taggable_id from taggings ) AND amas.user_id NOT IN ( SELECT user_id from ops_users )' }
@@ -140,6 +142,11 @@ class Ama < ActiveRecord::Base
     self.taggings.each do |tagging|
       tagging.update_attribute(:karma, self.karma)
     end
+  end
+
+  def build_cache
+    client = IronWorkerNG::Client.new(token: ENV['IRON_CACHE_TOKEN'], project_id: ENV['IRON_CACHE_PROJECT_ID'])
+    client.tasks.create( 'build_cache', :ama => self.key )
   end
 
   # Updates an AMA from Reddit AMA JSON

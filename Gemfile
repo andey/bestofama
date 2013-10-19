@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem "rails", "~> 4.0.0"
 gem 'pg'
 gem 'bson', '~> 2.0.0.rc2'
-gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
+gem 'mongoid', github: 'mongoid/mongoid'
 gem 'unicorn'
 gem 'jquery-rails'
 gem 'sass-rails'
@@ -27,6 +27,7 @@ gem 'paper_trail', '>= 3.0.0.beta1'
 gem 'airbrake'
 gem 'httparty'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'iron_worker_ng'
 
 group :heroku do
   gem 'rails_12factor'

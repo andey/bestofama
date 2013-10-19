@@ -179,7 +179,7 @@ class Ama < ActiveRecord::Base
   end
 
   # Should this comment be saved?
-  def keep_comment?(data)
+  def comment_has_children?(data)
     if data.has_key?("replies") and data["replies"] != ''
       return self.find_responses(data["replies"]["data"]["children"])
     else
@@ -192,7 +192,7 @@ class Ama < ActiveRecord::Base
     has_op_child = false
 
     posts.each do |post|
-      if post["kind"] != "more" && ( self.keep_comment?(post["data"]) || self.is_op?(post["data"]["author"]) )
+      if post["kind"] != "more" && ( self.comment_has_children?(post["data"]) || self.is_op?(post["data"]["author"]) )
         has_op_child = true
         self.find_or_create_comment_by_json(post["data"])
       end

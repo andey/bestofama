@@ -17,4 +17,8 @@ class Reddit
   def getIAMAs
     return Rails.env == 'test' ? JSON.parse(File.read("spec/api/reddit.com/r/IAmA.json")) : get("/r/IAmA.json")
   end
+
+  def getUser(username)
+    return get "/user/#{username}/about.json"
+  end
 end

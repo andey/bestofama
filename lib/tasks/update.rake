@@ -15,17 +15,21 @@ namespace :update do
     if url
       require 'api/stats.grok.se'
       slug = url.link.match(/([^\/]*)$/)[1]
-      stats = Grokse.get("http://stats.grok.se/json/en/latest90/#{slug}")
-      sum = stats['daily_views'].values.sum
-      @op.update_attribute(:wikipedia_hits, sum)
+      grokse = Grokse.new
+      stats = grokse.latest90(slug)
+      if stats
+        sum = stats['daily_views'].values.sum
+        @op.update_attribute(:wikipedia_hits, sum)
+      end
     end
 
     #update Reddit users link and comment karma
-    require 'api/reddit'
+    require 'api/reddit.com'
     link_karma = 0
     comment_karma = 0
     @op.users.uniq.each do |user|
-      json = Reddit.get("http://www.reddit.com/user/#{user.username}/about.json")
+      reddit = Reddit.new
+      json = reddit.getUser(user.username)
       link_karma += json["data"]["link_karma"].to_i
       comment_karma += json["data"]["comment_karma"].to_i
       user.update_attributes(:link_karma => json["data"]["link_karma"], :comment_karma => json["data"]["comment_karma"])

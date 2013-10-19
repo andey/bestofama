@@ -1,20 +1,11 @@
 #== Wikipedia Stats API library
 
-module Grokse
-  require 'net/http'
-  require 'open-uri'
-  require 'override/json'
-  require 'htmlentities'
+class Grokse
+  include HTTParty
+  base_uri 'stats.grok.se'
 
-  class << self
-
-    # generic http GET request, parses json
-    # @return json
-    def get(url)
-      http = Net::HTTP.new("stats.grok.se")
-      request = Net::HTTP::Get.new(url)
-      response = http.request(request)
-      return JSON.parse(response.read_body)
-    end
+  def latest90(slug)
+    response = self.class.get "/json/en/latest90/#{slug}"
+    return response.code == 200 ? JSON.parse(response.body) : nil
   end
 end

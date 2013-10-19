@@ -167,6 +167,7 @@ class Ama < ActiveRecord::Base
     username == self.user.username || self.users.any? { |u| u.username == username }
   end
 
+  # Find or Create comment from Reddit JSON
   def find_or_create_comment_by_json(data)
     comment = Comment.find_by_key(data["id"])
     if comment
@@ -177,6 +178,7 @@ class Ama < ActiveRecord::Base
     end
   end
 
+  # Should this comment be saved?
   def keep_comment?(data)
     if data.has_key?("replies") and data["replies"] != ''
       return self.find_responses(data["replies"]["data"]["children"])
@@ -187,18 +189,12 @@ class Ama < ActiveRecord::Base
 
   # Recursive function, which selects and saves relevant responses.
   def find_responses(posts)
-
     has_op_child = false
 
     posts.each do |post|
-
-      if post["kind"] != "more"
-
-        if self.keep_comment?(post["data"]) || self.is_op?(post["data"]["author"])
-          has_op_child = true
-          self.find_or_create_comment_by_json(post["data"])
-        end
-
+      if post["kind"] != "more" && ( self.keep_comment?(post["data"]) || self.is_op?(post["data"]["author"]) )
+        has_op_child = true
+        self.find_or_create_comment_by_json(post["data"])
       end
     end
 

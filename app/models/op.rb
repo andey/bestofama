@@ -65,12 +65,12 @@ class Op < ActiveRecord::Base
 
   private
 
-  # Add an user to AMA
+  # Add an user to OP
   def add_user(user)
     self.users << user unless self.users.include?(user)
   end
 
-  # Remove user from AMA
+  # Remove user from OP
   def remove_user(user)
     self.users.destroy(user)
   end

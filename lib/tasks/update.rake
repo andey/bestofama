@@ -38,7 +38,7 @@ namespace :update do
   end
 
   task :ama, [:hours] => [:environment] do |t, args|
-    @ama = Ama.where("date > ?", Time.now - args[:hours].to_i.hours).order(:updated_at)
+    @ama = Ama.where("date > ?", Time.now - args[:hours].to_i.hours).order(:updated_at).first
     @ama.fetch() unless !@ama
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015032111) do
+ActiveRecord::Schema.define(version: 20131020053756) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20131015032111) do
   end
 
   add_index "comments", ["key"], name: "index_comments_on_key", using: :btree
+  add_index "comments", ["parent_key"], name: "index_comments_on_parent_key", using: :btree
 
   create_table "meta", force: true do |t|
     t.string   "name",       null: false

@@ -63,8 +63,6 @@ class Op < ActiveRecord::Base
     end
   end
 
-  private
-
   # Add an user to OP
   def add_user(user)
     self.users << user unless self.users.include?(user)
@@ -75,10 +73,12 @@ class Op < ActiveRecord::Base
     self.users.destroy(user)
   end
 
+  private
+
   # Create a OP slug
   def default_slug
     if self.slug.nil? || self.slug.empty?
-      self.slug = self.name                      user
+      self.slug = self.name
     end
   end
 

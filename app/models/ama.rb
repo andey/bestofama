@@ -74,7 +74,7 @@ class Ama < ActiveRecord::Base
       reddit = Reddit.new
       response = reddit.getAMA(self.key)
       if response
-        Archive.create(response) rescue "Failed to Archive AMA #{self.key}"
+        Archive.create(key: self.key, timestamp: Time.now, reponse: response) rescue "Failed to Archive AMA #{self.key}"
         self.find_responses(response[1]["data"]["children"])
         self.update_by_json(response[0]["data"]["children"][0]["data"])
       end

@@ -54,6 +54,7 @@ ActiveAdmin.register Op do
       row :id
       row :name
       row :content
+      row :tag_list
       row :users do
         op.users.map{|u| link_to u.username, admin_user_path(u)}.join(", ").html_safe
       end

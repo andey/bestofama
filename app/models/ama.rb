@@ -64,6 +64,9 @@ class Ama < ActiveRecord::Base
   # Opless AMAs
   scope :opless, -> { where 'amas.user_id NOT IN ( SELECT user_id from ops_users )' }
 
+  # Without Comments
+  scope :responseless, -> { where 'amas.responses <= 0' }
+
   def to_param
     key
   end

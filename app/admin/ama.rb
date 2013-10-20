@@ -10,18 +10,19 @@ ActiveAdmin.register Ama do
     link_to 'Trash', trash_admin_ama_path, method: :delete
   end
 
+  action_item :only => :show do
+    link_to 'Fetch', fetch_admin_ama_path, method: :get
+  end
+
   member_action :trash, :method => :delete do
     ama = Ama.find_by_key(params[:id])
     ama.trash()
     redirect_to admin_amas_path
   end
 
-  member_action :add_user, :method => :get do
+  member_action :fetch, :method => :get do
     ama = Ama.find_by_key(params[:id])
-    user = User.find_or_create_by(username: params[:username])
-    if user
-      ama.users << user
-    end
+    ama.fetch()
     redirect_to admin_ama_path(ama)
   end
 
@@ -76,6 +77,7 @@ ActiveAdmin.register Ama do
   scope :queue, default: true
   scope :tagless
   scope :opless
+  scope :responseless
   scope :all
 
   filter :title
@@ -83,6 +85,7 @@ ActiveAdmin.register Ama do
   index do
     column :karma
     column :title
+    column :responses
     column :created_at
     column :updated_at
     default_actions

@@ -38,8 +38,14 @@ namespace :update do
   end
 
   task :ama, [:hours] => [:environment] do |t, args|
-    @ama = Ama.where("date > ?", Time.now - args[:hours].to_i.hours).order(:updated_at).reverse_order.first
-    @ama.fetch() unless !@ama
+    @ama = Ama.where("date > ?", Time.now - args[:hours].to_i.hours).order(:updated_at)
+
+    @ama.each do |ama|
+      puts ama.title
+    end
+
+
+    #@ama.fetch() unless !@ama
   end
 
   task :upcoming => :environment do

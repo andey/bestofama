@@ -21,13 +21,7 @@ class Op < ActiveRecord::Base
 
   # Hooks
   before_validation :default_slug
-  before_save { |op| op.slug = op.slug.parameterize }
   after_save :update_taggings
-
-  # default id
-  def to_param
-    slug
-  end
 
   # Validations
   attr_accessor :avatar #Paperclip
@@ -43,15 +37,23 @@ class Op < ActiveRecord::Base
   # paperclip gem to store avatars, in the following sizes
   has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
 
+  # Basic Relations
+  has_many :amas, through: :users
+  has_many :comments, through: :users
 
-  # Relations
+  # Link Relations
   has_many :links, :class_name => 'OpsLink'
   accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => lambda { |l| l[:link].blank? }
 
-  has_many :amas, through: :users
-  has_many :comments, through: :users
-  #has_many :taggings, foreign_key: :taggable_id
+  # How to deal with link nested attributes
+  def links_attributes=(links)
+    links.values.each do |params|
+      link = OpsLink.find_or_create_by(link: params[:link])
+      params[:_destroy].to_i == 1 ? self.remove_link(link) : self.add_link(link)
+    end
+  end
 
+  # User Relations
   has_and_belongs_to_many :users
   accepts_nested_attributes_for :users, :allow_destroy => true, :reject_if => lambda { |l| l[:username].blank? }
 
@@ -73,12 +75,27 @@ class Op < ActiveRecord::Base
     self.users.destroy(user)
   end
 
+  # Add an link to OP
+  def add_link(link)
+    self.links << link unless self.links.include?(link)
+  end
+
+  # Remove link from OP
+  def remove_link(link)
+    self.links.destroy(link)
+  end
+
+  # default id
+  def to_param
+    slug
+  end
+
   private
 
   # Create a OP slug
   def default_slug
     if self.slug.nil? || self.slug.empty?
-      self.slug = self.name
+      self.slug = self.name.parameterize
     end
   end
 

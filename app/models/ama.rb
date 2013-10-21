@@ -147,9 +147,12 @@ class Ama < ActiveRecord::Base
     end
   end
 
+  # Rebuild view cache on update
   def build_cache
-    client = IronWorkerNG::Client.new(token: ENV['IRON_CACHE_TOKEN'], project_id: ENV['IRON_CACHE_PROJECT_ID'])
-    client.tasks.create( 'build_cache', :ama => self.key )
+    if Rails.env != 'test'
+      client = IronWorkerNG::Client.new(token: ENV['IRON_CACHE_TOKEN'], project_id: ENV['IRON_CACHE_PROJECT_ID'])
+      client.tasks.create('build_cache', :ama => self.key)
+    end
   end
 
   # Updates an AMA from Reddit AMA JSON
@@ -202,7 +205,7 @@ class Ama < ActiveRecord::Base
     has_op_child = false
 
     posts.each do |post|
-      if post["kind"] != "more" && ( self.comment_has_children?(post["data"]) || self.is_op?(post["data"]["author"]) )
+      if post["kind"] != "more" && (self.comment_has_children?(post["data"]) || self.is_op?(post["data"]["author"]))
         has_op_child = true
         self.find_or_create_comment_by_json(post["data"])
       end

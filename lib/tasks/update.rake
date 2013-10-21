@@ -67,7 +67,8 @@ namespace :update do
         puts "----------------------------"
         puts "Updating Tag: #{@tag.name}"
 
-        result = DuckDuckGo.search(@tag.name)
+        duckduckgo = DuckDuckGo.new
+        result = duckduckgo.search(@tag.name)
         if result["AbstractSource"] == 'Wikipedia'
           puts "Set the AbstractSource"
           @tag.update_attribute(:wikipedia_url, result["AbstractURL"])

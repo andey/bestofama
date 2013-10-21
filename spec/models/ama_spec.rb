@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'api/reddit.com'
 
 describe Ama do
-  fixtures :ama, :user
 
   it 'create_by_json from /r/IAmA.json' do
 
@@ -52,6 +51,8 @@ describe Ama do
     end
 
     after(:all) do
+      User.delete_all
+      Ama.delete_all
       Archive.delete_all
     end
 

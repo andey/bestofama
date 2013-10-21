@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "amas", force: true do |t|
     t.string   "key",                    null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.integer  "responses",  default: 0
   end
 
-  add_index "amas", ["key"], name: "index_amas_on_key", unique: true, using: :btree
+  add_index "amas", ["key"], name: "index_amas_on_key", unique: true
 
   create_table "amas_users", id: false, force: true do |t|
     t.integer "ama_id"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.datetime "updated_at",             null: false
   end
 
-  add_index "comments", ["key"], name: "index_comments_on_key", using: :btree
-  add_index "comments", ["parent_key"], name: "index_comments_on_parent_key", using: :btree
+  add_index "comments", ["key"], name: "index_comments_on_key"
+  add_index "comments", ["parent_key"], name: "index_comments_on_parent_key"
 
   create_table "meta", force: true do |t|
     t.string   "name",       null: false
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "meta", ["name"], name: "index_meta_on_name", unique: true, using: :btree
+  add_index "meta", ["name"], name: "index_meta_on_name", unique: true
 
   create_table "ops", force: true do |t|
     t.string   "name",                            null: false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.integer  "comment_karma",       default: 0
   end
 
-  add_index "ops", ["slug"], name: "index_ops_on_slug", unique: true, using: :btree
+  add_index "ops", ["slug"], name: "index_ops_on_slug", unique: true
 
   create_table "ops_links", force: true do |t|
     t.integer  "op_id"
@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.integer  "karma"
   end
 
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: true do |t|
     t.string  "name"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "trashes", ["key"], name: "index_trashes_on_key", unique: true, using: :btree
+  add_index "trashes", ["key"], name: "index_trashes_on_key", unique: true
 
   create_table "upcomings", force: true do |t|
     t.string   "title"
@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.integer  "link_karma",    default: 0
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username"
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
@@ -178,6 +178,6 @@ ActiveRecord::Schema.define(version: 20131020053756) do
     t.datetime "created_at"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

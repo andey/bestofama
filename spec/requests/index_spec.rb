@@ -1,7 +1,13 @@
 require 'spec_helper'
 
 describe "Index" do
-  fixtures :upcoming, :ama
+
+  before(:all) do
+    10.times do
+      FactoryGirl.create(:ama)
+      FactoryGirl.create(:upcoming)
+    end
+  end
 
   it 'returns status code 200' do
     get root_path
@@ -9,29 +15,25 @@ describe "Index" do
   end
 
   context 'upcomings' do
-    it 'not include past' do
-      get root_path
-      expect(response.body).to_not include 'John Doe (Past)'
-    end
-
-    it 'include future' do
-      get root_path
-      expect(response.body).to include 'John Doe (Future)'
-    end
-
     it 'in DESC order' do
       get root_path
-      expect(response.body).to include 'John Doe (Future) 5'
-      expect(response.body).to_not include 'John Doe (Future) 6'
+      expect(response.body).to include 'John Doe 5'
+      expect(response.body).to_not include 'John Doe 6'
     end
   end
 
   context 'amas' do
     it 'in correct order' do
       get root_path
-      expect(response.body).to include 'AMA Title 4'
-      expect(response.body).to_not include 'AMA Title 5'
+      expect(response.body).to include 'AMA Title #5'
+      expect(response.body).to_not include 'AMA Title #6'
     end
+  end
+
+  after(:all) do
+    Ama.delete_all
+    User.delete_all
+    Upcoming.delete_all
   end
 
 end

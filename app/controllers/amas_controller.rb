@@ -9,7 +9,7 @@ class AmasController < ApplicationController
   # - responses count
 
   def index
-    @order = params[:order]
+    @order = params[:order] if ['karma', 'comments', 'responses'].include? params[:order]
     @order ||= 'date'
     params[:page] ||= 1
     @amas = Ama.where('responses > ?', 0).order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)

@@ -15,7 +15,6 @@ jQuery ->
           data:
             q: $('#op_name').val()
             format: 'json'
-            pretty: 1
         ).done (data) ->
           $('#op_content').val(data['AbstractText'])
           $('#op_tag_list').val(data['AbstractText'])

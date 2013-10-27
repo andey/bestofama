@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: ecfb8bb04d2d85f16d46f2e36e2f9098e4195f6b
+  revision: 6aafe72b6b3e714874f37c01801bc7f9fe2d58bb
   specs:
     activeadmin (0.6.1)
       arbre (~> 1.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: a9b962f17de359d3173cf0ece813c9020803d3af
+  revision: 769cadd48eaae203578b9915f35ac276de16ce0d
   specs:
     mongoid (4.0.0)
       activemodel (~> 4.0.0)
@@ -62,10 +62,10 @@ GEM
       rake
     arbre (1.0.1)
       activesupport (>= 3.0.0)
-    arel (4.0.0)
+    arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.2.0)
-    aws-sdk (1.22.1)
+    aws-sdk (1.23.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
@@ -87,7 +87,7 @@ GEM
       json (>= 1.7)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.2)
+    cocaine (0.5.3)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -160,7 +160,7 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.0.5)
+    jquery-ui-rails (4.1.0)
       railties (>= 3.1.0)
     json (1.8.1)
     kaminari (0.14.1)
@@ -188,10 +188,10 @@ GEM
     orm_adapter (0.4.0)
     paper_trail (3.0.0.beta1)
       activerecord (>= 3.0, < 5.0)
-    paperclip (3.5.1)
+    paperclip (3.5.2)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (~> 0.5.0)
+      cocaine (~> 0.5.3)
       mime-types
     pg (0.17.0)
     polyamorous (0.6.4)
@@ -285,9 +285,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.2.1)
+    uglifier (2.3.0)
       execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
+      json (>= 1.8.0)
     unicode (0.4.4)
     unicorn (4.6.3)
       kgio (~> 2.6)

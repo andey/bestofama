@@ -20,7 +20,7 @@ require 'api/reddit.com'
 require 'iron_worker_ng'
 
 class Ama < ActiveRecord::Base
-  include NestedAttributes
+  include NestedUser
 
   # Basic validations
   validates_presence_of :key, :permalink, :title, :user_id
@@ -102,15 +102,7 @@ class Ama < ActiveRecord::Base
     self.destroy
   end
 
-  # Add an user to AMA
-  def add_user(user)
-    self.users << user unless self.users.include?(user)
-  end
 
-  # Remove user from AMA
-  def remove_user(user)
-    self.users.destroy(user)
-  end
 
   protected
 

@@ -18,7 +18,7 @@
 #
 
 class Op < ActiveRecord::Base
-  include NestedAttributes
+  include NestedUser
 
   # Hooks
   before_validation :default_slug
@@ -54,20 +54,6 @@ class Op < ActiveRecord::Base
     end
   end
 
-  # User Relations
-  has_and_belongs_to_many :users
-  accepts_nested_attributes_for :users, :allow_destroy => true, :reject_if => lambda { |l| l[:username].blank? }
-
-  # Add an user to OP
-  def add_user(user)
-    self.users << user unless self.users.include?(user)
-  end
-
-  # Remove user from OP
-  def remove_user(user)
-    self.users.destroy(user)
-  end
-
   # Add an link to OP
   def add_link(link)
     self.links << link unless self.links.include?(link)
@@ -77,6 +63,10 @@ class Op < ActiveRecord::Base
   def remove_link(link)
     self.links.destroy(link)
   end
+
+  # User Relations
+  has_and_belongs_to_many :users
+  accepts_nested_attributes_for :users, :allow_destroy => true, :reject_if => lambda { |l| l[:username].blank? }
 
   # default id
   def to_param

@@ -5,11 +5,7 @@ module AmaProcessing
     begin
       reddit = Reddit.new
       response = reddit.getAMA(self.key)
-      if response
-        Archive.create(key: self.key, timestamp: Time.now, reponse: response) rescue "Failed to Archive AMA #{self.key}"
-        self.find_responses(response[1]["data"]["children"])
-        self.update_by_json(response[0]["data"]["children"][0]["data"])
-      end
+      self.process_it(response) if response
     end
   end
 
@@ -83,6 +79,18 @@ module AmaProcessing
     else
       return false
     end
+  end
+
+  # Process JSON response
+  def process_it(response)
+    self.archive_it(response)
+    self.find_responses(response[1]["data"]["children"])
+    self.update_by_json(response[0]["data"]["children"][0]["data"])
+  end
+
+  # Archive the AMA response
+  def archive_it(response)
+    Archive.create(key: self.key, timestamp: Time.now, reponse: response) rescue "Failed to Archive AMA #{self.key}"
   end
 
 end

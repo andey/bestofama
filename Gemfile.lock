@@ -224,6 +224,8 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
+    rdoc (4.0.1)
+      json (~> 1.4)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rest (2.6.3)
@@ -331,6 +333,7 @@ DEPENDENCIES
   pg
   rails (~> 4.0.0)
   rails_12factor
+  rdoc
   rspec-rails
   sass-rails
   sitemap_generator

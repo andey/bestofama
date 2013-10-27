@@ -40,6 +40,7 @@ end
 
 group :development do
   gem 'annotate'
+  gem 'rdoc'
 end
 
 group :development, :test do

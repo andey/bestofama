@@ -20,6 +20,7 @@ require 'api/reddit.com'
 require 'iron_worker_ng'
 
 class Ama < ActiveRecord::Base
+  include NestedAttributes
 
   # Basic validations
   validates_presence_of :key, :permalink, :title, :user_id
@@ -31,14 +32,6 @@ class Ama < ActiveRecord::Base
   # has many "users", that are guest speakers
   has_and_belongs_to_many :users
   accepts_nested_attributes_for :users, :allow_destroy => true, :reject_if => lambda { |l| l[:username].blank? }
-
-  # How to deal with user nested attributes
-  def users_attributes=(users)
-    users.values.each do |params|
-      user = User.find_or_create_by(username: params[:username])
-      params[:_destroy].to_i == 1 ? self.remove_user(user) : self.add_user(user)
-    end
-  end
 
   # can be tagged using "acts_as_taggable" gem
   acts_as_taggable

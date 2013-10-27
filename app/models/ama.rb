@@ -149,9 +149,11 @@ class Ama < ActiveRecord::Base
 
   # Rebuild view cache on update
   def build_cache
-    if Rails.env != 'test'
-      client = IronWorkerNG::Client.new(token: ENV['IRON_CACHE_TOKEN'], project_id: ENV['IRON_CACHE_PROJECT_ID'])
-      client.tasks.create('build_cache', :ama => self.key)
+    begin
+      if Rails.env != 'test'
+        client = IronWorkerNG::Client.new(token: ENV['IRON_CACHE_TOKEN'], project_id: ENV['IRON_CACHE_PROJECT_ID'])
+        client.tasks.create('build_cache', :ama => self.key)
+      end
     end
   end
 

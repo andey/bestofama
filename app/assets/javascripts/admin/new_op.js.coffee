@@ -1,5 +1,6 @@
 jQuery ->
   if $('.admin_ops.new').length > 0
+    url = $.url();
     $('.users a').click()
-    $('.users input').val(decodeURI((RegExp('username=(.+?)(&|$)').exec(location.search)||[null])[1]))
-    $('#op_name').val(decodeURI((RegExp('title=(.+?)(&|$)').exec(location.search)||[null])[1]))
+    $('.users input').val url.param('username')
+    $('#op_name').val url.param('title')

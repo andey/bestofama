@@ -1,4 +1,5 @@
 module NestedUser
+
   def users_attributes=(users)
     users.values.each do |params|
       user = User.find_or_create_by(username: params[:username])
@@ -15,4 +16,5 @@ module NestedUser
   def remove_user(user)
     self.users.destroy(user)
   end
+
 end

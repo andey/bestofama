@@ -27,7 +27,7 @@ class OpsController < ApplicationController
   # - link_karma
 
   def index
-    @order = params[:order]
+    @order = params[:order] if ['name', 'name DESC', 'comment_karma', 'link_karma'].include? params[:order]
 
     # Not all entities have a wikipedia page.
     # Therefore sort by comment_karma for all entities with wikipedia_hit = 0

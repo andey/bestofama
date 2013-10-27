@@ -4,4 +4,5 @@
 {<img src="https://codeclimate.com/github/andey/bestofama.png" />}[https://codeclimate.com/github/andey/bestofama]
 {<img src="https://coveralls.io/repos/andey/bestofama/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/andey/bestofama?branch=master]
 
-BestofAMA is an indexer and archiver of reddit.com AMA's. The goal is to save, track, tag, and associate AMA's in easy to find format.
+BestofAMA is a reddit.com AMA indexer and archiver.
+The goal is to save, track, tag, and associate AMA's in an easy to find format.

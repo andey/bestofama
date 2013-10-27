@@ -60,7 +60,7 @@ ActiveAdmin.register Ama do
         link_to ama.user.username, new_admin_op_path(username: ama.user.username, title: ama.title)
       end
       row :participants do
-        ama.users.map{|u| link_to u.username, new_admin_op_path(user_id: u.id)}.join(", ").html_safe
+        ama.users.map{|u| link_to u.username, new_admin_op_path(username: u.username, title: ama.title)}.join(", ").html_safe
       end
       row :karma
       row :permalink

@@ -1,11 +1,7 @@
-== V3
+== BestofAMA
 {<img src="https://travis-ci.org/andey/bestofama.png" />}[https://travis-ci.org/andey/bestofama]
 {<img src="https://gemnasium.com/andey/bestofama.png" alt="Dependency Status" />}[https://gemnasium.com/andey/bestofama]
 {<img src="https://codeclimate.com/github/andey/bestofama.png" />}[https://codeclimate.com/github/andey/bestofama]
 {<img src="https://coveralls.io/repos/andey/bestofama/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/andey/bestofama?branch=master]
 
-Now with:
-* Ruby 2.0.0
-* Rails 4.0.0
-* Bootstrap 3.0.0.rc1
-* jQuery 2.0.x
+BestofAMA is a indexer and archiver of reddit.com AMA's. The goal is to save, track, tag, and associate AMA's in easy to find format.

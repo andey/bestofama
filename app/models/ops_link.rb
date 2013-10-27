@@ -26,7 +26,7 @@ class OpsLink < ActiveRecord::Base
   ]
 
   before_validation :select_site
-  validates_presence_of :link, :op_id, :site_id
+  validates_presence_of :link, :site_id
 
   def site
     SITES[self.site_id][1]

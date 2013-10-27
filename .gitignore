@@ -4,8 +4,5 @@
 /tmp
 /coverage
 
-# Docs can be found at http://andey.github.com/bestofama
-/doc
-
 #Rubymine IDE
 /.idea

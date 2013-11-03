@@ -20,6 +20,7 @@ gem "acts-as-taggable-on"
 gem 'htmlentities'
 gem 'sitemap_generator'
 gem 'carrierwave'
+gem 'unf'
 gem 'fog'
 gem 'paperclip'
 gem 'aws-sdk', '>= 1.21.0'

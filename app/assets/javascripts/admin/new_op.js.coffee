@@ -7,16 +7,38 @@ jQuery ->
 
     $(document).keyup (e) ->
       if e.keyCode is 27
-        console.log 'ESC key pressed'
+        name = $('#op_name').val()
+        console.log window.BING_API
+#        console.log 'ESC key pressed'
+#        $.ajax(
+#          type: 'GET'
+#          url: 'http://api.duckduckgo.com'
+#          dataType: 'jsonp'
+#          data:
+#            q: $('#op_name').val()
+#            format: 'json'
+#        ).done (data) ->
+#          $('#op_content').val(data['AbstractText'])
+#          $('#op_tag_list').val(data['AbstractText'])
+#          $('.links a').click()
+#          $('.links input').val(data['AbstractURL'])
+
         $.ajax(
           type: 'GET'
-          url: 'http://api.duckduckgo.com'
+          url: 'https://api.datamarket.azure.com/Bing/Search/v1/Composite'
           dataType: 'jsonp'
+          jsonp: '$callback'
+          cache: true
+          username: 'Xyr0Vm1kTPp3eK46QsynD2iJTCDYa3R89yZvILi3tes'
+          password: 'Xyr0Vm1kTPp3eK46QsynD2iJTCDYa3R89yZvILi3tes'
           data:
-            q: $('#op_name').val()
-            format: 'json'
+            Sources: "'image'"
+            Query: "'#{name}'"
+            $format: 'JSON'
         ).done (data) ->
-          $('#op_content').val(data['AbstractText'])
-          $('#op_tag_list').val(data['AbstractText'])
-          $('.links a').click()
-          $('.links input').val(data['AbstractURL'])
+          console.log data
+          images = data['d']['results'][0]['Image']
+          console.log images
+          $.each images, (index, value) ->
+            console.log value
+

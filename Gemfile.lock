@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: ef166a0ac8c5f66b5868d67595375f0986f04c0f
+  revision: 66d2483bfd84949730471a3fd8a267e1c2485681
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 57264eff1df0e52c32e700f797a6c15222830b50
+  revision: 10d351f3e1e75c701e0fbc4be0c22c4284fff9b1
   specs:
     mongoid (4.0.0)
       activemodel (~> 4.0.0)
@@ -112,10 +112,10 @@ GEM
     erubis (2.7.0)
     excon (0.28.0)
     execjs (2.0.2)
-    factory_girl (4.2.0)
+    factory_girl (4.3.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.2.1)
-      factory_girl (~> 4.2.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
     fog (1.18.0)
       builder
@@ -293,7 +293,7 @@ GEM
     unf (0.1.3)
       unf_ext
     unf_ext (0.0.6)
-    unicorn (4.6.3)
+    unicorn (4.7.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)

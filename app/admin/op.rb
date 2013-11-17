@@ -32,7 +32,10 @@ ActiveAdmin.register Op do
       end
     end
 
-    f.buttons
+    f.actions do
+      f.action :submit
+      f.action :cancel
+    end
   end
 
   index do

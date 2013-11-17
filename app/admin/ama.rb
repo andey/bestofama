@@ -36,7 +36,10 @@ ActiveAdmin.register Ama do
         u.input :username
       end
     end
-    f.buttons
+    f.actions do
+      f.action :submit
+      f.action :cancel
+    end
   end
 
   controller do

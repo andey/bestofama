@@ -4,8 +4,6 @@ ruby '2.0.0'
 
 gem "rails", "~> 4.0.0"
 gem 'pg'
-gem 'bson', '~> 2.0.0.rc2'
-gem 'mongoid', github: 'mongoid/mongoid'
 gem 'unicorn'
 gem 'jquery-rails'
 gem 'sass-rails'
@@ -14,7 +12,7 @@ gem 'slim-rails'
 gem 'uglifier'
 gem 'jbuilder'
 gem 'will_paginate'
-# gem 'bootstrap-will_paginate'
+gem 'bootstrap-will_paginate'
 gem "high_voltage"
 gem "acts-as-taggable-on"
 gem 'htmlentities'

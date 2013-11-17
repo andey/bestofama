@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 66d2483bfd84949730471a3fd8a267e1c2485681
+  revision: b6598e84094531e2caf1382c28a96dcf6f777f62
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -15,16 +15,6 @@ GIT
       rails (>= 3.2, < 4.1)
       ransack (~> 1.0)
       sass-rails
-
-GIT
-  remote: git://github.com/mongoid/mongoid.git
-  revision: 10d351f3e1e75c701e0fbc4be0c22c4284fff9b1
-  specs:
-    mongoid (4.0.0)
-      activemodel (~> 4.0.0)
-      moped (~> 2.0.beta3)
-      origin (~> 1.0)
-      tzinfo (~> 0.3.37)
 
 GEM
   remote: https://rubygems.org/
@@ -65,15 +55,16 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.2.0)
-    aws-sdk (1.24.0)
+    aws-sdk (1.26.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
-    bson (2.0.0.rc3)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -102,13 +93,14 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    devise (3.1.1)
+    devise (3.2.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    diff-lcs (1.2.4)
+    diff-lcs (1.2.5)
+    docile (1.1.0)
     erubis (2.7.0)
     excon (0.28.0)
     execjs (2.0.2)
@@ -166,26 +158,22 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.1)
+    lockfile (2.1.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
     minitest (4.7.5)
-    moped (2.0.0.beta3)
-      bson (~> 2.0.0.rc3)
-      optionable (~> 0.1.1)
     multi_json (1.8.2)
     multi_xml (0.5.5)
     net-http-persistent (2.9)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
-    newrelic_rpm (3.6.8.168)
+    newrelic_rpm (3.6.9.171)
     nokogiri (1.5.10)
-    optionable (0.1.1)
-    origin (1.1.0)
-    orm_adapter (0.4.0)
-    paper_trail (3.0.0.rc1)
+    orm_adapter (0.5.0)
+    paper_trail (3.0.0.rc2)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
     paperclip (3.5.2)
@@ -220,7 +208,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.0)
-    ransack (1.0.0)
+    ransack (1.1.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
@@ -234,7 +222,7 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.14.7)
-    rspec-expectations (2.14.3)
+    rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.4)
     rspec-rails (2.14.0)
@@ -251,11 +239,13 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    simplecov (0.7.1)
-      multi_json (~> 1.0)
-      simplecov-html (~> 0.7.1)
-    simplecov-html (0.7.1)
-    sitemap_generator (4.2.0)
+    simplecov (0.8.1)
+      docile (~> 1.1.0)
+      lockfile (>= 2.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    sitemap_generator (4.3.0)
       builder
     slim (2.0.2)
       temple (~> 0.6.6)
@@ -282,12 +272,12 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
-    tins (0.12.0)
+    tins (0.13.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
-    uglifier (2.3.0)
+    uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.3)
@@ -314,7 +304,7 @@ DEPENDENCIES
   annotate
   awesome_print
   aws-sdk (>= 1.21.0)
-  bson (~> 2.0.0.rc2)
+  bootstrap-will_paginate
   capybara
   carrierwave
   coffee-rails
@@ -328,7 +318,6 @@ DEPENDENCIES
   iron_worker_ng
   jbuilder
   jquery-rails
-  mongoid!
   newrelic_rpm
   paper_trail (>= 3.0.0.beta1)
   paperclip

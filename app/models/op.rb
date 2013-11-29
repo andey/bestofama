@@ -21,7 +21,7 @@ class Op < ActiveRecord::Base
   include NestedUser
 
   # Hooks
-  before_validation :default_slug
+  before_validation :default_slug, :download_avatar
   after_save :update_taggings
 
   # Validations
@@ -45,6 +45,13 @@ class Op < ActiveRecord::Base
   # Link Relations
   has_many :links, :class_name => 'OpsLink'
   accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => lambda { |l| l[:link].blank? }
+
+  # When the avatar source is changed, download the image
+  def download_avatar
+    if self.avatar_source_changed?
+      self.avatar = open(self.avatar_source)
+    end
+  end
 
   # How to deal with link nested attributes
   def links_attributes=(links)

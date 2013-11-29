@@ -29,8 +29,6 @@ jQuery ->
           dataType: 'jsonp'
           jsonp: '$callback'
           cache: true
-          username: 'Xyr0Vm1kTPp3eK46QsynD2iJTCDYa3R89yZvILi3tes'
-          password: 'Xyr0Vm1kTPp3eK46QsynD2iJTCDYa3R89yZvILi3tes'
           data:
             Sources: "'image'"
             Query: "'#{name}'"

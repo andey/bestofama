@@ -48,7 +48,7 @@ class Op < ActiveRecord::Base
 
   # When the avatar source is changed, download the image
   def download_avatar
-    if self.avatar_source_changed?
+    if self.avatar_source_changed? && !self.avatar_source.empty?
       self.avatar = open(self.avatar_source)
     end
   end

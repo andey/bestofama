@@ -40,6 +40,9 @@ class Ama < ActiveRecord::Base
   # AMA 'comments'
   has_many :children, -> { where order: 'karma DESC' }, class_name: 'Comment', primary_key: :key, foreign_key: :parent_key
 
+  # AMA Archives
+  has_many :archives
+
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 

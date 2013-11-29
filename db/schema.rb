@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20131129203644) do
   end
 
   create_table "archives", force: true do |t|
-    t.string   "ama_id"
+    t.integer  "ama_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.hstore   "json"

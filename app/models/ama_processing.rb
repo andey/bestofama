@@ -90,8 +90,7 @@ module AmaProcessing
 
   # Archive the AMA response
   def archive_it(response)
-    puts 'skipping archive'
-    #Archive.create(key: self.key, timestamp: Time.now, reponse: response)# rescue "Failed to Archive AMA #{self.key}"
+    Archive.create(ama_id: self.key, json: response) rescue "Failed to Archive AMA #{self.key}"
   end
 
 end

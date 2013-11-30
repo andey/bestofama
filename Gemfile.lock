@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 8d5e8342db25f05431c993c1c2f495a008be410e
+  revision: f59be4d5c55e802354df679a35d738876540d7b2
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -48,8 +48,9 @@ GEM
     airbrake (3.1.14)
       builder
       json
-    annotate (2.5.0)
-      rake
+    annotate (2.6.0)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.1)
@@ -303,7 +304,7 @@ DEPENDENCIES
   airbrake
   annotate
   awesome_print
-  aws-sdk (>= 1.21.0)
+  aws-sdk
   bootstrap-will_paginate
   capybara
   carrierwave
@@ -319,7 +320,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   newrelic_rpm
-  paper_trail (>= 3.0.0.beta1)
+  paper_trail (>= 3.0.0.rc2)
   paperclip
   pg
   rails (~> 4.0.0)

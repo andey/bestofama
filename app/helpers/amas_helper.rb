@@ -12,7 +12,7 @@ module AmasHelper
   # Print the AMA comments
   def print_comments(parent, depth, ac=ActionController::Base.new())
     string = ''
-    Comment.where(:parent_key => parent.key).order(:karma).reverse_order.each do |comment|
+    Comment.where(parent_key: parent.key, relevant: true).order(:karma).reverse_order.each do |comment|
       string += ac.render_to_string( :partial => 'comments/show', :locals => {:comment => comment, :depth => depth})
       string += print_comments(comment, depth + 1, ac)
     end

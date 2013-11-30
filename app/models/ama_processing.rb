@@ -11,16 +11,20 @@ module AmaProcessing
 
   # Recursive function, which selects and saves relevant responses.
   def find_responses(posts)
-    has_op_child = false
+    relevant = false
 
     posts.each do |post|
-      if post["kind"] != "more" && (self.comment_has_children?(post["data"]) || self.is_op?(post["data"]["author"]))
-        has_op_child = true
-        self.find_or_create_comment_by_json(post["data"])
+      if post["kind"] != "more"
+        if (self.comment_has_children?(post["data"]) || self.is_op?(post["data"]["author"]))
+          relevant = true
+          self.find_or_create_comment_by_json(post["data"], true)
+        else
+          self.find_or_create_comment_by_json(post["data"], false)
+        end
       end
     end
 
-    return has_op_child
+    return relevant
   end
 
   # Creates an AMA record.
@@ -62,13 +66,13 @@ module AmaProcessing
   end
 
   # Find or Create comment from Reddit JSON
-  def find_or_create_comment_by_json(data)
+  def find_or_create_comment_by_json(data, relevant)
     comment = Comment.find_by_key(data["id"])
     if comment
-      comment.update_by_json(data)
+      comment.update_by_json(data, relevant)
     else
       comment = Comment.new
-      comment.create_by_json(self.id, data)
+      comment.create_by_json(self.id, data, relevant)
     end
   end
 

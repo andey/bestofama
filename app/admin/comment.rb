@@ -4,13 +4,15 @@ ActiveAdmin.register Comment, :as => "AmaComment" do
   filter :key
   filter :user_id
   filter :parent_key
+  filter :relevant
 
   index do
-    column :ama_id
+    column :ama
     column :key
     column :user
     column :karma
     column :date
+    column :relevant
     default_actions
   end
 

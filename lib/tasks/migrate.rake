@@ -12,4 +12,10 @@ namespace :migrate do
       end
     end
   end
+
+
+  # Make all comments Relevant
+  task :make_all_comments_relevant => :environment do
+    Comment.update_all(relevant: true)
+  end
 end

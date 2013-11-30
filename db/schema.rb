@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129203644) do
+ActiveRecord::Schema.define(version: 20131129221743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,19 +79,21 @@ ActiveRecord::Schema.define(version: 20131129203644) do
   end
 
   create_table "comments", force: true do |t|
-    t.integer  "ama_id",                 null: false
-    t.string   "key",                    null: false
-    t.integer  "user_id",                null: false
+    t.integer  "ama_id",                     null: false
+    t.string   "key",                        null: false
+    t.integer  "user_id",                    null: false
     t.text     "content"
-    t.string   "parent_key",             null: false
-    t.datetime "date",                   null: false
+    t.string   "parent_key",                 null: false
+    t.datetime "date",                       null: false
     t.integer  "karma",      default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "relevant",   default: false
   end
 
   add_index "comments", ["key"], name: "index_comments_on_key", using: :btree
   add_index "comments", ["parent_key"], name: "index_comments_on_parent_key", using: :btree
+  add_index "comments", ["relevant"], name: "index_comments_on_relevant", using: :btree
 
   create_table "meta", force: true do |t|
     t.string   "name",       null: false

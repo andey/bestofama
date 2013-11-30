@@ -31,7 +31,7 @@ class Comment < ActiveRecord::Base
 
   # creates an AMA comment
   # returns comment
-  def create_by_json(ama_id, json)
+  def create_by_json(ama_id, json, relevant)
     data = {
         :ama_id => ama_id,
         :key => json["id"],
@@ -39,18 +39,20 @@ class Comment < ActiveRecord::Base
         :content => HTMLEntities.new.decode(json["body_html"]),
         :parent_key => /_(.*)/.match(json["parent_id"])[1],
         :date => Time.at(json["created_utc"]),
-        :karma => json["ups"].to_i - json["downs"].to_i
+        :karma => json["ups"].to_i - json["downs"].to_i,
+        :relevant => relevant
       } 
     return Comment.create(data)
   end
   
   # updates an AMA comment
   # returns comment
-  def update_by_json(json)
+  def update_by_json(json, relevant)
     data = {
         :content => HTMLEntities.new.decode(json["body_html"]),
         :date => Time.at(json["created_utc"]),
-        :karma => json["ups"].to_i - json["downs"].to_i
+        :karma => json["ups"].to_i - json["downs"].to_i,
+        :relevant => relevant
       }
     return self.update_attributes(data)
   end 

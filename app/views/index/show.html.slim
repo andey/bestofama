@@ -1,10 +1,10 @@
 - content_for :title, "BestofAMA ::  The Unofficial /r/IAmA Indexer"
 
 .row
-  .col-12.col-sm-12.col-lg-8
+  .col-sm-12.col-md-8.col-lg-8
     .panel.panel-warning
       .panel-heading Upcoming AMA's
-      ul.list-group.list-group-flush.panel-header-flush
+      ul.list-group
         - cache ["index-upcomings"], :expires_in => 5.minutes do
           - @upcomings.each do |upcoming|
             li.list-group-item
@@ -13,24 +13,21 @@
                   h5.ama-title.list-group-item-heading= upcoming.title
                   p.list-group-item-text.text-muted= upcoming.description
                 .col-4.col-sm-4.col-lg-4
-                  p.list-group-item-text.pull-right style="margin-top: 15px;"
+                  p.list-group-item-text.pull-right
                     = time_ago_in_words(upcoming.date)
 
-
-
-  .col-12.col-sm-12.col-lg-4
-    .panel.ad-index-square
-      .panel-heading style="margin-bottom: 0px" Advertisement
-      p.list-group-item-text
-        = render :file => 'layouts/ad-square'
+  .col-sm-12.col-md-4.col-lg-4
+    .panel.panel-default
+      .panel-heading Advertisement
+      .panel-body.advertisement= render :file => 'layouts/ad-responsive', locals: { size: 'ad-square' }
 
 .row
-  .col-12.col-sm-12.col-lg-12
-    .panel
+  .col-md-12.col-sm-12.col-lg-12
+    .panel.panel-default
       .panel-heading
         | Recent AMA's
         small.pull-right= link_to 'View All', amas_path
-      ul.list-group.list-group-flush.panel-header-flush
+      ul.list-group
         - cache ["index-amas"], :expires_in => 5.minutes do
           - @amas.each do |ama|
             = render partial: 'amas/snippet', locals: { ama: ama }

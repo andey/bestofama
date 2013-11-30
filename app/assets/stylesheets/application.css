@@ -9,9 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap-3.0.0.min
- *= require bootstrap-glyphicons-1.0.0
+ *= require bootstrap-3.0.2.min
  *= require v3
+ *= require advertisements
  *= require amas
  *= require ops
  */

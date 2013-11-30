@@ -32,20 +32,7 @@ section itemscope='itemscope' itemtype="http://schema.org/Person"
           #amas.tab-content.hide rel='amas'
               .list-group
                 - @amas.each do |ama|
-                  = link_to ama_path(ama), :class => 'list-group-item' do
-                    .row.ama
-                      .col-1.col-sm-1.col-lg-1
-                        .karma-meter= karma_meter(ama.karma).html_safe
-                      .col-11.col-sm-11.col-lg-11
-                        h4.ama-title.list-group-item-heading= ama.title
-                        p.list-group-item-text
-                          | Comments:&nbsp;
-                          =ama.comments
-                          |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-                          =ama.responses
-                          |  &nbsp;&bull;&nbsp; Date:&nbsp;
-                          =ama.date
-                      .clearfix
+                  = render partial: 'amas/snippet', locals: { ama: ama }
 
       - cache ["show", "comments", @op] do
         - if @comments.count > 0
@@ -63,43 +50,46 @@ section itemscope='itemscope' itemtype="http://schema.org/Person"
             .col-12.col-sm-12.col-lg-4
               .panel.panel-info
                 .panel-heading Random Stats
-                table.table-borderless
-                  tr
-                    td
-                      strong Comment Karma:
-                    td.table-value= @op.comment_karma
-                  tr
-                    td
-                      strong Link Karma:
-                    td.table-value= @op.link_karma
-                  tr
-                    td
-                      strong # AMA's:
-                    td.table-value= @op.amas.count
-                  tr
-                    td
-                      strong # Comments:
-                    td.table-value= @op.comments.count
-                  tr
-                    td
-                      strong Comment AVG Karma
-                    td.table-value= @op.comments.average('karma').to_i
-                  tr
-                    td
-                      strong Wikipedia 90 Day Traffic
-                    td.table-value= @op.wikipedia_hits
+                .panel-body
+                  table.table-borderless
+                    tr
+                      td
+                        strong Comment Karma:
+                      td.table-value= @op.comment_karma
+                    tr
+                      td
+                        strong Link Karma:
+                      td.table-value= @op.link_karma
+                    tr
+                      td
+                        strong # AMA's:
+                      td.table-value= @op.amas.count
+                    tr
+                      td
+                        strong # Comments:
+                      td.table-value= @op.comments.count
+                    tr
+                      td
+                        strong Comment AVG Karma
+                      td.table-value= @op.comments.average('karma').to_i
+                    tr
+                      td
+                        strong Wikipedia 90 Day Traffic
+                      td.table-value= @op.wikipedia_hits
 
               - if @op.links.count > 0
                 .panel.panel-primary
                   .panel-heading Social Profile
-                  ul
-                   - @op.links.each do |profile|
-                    li= link_to profile.site, profile.link, :rel => 'nofollow', :itemprop => 'sameAs'
+                  .panel-body
+                    ul
+                     - @op.links.each do |profile|
+                      li= link_to profile.site, profile.link, :rel => 'nofollow', :itemprop => 'sameAs'
 
             - if @op.links.where(:site_id => 1).count > 0
               .col-12.col-sm-12.col-lg-8
-                .panel#wikipedia
+                #wikipedia.panel.panel-default
                   .panel-heading
                     | Wikipedia
                     span.pull-right= link_to "link", @op.links.where(:site_id => 1).first.link, :rel => 'nofollow'
-                  iframe data-url=wikipedia_mobile(@op.links.where(:site_id => 1).first.link)
+                  .panel-body
+                    iframe data-url=wikipedia_mobile(@op.links.where(:site_id => 1).first.link)

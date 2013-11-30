@@ -1,12 +1,6 @@
 .hidden
   display: none
 
-.center
-  text-align: center
-
-.panel .panel-header-flush
-  margin-top: -15px
-
 .col-half-offset-1
   margin-left: 4.166666667%
 .col-half-offset-2
@@ -58,8 +52,8 @@
 
 
 body.public
+  min-width: 650px
   background-color: #ADEBFF
-  min-width: 500px
 
   .container
     border-left: 2px solid
@@ -68,32 +62,11 @@ body.public
     background-color: #FFFFFF
     margin-bottom: 25px
 
-    @media screen and (min-width: 992px)
-      min-height: 950px
-
-
-
-    .ad-index-square
-      p
-        text-align: center
-        margin: 8px -15px -5px -15px
-
-    .top-ad
-      margin: 15px auto
-      text-align: center
-
-    .navbar
-      margin: 0px 20px 20px 20px
-
-    .content
-      padding-left: 20px
-      padding-right: 20px
-
-      .filter
-        margin-top: 20px
-
     div.pagination
       margin-top: 35px
+
+    .btn-actions
+      margin-top: 20px
 
   #footer
     text-align: center

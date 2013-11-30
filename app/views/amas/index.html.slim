@@ -1,33 +1,37 @@
-- content_for :title, "AMA Directory Ordered By '#{@order}' Page #{params[:page]} :: BestofAMA"
+- if @order != 'date' and params[:page]
+  - content_for :title, "AMA Directory Ordered By '#{@order}' Page #{params[:page]} :: BestofAMA"
+- elsif params[:page]
+  - content_for :title, "AMA Directory Page #{params[:page]} :: BestofAMA"
+- else
+  - content_for :title, "AMA Directory :: BestofAMA"
 
 .row
-  .col-12
+  .col-xs-12.col-sm-12.col-md-10.col-lg-10
     h2.pull-left AMAs Directory
 
-    .btn-group.pull-right.filter
+  .col-xs-12.col-sm-12.col-md-2.col-lg-2
+    .btn-actions.btn-group.pull-right.filter
       button.btn Order
       button.btn.dropdown-toggle data-toggle="dropdown"
         span.caret
       ul.dropdown-menu
-        li= link_to "Date", "#"
+        li= link_to "Date", amas_path
         li= link_to "Karma", amas_path(:order => "karma")
         li= link_to "Comment", amas_path(:order => "comments")
         li= link_to "Responses", amas_path(:order => "responses")
 
 .row
-  .col-12.col-sm-12.col-lg-9
+  .col-xs-12.col-sm-12.col-md-9.col-lg-9
     .list-group
       - cache ["amas", @order, params[:page]], :expires_in => 15.minutes do
         - @amas.each do |ama|
           = render partial: 'snippet', locals: { ama: ama }
 
-  .col-12.col-sm-12.col-lg-3
+  .col-xs-12.col-sm-12.col-md-3.col-lg-3
     .sticky
-      .panel
+      .panel.panel-default
         .panel-heading Advertisement
-        .center
-          = render :file => 'layouts/ad-skyscraper-alt'
+        .panel-body.advertisement= render :file => 'layouts/ad-responsive', locals: { size: 'ad-skyscraper' }
 
-.row.sticky-scroll-bottom
-  .center
-    = will_paginate @amas
+.row.sticky-scroll-bottom.text-center
+  = will_paginate @amas

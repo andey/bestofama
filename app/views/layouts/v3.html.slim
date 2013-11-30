@@ -12,26 +12,30 @@ html lang="en"
 
       .row
         .col-12.col-sm-12.col-lg-12
-          .top-ad
-            = render :file => 'layouts/ad-header'
+          .advertisement= render :file => 'layouts/ad-responsive', locals: { size: 'ad-header' }
 
       .row
         .col-12.col-sm-12.col-lg-12
-          .navbar
-            button.navbar-toggle type="button" data-toggle="collapse" data-target=".nav-collapse"
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            = link_to "BestofAMA", root_path, :class => 'navbar-brand'
-            .nav-collapse.collapse
-              ul.nav.navbar-nav
-                li= link_to "AMAs", amas_path
-                li= link_to "OPs",  ops_path
-                li= link_to "Tags", tags_path
+          .navbar.navbar-default role="navigation"
 
-            ul.nav.navbar-nav.hidden-sm.pull-right
-              li= link_to image_tag('layout/icon-twitter.png'), 'https://twitter.com/BestofAMAs'
-              li= link_to image_tag('layout/icon-rss.png'), 'http://feeds.feedburner.com/bestofama'
+
+            .navbar-header
+              button.navbar-toggle type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              = link_to "BestofAMA", root_path, :class => 'navbar-brand'
+
+            .collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li= link_to 'AMAs', amas_path
+                li= link_to 'OPs', ops_path
+                li= link_to 'Tags', tags_path
+
+              ul.nav.navbar-nav.navbar-right
+                li= link_to image_tag('layout/icon-twitter.png'), 'https://twitter.com/BestofAMAs'
+                li= link_to image_tag('layout/icon-rss.png'), 'http://feeds.feedburner.com/bestofama'
 
       .row
         .col-12.col-sm-12.col-lg-12
@@ -43,9 +47,9 @@ html lang="en"
         li= link_to "Privacy Policy", page_path(:id => "privacy"), :rel => :nofollow
         li= link_to "Terms of Service", page_path(:id => "terms"), :rel => :nofollow
         li= link_to "Source Code", "https://github.com/andey/bestofama"
-        li= link_to "Uptime", "http://www.siteuptime.com/statistics.php?Id=12687&&UserId=143736"
+        li= link_to "Uptime", "http://www.siteuptime.com/statistics.php?Id=12687&&UserId=143736", :rel => :nofollow
         li= link_to "Contact", 'https://twitter.com/andey_', :rel => :nofollow
         li= link_to "Reddit Junkie", 'http://reddit-junkie.com'
-      p Copyright &copy; 2013 BestofAMA.com, All rights reserved.
+      p Copyright &copy; 2014 BestofAMA.com, All rights reserved.
 
     = javascript_include_tag "application"

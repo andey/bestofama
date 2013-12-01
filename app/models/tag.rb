@@ -15,6 +15,7 @@ class Tag < ActiveRecord::Base
   scope :popular, -> { select('tags.*, COUNT(*) AS count_all').joins(:taggings).group('tags.id').order('count_all, tags.id').reverse_order }
 
   before_validation :download_image, :merge
+
   # When the avatar source is changed, download the image
   def download_image
     if self.image_source_changed? && !self.image_source.empty?
@@ -22,6 +23,7 @@ class Tag < ActiveRecord::Base
     end
   end
 
+  # Removing a tag
   def merge
     if self.redirect_tag_name_changed?
       new_tag = Tag.find_by_name(self.redirect_tag_name)

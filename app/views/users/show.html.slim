@@ -1,12 +1,6 @@
 - content_for :title, @user.username + " :: BestofAMA"
 
 .row
-  .col-12.col-sm-12.col-lg-4
-    .panel.ad-index-square
-      .panel-heading style="margin-bottom: 0px" Advertisement
-      p.list-group-item-text
-        = render :file => 'layouts/ad-square'
-
   .col-12.col-sm-12.col-lg-8
     h1= @user.username
     - if @user.ops.count > 0

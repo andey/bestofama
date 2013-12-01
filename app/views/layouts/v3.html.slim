@@ -17,10 +17,8 @@ html lang="en"
       .row
         .col-12.col-sm-12.col-lg-12
           .navbar.navbar-default role="navigation"
-
-
             .navbar-header
-              button.navbar-toggle type="button" data-toggle="collapse" data-target=".bs-navbar-collapse"
+              button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
                 span.sr-only Toggle navigation
                 span.icon-bar
                 span.icon-bar
@@ -33,7 +31,7 @@ html lang="en"
                 li= link_to 'OPs', ops_path
                 li= link_to 'Tags', tags_path
 
-              ul.nav.navbar-nav.navbar-right
+              ul.nav.navbar-nav.navbar-right.hidden-xs
                 li= link_to image_tag('layout/icon-twitter.png'), 'https://twitter.com/BestofAMAs'
                 li= link_to image_tag('layout/icon-rss.png'), 'http://feeds.feedburner.com/bestofama'
 

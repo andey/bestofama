@@ -15,6 +15,7 @@
 #  wikipedia_hits      :integer          default(0)
 #  link_karma          :integer          default(0)
 #  comment_karma       :integer          default(0)
+#  avatar_source       :string(255)
 #
 
 class Op < ActiveRecord::Base

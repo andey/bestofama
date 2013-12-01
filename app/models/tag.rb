@@ -2,11 +2,18 @@
 #
 # Table name: tags
 #
-#  id            :integer          not null, primary key
-#  name          :string(255)
-#  description   :string(255)
-#  wikipedia_url :string(255)
-#  meaningless   :boolean
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  description        :string(255)
+#  wikipedia_url      :string(255)
+#  meaningless        :boolean
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  image_source       :string(255)
+#  redirect_tag_name  :string(255)
+#  redirect_tag_id    :integer
 #
 
 class Tag < ActiveRecord::Base

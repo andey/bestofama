@@ -1,7 +1,7 @@
 - content_for :title, params[:id] + " :: BestofAMA"
 
 .row
-  .col-12.col-sm-12.col-lg-12
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
     h2
       = params[:id]
       small style="margin-left: 10px;"
@@ -13,7 +13,7 @@
         = @tag.description
 
 .row
-  .col-12.col-sm-12.col-lg-9
+  .col-xs-12.col-sm-12.col-md-9.col-lg-9
     .list-group
       - cache ["tag", params[:id], params[:page]], :expires_in => 12.hours do
         - @taggings.each do |tagging|
@@ -22,7 +22,7 @@
           - elsif tagging.taggable_type == 'Ama'
             = render partial: 'amas/snippet', locals: { ama: Ama.find(tagging.taggable_id) }
 
-  .col-12.col-sm-12.col-lg-3
+  .col-xs-12.col-sm-12.col-md-3.col-lg-3
     .sticky
       .panel.panel-default
         .panel-heading Advertisement

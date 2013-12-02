@@ -52,16 +52,16 @@ ActiveRecord::Schema.define(version: 20131201214421) do
 
   create_table "amas", force: true do |t|
     t.string   "key",                    null: false
-    t.datetime "date"
+    t.datetime "date",                   null: false
     t.string   "title",                  null: false
     t.text     "content"
     t.integer  "karma",      default: 0
-    t.integer  "user_id",    default: 0
-    t.string   "permalink",              null: false
+    t.integer  "user_id",                null: false
+    t.string   "permalink"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "comments",   default: 0
     t.integer  "responses",  default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "amas", ["key"], name: "index_amas_on_key", unique: true, using: :btree
@@ -79,15 +79,15 @@ ActiveRecord::Schema.define(version: 20131201214421) do
   end
 
   create_table "comments", force: true do |t|
-    t.integer  "key",                        null: false
-    t.integer  "user_id",    default: 0
-    t.integer  "ama_id",     default: 0
-    t.datetime "date"
-    t.integer  "karma",      default: 0
+    t.integer  "ama_id",                     null: false
+    t.string   "key",                        null: false
+    t.integer  "user_id",                    null: false
     t.text     "content"
     t.string   "parent_key",                 null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "date",                       null: false
+    t.integer  "karma",      default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.boolean  "relevant",   default: false
   end
 
@@ -98,18 +98,18 @@ ActiveRecord::Schema.define(version: 20131201214421) do
   create_table "meta", force: true do |t|
     t.string   "name",       null: false
     t.string   "value",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "meta", ["name"], name: "index_meta_on_name", unique: true, using: :btree
 
   create_table "ops", force: true do |t|
     t.string   "name",                            null: false
+    t.string   "content"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "slug",                            null: false
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -127,13 +127,13 @@ ActiveRecord::Schema.define(version: 20131201214421) do
     t.integer  "op_id"
     t.integer  "site_id"
     t.string   "link",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ops_users", id: false, force: true do |t|
-    t.integer "op_id",   null: false
-    t.integer "user_id", null: false
+    t.integer "op_id"
+    t.integer "user_id"
   end
 
   create_table "taggings", force: true do |t|
@@ -166,8 +166,8 @@ ActiveRecord::Schema.define(version: 20131201214421) do
 
   create_table "trashes", force: true do |t|
     t.string   "key",        null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "trashes", ["key"], name: "index_trashes_on_key", unique: true, using: :btree
@@ -183,10 +183,10 @@ ActiveRecord::Schema.define(version: 20131201214421) do
 
   create_table "users", force: true do |t|
     t.string   "username",                  null: false
-    t.integer  "link_karma",    default: 0
     t.integer  "comment_karma", default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "link_karma",    default: 0
   end
 
   add_index "users", ["username"], name: "index_users_on_username", using: :btree

@@ -3,4 +3,5 @@ rvm:
   - 2.0.0
 before_script:
   - psql -c 'create database bestofama_test;' -U postgres
+  - rake db:migrate RAILS_ENV=test
 script: bundle exec rspec

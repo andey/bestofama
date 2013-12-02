@@ -17,5 +17,10 @@ development:
   password: password
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: bestofama_test
+  host: localhost
+  pool: 5
+  username: postgres
+  password: password

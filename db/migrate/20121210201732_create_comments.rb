@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.integer :user_id, :default => 0
       t.integer :ama_id, :default => 0
       t.timestamp :date
+      t.integer :karma, :default => 0
       t.text :content
       t.integer :parent_id
       t.string :parent_key, :null => false

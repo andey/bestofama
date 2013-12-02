@@ -1,4 +1,6 @@
 language: ruby
 rvm:
   - 2.0.0
+before_script:
+  - psql -c 'create database bestofama_test;' -U postgres
 script: bundle exec rspec

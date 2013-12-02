@@ -265,7 +265,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.8)
     temple (0.6.7)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
@@ -330,7 +329,6 @@ DEPENDENCIES
   sass-rails
   sitemap_generator
   slim-rails
-  sqlite3
   uglifier
   unf
   unicorn

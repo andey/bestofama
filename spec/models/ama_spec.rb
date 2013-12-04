@@ -56,7 +56,7 @@ describe Ama do
       @ama.karma.should be(14752)
     end
 
-    it 'OP comment is saved' do
+    it 'OP comment is relevant' do
       Comment.find_by_key('c60n05h').should_not be(nil)
     end
 
@@ -64,7 +64,7 @@ describe Ama do
       Comment.find_by_key('c60n1lg').relevant.should be(false)
     end
 
-    it 'regular comment responded to is relevant' do
+    it 'regular comment responded to by OP is relevant' do
       Comment.find_by_key('c60mm41').relevant.should be(true)
     end
 

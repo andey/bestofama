@@ -60,11 +60,11 @@ describe Ama do
       Comment.find_by_key('c60n05h').should_not be(nil)
     end
 
-    it "regular comment isn't saved" do
+    it "regular comment isn't relevant" do
       Comment.find_by_key('c60n1lg').relevant.should be(false)
     end
 
-    it 'regular comment responded to is saved' do
+    it 'regular comment responded to is relevant' do
       Comment.find_by_key('c60mm41').relevant.should be(true)
     end
 

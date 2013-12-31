@@ -2,10 +2,10 @@
 
 - cache ["info", @ama] do
   .row.ama
-    .col-2.col-sm-2.col-lg-1
+    .hidden-xs.col-sm-2.col-md-1.col-lg-1
       .karma-meter-large= karma_meter(@ama.karma).html_safe
 
-    .col-10.col-sm-10.col-lg-11
+    .col-xs-12.col-sm-10.col-md-11.col-lg-11
       .page-header
         h1= @ama.title.html_safe
         .list-group
@@ -36,7 +36,7 @@
 - cache ["comments", @ama], :skip_digest => true do
   #ama_comments_cache_key.hide= ActiveSupport::Cache.expand_cache_key(["comments", @ama], :views)
   .row.ama.ama-comments
-    .col-12.col-sm-12.col-lg-12
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
       .page-header
         h2 Comments
       = print_comments(@ama, 0).html_safe

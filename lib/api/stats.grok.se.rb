@@ -5,7 +5,7 @@ class Grokse
   base_uri 'stats.grok.se'
 
   def latest90(slug)
-    response = self.class.get "/json/en/latest90/#{slug}"
+    response = self.class.get "/json/en/latest90/#{URI.escape(slug)}"
     return response.code == 200 ? JSON.parse(response.body) : nil
   end
 end

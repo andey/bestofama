@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20131201214421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -69,13 +68,6 @@ ActiveRecord::Schema.define(version: 20131201214421) do
   create_table "amas_users", id: false, force: true do |t|
     t.integer "ama_id"
     t.integer "user_id"
-  end
-
-  create_table "archives", force: true do |t|
-    t.integer  "ama_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.hstore   "json"
   end
 
   create_table "comments", force: true do |t|

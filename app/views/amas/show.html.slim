@@ -24,7 +24,8 @@
           |  &nbsp;&bull;&nbsp;
           strong Date:
           | &nbsp;
-          = @ama.date
+          time
+            = @ama.date
           = link_to "source", reddit_ama_path(@ama.permalink), :class => "pull-right", :rel => :nofollow
 
 - cache ["comments", @ama], :skip_digest => true do

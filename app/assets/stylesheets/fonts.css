@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'bestofama_heading';
+    src: url('/fonts/BEBAS___-webfont.eot');
+    src: url('/fonts/BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/BEBAS___-webfont.woff') format('woff'),
+         url('/fonts/BEBAS___-webfont.ttf') format('truetype'),
+         url('/fonts/BEBAS___-webfont.svg#quanticoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

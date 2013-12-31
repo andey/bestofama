@@ -32,7 +32,7 @@ class Tag < ActiveRecord::Base
 
   # Removing a tag
   def merge
-    if self.redirect_tag_name_changed?
+    if !self.redirect_tag_name.empty? && self.redirect_tag_name_changed?
       new_tag = Tag.find_by_name(self.redirect_tag_name)
       self.redirect_tag_id = new_tag.id
       self.taggings.update_all(tag_id: new_tag.id)

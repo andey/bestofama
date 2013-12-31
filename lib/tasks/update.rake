@@ -43,7 +43,7 @@ namespace :update do
   end
 
   task :old_ama => :environment do
-    @ama = Ama.order(:updated_at).reverse_order.first
+    @ama = Ama.order(:updated_at).first
     puts @ama.title
     @ama.fetch() unless !@ama
   end

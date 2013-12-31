@@ -12,7 +12,7 @@
         = link_to tag_path(t.name) do
           .well
             - if t.image.exists?
-              = image_tag t.image.url(:medium), :class => 'img-rounded tag-image'
+              = image_tag t.image.url(:medium), :class => 'img-thumbnail tag-image'
             h4.text-center= t.name
             p.count_all.text-center= "( #{t.count_all} results )"
 

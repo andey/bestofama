@@ -43,6 +43,12 @@ class Ama < ActiveRecord::Base
   # AMA Archives
   has_many :archives
 
+  # Who are the guest OPs?
+  has_many :ops_participated, through: :users, source: :ops
+
+  # Who's the OP who hosted?
+  has_many :ops, through: :user
+
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 

@@ -1,4 +1,16 @@
 .ama
+
+  h4.ama-title
+    margin-top: 10px
+
+  .page-header
+    h1
+      font-size: 2em
+    border-bottom: none
+    margin-bottom: 0
+    margin-top: 5px
+    padding-bottom: 0
+
   .karma-meter
     font-size: 15px
     text-align: center
@@ -18,14 +30,34 @@
       margin-left: -2px
       color: #000000
 
-  h4.ama-title
-    margin-top: 10px
-
   .ama-content
     margin-bottom: 5px
 
+    blockquote
+      p
+        font-size: 15px
+      position: relative
+      border-left: none
+      margin-bottom: 0
+
+    blockquote:before
+      color: grey
+      display: block
+      padding-left: 10px
+      content: "\201C"
+      font-size: 80px
+      position: absolute
+      left: -20px
+      top: -20px
+
 .ama.ama-comments
   margin-bottom: 40px
+
+  h2
+    font-size: 1.5em
+    border-bottom: 1px solid grey
+    padding-bottom: 10px
+    margin-bottom: 10px
 
   .ama-comment
 

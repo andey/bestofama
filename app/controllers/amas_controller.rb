@@ -29,6 +29,7 @@ class AmasController < ApplicationController
   def show
     @ama = Ama.find_by_key(params[:id]) || raise_404
     @users = @ama.users
+    @ops = @ama.ops
 
     respond_to do |format|
       format.html

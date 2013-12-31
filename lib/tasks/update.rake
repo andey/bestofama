@@ -42,6 +42,12 @@ namespace :update do
     @ama.fetch() unless !@ama
   end
 
+  task :old_ama => :environment do
+    @ama = Ama.order(:updated_at).reverse_order.first
+    puts @ama.title
+    @ama.fetch() unless !@ama
+  end
+
   task :upcoming => :environment do
     google = 'http://www.google.com/calendar/feeds/amaverify@gmail.com/public/full?orderby=starttime&max-results=100&singleevents=true&sortorder=ascending&futureevents=true&alt=json'
     http = Net::HTTP.new("www.google.com")

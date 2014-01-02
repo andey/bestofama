@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-3.0.2.min
 //= require jquery.sticky-1.0.0.js
-//= require_tree ./layout
-//= require_tree ./ops
+//= require jquery.share-1.0.js
+//= require_tree ./include

@@ -7,5 +7,6 @@
         - else
           = link_to comment.user.username, "/users/#{comment.user.username}"
       span.ama-comment-karma.text-muted= "#{comment.karma} karma"
-      time.ama-comment-date= comment.date
+      time.ama-comment-date data-time="#{comment.date.to_i}"
+        = comment.date
     = comment.content.html_safe

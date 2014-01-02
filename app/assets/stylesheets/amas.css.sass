@@ -50,7 +50,57 @@
       left: -20px
       top: -20px
 
+.nav-tabs
+  margin-top: 30px
+
+.tab-pane.pad
+  padding-top: 30px
+
+#tab-archive
+  table
+    thead
+      background-color: #f5f5f5
+    td,th
+      border: 1px solid #e3e3e3
+
+#tab-changes
+
+  .row
+
+    .arrow_box, .panel-body
+      position: relative
+      border: 1px solid #919191
+
+      p
+        margin-bottom: 0
+
+    .arrow_box:after, .arrow_box:before
+      left: 100%
+      top: 25px
+      border: solid transparent
+      content: " "
+      height: 0
+      width: 0
+      position: absolute
+      pointer-events: none
+
+    .arrow_box:after
+      border-color: rgba(255, 255, 255, 0)
+      border-left-color: #ffffff
+      border-width: 20px
+      margin-top: -20px
+
+    .arrow_box:before
+      border-color: rgba(0, 0, 0, 0)
+      border-left-color: #919191
+      border-width: 21px
+      margin-top: -21px
+  
+
+
+
 .ama.ama-comments
+  margin-top: 35px
   margin-bottom: 40px
 
   h2

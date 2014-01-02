@@ -30,6 +30,7 @@ class AmasController < ApplicationController
     @ama = Ama.find_by_key(params[:id]) || raise_404
     @users = @ama.users
     @ops = @ama.ops
+    @changes =  PaperTrail::Version.where(item_type: ['Comment'], item_id: Comment.where(ama_id: @ama).map(&:id)).order(:id).reverse_order
 
     respond_to do |format|
       format.html

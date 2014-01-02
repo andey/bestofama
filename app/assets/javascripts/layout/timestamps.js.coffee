@@ -1,5 +1,6 @@
 jQuery ->
   timestamps = $('time')
   timestamps.each ->
-    date = new Date($(this).text())
-    $(this).text(date.toLocaleString())
+    if $(this).data('time')
+      date = new Date(parseInt($(this).data('time')) * 1000)
+      $(this).text(date.toLocaleString())

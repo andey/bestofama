@@ -11,5 +11,5 @@
         |  &nbsp;&bull;&nbsp; Responses:&nbsp;
         =ama.responses
         |  &nbsp;&bull;&nbsp; Date:&nbsp;
-        time itemprop='startDate'
-          =ama.date
+        time itemprop='startDate' data-time="#{ama.date.to_i}"
+          = ama.date

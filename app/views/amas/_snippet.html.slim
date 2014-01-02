@@ -4,7 +4,7 @@
       .karma-meter= karma_meter(ama.karma).html_safe
     .col-xs-11.col-sm-11.col-md-11.col-lg-11
       h4.ama-title.list-group-item-heading itemprop='name'
-        = ama.title
+        = ama.title.html_safe
       p.list-group-item-text
         | Comments:&nbsp;
         =ama.comments

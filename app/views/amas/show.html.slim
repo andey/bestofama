@@ -91,16 +91,22 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
                   th.text-center Comments
               tbody
                 - @ama.archives.reverse_order.each do |a|
-                  tr
+                  tr.archives
                     td
                       time data-time="#{a.created_at.to_i}" = a.created_at
-                    td.text-center= eval(a.json["data"])["children"][0]["data"]["score"]
-                    td.text-center= eval(a.json["data"])["children"][0]["data"]["num_comments"]
+                    td.karma.text-center
+                      span.number= eval(a.json["data"])["children"][0]["data"]["score"]
+                      span.change
+                    td.comments.text-center
+                      span.number= eval(a.json["data"])["children"][0]["data"]["num_comments"]
+                      span.change
                 tr
                   td
                     time data-time="#{@ama.created_at.to_i}" = @ama.created_at
-                  td.text-center 0
-                  td.text-center 0
+                  td.karma.text-center
+                    span.number 0
+                  td.comments.text-center
+                    span.number 0
         .row
           .col-xs-12
             p.text-muted.text-center FYI: AMAs must reach a minimum karma score of 100 before it's considered for processing

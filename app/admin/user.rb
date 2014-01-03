@@ -1,6 +1,12 @@
 ActiveAdmin.register User do
 
   controller do
+    def permitted_params
+      params.permit(:user => [:username, :comment_karma, :link_karma])
+    end
+  end
+
+  controller do
     defaults :finder => :find_by_username
   end
 

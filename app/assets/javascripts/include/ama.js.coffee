@@ -11,9 +11,9 @@ jQuery ->
     which_class = if $(this).hasClass('karma') then '.karma' else '.comments'
     change = parseInt($(this).find('.number').text()) - parseInt($(this).parent().next().find(which_class).text())
     if change > 0
-      $(this).find('.change').text("(+#{change})").addClass('green')
+      $(this).find('.difference').text("(+#{change})").addClass('green')
     else if change < 0
-      $(this).find('.change').text("(#{change})").addClass('red')
+      $(this).find('.difference').text("(#{change})").addClass('red')
 
   $('.ama-comments').on 'click', '.share-link', (e) ->
     e.preventDefault()
@@ -22,7 +22,24 @@ jQuery ->
     $(this).after("#{canonical}##{key}")
     $(this).addClass('hidden')
 
-
-  if $('#amas_show').length > 0
+  if $('#amas_show').length > 0 && window.location.hash
     hash = window.location.hash
     $(hash).find('.comment-width').addClass('anchor')
+
+  if $('.change').length > 0
+    $('.change').each ->
+      $($(this).data('key')).find('.history-check').removeClass('hidden')
+
+  $('.ama-comments').on 'click', '.history-check', (e) ->
+    e.preventDefault()
+    modal = $('.modal')
+    modal.find('.modal-body').html('')
+    hr = false
+    $(".change[data-key='#{$(this).attr('href')}']").each ->
+      if hr
+        modal.find('.modal-body').append('<hr/>')
+      modal.find('.modal-body').append($(this).find('.before').html())
+      modal.find('.modal-body').append('<center>' + $(this).next().find('time').text() + '</center>')
+      hr = true
+    modal.modal('show')
+

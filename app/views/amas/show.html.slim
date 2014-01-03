@@ -65,14 +65,14 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
         - @changes.each do |change|
           - change_yaml = yaml(change.object)
           - comment = Comment.find(change_yaml["id"])
-          .row
+          .row.change id="change-#{change.id}" data-key="##{comment.key}"
             .col-md-6
               .panel.panel-default
-                .panel-body.arrow_box= change_yaml["content"].html_safe
+                .panel-body.arrow_box.before= change_yaml["content"].html_safe
 
             .col-md-6
               .panel.panel-default
-                .panel-body= if change.next then yaml(change.next.object)["content"].html_safe else comment.content.html_safe end
+                .panel-body.after= if change.next then yaml(change.next.object)["content"].html_safe else comment.content.html_safe end
 
           .row
             .col-md-12.text-center
@@ -97,10 +97,10 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
                       time data-time="#{a.created_at.to_i}" = a.created_at
                     td.karma.text-center
                       span.number= eval(a.json["data"])["children"][0]["data"]["score"]
-                      span.change
+                      span.difference
                     td.comments.text-center
                       span.number= eval(a.json["data"])["children"][0]["data"]["num_comments"]
-                      span.change
+                      span.difference
                 tr
                   td
                     time data-time="#{@ama.created_at.to_i}" = @ama.created_at
@@ -111,3 +111,12 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
         .row
           .col-xs-12
             p.text-muted.text-center FYI: AMAs must reach a minimum karma score of 100 before it's considered for processing
+
+
+.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Change Log
+      .modal-body

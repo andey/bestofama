@@ -17,7 +17,7 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
           p= @ama.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
 
 
-        - if @ama.content = '[removed]' && @ama.previous_version
+        - if @ama.content == '[removed]' && @ama.previous_version
           .well.well-small.ama-content
             blockquote itemprop='description'= @ama.previous_version.content.html_safe
         - elsif !@ama.content.blank?

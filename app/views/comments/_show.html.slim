@@ -10,3 +10,6 @@
       time.ama-comment-date data-time="#{comment.date.to_i}"
         = comment.date
     = comment.content.html_safe
+    p.actions
+      = link_to 'Check History', "##{comment.key}", class: 'history-check'
+      = link_to 'Share Link', "##{comment.key}", class: 'share-link'

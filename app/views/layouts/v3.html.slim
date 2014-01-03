@@ -6,6 +6,8 @@ html lang="en"
     title= h yield(:title)
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
+    - if content_for?(:canonical)
+      link rel="canonical" href="#{yield(:canonical)}"
 
   body.public id="#{params[:controller]}_#{params[:action]}"
     .container

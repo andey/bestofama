@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 8c2ff62c30beda6ae4f2c389c113c3a65bd5e785
+  revision: 5ba39c0c85920ddfc5be9985a8c0c9310da1f878
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -43,7 +43,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    acts-as-taggable-on (3.0.0)
+    acts-as-taggable-on (3.0.1)
       rails (>= 3, < 5)
     airbrake (3.1.15)
       builder
@@ -56,7 +56,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.2.0)
-    aws-sdk (1.31.3)
+    aws-sdk (1.32.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
@@ -101,7 +101,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    docile (1.1.1)
+    docile (1.1.2)
     erubis (2.7.0)
     excon (0.31.0)
     execjs (2.0.2)
@@ -140,7 +140,7 @@ GEM
       iron_core (>= 0.5.1)
     iron_cache_rails (0.1.5)
       iron_cache (>= 1)
-    iron_core (1.0.2)
+    iron_core (1.0.3)
       rest (>= 2.6.4)
     iron_worker_ng (1.0.4)
       bundler
@@ -165,7 +165,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
-    multi_json (1.8.2)
+    multi_json (1.8.4)
     multi_xml (0.5.5)
     net-http-persistent (2.9)
     net-scp (1.1.2)
@@ -214,7 +214,7 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
-    rdoc (4.1.0)
+    rdoc (4.1.1)
       json (~> 1.4)
     responders (1.0.0)
       railties (>= 3.2, < 5)
@@ -284,7 +284,7 @@ GEM
     unf (0.1.3)
       unf_ext
     unf_ext (0.0.6)
-    unicorn (4.7.0)
+    unicorn (4.8.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)

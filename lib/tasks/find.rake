@@ -14,7 +14,8 @@ namespace :find do
       # * Isn't in the Trash
       if a["data"]["score"].to_i > 100 && !a["data"]["title"].to_s.match(/ama request/i) && !Trash.find_by_key(a["data"]["id"])
         @ama = Ama.new
-        @ama.create_by_json(a["data"]) unless Ama.find_by_key(a["data"]["id"]) 
+        @ama.create_by_json(a["data"]) unless Ama.find_by_key(a["data"]["id"])
+        @ama.fetch() unless !@ama
       end      
     end
 

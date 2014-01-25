@@ -1,6 +1,6 @@
 ActiveAdmin.register Ama do
 
-  actions :all, :except => [:destroy, :new]
+  actions :all, :except => [:destroy]
 
   action_item :only => :show do
     link_to 'Public', ama
@@ -28,12 +28,19 @@ ActiveAdmin.register Ama do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs "Tag List" do
-      f.input :tag_list
-    end
-    f.inputs "Participants" do
-      f.has_many :users, :allow_destroy => true do |u|
-        u.input :username
+
+    if controller.action_name == 'new'
+      f.inputs "Reddit Key" do
+        f.input :key
+      end
+    else
+      f.inputs "Tag List" do
+        f.input :tag_list
+      end
+      f.inputs "Participants" do
+        f.has_many :users, :allow_destroy => true do |u|
+          u.input :username
+        end
       end
     end
     f.actions do
@@ -47,6 +54,13 @@ ActiveAdmin.register Ama do
 
     def permitted_params
       params.permit(:ama => [:tag_list, :users_attributes => [:username, :_destroy, :id]])
+    end
+
+    def create
+      ap params[:ama]
+      @ama = Ama.new(params[:ama].permit(:key))
+      @ama.fetch()
+      redirect_to admin_ama_path(@ama.key)
     end
   end
 
@@ -63,7 +77,7 @@ ActiveAdmin.register Ama do
         link_to ama.user.username, new_admin_op_path(username: ama.user.username, title: ama.title)
       end
       row :participants do
-        ama.users.map{|u| link_to u.username, new_admin_op_path(username: u.username, title: ama.title)}.join(", ").html_safe
+        ama.users.map { |u| link_to u.username, new_admin_op_path(username: u.username, title: ama.title) }.join(", ").html_safe
       end
       row :karma
       row :permalink
@@ -93,7 +107,6 @@ ActiveAdmin.register Ama do
     column :updated_at
     default_actions
   end
-
 
 
 end

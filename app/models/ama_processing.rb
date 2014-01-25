@@ -88,8 +88,13 @@ module AmaProcessing
   # Process JSON response
   def process_it(response)
     self.archive_it(response)
-    self.find_responses(response[1]["data"]["children"])
-    self.update_by_json(response[0]["data"]["children"][0]["data"])
+    if self.date
+      self.find_responses(response[1]["data"]["children"])
+      self.update_by_json(response[0]["data"]["children"][0]["data"])
+    else
+      self.create_by_json(response[0]["data"]["children"][0]["data"])
+      self.find_responses(response[1]["data"]["children"])
+    end
   end
 
   # Archive the AMA response

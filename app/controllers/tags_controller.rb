@@ -9,11 +9,6 @@ class TagsController < ApplicationController
     params[:page] ||= 1
     #@tags = Op.tag_counts_on(:tags, :order => "count desc").paginate(:page => params[:page], :per_page => 24)
     @tags = Tag.popular.paginate(:page => params[:page], :per_page => 24)
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @tags}
-    end
   end
 
   # GET /tags/:id
@@ -26,11 +21,7 @@ class TagsController < ApplicationController
   def show
     params[:page] ||= 1
     @tag = Tag.find_by_name(params[:id]) || raise_404
+    redirect_to tag_path(@tag.redirect_tag_name) if @tag.redirect_tag_id
     @taggings = @tag.taggings.order(:karma).reverse_order.paginate(:page => params[:page], :per_page => 25)
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @taggings}
-    end
   end
 end

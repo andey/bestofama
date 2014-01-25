@@ -52,9 +52,6 @@ class Ama < ActiveRecord::Base
   # paper_trail gem to record changes to content attribute
   has_paper_trail :only => :content, :on => [:update, :destroy]
 
-  # Update OP caches
-  # after_save :update_ops
-
   # Update tagging karma score
   after_save :update_taggings, :build_cache
 
@@ -82,25 +79,6 @@ class Ama < ActiveRecord::Base
   end
 
   protected
-
-  # After an AMA is updated,
-  # update all associated entities.
-  # Which ultimately updates entity.cache_key
-  def update_ops
-
-    # Owner entity
-    self.user.ops.each do |e|
-      e.touch
-    end
-
-    # Entities participating
-    self.users.each do |u|
-      u.ops.each do |e|
-        e.touch
-      end
-    end
-
-  end
 
   # Update Tagging's karma
   def update_taggings

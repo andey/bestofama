@@ -27,14 +27,14 @@ section itemscope='itemscope' itemtype="http://schema.org/Person"
 
   .row
     .col-12.col-sm-12.col-lg-12
-      - cache ["show", "amas", @op] do
+      - cache ["show", "amas", @op, @amas.count] do
         - if @amas.count > 0
           #amas.tab-content.hide rel='amas'
               .list-group
                 - @amas.each do |ama|
                   = render partial: 'amas/snippet', locals: { ama: ama }
 
-      - cache ["show", "comments", @op] do
+      - cache ["show", "comments", @op, @comments.count] do
         - if @comments.count > 0
           #comments.tab-content.hide.ama.ama-comments rel='comments'
             - @comments.each do |c|

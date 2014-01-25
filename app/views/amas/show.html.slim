@@ -36,7 +36,7 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
           | &nbsp;
           time itemprop='startDate' data-time="#{@ama.date.to_i}"
             = @ama.date
-          = link_to "source", reddit_ama_path(@ama.permalink), :class => "pull-right", :rel => :nofollow
+          = link_to "source", reddit_ama_path(@ama.permalink), :class => "pull-right", :rel => :nofollow, :itemscope => 'itemscope', :itemtype => "http://schema.org/Place", :itemprop => "url"
 
         #share
 

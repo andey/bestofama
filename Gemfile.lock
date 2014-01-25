@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: f21cff30e7212706a39710e2c70ad0af8087ccea
+  revision: 99da460c38804de18fbb96fd07a0a62f05fca55f
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -142,7 +142,7 @@ GEM
       iron_cache (>= 1)
     iron_core (1.0.3)
       rest (>= 2.6.4)
-    iron_worker_ng (1.0.4)
+    iron_worker_ng (1.1.0)
       bundler
       iron_core (>= 1.0.0)
       rubyzip (= 0.9.9)
@@ -167,7 +167,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     multi_xml (0.5.5)
-    net-http-persistent (2.9)
+    net-http-persistent (2.9.1)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
@@ -179,7 +179,7 @@ GEM
     paper_trail (3.0.0)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
-    paperclip (3.5.2)
+    paperclip (3.5.3)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -240,7 +240,7 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-hmac (0.4.0)
     rubyzip (0.9.9)
-    sass (3.2.13)
+    sass (3.2.14)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)

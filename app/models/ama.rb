@@ -41,7 +41,7 @@ class Ama < ActiveRecord::Base
   has_many :children, -> { where order: 'karma DESC' }, class_name: 'Comment', primary_key: :key, foreign_key: :parent_key
 
   # AMA Archives
-  has_many :archives
+  has_many :archives, :dependent => :destroy
 
   # Who are the guest OPs?
   has_many :ops_participated, through: :users, source: :ops

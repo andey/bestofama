@@ -1,4 +1,5 @@
 ActiveAdmin.register Tag do
+  config.sort_order = "count_all_asc"
   actions :all, :except => [:destroy, :new]
 
   filter :name

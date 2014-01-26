@@ -18,7 +18,7 @@
 
 class Tag < ActiveRecord::Base
   has_many :taggings
-  has_attached_file :image, :styles => { :medium => "230x140#", :thumb => "140x140#" }
+  has_attached_file :image, :styles => {:medium => "230x140#", :thumb => "140x140#"}
   scope :popular, -> { select('tags.*, COUNT(*) AS count_all').joins(:taggings).group('tags.id').order('count_all, tags.id').reverse_order }
 
   before_validation :download_image, :merge
@@ -35,7 +35,14 @@ class Tag < ActiveRecord::Base
     if !self.redirect_tag_name.empty? && self.redirect_tag_name_changed?
       new_tag = Tag.find_by_name(self.redirect_tag_name)
       self.redirect_tag_id = new_tag.id
-      self.taggings.update_all(tag_id: new_tag.id)
+
+      self.taggings.each do |bad|
+        if Tagging.find_by(tag_id: new_tag.id, taggable_id: bad.taggable_id)
+          bad.destroy()
+        else
+          bad.update_attribute(:tag_id, new_tag.id)
+        end
+      end
     end
   end
 end

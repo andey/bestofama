@@ -15,4 +15,5 @@
 
 class Tagging < ActiveRecord::Base
   belongs_to :tag
+  validates_uniqueness_of :tag_id, :scope => :taggable_id
 end

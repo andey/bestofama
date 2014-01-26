@@ -6,7 +6,7 @@
 
 .row
   .col-xs-12.col-sm-12.col-md-9.col-lg-9
-    - cache ["tags", params[:page]], :expires_in => 12.hours do
+    - cache ["tags", params[:page], @last_updated], :expires_in => 12.hours do
       - @tags.each do |t|
        .tag.col-xs-4.col-sm-4.col-md-4.col-lg-4
         = link_to tag_path(t.name) do

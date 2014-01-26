@@ -7,8 +7,8 @@ class TagsController < ApplicationController
 
   def index
     params[:page] ||= 1
-    #@tags = Op.tag_counts_on(:tags, :order => "count desc").paginate(:page => params[:page], :per_page => 24)
     @tags = Tag.popular.paginate(:page => params[:page], :per_page => 24)
+    @last_updated = Tag.order(:updated_at).reverse_order.first
   end
 
   # GET /tags/:id

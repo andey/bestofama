@@ -57,7 +57,6 @@ ActiveAdmin.register Ama do
     end
 
     def create
-      ap params[:ama]
       @ama = Ama.new(params[:ama].permit(:key))
       @ama.fetch()
       redirect_to admin_ama_path(@ama.key)

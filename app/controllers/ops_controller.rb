@@ -10,7 +10,6 @@ class OpsController < ApplicationController
   def show
 
     @op = Op.find_by_slug(params[:id]) || raise_404
-    @amas = Ama.where('responses > 0').where(:user_id => @op.users).order(:date).reverse_order
     @comments = Comment.where(:user_id => @op.users).order(:karma).reverse_order.limit(10)
 
     respond_to do |format|

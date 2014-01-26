@@ -41,6 +41,7 @@ class Op < ActiveRecord::Base
 
   # Basic Relations
   has_many :amas, through: :users
+  has_many :participated, through: :users, source: :amas_participated
   has_many :comments, through: :users
 
   # Link Relations

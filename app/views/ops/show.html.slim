@@ -12,7 +12,7 @@ section itemscope='itemscope' itemtype="http://schema.org/Person"
     .col-12.col-sm-12.col-lg-12
       .nav.nav-tabs
 
-        - if @amas.count > 0
+        - if @op.amas.count > 0
           li rel='amas'
             a href="#amas" AMAs
 
@@ -27,12 +27,15 @@ section itemscope='itemscope' itemtype="http://schema.org/Person"
 
   .row
     .col-12.col-sm-12.col-lg-12
-      - cache ["show", "amas", @op, @amas.count] do
-        - if @amas.count > 0
+      - cache ["show", "amas", @op, @op.amas.count, @op.participated.count] do
+        - if @op.amas.count > 0 || @op.participated.count > 0
           #amas.tab-content.hide rel='amas'
               .list-group
-                - @amas.each do |ama|
+                - @op.amas.each do |ama|
                   = render partial: 'amas/snippet', locals: { ama: ama }
+                - @op.participated.each do |ama|
+                  = render partial: 'amas/snippet', locals: { ama: ama }
+
 
       - cache ["show", "comments", @op, @comments.count] do
         - if @comments.count > 0

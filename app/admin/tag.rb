@@ -31,6 +31,7 @@ ActiveAdmin.register Tag do
       link_to t.name, tag_path(t.name), target: '_blank'
     end
     column :description
+    column :updated_at
     column :count_all
     default_actions
   end

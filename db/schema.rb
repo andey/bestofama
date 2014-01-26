@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201214421) do
+ActiveRecord::Schema.define(version: 20140126024339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -68,6 +69,13 @@ ActiveRecord::Schema.define(version: 20131201214421) do
   create_table "amas_users", id: false, force: true do |t|
     t.integer "ama_id"
     t.integer "user_id"
+  end
+
+  create_table "archives", force: true do |t|
+    t.integer  "ama_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.hstore   "json"
   end
 
   create_table "comments", force: true do |t|
@@ -154,6 +162,7 @@ ActiveRecord::Schema.define(version: 20131201214421) do
     t.string   "image_source"
     t.string   "redirect_tag_name"
     t.integer  "redirect_tag_id"
+    t.datetime "updated_at",         default: '2014-01-26 02:53:37'
   end
 
   create_table "trashes", force: true do |t|

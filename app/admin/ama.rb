@@ -1,5 +1,5 @@
 ActiveAdmin.register Ama do
-
+  config.sort_order = "karma_desc"
   actions :all, :except => [:destroy]
 
   action_item :only => :show do

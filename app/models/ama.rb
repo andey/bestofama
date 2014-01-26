@@ -56,7 +56,7 @@ class Ama < ActiveRecord::Base
   after_save :update_taggings, :build_cache
 
   # Moderation Queue
-  scope :queue, -> { where('amas.id NOT IN ( SELECT taggable_id from taggings ) AND amas.user_id NOT IN ( SELECT user_id from ops_users )').order(:karma).reverse_order }
+  scope :queue, -> { where('amas.id NOT IN ( SELECT taggable_id from taggings ) AND amas.user_id NOT IN ( SELECT user_id from ops_users )') }
 
   # Tagless AMAs
   scope :tagless, -> { where 'amas.id NOT IN ( SELECT taggable_id from taggings )' }

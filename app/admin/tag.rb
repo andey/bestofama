@@ -8,13 +8,6 @@ ActiveAdmin.register Tag do
   scope :popular, default: true
   scope :all
 
-  #batch_action :merge do |selection|
-  #  Tag.find(selection).each do |post|
-  #    puts post.name
-  #  end
-  #  redirect_to :back
-  #end
-
   controller do
     def permitted_params
       params.permit(:tag => [:name, :description, :wikipedia_url, :meaningless, :image_source, :redirect_tag_name])

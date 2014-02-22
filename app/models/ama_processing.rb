@@ -88,6 +88,7 @@ module AmaProcessing
 
   # Process JSON response
   def process_it(response)
+    puts response
     self.archive_it(response)
     if self.date
       self.find_responses(response[1]["data"]["children"])

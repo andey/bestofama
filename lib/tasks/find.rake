@@ -26,6 +26,31 @@ namespace :find do
 
   end
 
+  # Find AMAs FROM SPECIFIED URL
+  task :in_url, :count, :after do |t, args|
+    reddit = Reddit.new
+    result = reddit.get("/r/IAmA.json?count=#{args[:count]}&after=#{args[:after]}")
+    if result
+      puts "YES THERE IS A RESULT (2)"
+      result["data"]["children"].each do |a|
+        puts "LOOP"
+
+        # Create AMA if :
+        # * Karma greater than 100
+        # * Isn't an AMA Request
+        # * Isn't in the Trash
+        if a["data"]["score"].to_i > 100 && !a["data"]["title"].to_s.match(/ama request/i) && !Trash.find_by_key(a["data"]["id"])
+          @ama = Ama.new
+          @ama.create_by_json(a["data"]) unless Ama.find_by_key(a["data"]["id"])
+          puts "SCORE OVER 100"
+          #@ama.fetch() unless !@ama
+        end
+      end
+    end
+
+  end
+
+
   # Find OLD AMAs
   # NOTE: This function does not work
   task :old => :environment do

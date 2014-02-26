@@ -10,7 +10,6 @@ namespace :find do
       puts "YES THERE IS A RESULT"
       result["data"]["children"].each do |a|
         puts "LOOP"
-        puts Trash.all
 
         # Create AMA if :
         # * Karma greater than 100

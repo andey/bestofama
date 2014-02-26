@@ -7,7 +7,9 @@ namespace :find do
     reddit = Reddit.new
     result = reddit.getIAMAs()
     if result
+      puts "YES THERE IS A RESULT"
       result["data"]["children"].each do |a|
+        puts "LOOP"
 
         # Create AMA if :
         # * Karma greater than 100
@@ -16,7 +18,8 @@ namespace :find do
         if a["data"]["score"].to_i > 100 && !a["data"]["title"].to_s.match(/ama request/i) && !Trash.find_by_key(a["data"]["id"])
           @ama = Ama.new
           @ama.create_by_json(a["data"]) unless Ama.find_by_key(a["data"]["id"])
-          @ama.fetch() unless !@ama
+          puts "SCORE OVER 100"
+          #@ama.fetch() unless !@ama
         end
       end
     end

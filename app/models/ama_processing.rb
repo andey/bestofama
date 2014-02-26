@@ -31,6 +31,8 @@ module AmaProcessing
   # Expects the record "data" from reddit.com api json.
   # returns ama
   def create_by_json(json)
+    puts '-------------------'
+    puts 'CREATE BY JSON'
     puts json
     self.attributes = {
         :key => json["id"],
@@ -88,6 +90,8 @@ module AmaProcessing
 
   # Process JSON response
   def process_it(response)
+    puts '===================='
+    puts 'PROCESS IT'
     puts response
     self.archive_it(response)
     if self.date

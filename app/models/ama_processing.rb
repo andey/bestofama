@@ -88,11 +88,13 @@ module AmaProcessing
     end
   end
 
+  # Check if AMA data meets the requirements
+  def meets_requirements(json)
+    return json["data"]["score"].to_i > 100 && !json["data"]["title"].to_s.match(/ama request/i) && !Trash.find_by_key(json["data"]["id"])
+  end
+
   # Process JSON response
   def process_it(response)
-    puts '===================='
-    puts 'PROCESS IT'
-    puts response
     self.archive_it(response)
     if self.date
       self.find_responses(response[1]["data"]["children"])

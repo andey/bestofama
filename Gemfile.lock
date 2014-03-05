@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 1930da57a656dfe82607c2985855ba17813c6c29
+  revision: c64fbe055faa1a222b2525342e8f081aee485ec9
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -56,7 +56,7 @@ GEM
     arel (4.0.2)
     atomic (1.1.15)
     awesome_print (1.2.0)
-    aws-sdk (1.34.1)
+    aws-sdk (1.35.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
@@ -144,11 +144,11 @@ GEM
       iron_cache (>= 1)
     iron_core (1.0.3)
       rest (>= 2.6.4)
-    iron_worker_ng (1.2.0)
+    iron_worker_ng (1.3.0)
       bundler
       iron_core (>= 1.0.0)
-      rubyzip (>= 1.0.0)
-    jbuilder (2.0.3)
+      rubyzip (= 0.9.9)
+    jbuilder (2.0.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
     jquery-rails (3.1.0)
@@ -164,10 +164,12 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta-tags (1.5.0)
+      actionpack
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
-    multi_json (1.8.4)
+    multi_json (1.9.0)
     multi_xml (0.5.5)
     net-http-persistent (2.9.4)
     net-scp (1.1.2)
@@ -228,7 +230,7 @@ GEM
       mime-types (>= 1.16)
     rest_client (1.7.3)
       netrc (~> 0.7.7)
-    rspec-core (2.14.7)
+    rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
@@ -240,7 +242,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rubyzip (1.1.0)
+    rubyzip (0.9.9)
     sass (3.2.14)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -251,7 +253,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    sitemap_generator (5.0.0)
+    sitemap_generator (5.0.1)
       builder
     slim (2.0.2)
       temple (~> 0.6.6)
@@ -323,6 +325,7 @@ DEPENDENCIES
   iron_worker_ng
   jbuilder
   jquery-rails
+  meta-tags
   newrelic_rpm
   paper_trail (>= 3.0.0.rc2)
   paperclip

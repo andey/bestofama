@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.1'
 
 gem "rails", "~> 4.0.0"
 gem 'pg'
@@ -27,6 +27,7 @@ gem 'airbrake'
 gem 'httparty'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'iron_worker_ng'
+gem 'meta-tags', :require => 'meta_tags'
 
 group :heroku do
   gem 'rails_12factor'

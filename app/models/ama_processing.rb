@@ -91,6 +91,12 @@ module AmaProcessing
   # Process JSON response
   def process_it(response)
     self.archive_it(response)
+    self.update_or_create(response)
+  end
+ 
+  # Should the AMA be 
+  # updated or created?
+  def update_or_create(response)
     if self.date
       self.find_responses(response[1]["data"]["children"])
       self.update_by_json(response[0]["data"]["children"][0]["data"])

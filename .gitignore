@@ -3,6 +3,7 @@
 /log/*.log
 /tmp
 /coverage
+/vendor/bundle
 
 #Rubymine IDE
 /.idea

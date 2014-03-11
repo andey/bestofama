@@ -35,6 +35,10 @@ class OpsController < ApplicationController
     params[:page] ||= 1
     @ops = Op.order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
 
+    order = @order != 'wikipedia_hits, comment_karma' ? "| #{@order} " : nil
+    page = params[:page] && params[:page].to_i > 1 ? "| Page #{params[:page]} " : nil
+    @title = "OPs Directory #{order}#{page}- BestofAMA"
+
     respond_to do |format|
       format.html
     end

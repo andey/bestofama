@@ -1,4 +1,9 @@
-- content_for :title, "Popular Tags Page " + params[:page].to_s + " :: BestofAMA"
+- if @order != 'date' and params[:page]
+  - content_for :title, "Popular Tags | '#{@order}' | Page #{params[:page]} - BestofAMA"
+- elsif params[:page] && params[:page].to_i > 1
+  - content_for :title, "Popular Tags | Page #{params[:page]} - BestofAMA"
+- else
+  - content_for :title, "Popular Tags - BestofAMA"
 
 .row
   .col-xs-12.col-sm-12.col-md-10.col-lg-10

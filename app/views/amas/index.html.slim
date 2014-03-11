@@ -1,9 +1,9 @@
 - if @order != 'date' and params[:page]
-  - content_for :title, "AMA Directory Ordered By '#{@order}' Page #{params[:page]} :: BestofAMA"
-- elsif params[:page]
-  - content_for :title, "AMA Directory Page #{params[:page]} :: BestofAMA"
+  - content_for :title, "AMA Directory | '#{@order}' | Page #{params[:page]} - BestofAMA"
+- elsif params[:page] && params[:page].to_i > 1
+  - content_for :title, "AMA Directory | Page #{params[:page]} - BestofAMA"
 - else
-  - content_for :title, "AMA Directory :: BestofAMA"
+  - content_for :title, "AMA Directory - BestofAMA"
 
 .row
   .col-xs-12.col-sm-12.col-md-10.col-lg-10

@@ -38,7 +38,6 @@ class Op < ActiveRecord::Base
 
   # paperclip gem to store avatars, in the following sizes
   has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
-  validates_attachment_content_type :avatar, :content_type => %w(image/jpeg image/jpg image/png)
 
   # Basic Relations
   has_many :amas, through: :users

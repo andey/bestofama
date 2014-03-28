@@ -31,9 +31,6 @@ module AmaProcessing
   # Expects the record "data" from reddit.com api json.
   # returns ama
   def create_by_json(json)
-    puts '-------------------'
-    puts 'CREATE BY JSON'
-    puts json
     self.attributes = {
         :key => json["id"],
         :date => Time.at(json["created_utc"]),

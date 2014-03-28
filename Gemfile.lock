@@ -1,4 +1,22 @@
 GIT
+  remote: git://github.com/activerecord-hackery/polyamorous.git
+  revision: 3d45f4c9219b5e6626096d38aa04f401b7ce7808
+  specs:
+    polyamorous (0.6.4)
+      activerecord (>= 3.0)
+
+GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: d51c78f9071f291b0707ed32093e191f4d8d3b26
+  branch: rails-4.1
+  specs:
+    ransack (1.1.0)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      i18n
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: ae862fda64b2e44f676080bd7a5cb87dabbf449a
   specs:
@@ -15,6 +33,13 @@ GIT
       rails (>= 3.2, < 4.1)
       ransack (~> 1.0)
       sass-rails
+
+GIT
+  remote: git://github.com/justinfrench/formtastic.git
+  revision: 619fc6ba77a9b4b67d23232a7a8bb6f197652803
+  specs:
+    formtastic (2.3.0.rc2)
+      actionpack (>= 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -131,8 +156,6 @@ GEM
     fog-json (1.0.0)
       multi_json (~> 1.0)
     formatador (0.2.4)
-    formtastic (2.3.0.rc2)
-      actionpack (>= 3.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -197,8 +220,6 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
-    polyamorous (0.6.4)
-      activerecord (>= 3.0)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -225,10 +246,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.2.1)
-    ransack (1.1.0)
-      actionpack (>= 3.0)
-      activerecord (>= 3.0)
-      polyamorous (~> 0.6.0)
     rdoc (4.1.1)
       json (~> 1.4)
     responders (1.0.0)
@@ -329,6 +346,7 @@ DEPENDENCIES
   coveralls
   factory_girl_rails
   fog
+  formtastic!
   high_voltage
   htmlentities
   httparty
@@ -341,8 +359,10 @@ DEPENDENCIES
   paper_trail (>= 3.0.0.rc2)
   paperclip (= 3.5.4)
   pg
+  polyamorous!
   rails (= 4.1.0.rc2)
   rails_12factor
+  ransack!
   rdoc
   rspec-rails
   sass-rails

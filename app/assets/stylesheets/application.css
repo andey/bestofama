@@ -9,12 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap-3.0.2.min
+ *= require bootstrap-3.1.1.min
  *= require v3
- *= require advertisements
- *= require amas
- *= require ops
- *= require tags
+ *= require_directory ./include
  *= require fonts.css
  *= require jquery.share-1.0
  */

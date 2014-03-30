@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def raise_404
     raise ActionController::RoutingError.new('Not Found')
   end
+
+  def default_url_options
+    {:host => "bestofama.com"}
+  end
 end

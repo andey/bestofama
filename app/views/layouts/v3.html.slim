@@ -3,11 +3,9 @@ html lang="en"
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    title= h yield(:title)
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
-    - if content_for?(:canonical)
-      link rel="canonical" href="#{yield(:canonical)}"
+    = display_meta_tags site: 'BestofAMA', reverse: true
 
   body.public id="#{params[:controller]}_#{params[:action]}"
     .container

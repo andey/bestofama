@@ -1,4 +1,16 @@
-- content_for :title, params[:id] + " :: BestofAMA"
+/ SEO
+- if params[:page] && params[:page].to_i > 1
+  - set_meta_tags title: ["Page #{params[:page]}", 'Tags', @tag.name]
+  - set_meta_tags canonical: tag_url(@tag.name, page: params[:page])
+  - set_meta_tags prev: tag_url(@tag.name, page: params[:page].to_i - 1)
+  - set_meta_tags next: tag_url(@tag.name, page: params[:page].to_i + 1)
+  - set_meta_tags description: "Reddit AMAs and Redditors tagged with #{@tag.name}. Page #{params[:page]}"
+- else
+  - set_meta_tags title: ['Tags', @tag.name]
+  - set_meta_tags canonical: tag_url(@tag.name)
+  - set_meta_tags prev: tag_url(@tag.name)
+  - set_meta_tags next: tag_url(@tag.name, page: 2)
+  - set_meta_tags description: "Reddit AMAs and Redditors tagged with #{@tag.name}"
 
 .row
   .col-xs-12.col-sm-12.col-md-12.col-lg-12

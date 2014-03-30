@@ -1,9 +1,16 @@
-- if @order and @order != 'date' and params[:page]
-  - content_for :title, "Popular Tags | '#{@order}' | Page #{params[:page]} - BestofAMA"
-- elsif params[:page] && params[:page].to_i > 1
-  - content_for :title, "Popular Tags | Page #{params[:page]} - BestofAMA"
+/ SEO
+- if params[:page] && params[:page].to_i > 1
+  - set_meta_tags title: ["Page #{params[:page]}", 'Popular Tags']
+  - set_meta_tags canonical: tags_url(page: params[:page])
+  - set_meta_tags prev: tags_url(page: params[:page].to_i - 1)
+  - set_meta_tags next: tags_url(page: params[:page].to_i + 1)
+  - set_meta_tags description: "Directory of Reddit AMAs and Redditors, organized and tagged by popularity."
 - else
-  - content_for :title, "Popular Tags - BestofAMA"
+  - set_meta_tags title: 'Popular Tags'
+  - set_meta_tags canonical: tags_url
+  - set_meta_tags prev: tags_url
+  - set_meta_tags next: tags_url(page: 2)
+  - set_meta_tags description: "Directory of Reddit AMAs and Redditors, organized and tagged by popularity. Page #{params[:page]}"
 
 .row
   .col-xs-12.col-sm-12.col-md-10.col-lg-10

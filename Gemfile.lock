@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: ae862fda64b2e44f676080bd7a5cb87dabbf449a
+  revision: 5fdb860dd41794a63bcfcffb88f4b56989f28d7b
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -80,7 +80,7 @@ GEM
       mime-types (>= 1.16)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.3)
+    cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)

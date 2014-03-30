@@ -1,9 +1,21 @@
-- content_for :title, "BestofAMA - The Unofficial AMA Indexer"
+- set_meta_tags title: 'The Unofficial Reddit AMA Indexer'
+- set_meta_tags canonical: root_url
+- set_meta_tags description: 'BestofAMA is a reddit.com "Ask Me Anything" (AMA) indexer and archiver. BestofAMA allows you to search, browse, filter, and sort AMAs'
+
+.row
+  .col-sm-12
+    h2.text-center
+      | BestofAMA is a reddit.com "Ask Me Anything" (AMA) indexer and archiver. Browse, filter, and sort through&nbsp;
+      strong= link_to Op.all.count, ops_path
+      |  famous redditors (OPs)&nbsp;
+      strong= link_to Ama.all.count, amas_path
+      |  AMAs
 
 .row
   .col-sm-12.col-md-8.col-lg-8
-    .panel.panel-warning
-      .panel-heading Upcoming AMA's
+    .panel.panel-info
+      h3.panel-heading
+        | Upcoming AMA's
       ul.list-group
         - cache ["index-upcomings"], :expires_in => 5.minutes do
           - @upcomings.each do |upcoming|
@@ -18,16 +30,15 @@
 
   .col-sm-12.col-md-4.col-lg-4
     .panel.panel-default
-      .panel-heading Advertisement
+      h3.panel-heading Advertisement
       .panel-body.advertisement= render :file => 'layouts/ad-responsive', locals: { size: 'ad-square' }
 
 .row
   .col-md-12.col-sm-12.col-lg-12
     .panel.panel-default
-      .panel-heading
-        | Recent AMA's
-        small.pull-right= link_to 'View All', amas_path
+      h3.panel-heading Recent AMA's
       ul.list-group
         - cache ["index-amas"], :expires_in => 5.minutes do
           - @amas.each do |ama|
             = render partial: 'amas/snippet', locals: { ama: ama }
+      = link_to 'View more AMAs', amas_path, id: 'view-more', class: 'btn btn-primary btn-lg btn-block'

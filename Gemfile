@@ -28,9 +28,9 @@ gem 'httparty'
 gem 'iron_worker_ng'
 gem 'meta-tags', :require => 'meta_tags'
 
-gem 'formtastic', github: 'justinfrench/formtastic'
-gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
-gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
+#gem 'formtastic', github: 'justinfrench/formtastic'
+#gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
+#gem 'polyamorous', github: 'activerecord-hackery/polyamorous'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :heroku do

@@ -1,13 +1,35 @@
-- if @order != 'date' and params[:page]
-  - content_for :title, "AMA Directory | '#{@order}' | Page #{params[:page]} - BestofAMA"
+/ SEO
+- if @order != 'date' and params[:page] && params[:page].to_i > 1
+  - set_meta_tags title: ["Page #{params[:page]}", "ordered by #{@order}", 'AMAs Directory']
+  - set_meta_tags canonical: amas_url(page: params[:page], order: @order)
+  - set_meta_tags prev: amas_url(page: params[:page].to_i - 1, order: @order)
+  - set_meta_tags next: amas_url(page: params[:page].to_i + 1, order: @order)
+  - set_meta_tags description: "Directory of Reddit AMAs ordered by #{@order}. Page #{params[:page]}"
+
 - elsif params[:page] && params[:page].to_i > 1
-  - content_for :title, "AMA Directory | Page #{params[:page]} - BestofAMA"
+  - set_meta_tags title: ["Page #{params[:page]}", 'AMAs Directory']
+  - set_meta_tags canonical: amas_url(page: params[:page])
+  - set_meta_tags prev: amas_url(page: params[:page].to_i - 1)
+  - set_meta_tags next: amas_url(page: params[:page].to_i + 1)
+  - set_meta_tags description: "Directory of Reddit AMAs ordered by #{@order}. Page #{params[:page]}"
+
+- elsif @order != "date"
+  - set_meta_tags title: ["ordered by #{@order}", 'AMAs Directory']
+  - set_meta_tags canonical: amas_url(order: @order)
+  - set_meta_tags prev: amas_url(order: @order)
+  - set_meta_tags next: amas_url(page: 2, order: @order)
+  - set_meta_tags description: "Directory of Reddit AMAs ordered by #{@order}"
+
 - else
-  - content_for :title, "AMA Directory - BestofAMA"
+  - set_meta_tags title: 'AMAs Directory'
+  - set_meta_tags canonical: amas_url
+  - set_meta_tags prev: amas_url
+  - set_meta_tags next: amas_url(page: 2)
+  - set_meta_tags description: "Directory of Reddit AMAs ordered by #{@order}"
 
 .row
   .col-xs-12.col-sm-12.col-md-10.col-lg-10
-    h2.pull-left AMAs Directory
+    h1.pull-left AMAs Directory
 
   .col-xs-12.col-sm-12.col-md-2.col-lg-2
     .btn-actions.btn-group.pull-right.filter

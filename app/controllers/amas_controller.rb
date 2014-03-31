@@ -33,4 +33,9 @@ class AmasController < ApplicationController
     end
   end
 
+  private
+  def default_url_options
+    {:host => "bestofama.com"}
+  end
+
 end

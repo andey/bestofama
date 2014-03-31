@@ -20,4 +20,9 @@ class TagsController < ApplicationController
     redirect_to tag_path(@tag.redirect_tag_name) if @tag.redirect_tag_id
     @taggings = @tag.taggings.order(:karma).reverse_order.paginate(:page => params[:page], :per_page => 25)
   end
+
+  private
+  def default_url_options
+    {:host => "bestofama.com"}
+  end
 end

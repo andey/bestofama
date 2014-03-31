@@ -31,5 +31,10 @@ class OpsController < ApplicationController
       format.html
     end
   end
+
+  private
+  def default_url_options
+    {:host => "bestofama.com"}
+  end
 end
 

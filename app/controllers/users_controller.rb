@@ -12,4 +12,9 @@ class UsersController < ApplicationController
       format.html { if @user.belongs_to_only_one_op? then redirect_to op_path(@user.ops.first) end }
     end
   end
+
+  private
+  def default_url_options
+    {:host => "bestofama.com"}
+  end
 end

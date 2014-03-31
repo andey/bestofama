@@ -2,98 +2,82 @@
 - set_meta_tags canonical: op_url(@op.slug)
 
 section itemscope='itemscope' itemtype="http://schema.org/Person"
-  .row
-    - if @op.avatar.exists?
-      = render 'profile_with_avatar'
-    - else
-      = render 'profile_without_avatar'
+  - cache @op do
+    .row
+      .col-sm-12
+        h1 itemprop='name'= @op.name
 
-  - tab_taken = false
-  .row
-    .col-12.col-sm-12.col-lg-12
-      .nav.nav-tabs
+    .row
+      .col-xs-12.col-sm-4.col-md-3.col-lg-3
+        = image_tag @op.avatar.url(:medium), :class => 'img-rounded op-avatar', :itemprop => 'image'
 
-        - if @op.amas.count > 0
-          li rel='amas'
-            a href="#amas" AMAs
+        .panel.panel-info itemprop='description'
+          .panel-heading About
+          .panel-body
+            = @op.content
+
+        .panel.panel-primary.hidden-xs
+          .panel-heading Reddit AMA Stats
+          .panel-body
+            table.table-borderless
+
+              tr
+                td
+                  strong AMA Karma:
+                td.table-value= @op.amas.sum('karma').to_i
+              tr
+                td
+                  strong # AMA's:
+                td.table-value= @op.amas.count
+              tr
+                td
+                  strong x&#772; AMA Karma:
+                td.table-value= @op.amas.average('karma').to_i
+
+              tr
+                td &nbsp;
+                td &nbsp;
+
+              tr
+                td
+                  strong Comment Karma:
+                td.table-value= @op.comment_karma
+              tr
+                td
+                  strong # Comments:
+                td.table-value= @op.comments.count
+              tr
+                td
+                  strong x&#772; Comment Karma
+                td.table-value= @op.comments.average('karma').to_i
+
+        .panel.panel-default.hidden-xs
+          .panel-heading Tag Cloud
+          .panel-body
+            = @op.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe
+
+      .col-xs-12.col-sm-8.col-md-9.col-lg-9
+        - if @op.amas.distinct.count > 0
+          h2 Hosted AMAs
+          hr/
+          .list-group
+            - @op.amas.distinct.each do |ama|
+              = render partial: 'amas/snippet', locals: { ama: ama }
+
+        - if @op.participated.distinct.count > 0
+          h2 Guest Appearances
+          hr/
+          .list-group
+            - @op.participated.distinct.each do |ama|
+              = render partial: 'amas/snippet', locals: { ama: ama }
 
         - if @comments.count > 0
-          li rel='comments'
-            - tab_taken = true
-            a href="#comments" Top Comments
-
-        li rel='info'
-          - tab_taken = true
-          a href="#info" Info
-
-  .row
-    .col-12.col-sm-12.col-lg-12
-      - cache ["show", "amas", @op, @op.amas.count, @op.participated.count] do
-        - if @op.amas.count > 0 || @op.participated.count > 0
-          #amas.tab-content.hide rel='amas'
-              .list-group
-                - @op.amas.distinct.each do |ama|
-                  = render partial: 'amas/snippet', locals: { ama: ama }
-                - @op.participated.distinct.each do |ama|
-                  = render partial: 'amas/snippet', locals: { ama: ama }
-
-
-      - cache ["show", "comments", @op, @comments.count] do
-        - if @comments.count > 0
-          #comments.tab-content.hide.ama.ama-comments rel='comments'
+          h2 Highest Rated Comments
+          hr/
+          #comments.ama.ama-comments rel='comments'
             - @comments.each do |c|
               - if c.parent
                 = render 'comments/show', :comment => c.parent, :depth => 0
                 = render 'comments/show', :comment => c, :depth => 1
               - else
                 = render 'comments/show', :comment => c, :depth => 0
-
-      - cache ["show", "info", @op] do
-        #info.tab-content.hide rel='info'
-          .row
-            .col-12.col-sm-12.col-lg-4
-              .panel.panel-info
-                .panel-heading Random Stats
-                .panel-body
-                  table.table-borderless
-                    tr
-                      td
-                        strong Comment Karma:
-                      td.table-value= @op.comment_karma
-                    tr
-                      td
-                        strong Link Karma:
-                      td.table-value= @op.link_karma
-                    tr
-                      td
-                        strong # AMA's:
-                      td.table-value= @op.amas.count
-                    tr
-                      td
-                        strong # Comments:
-                      td.table-value= @op.comments.count
-                    tr
-                      td
-                        strong Comment AVG Karma
-                      td.table-value= @op.comments.average('karma').to_i
-                    tr
-                      td
-                        strong Wikipedia 90 Day Traffic
-                      td.table-value= @op.wikipedia_hits
-
-              - if @op.links.count > 0
-                .panel.panel-primary
-                  .panel-heading Social Profile
-                  .panel-body
-                    ul
-                     - @op.links.each do |profile|
-                      li= link_to profile.site, profile.link, :rel => 'nofollow', :itemprop => 'sameAs'
-
-            - if @op.links.where(:site_id => 1).count > 0
-              .col-12.col-sm-12.col-lg-8
-                #wikipedia.panel.panel-default
-                  .panel-heading
-                    | Wikipedia
-                    span.pull-right= link_to "link", @op.links.where(:site_id => 1).first.link, :rel => 'nofollow'
-                  .panel-body
-                    iframe data-url=wikipedia_mobile(@op.links.where(:site_id => 1).first.link)

@@ -1,5 +1,5 @@
-- content_for :title, "#{@ama.title} - BestofAMA"
-- content_for :canonical, ama_url(@ama)
+- set_meta_tags title: @ama.title
+- set_meta_tags canonical: ama_url(@ama)
 
 section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
   - cache ["info", @ama] do

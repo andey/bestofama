@@ -1,14 +1,11 @@
 class OpsController < ApplicationController
-  before_filter :require_user, :only => :update
   layout 'v3'
 
   # GET /ops/:id
   #
   # Display general information about the entity,
   # and list all the AMAs hosted and participated in as a guest speaker
-
   def show
-
     @op = Op.find_by_slug(params[:id]) || raise_404
     @comments = Comment.where(:user_id => @op.users).order(:karma).reverse_order.limit(10)
 
@@ -24,20 +21,11 @@ class OpsController < ApplicationController
   # - wikipedia_hits
   # - comment_karma
   # - link_karma
-
   def index
-    @order = params[:order] if ['name', 'name DESC', 'comment_karma', 'link_karma'].include? params[:order]
-
     # Not all entities have a wikipedia page.
     # Therefore sort by comment_karma for all entities with wikipedia_hit = 0
-    @order ||= 'wikipedia_hits, comment_karma'
-
-    params[:page] ||= 1
+    @order = (['name', 'name DESC', 'comment_karma', 'link_karma'].include? params[:order]) ? params[:order] : 'wikipedia_hits, comment_karma'
     @ops = Op.order(@order).reverse_order.paginate(:page => params[:page], :per_page => 25)
-
-    order = @order != 'wikipedia_hits, comment_karma' ? "| #{@order} " : nil
-    page = params[:page] && params[:page].to_i > 1 ? "| Page #{params[:page]} " : nil
-    @title = "OPs Directory #{order}#{page}- BestofAMA"
 
     respond_to do |format|
       format.html

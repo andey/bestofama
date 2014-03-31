@@ -1,4 +1,5 @@
-- content_for :title, "#{@op.name} - BestofAMA"
+- set_meta_tags title: @op.name
+- set_meta_tags canonical: op_url(@op.slug)
 
 section itemscope='itemscope' itemtype="http://schema.org/Person"
   .row

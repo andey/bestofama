@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126040204) do
+ActiveRecord::Schema.define(version: 20140331035242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20140126040204) do
 
   create_table "ops", force: true do |t|
     t.string   "name",                            null: false
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "slug",                            null: false
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20140126040204) do
     t.string   "image_source"
     t.string   "redirect_tag_name"
     t.integer  "redirect_tag_id"
-    t.datetime "updated_at",         default: '2014-03-31 02:54:02'
+    t.datetime "updated_at",         default: '2014-01-26 02:53:37'
   end
 
   create_table "trashes", force: true do |t|

@@ -1,4 +1,5 @@
-- content_for :title, "#{@user.username} - BestofAMA"
+- set_meta_tags title: @user.username
+- set_meta_tags description: "Reddit User #{@user.username}"
 
 .row
   .col-12.col-sm-12.col-lg-8

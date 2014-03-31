@@ -1,30 +1,30 @@
 / SEO
 - if @order != "wikipedia_hits, comment_karma" and params[:page] && params[:page].to_i > 1
   - set_meta_tags title: ["Page #{params[:page]}", "ordered by #{@order}", 'OPs Directory']
-  - set_meta_tags canonical: ops_path(order: @order, page: params[:page])
-  - set_meta_tags prev: ops_path(order: @order, page: params[:page].to_i - 1)
-  - set_meta_tags next: ops_path(order: @order, page: params[:page].to_i + 1)
+  - set_meta_tags canonical: ops_url(order: @order, page: params[:page])
+  - set_meta_tags prev: ops_url(order: @order, page: params[:page].to_i - 1)
+  - set_meta_tags next: ops_url(order: @order, page: params[:page].to_i + 1)
   - set_meta_tags description: "Directory of famous redditors ordered by #{@order}. Page #{params[:page]}"
 
 - elsif params[:page] && params[:page].to_i > 1
   - set_meta_tags title: ["Page #{params[:page]}", 'OPs Directory']
-  - set_meta_tags canonical: ops_path(page: params[:page])
-  - set_meta_tags prev: ops_path(page: params[:page].to_i - 1)
-  - set_meta_tags next: ops_path(page: params[:page].to_i + 1)
+  - set_meta_tags canonical: ops_url(page: params[:page])
+  - set_meta_tags prev: ops_url(page: params[:page].to_i - 1)
+  - set_meta_tags next: ops_url(page: params[:page].to_i + 1)
   - set_meta_tags description: "Directory of famous redditors ordered by #{@order}. Page #{params[:page]}"
 
 - elsif @order != "wikipedia_hits, comment_karma"
   - set_meta_tags title: ["ordered by #{@order}", 'OPs Directory']
-  - set_meta_tags canonical: ops_path(order: @order)
-  - set_meta_tags prev: ops_path(order: @order)
-  - set_meta_tags next: ops_path(order: @order, page: 2)
+  - set_meta_tags canonical: ops_url(order: @order)
+  - set_meta_tags prev: ops_url(order: @order)
+  - set_meta_tags next: ops_url(order: @order, page: 2)
   - set_meta_tags description: "Directory of famous redditors ordered by #{@order}"
 
 - else
   - set_meta_tags title: 'OPs Directory'
-  - set_meta_tags canonical: ops_path
-  - set_meta_tags prev: ops_path
-  - set_meta_tags next: ops_path(page: 2)
+  - set_meta_tags canonical: ops_url
+  - set_meta_tags prev: ops_url
+  - set_meta_tags next: ops_url(page: 2)
   - set_meta_tags description: 'Directory of famous redditors ordered by Wikipedia popularity'
 
 .row

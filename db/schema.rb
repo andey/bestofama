@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126040204) do
+ActiveRecord::Schema.define(version: 20140403203210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,12 +64,15 @@ ActiveRecord::Schema.define(version: 20140126040204) do
     t.integer  "responses",  default: 0
   end
 
+  add_index "amas", ["date"], name: "index_amas_on_date", using: :btree
   add_index "amas", ["key"], name: "index_amas_on_key", unique: true, using: :btree
 
   create_table "amas_users", id: false, force: true do |t|
     t.integer "ama_id"
     t.integer "user_id"
   end
+
+  add_index "amas_users", ["ama_id", "user_id"], name: "index_amas_users_on_ama_id_and_user_id", unique: true, using: :btree
 
   create_table "archives", force: true do |t|
     t.integer  "ama_id"
@@ -106,7 +109,7 @@ ActiveRecord::Schema.define(version: 20140126040204) do
 
   create_table "ops", force: true do |t|
     t.string   "name",                            null: false
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "slug",                            null: false
@@ -136,6 +139,8 @@ ActiveRecord::Schema.define(version: 20140126040204) do
     t.integer "user_id"
   end
 
+  add_index "ops_users", ["op_id", "user_id"], name: "index_ops_users_on_op_id_and_user_id", unique: true, using: :btree
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -163,7 +168,7 @@ ActiveRecord::Schema.define(version: 20140126040204) do
     t.string   "image_source"
     t.string   "redirect_tag_name"
     t.integer  "redirect_tag_id"
-    t.datetime "updated_at",         default: '2014-01-26 03:27:52'
+    t.datetime "updated_at",         default: '2014-01-26 02:53:37'
   end
 
   create_table "trashes", force: true do |t|
@@ -182,6 +187,8 @@ ActiveRecord::Schema.define(version: 20140126040204) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "upcomings", ["date"], name: "index_upcomings_on_date", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",                  null: false

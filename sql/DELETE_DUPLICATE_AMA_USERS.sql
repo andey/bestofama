@@ -1,0 +1,1 @@
+DELETE FROM taggings t WHERE EXISTS (SELECT 1 FROM taggings t1 WHERE t1.tag_id = t.tag_id AND t1.taggable_id = t.taggable_id AND t1.ctid > t.ctid)

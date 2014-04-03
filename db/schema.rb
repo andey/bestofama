@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403202922) do
+ActiveRecord::Schema.define(version: 20140403203210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140403202922) do
     t.integer  "responses",  default: 0
   end
 
+  add_index "amas", ["date"], name: "index_amas_on_date", using: :btree
   add_index "amas", ["key"], name: "index_amas_on_key", unique: true, using: :btree
 
   create_table "amas_users", id: false, force: true do |t|

@@ -1,0 +1,1 @@
+DELETE FROM ops_users t WHERE EXISTS (SELECT 1 FROM ops_users t1 WHERE t1.op_id = t.op_id AND t1.user_id = t.user_id AND t1.ctid > t.ctid)

@@ -10,8 +10,8 @@ Bestofama::Application.configure do
   #config.active_record.mass_assignment_sanitizer = :strict
   #config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.assets.compress = false
-  config.assets.debug = true
-  config.assets.logger = false
+  config.assets.debug = nil
+  config.assets.logger = nil
   config.log_level = :debug
   config.eager_load = false
 

@@ -11,25 +11,25 @@
     p.text-center
       = link_to reddit_user_path(@user.username), reddit_user_path(@user.username), :rel => 'nofollow'
 
-.row
-  .col-sm-12
-    - cache ['show', 'hosted', @user, @user.amas.count]
-      - if @user.amas.distinct.count > 0
-        h2 Hosted AMAs
-        hr/
-        .list-group
-          - @user.amas.distinct.each do |ama|
-            = render partial: 'amas/snippet', locals: { ama: ama }
-
-.row
-  .col-sm-12
-    - cache ['show', 'participated', @user, @participated.count]
-      - if @participated.count > 0
-        h2 Participated In
-        hr/
-        .list-group
-          - @participated.distinct.each do |ama|
-            = render partial: 'amas/snippet', locals: { ama: ama }
+/.row
+/  .col-sm-12
+/    - cache ['show', 'hosted', @user, @user.amas.count]
+/      - if @user.amas.distinct.count > 0
+/        h2 Hosted AMAs
+/        hr/
+/        .list-group
+/          - @user.amas.distinct.each do |ama|
+/            = render partial: 'amas/snippet', locals: { ama: ama }
+/
+/.row
+/  .col-sm-12
+/    - cache ['show', 'participated', @user, @participated.count]
+/      - if @participated.count > 0
+/        h2 Participated In
+/        hr/
+/        .list-group
+/          - @participated.distinct.each do |ama|
+/            = render partial: 'amas/snippet', locals: { ama: ama }
 
 .row
   .col-sm-12
@@ -38,9 +38,5 @@
         h2 Highest Rated Comments
         hr/
         #comments.ama.ama-comments rel='comments'
-          - @comments.limit(5).each do |c|
-            - if c.parent
-              = render 'comments/show', :comment => c.parent, :depth => 0
-              = render 'comments/show', :comment => c, :depth => 1
-            - else
-              = render 'comments/show', :comment => c, :depth => 0
+          - @comments.each do |c|
+            = render 'comments/show', :comment => c, :depth => 0

@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id]) || raise_404
     raise_404 if @user.id == 122 # the id of [deleted] user
 
-    @comments = @user.comments.order(:karma).reverse_order
-    @participated = Ama.where(id: @comments.map(&:ama_id)).where.not(id: @user.amas)
+    @comments = @user.comments.order(:karma).reverse_order.limit(5)
+    # @participated = Ama.where(id: @comments.map(&:ama_id)).where.not(id: @user.amas)
 
     respond_to do |format|
       format.html { if @user.belongs_to_only_one_op? then redirect_to op_path(@user.ops.first) end }

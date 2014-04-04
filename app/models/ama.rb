@@ -38,7 +38,9 @@ class Ama < ActiveRecord::Base
   acts_as_taggable
 
   # AMA 'comments'
-  has_many :children, -> { where order: 'karma DESC' }, class_name: 'Comment', primary_key: :key, foreign_key: :parent_key
+  # These are expensive queries. Faster to run Comment.where(parent_key: comment.key, relevant: true).order(:karma).reverse_order
+  has_many :children, -> { order('karma DESC') }, class_name: 'Comment', primary_key: :key, foreign_key: :parent_key
+  has_many :relevant_children, -> { where(relevant: true).order('karma DESC') }, class_name: 'Comment', primary_key: :key, foreign_key: :parent_key
 
   # AMA Archives
   has_many :archives, :dependent => :destroy

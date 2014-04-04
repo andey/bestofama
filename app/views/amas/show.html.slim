@@ -58,7 +58,8 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
         #ama_comments_cache_key.hide= ActiveSupport::Cache.expand_cache_key(["comments", @ama], :views)
         .row.ama.ama-comments
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            = print_comments(@ama, 0).html_safe
+            = render partial: 'comments/tree', collection: Comment.where(parent_key: @ama.key, relevant: true).order(:karma).reverse_order, as: :comment, locals: {depth: 0}
+
 
     #tab-changes.tab-pane.pad
       - cache ["changes", @ama] do
@@ -79,6 +80,7 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
               h5= link_to comment.user.username, comment.user
               time data-time="#{change.created_at.to_i}"= change.created_at
               hr/
+
 
     #tab-archive.tab-pane.pad
       - cache ["archives", @ama] do

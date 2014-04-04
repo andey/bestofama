@@ -1,0 +1,19 @@
+.row.ama-comment id=comment.key
+  .comment-width.col-xs-9.col-sm-9.col-md-9.col-lg-9 class="col-half-offset-#{depth}" data-depth="#{depth}"
+    p
+      span class=comment.which_label?
+        - if comment.user.id == 122
+          span &#91;deleted&#93;
+        - else
+          = link_to comment.user.username, "/users/#{comment.user.username}", itemprop: "attendee"
+      span.ama-comment-karma.text-muted= "#{comment.karma} karma"
+      time.ama-comment-date data-time="#{comment.date.to_i}"
+        = comment.date
+    = comment.content.html_safe
+    p.actions
+      = link_to 'View History', "##{comment.key}", class: 'history-check hidden', title: 'This comment has been changed'
+      = link_to 'Share Link', "##{comment.key}", class: 'share-link'
+
+/= render partial: 'comments/tree', collection: comment.children, as: :comment, locals: {depth: depth + 1}
+/ This is a significantly faster query then above.
+= render partial: 'comments/tree', collection: Comment.where(parent_key: comment.key, relevant: true).order(:karma).reverse_order, as: :comment, locals: {depth: depth + 1}

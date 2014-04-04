@@ -1,0 +1,27 @@
+- set_meta_tags title: "Search #{params[:q]}"
+
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    form action="/search" id="cse-search-box" class="form-inline"
+      div.text-center
+        input type="hidden" name="cx" value="partner-pub-7202121084370254:7232282069"
+        input type="hidden" name="cof" value="FORID:10"
+        input type="hidden" name="ie" value="UTF-8"
+        input type="text" class="form-control" name="q" style="width:80%;"
+        input type="submit" class="btn btn-default" style="width:20%;" name="sa" value="Search"
+
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    #cse-search-results
+
+= javascript_include_tag "http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"
+/= javascript_include_tag "//code.jquery.com/jquery-1.11.0.min.js"
+javascript:
+  console.log(document.getElementById('cse-search-results').clientWidth);
+  var googleSearchIframeName = "cse-search-results";
+  var googleSearchFormName = "cse-search-box";
+  var googleSearchFrameWidth = document.getElementById('cse-search-results').clientWidth;
+  var googleSearchDomain = "www.google.com";
+  var googleSearchPath = "/cse";
+= javascript_include_tag "http://www.google.com/afsonline/show_afs_search.js"
+

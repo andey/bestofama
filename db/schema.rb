@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403225507) do
+ActiveRecord::Schema.define(version: 20140404135641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,9 +94,7 @@ ActiveRecord::Schema.define(version: 20140403225507) do
     t.boolean  "relevant",   default: false
   end
 
-  add_index "comments", ["key"], name: "index_comments_on_key", using: :btree
-  add_index "comments", ["parent_key"], name: "index_comments_on_parent_key", using: :btree
-  add_index "comments", ["relevant"], name: "index_comments_on_relevant", using: :btree
+  add_index "comments", ["ama_id", "key", "user_id", "parent_key", "karma", "relevant"], name: "index_comments_on_everything", using: :btree
 
   create_table "meta", force: true do |t|
     t.string   "name",       null: false
@@ -166,7 +164,7 @@ ActiveRecord::Schema.define(version: 20140403225507) do
     t.string   "image_source"
     t.string   "redirect_tag_name"
     t.integer  "redirect_tag_id"
-    t.datetime "updated_at",         default: '2014-01-26 02:53:37'
+    t.datetime "updated_at",         default: '2014-01-26 03:27:52'
     t.integer  "taggings_count",     default: 0
   end
 

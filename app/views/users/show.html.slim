@@ -2,34 +2,45 @@
 - set_meta_tags description: "Reddit User #{@user.username}"
 
 .row
-  .col-12.col-sm-12.col-lg-8
-    h1= @user.username
+  .col-sm-12
+    h1.text-center= @user.username
     - if @user.ops.count > 0
-      p
+      p.text-center
         b Associated Ops:&nbsp;
         = @user.ops.group(:id).map { |op| link_to op.name, op }.join(', ').html_safe
-    p
+    p.text-center
       = link_to reddit_user_path(@user.username), reddit_user_path(@user.username), :rel => 'nofollow'
 
-- if @user.amas.count > 0
+.row
+  .col-sm-12
+    - cache ['show', 'hosted', @user, @user.amas.count]
+      - if @user.amas.distinct.count > 0
+        h2 Hosted AMAs
+        hr/
+        .list-group
+          - @user.amas.distinct.each do |ama|
+            = render partial: 'amas/snippet', locals: { ama: ama }
 
-  h3.pull-left AMAs
-  .clearfix
+.row
+  .col-sm-12
+    - cache ['show', 'participated', @user, @participated.count]
+      - if @participated.count > 0
+        h2 Participated In
+        hr/
+        .list-group
+          - @participated.distinct.each do |ama|
+            = render partial: 'amas/snippet', locals: { ama: ama }
 
-  .list-group
-    - cache ["show", "amas", @user] do
-      - @user.amas.each do |ama|
-        = link_to ama_path(ama), :class => 'list-group-item' do
-          .row.ama
-            .col-1.col-sm-1.col-lg-1
-              .karma-meter= karma_meter(ama.karma).html_safe
-            .col-11.col-sm-11.col-lg-11
-              h4.ama-title.list-group-item-heading= ama.title
-              p.list-group-item-text
-                | Comments:&nbsp;
-                =ama.comments
-                |  &nbsp;&bull;&nbsp; Responses:&nbsp;
-                =ama.responses
-                |  &nbsp;&bull;&nbsp; Date:&nbsp;
-                =ama.date
-            .clearfix
+.row
+  .col-sm-12
+    - cache ['show', 'comments', @user, @comments.count]
+      - if @comments.count > 0
+        h2 Highest Rated Comments
+        hr/
+        #comments.ama.ama-comments rel='comments'
+          - @comments.limit(5).each do |c|
+            - if c.parent
+              = render 'comments/show', :comment => c.parent, :depth => 0
+              = render 'comments/show', :comment => c, :depth => 1
+            - else
+              = render 'comments/show', :comment => c, :depth => 0

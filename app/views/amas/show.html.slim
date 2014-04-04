@@ -119,7 +119,7 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
         span itemprop="title" BestofAMA
       li= link_to (amas_path), itemprop: "url" do
         span itemprop="title" AMAs
-      li.active= @ama.title
+      li.active= @ama.title.html_safe
 
 .modal.fade
   .modal-dialog

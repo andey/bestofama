@@ -18,4 +18,15 @@ module AmasHelper
     end
     return string
   end
+
+  # Will return Bootstrap 3.0.0 label class
+  def label(op_id, guests, user_id)
+    if user_id == op_id
+      return 'label label-info'
+    elsif guests.include?(user_id)
+      return 'label label-warning'
+    else
+      return ''
+    end
+  end
 end

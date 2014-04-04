@@ -1,7 +1,7 @@
 .row.ama-comment id=comment.key
   .comment-width.col-xs-9.col-sm-9.col-md-9.col-lg-9 class="col-half-offset-#{depth}" data-depth="#{depth}"
     p
-      span class=comment.which_label?
+      span class=label(@op_id, @guests_ids, comment.user_id)
         - if comment.user.id == 122
           span &#91;deleted&#93;
         - else

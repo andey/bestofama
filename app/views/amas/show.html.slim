@@ -11,7 +11,7 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
         .page-header
           h1 itemprop='name'= @ama.title.html_safe
           .list-group
-            - @ops.uniq.each do |op|
+            - @ama.ops.each do |op|
               div itemprop='performer'
                 = render partial: 'ops/snippet', locals: { op: op }
           p= @ama.tag_list.map { |t| link_to t, tag_path(t) }.join(', ').html_safe

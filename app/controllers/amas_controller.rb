@@ -24,8 +24,10 @@ class AmasController < ApplicationController
   # - @users are users who "participated" (guest speakers) in an AMA.
   def show
     @ama = Ama.find_by_key(params[:id]) || raise_404
-    @users = @ama.users
-    @ops = @ama.ops
+
+    @op_id = @ama.user_id
+    @guests_ids = @ama.users.map(&:id)
+
     @changes = PaperTrail::Version.where(item_type: ['Comment'], item_id: Comment.where(ama_id: @ama).map(&:id)).order(:id).reverse_order
 
     respond_to do |format|

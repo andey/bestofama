@@ -62,3 +62,15 @@
 
 .row.sticky-scroll-bottom.text-center
   = will_paginate @ops
+
+.row
+  .col-sm-12
+    ol.breadcrumb itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
+      li= link_to (root_path), itemprop: "url" do
+        span itemprop="title" BestofAMA
+      li= link_to (ops_path), itemprop: "url" do
+        span itemprop="title" OPs
+      - if @order != "wikipedia_hits, comment_karma"
+        li= link_to (ops_path(order: @order)), itemprop: "url" do
+          span itemprop="title"= "Ordered by #{@order}"
+      li.active= "Page #{@ops.current_page}"

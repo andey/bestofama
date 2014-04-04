@@ -85,3 +85,12 @@ section itemscope='itemscope' itemtype="http://schema.org/Person"
                 = render 'comments/show', :comment => c, :depth => 1
               - else
                 = render 'comments/show', :comment => c, :depth => 0
+
+.row
+  .col-sm-12
+    ol.breadcrumb itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
+      li= link_to (root_path), itemprop: "url" do
+        span itemprop="title" BestofAMA
+      li= link_to (ops_path), itemprop: "url" do
+        span itemprop="title" OPs
+      li.active= @op.name

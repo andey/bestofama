@@ -112,6 +112,14 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
           .col-xs-12
             p.text-muted.text-center FYI: AMAs must reach a minimum karma score of 100 before it's considered for processing
 
+.row
+  .col-sm-12
+    ol.breadcrumb itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
+      li= link_to (root_path), itemprop: "url" do
+        span itemprop="title" BestofAMA
+      li= link_to (amas_path), itemprop: "url" do
+        span itemprop="title" AMAs
+      li.active= @ama.title
 
 .modal.fade
   .modal-dialog

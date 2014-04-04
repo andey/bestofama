@@ -36,3 +36,12 @@
 
 .row.sticky-scroll-bottom.text-center
   = will_paginate @tags
+
+.row
+  .col-sm-12
+    ol.breadcrumb itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
+      li= link_to (root_path), itemprop: "url" do
+        span itemprop="title" BestofAMA
+      li= link_to (tags_path), itemprop: "url" do
+        span itemprop="title" Tags
+      li.active= "Page #{@tags.current_page}"

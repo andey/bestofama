@@ -23,7 +23,7 @@
        .tag.col-xs-4.col-sm-4.col-md-4.col-lg-4
         = link_to tag_path(t.name) do
           .well
-            - if t.image.exists?
+            - if t.image_file_size
               = image_tag t.image.url(:medium), :class => 'img-thumbnail tag-image'
             h4.text-center= t.name
             p.count_all.text-center= "( #{t.count_all} results )"

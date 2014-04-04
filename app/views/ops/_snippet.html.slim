@@ -1,6 +1,6 @@
 = link_to op_path(op), :class => 'list-group-item', :itemscope => 'itemscope', :itemtype => "http://schema.org/Person", :itemprop => 'url' do
   .row.op-snippet
-    - if op.avatar.exists?
+    - if op.avatar_file_size
       .col-xs-2.col-sm-2.col-md-2.col-lg-2.op-avatar.text-center
         = image_tag op.avatar.url(:thumb), :class => 'img-rounded op-avatar', :itemprop => 'image'
 

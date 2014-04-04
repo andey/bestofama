@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404185945) do
+ActiveRecord::Schema.define(version: 20140404192847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 20140404185945) do
     t.datetime "updated_at"
     t.hstore   "json"
   end
+
+  add_index "archives", ["ama_id"], name: "index_archives_on_ama_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "ama_id",                     null: false

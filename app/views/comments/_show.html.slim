@@ -2,8 +2,8 @@
   .comment-width.col-xs-9.col-sm-9.col-md-9.col-lg-9 class="col-half-offset-#{depth}" data-depth="#{depth}"
     p
       span class=comment.which_label?
-        - if comment.user.id == 2
-          span [deleted]
+        - if comment.user.id == 122
+          span &#91;deleted&#93;
         - else
           = link_to comment.user.username, "/users/#{comment.user.username}", itemprop: "attendee"
       span.ama-comment-karma.text-muted= "#{comment.karma} karma"

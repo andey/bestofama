@@ -56,16 +56,40 @@ describe Ama do
       @ama.karma.should be(14752)
     end
 
-    it 'OP comment is relevant' do
-      Comment.find_by_key('c60n05h').should_not be(nil)
+    describe "OP comment" do
+
+      it 'is relevant' do
+        Comment.find_by_key('c60n05h').relevant.should be(true)
+      end
+
+      it "doesn't have relevant child" do
+        Comment.find_by_key('c60n05h').relevant_child.should be(false)
+      end
+
     end
 
-    it "regular comment isn't relevant" do
-      Comment.find_by_key('c60n1lg').relevant.should be(false)
+    describe 'irrelevant comment' do
+
+      it "isn't relevant" do
+        Comment.find_by_key('c60n1lg').relevant.should be(false)
+      end
+
+      it "doesn't have relevant child" do
+        Comment.find_by_key('c60n1lg').relevant_child.should be(false)
+      end
+
     end
 
-    it 'regular comment responded to by OP is relevant' do
-      Comment.find_by_key('c60mm41').relevant.should be(true)
+    describe "relevant comment that isn't OP" do
+
+      it 'is relevant' do
+        Comment.find_by_key('c60mm41').relevant.should be(true)
+      end
+
+      it 'has relevant child' do
+        Comment.find_by_key('c60mm41').relevant_child.should be(true)
+      end
+
     end
 
     after(:all) do

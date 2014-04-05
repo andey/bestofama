@@ -15,15 +15,10 @@ module AmaProcessing
 
     posts.each do |post|
       if post["kind"] != "more"
-        if (self.comment_has_children?(post["data"]) and self.is_op?(post["data"]["author"]))
+        relevant_child = self.comment_has_children?(post["data"])
+        if self.is_op?(post["data"]["author"]) || relevant_child
           relevant = true
-          self.find_or_create_comment_by_json(post["data"], true, true)
-        elsif self.comment_has_children?(post["data"])
-          relevant = true
-          self.find_or_create_comment_by_json(post["data"], true, true)
-        elsif self.is_op?(post["data"]["author"])
-          relevant = true
-          self.find_or_create_comment_by_json(post["data"], true, false)
+          self.find_or_create_comment_by_json(post["data"], true, relevant_child)
         else
           self.find_or_create_comment_by_json(post["data"], false, false)
         end

@@ -2,7 +2,7 @@
   .comment-width.col-xs-9.col-sm-9.col-md-9.col-lg-9 class="col-half-offset-#{depth}" data-depth="#{depth}"
     p
       span class=label(@op_id, @guests_ids, comment.user_id)
-        - if comment.user.id == 122
+        - if comment.user_id == 122
           span &#91;deleted&#93;
         - else
           = link_to comment.user.username, "/users/#{comment.user.username}", itemprop: "attendee"
@@ -16,4 +16,4 @@
 
 /= render partial: 'comments/tree', collection: comment.children, as: :comment, locals: {depth: depth + 1}
 / This is a significantly faster query then above.
-= render partial: 'comments/tree', collection: Comment.where(parent_key: comment.key, relevant: true).order(:karma).reverse_order, as: :comment, locals: {depth: depth + 1}
+= render partial: 'comments/tree', collection: Comment.includes(:user).where(parent_key: comment.key, relevant: true).order(:karma).reverse_order, as: :comment, locals: {depth: depth + 1}

@@ -14,7 +14,8 @@
 #  image_source       :string(255)
 #  redirect_tag_name  :string(255)
 #  redirect_tag_id    :integer
-#  updated_at         :datetime         default(2014-01-26 02:53:37 UTC)
+#  updated_at         :datetime         default(2014-01-26 03:27:52 UTC)
+#  taggings_count     :integer          default(0)
 #
 
 class Tag < ActiveRecord::Base

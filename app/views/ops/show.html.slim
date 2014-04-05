@@ -9,7 +9,7 @@ section itemscope='itemscope' itemtype="http://schema.org/Person"
   .row
     .col-xs-12.col-sm-4.col-md-3.col-lg-3
       - cache @op do
-        - if @op.avatar.exists?
+        - if @op.avatar_file_size
           = image_tag @op.avatar.url(:medium), :class => 'img-rounded op-avatar', :itemprop => 'image'
 
         .panel.panel-info itemprop='description'

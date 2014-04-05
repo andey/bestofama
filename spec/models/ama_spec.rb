@@ -40,7 +40,7 @@ describe Ama do
 
   end
 
-  describe 'comments/z1c9z.json' do
+  describe 'fetch' do
 
     before(:all) do
       # Create basic AMA with PresidentObama as the OP
@@ -52,11 +52,19 @@ describe Ama do
       @ama.fetch()
     end
 
-    it 'karma score is updated' do
-      @ama.karma.should be(14752)
+    describe 'updated' do
+
+      it 'karma score' do
+        @ama.karma.should be(14752)
+      end
+
+      # it 'responses' do
+      #   @ama.responses.should be(7)
+      # end
+
     end
 
-    describe "OP comment" do
+    describe 'OP comment' do
 
       it 'is relevant' do
         Comment.find_by_key('c60n05h').relevant.should be(true)

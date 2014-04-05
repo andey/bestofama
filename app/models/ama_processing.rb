@@ -15,11 +15,17 @@ module AmaProcessing
 
     posts.each do |post|
       if post["kind"] != "more"
-        if (self.comment_has_children?(post["data"]) || self.is_op?(post["data"]["author"]))
+        if (self.comment_has_children?(post["data"]) and self.is_op?(post["data"]["author"]))
           relevant = true
-          self.find_or_create_comment_by_json(post["data"], true)
+          self.find_or_create_comment_by_json(post["data"], true, true)
+        elsif self.comment_has_children?(post["data"])
+          relevant = true
+          self.find_or_create_comment_by_json(post["data"], true, true)
+        elsif self.is_op?(post["data"]["author"])
+          relevant = true
+          self.find_or_create_comment_by_json(post["data"], true, false)
         else
-          self.find_or_create_comment_by_json(post["data"], false)
+          self.find_or_create_comment_by_json(post["data"], false, false)
         end
       end
     end
@@ -66,13 +72,13 @@ module AmaProcessing
   end
 
   # Find or Create comment from Reddit JSON
-  def find_or_create_comment_by_json(data, relevant)
+  def find_or_create_comment_by_json(data, relevant, relevant_child)
     comment = Comment.find_by_key(data["id"])
     if comment
-      comment.update_by_json(data, relevant)
+      comment.update_by_json(data, relevant, relevant_child)
     else
       comment = Comment.new
-      comment.create_by_json(self.id, data, relevant)
+      comment.create_by_json(self.id, data, relevant, relevant_child)
     end
   end
 

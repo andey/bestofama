@@ -18,4 +18,14 @@ namespace :migrate do
   task :make_all_comments_relevant => :environment do
     Comment.update_all(relevant: true)
   end
+
+    # Make all comments Relevant
+  task :mark_all_relevant_children_comments => :environment do
+    Comment.where(relevant: true).each do |c|
+      if c.relevant_children.count > 0
+        puts c.id
+        c.update_attribute(:relevant_child, true)
+      end
+    end
+  end
 end

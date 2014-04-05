@@ -28,7 +28,7 @@ class AmasController < ApplicationController
     @op_id = @ama.user_id
     @guests_ids = @ama.users.map(&:id)
 
-    @changes = PaperTrail::Version.where(item_type: ['Comment'], item_id: Comment.where(ama_id: @ama).map(&:id)).order(:id).reverse_order
+    @changes = PaperTrail::Version.where(item_type: ['Comment'], item_id: Comment.where(ama_id: @ama, relevant: true).map(&:id)).order(:id).reverse_order
 
     respond_to do |format|
       format.html

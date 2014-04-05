@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404194148) do
+ActiveRecord::Schema.define(version: 20140405031313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,16 +84,17 @@ ActiveRecord::Schema.define(version: 20140404194148) do
   add_index "archives", ["ama_id"], name: "index_archives_on_ama_id", using: :btree
 
   create_table "comments", force: true do |t|
-    t.integer  "ama_id",                     null: false
-    t.string   "key",                        null: false
-    t.integer  "user_id",                    null: false
+    t.integer  "ama_id",                         null: false
+    t.string   "key",                            null: false
+    t.integer  "user_id",                        null: false
     t.text     "content"
-    t.string   "parent_key",                 null: false
-    t.datetime "date",                       null: false
-    t.integer  "karma",      default: 0
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "relevant",   default: false
+    t.string   "parent_key",                     null: false
+    t.datetime "date",                           null: false
+    t.integer  "karma",          default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "relevant",       default: false
+    t.boolean  "relevant_child", default: false
   end
 
   add_index "comments", ["ama_id"], name: "index_comments_on_ama_id", using: :btree

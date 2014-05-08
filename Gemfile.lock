@@ -336,7 +336,7 @@ DEPENDENCIES
   paper_trail (>= 3.0.0.rc2)
   paperclip (= 3.5.4)
   pg
-  rails (~> 4.0.4)
+  rails (~> 4.0.5)
   rails_12factor
   rdoc
   rspec-rails

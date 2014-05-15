@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.2'
 
-gem 'rails', '~> 4.0.5'
+gem 'rails', '4.1.1'
 gem 'pg'
 gem 'unicorn'
 gem 'jquery-rails'
@@ -28,6 +28,7 @@ gem 'httparty'
 gem 'iron_worker_ng'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise'
 
 group :heroku do
   gem 'rails_12factor'

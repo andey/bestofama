@@ -28,6 +28,7 @@ gem 'httparty'
 gem 'iron_worker_ng'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise'
 
 group :heroku do
   gem 'rails_12factor'

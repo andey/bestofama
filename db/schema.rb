@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20140405031313) do
     t.string   "image_source"
     t.string   "redirect_tag_name"
     t.integer  "redirect_tag_id"
-    t.datetime "updated_at",         default: '2014-01-26 02:53:37'
+    t.datetime "updated_at",         default: '2014-01-26 03:27:52'
     t.integer  "taggings_count",     default: 0
   end
 

@@ -19,13 +19,13 @@ gem 'htmlentities'
 gem 'sitemap_generator'
 gem 'carrierwave'
 gem 'unf'
+gem 'dalli'
 gem 'fog'
 gem 'paperclip', '3.5.4'
 gem 'aws-sdk'
 gem 'paper_trail'
 gem 'airbrake'
 gem 'httparty'
-gem 'iron_worker_ng'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
@@ -36,7 +36,6 @@ end
 
 group :production do
   gem 'newrelic_rpm'
-  gem 'iron_cache_rails'
 end
 
 group :development do

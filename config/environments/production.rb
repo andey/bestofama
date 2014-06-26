@@ -1,8 +1,10 @@
 Bestofama::Application.configure do
 
   # use cache servers by iron.io/cache
-  config.cache_store = :iron_cache, {project_id: ENV['IRON_CACHE_PROJECT_ID'], token: ENV['IRON_CACHE_TOKEN']}
-  config.cache_classes = true
+  if ENV["MEMCACHEDCLOUD_SERVERS"]
+    config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','), {:username => ENV["MEMCACHEDCLOUD_USERNAME"], :password => ENV["MEMCACHEDCLOUD_PASSWORD"]}
+    config.cache_classes = true
+  end
 
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true

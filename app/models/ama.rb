@@ -17,7 +17,6 @@
 #
 
 require 'api/reddit.com'
-require 'iron_worker_ng'
 
 class Ama < ActiveRecord::Base
   include NestedUser
@@ -55,7 +54,7 @@ class Ama < ActiveRecord::Base
   has_paper_trail :only => :content, :on => [:update, :destroy]
 
   # Update tagging karma score
-  after_save :update_taggings, :build_cache
+  after_save :update_taggings
 
   # Moderation Queue
   scope :queue, -> { where('amas.id NOT IN ( SELECT taggable_id from taggings ) AND amas.user_id NOT IN ( SELECT user_id from ops_users )') }
@@ -88,17 +87,6 @@ class Ama < ActiveRecord::Base
       tagging.update_attribute(:karma, self.karma)
     end
   end
-
-  # Rebuild view cache on update
-  def build_cache
-    begin
-      if Rails.env != 'test'
-        client = IronWorkerNG::Client.new(token: ENV['IRON_CACHE_TOKEN'], project_id: ENV['IRON_CACHE_PROJECT_ID'])
-        client.tasks.create('build_cache', :ama => self.key)
-      end
-    end
-  end
-
 
   # Is the username an OP or a notable participant?
   def is_op?(username)

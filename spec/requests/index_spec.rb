@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Index" do
+describe IndexController do
 
   before(:all) do
     10.times do

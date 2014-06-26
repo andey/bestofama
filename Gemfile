@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '4.1.2.rc3'
+gem 'rails', '4.1.2'
 gem 'pg'
 gem 'unicorn'
 gem 'jquery-rails'

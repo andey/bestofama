@@ -4,7 +4,7 @@ ruby '2.1.2'
 
 gem 'rails', '4.1.2'
 gem 'pg'
-gem 'puma'
+gem 'unicorn'
 gem 'jquery-rails'
 gem 'sass-rails', '4.0.3'
 gem 'coffee-rails'

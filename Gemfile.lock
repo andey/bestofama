@@ -56,7 +56,7 @@ GEM
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
-    aws-sdk (1.44.0)
+    aws-sdk (1.45.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
@@ -94,7 +94,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    dalli (2.7.1)
+    dalli (2.7.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)

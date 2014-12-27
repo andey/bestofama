@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.5'
 
 gem 'rails', '4.1.4'
 gem 'pg'
@@ -23,12 +23,13 @@ gem 'dalli'
 gem 'fog'
 gem 'paperclip', '3.5.4'
 gem 'aws-sdk'
-gem 'paper_trail'
+gem 'paper_trail', ' 3.0.5'
 gem 'airbrake'
 gem 'httparty'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
+gem 'therubyracer'
 
 group :heroku do
   gem 'rails_12factor'

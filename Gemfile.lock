@@ -235,7 +235,7 @@ GEM
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
-    paper_trail (3.0.5)
+    paper_trail (3.0.6)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
     paperclip (3.5.4)
@@ -386,7 +386,7 @@ DEPENDENCIES
   jquery-rails
   meta-tags
   newrelic_rpm
-  paper_trail (= 3.0.5)
+  paper_trail
   paperclip (= 3.5.4)
   pg
   rails (= 4.1.8)

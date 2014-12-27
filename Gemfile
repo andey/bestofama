@@ -27,7 +27,7 @@ gem 'paper_trail', ' 3.0.5'
 gem 'airbrake'
 gem 'httparty'
 gem 'meta-tags', :require => 'meta_tags'
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'therubyracer'
 

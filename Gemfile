@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.1.5'
 
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.8'
 gem 'pg'
 gem 'unicorn' # puma was leaking memory
 gem 'jquery-rails'
-gem 'sass-rails', '4.0.3'
+gem 'sass-rails'
 gem 'coffee-rails'
 gem 'slim-rails'
 gem 'slim', '2.0.2'

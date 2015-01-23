@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.1.9'
 gem 'pg'
 gem 'unicorn' # puma was leaking memory
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'slim-rails'
-gem 'slim', '2.0.2'
+gem 'slim'
 gem 'uglifier'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'

@@ -1,7 +1,5 @@
 == BestofAMA
 
-[ ![Codeship Status for andey/bestofama](https://codeship.io/projects/d8ccaf10-3cf4-0132-78d8-524bbe6961f6/status)](https://codeship.io/projects/43128)
-
 {<img src="https://travis-ci.org/andey/bestofama.png" />}[https://travis-ci.org/andey/bestofama]
 {<img src="https://gemnasium.com/andey/bestofama.png" alt="Dependency Status" />}[https://gemnasium.com/andey/bestofama]
 {<img src="https://codeclimate.com/github/andey/bestofama.png" />}[https://codeclimate.com/github/andey/bestofama]

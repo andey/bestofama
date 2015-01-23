@@ -27,11 +27,6 @@ gem 'paper_trail'
 gem 'airbrake'
 gem 'httparty'
 gem 'meta-tags', :require => 'meta_tags'
-<<<<<<< HEAD
-=======
-gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'devise'
->>>>>>> fea3b90... install "therubyracer"
 gem 'therubyracer'
 
 group :heroku do

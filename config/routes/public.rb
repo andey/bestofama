@@ -4,6 +4,6 @@ Bestofama::Application.routes.draw do
   resources :tags
   resources :users
   resources :ops
-  root :to => 'index#show'
+  root :to => 'amas#index'
 
 end

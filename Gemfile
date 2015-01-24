@@ -21,7 +21,7 @@ gem 'carrierwave'
 gem 'unf' # This is a wrapper library to bring Unicode Normalization Form support to Ruby/JRuby.
 gem 'dalli'
 gem 'fog'
-gem 'paperclip', '3.5.4'
+gem 'paperclip'
 gem 'aws-sdk'
 gem 'paper_trail'
 gem 'airbrake'

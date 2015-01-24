@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.1.5
+  - 2.2.0
 env: 
   - "S3_KEY=TEST S3_SECRET=TEST"
 before_script:

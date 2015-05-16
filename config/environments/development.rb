@@ -19,8 +19,7 @@ Bestofama::Application.configure do
   config.paperclip_defaults = {
       :storage => :s3,
       :path => "/entities/avatars/:id_partition/:style/:basename.:extension",
-      :url => ":s3_alias_url",
-      :s3_host_alias => "s3.bestofama.com",
+      :s3_protocol => :https,
       :s3_credentials => {
           :bucket => 's3.bestofama.com',
           :access_key_id => ENV['S3_KEY'],

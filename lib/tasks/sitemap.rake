@@ -1,6 +1,6 @@
 # Finding new AMAs with a score over 100
 task :generate_sitemap => :environment do
-  SitemapGenerator::Sitemap.default_host = "http://bestofama.com"
+  SitemapGenerator::Sitemap.default_host = "https://bestofama.com"
   SitemapGenerator::Sitemap.sitemaps_host = "http://s3.bestofama.com"
   SitemapGenerator::Sitemap.public_path = 'tmp/'
   SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'

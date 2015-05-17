@@ -1,7 +1,7 @@
 Bestofama::Application.routes.draw do
 
-  get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap.xml.gz')
-  get 'sitemap.xml.gz', to: redirect('http://s3.bestofama.com/sitemaps/sitemap.xml.gz')
+  get 'sitemap_index.xml.gz', to: redirect('http://s3.bestofama.com.s3-website-us-east-1.amazonaws.com/sitemaps/sitemap.xml.gz')
+  get 'sitemap.xml.gz', to: redirect('http://s3.bestofama.com.s3-website-us-east-1.amazonaws.com/sitemaps/sitemap.xml.gz')
 
   get 'entities' => redirect{ |p, request| "/ops?#{request.query_string}" }
   get 'entity/:slug' => redirect("/ops/%{slug}")

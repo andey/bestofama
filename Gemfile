@@ -17,7 +17,6 @@ gem 'high_voltage'
 gem 'acts-as-taggable-on'
 gem 'htmlentities'
 gem 'sitemap_generator'
-gem 'carrierwave'
 gem 'unf' # This is a wrapper library to bring Unicode Normalization Form support to Ruby/JRuby.
 gem 'dalli'
 gem 'fog'

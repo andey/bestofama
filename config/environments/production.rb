@@ -26,8 +26,8 @@ Bestofama::Application.configure do
       :s3_protocol => :https,
       :s3_credentials => {
           :bucket => 's3.bestofama.com',
-          :access_key_id => ENV['S3_KEY'],
-          :secret_access_key => ENV['S3_SECRET']
+          :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
       }
   }
 end

@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5'
 gem 'pg'
 gem 'unicorn' # puma was leaking memory
 gem 'jquery-rails'

@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.4'
+ruby '2.5.0'
 
-gem 'rails', '4.2.9'
+gem 'rails', '4.2.10'
 gem 'pg'
 gem 'unicorn' # puma was leaking memory
 gem 'jquery-rails'
@@ -21,7 +21,7 @@ gem 'unf' # This is a wrapper library to bring Unicode Normalization Form suppor
 gem 'dalli'
 gem 'fog'
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '2.10.52'
 gem 'paper_trail'
 gem 'httparty'
 gem 'meta-tags', :require => 'meta_tags'

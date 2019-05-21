@@ -1,7 +1,6 @@
 == BestofAMA
 
 {<img src="https://travis-ci.org/andey/bestofama.png" />}[https://travis-ci.org/andey/bestofama]
-{<img src="https://gemnasium.com/andey/bestofama.png" alt="Dependency Status" />}[https://gemnasium.com/andey/bestofama]
 {<img src="https://codeclimate.com/github/andey/bestofama.png" />}[https://codeclimate.com/github/andey/bestofama]
 {<img src="https://coveralls.io/repos/andey/bestofama/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/andey/bestofama?branch=master]
 

@@ -331,7 +331,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (1.1.4)
+    pg (0.21.0)
     public_suffix (3.0.3)
     rack (1.6.11)
     rack-test (0.6.3)
@@ -498,7 +498,7 @@ DEPENDENCIES
   newrelic_rpm
   paper_trail
   paperclip
-  pg
+  pg (~> 0.20)
   rails (= 4.2.11.1)
   rails_12factor
   rdoc

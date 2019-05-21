@@ -21,7 +21,7 @@ gem 'unf' # This is a wrapper library to bring Unicode Normalization Form suppor
 gem 'dalli'
 gem 'fog', '1.42.1'
 gem 'paperclip'
-gem 'aws-sdk', '2.11.278'
+gem 'aws-sdk-s3'
 gem 'paper_trail'
 gem 'httparty'
 gem 'meta-tags', :require => 'meta_tags'

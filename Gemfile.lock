@@ -46,13 +46,19 @@ GEM
     arel (6.0.4)
     awesome_print (1.8.0)
     aws-eventstream (1.0.3)
-    aws-sdk (2.11.278)
-      aws-sdk-resources (= 2.11.278)
-    aws-sdk-core (2.11.278)
-      aws-sigv4 (~> 1.0)
+    aws-partitions (1.164.0)
+    aws-sdk-core (3.52.1)
+      aws-eventstream (~> 1.0, >= 1.0.2)
+      aws-partitions (~> 1.0)
+      aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.278)
-      aws-sdk-core (= 2.11.278)
+    aws-sdk-kms (1.20.0)
+      aws-sdk-core (~> 3, >= 3.52.1)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.39.0)
+      aws-sdk-core (~> 3, >= 3.52.1)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.0)
     aws-sigv4 (1.1.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
     bootstrap-will_paginate (1.0.0)
@@ -442,7 +448,7 @@ DEPENDENCIES
   acts-as-taggable-on
   annotate
   awesome_print
-  aws-sdk (= 2.11.278)
+  aws-sdk-s3
   bootstrap-will_paginate
   capybara
   coffee-rails

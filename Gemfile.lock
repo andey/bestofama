@@ -294,7 +294,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.2.0)
     jwt (2.1.0)
-    kgio (2.11.2)
     libv8 (3.16.14.19)
     loofah (2.2.3)
       crass (~> 1.0.2)
@@ -333,6 +332,7 @@ GEM
       terrapin (~> 0.6.0)
     pg (0.21.0)
     public_suffix (3.0.3)
+    puma (3.12.1)
     rack (1.6.11)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -365,7 +365,6 @@ GEM
       activesupport (= 4.2.11.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.19.0)
     rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
@@ -466,9 +465,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
-    unicorn (5.5.1)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
     will_paginate (3.1.7)
     xml-simple (1.1.5)
     xmlrpc (0.3.0)
@@ -498,7 +494,8 @@ DEPENDENCIES
   newrelic_rpm
   paper_trail
   paperclip
-  pg (~> 0.20)
+  pg
+  puma
   rails (= 4.2.11.1)
   rails_12factor
   rdoc
@@ -510,11 +507,10 @@ DEPENDENCIES
   therubyracer
   uglifier
   unf
-  unicorn
   will_paginate
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.5.5p157
 
 BUNDLED WITH
    1.17.3

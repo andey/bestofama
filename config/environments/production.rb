@@ -8,7 +8,7 @@ Bestofama::Application.configure do
 
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
-  config.serve_static_files = true
+  config.public_file_server.enabled = true
   config.assets.compress = true
   config.assets.compile = true
   config.assets.digest = true

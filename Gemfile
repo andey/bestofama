@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.5.5'
+ruby '2.6.7'
 
-gem 'rails', '4.2.11.1'
+gem 'rails', '4.2.11.3'
 gem 'pg'
 gem 'puma'
 gem 'jquery-rails'

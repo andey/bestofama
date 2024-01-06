@@ -25,7 +25,7 @@
         = @tag.description
 
 .row
-  .col-xs-12.col-sm-12.col-md-9.col-lg-9
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
     .list-group
       - cache ["tag", params[:id], params[:page], @taggings.count], :expires_in => 12.hours do
         - @taggings.each do |tagging|
@@ -33,12 +33,6 @@
             = render partial: 'ops/snippet', locals: { op: Op.find(tagging.taggable_id) }
           - elsif tagging.taggable_type == 'Ama'
             = render partial: 'amas/snippet', locals: { ama: Ama.find(tagging.taggable_id) }
-
-  .col-xs-12.col-sm-12.col-md-3.col-lg-3
-    .sticky
-      .panel.panel-default
-        .panel-heading Advertisement
-        .panel-body.advertisement= render 'layouts/ad-responsive', locals: { size: 'ad-skyscraper' }
 
 .row.sticky-scroll-bottom.text-center
   / = will_paginate @taggings

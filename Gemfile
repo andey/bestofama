@@ -20,6 +20,7 @@ gem 'sitemap_generator'
 gem 'unf' # This is a wrapper library to bring Unicode Normalization Form support to Ruby/JRuby.
 gem 'dalli'
 gem 'fog'
+gem 'ovirt-engine-sdk' # dont know what this shit is
 gem 'paperclip'
 gem 'aws-sdk-s3'
 gem 'paper_trail'

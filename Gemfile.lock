@@ -639,6 +639,7 @@ DEPENDENCIES
   listen
   meta-tags
   newrelic_rpm
+  ovirt-engine-sdk
   paper_trail
   paperclip
   pg

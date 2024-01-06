@@ -7,4 +7,4 @@
 BestofAMA is a reddit.com “Ask Me Anything” (AMA) indexer and archiver. The goal is to add value to reddit AMA’s by filtering irrelevant comments, track comment changes, tag AMAs, and associate AMA's with famous redditors (OPs) in an organized format.
 
 -------------
-Copyright 2015 {Andrew Wei}[https://twitter.com/andey_].
+Copyright 2015 Andrew Wei

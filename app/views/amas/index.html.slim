@@ -43,20 +43,14 @@
         li= link_to "Responses", amas_path(:order => "responses")
 
 .row
-  .col-xs-12.col-sm-12.col-md-9.col-lg-9
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
     .list-group
       - cache ["amas", @order, params[:page]], :expires_in => 15.minutes do
         - @amas.each do |ama|
           = render partial: 'snippet', locals: { ama: ama }
 
-  .col-xs-12.col-sm-12.col-md-3.col-lg-3
-    .sticky
-      .panel.panel-default
-        .panel-heading Advertisement
-        .panel-body.advertisement= render :file => 'layouts/ad-responsive', locals: { size: 'ad-skyscraper' }
-
 .row.sticky-scroll-bottom.text-center
-  = will_paginate @amas
+  / = will_paginate @amas
 
 .row
   .col-sm-12

@@ -12,7 +12,7 @@
       |  AMAs
 
 .row
-  .col-sm-12.col-md-8.col-lg-8
+  .col-sm-12.col-md-12.col-lg-12
     .panel.panel-info
       h3.panel-heading
         | Upcoming AMA's
@@ -27,11 +27,6 @@
                 .col-4.col-sm-4.col-lg-4
                   p.list-group-item-text.pull-right
                     = time_ago_in_words(upcoming.date)
-
-  .col-sm-12.col-md-4.col-lg-4
-    .panel.panel-default
-      h3.panel-heading Advertisement
-      .panel-body.advertisement= render :file => 'layouts/ad-responsive', locals: { size: 'ad-square' }
 
 .row
   .col-md-12.col-sm-12.col-lg-12

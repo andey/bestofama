@@ -38,10 +38,10 @@
     .sticky
       .panel.panel-default
         .panel-heading Advertisement
-        .panel-body.advertisement= render :file => 'layouts/ad-responsive', locals: { size: 'ad-skyscraper' }
+        .panel-body.advertisement= render 'layouts/ad-responsive', locals: { size: 'ad-skyscraper' }
 
 .row.sticky-scroll-bottom.text-center
-  = will_paginate @taggings
+  / = will_paginate @taggings
 
 .row
   .col-sm-12

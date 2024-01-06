@@ -17,10 +17,11 @@ class User < ActiveRecord::Base
   end
 
   # Relations
-  has_and_belongs_to_many :ops
-  has_and_belongs_to_many :amas_participated, :class_name => "Ama", :foreign_key => :user_id
   has_many :comments
   has_many :amas
+  has_many :op_users
+  has_and_belongs_to_many :ops, through: :op_users
+  has_and_belongs_to_many :amas_participated, :class_name => "Ama", :foreign_key => :user_id
 
   # Validations
   validates_presence_of :username

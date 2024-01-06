@@ -19,7 +19,7 @@ gem 'htmlentities'
 gem 'sitemap_generator'
 gem 'unf' # This is a wrapper library to bring Unicode Normalization Form support to Ruby/JRuby.
 gem 'dalli'
-gem 'fog', '1.42.1'
+gem 'fog'
 gem 'paperclip'
 gem 'aws-sdk-s3'
 gem 'paper_trail'
@@ -27,6 +27,7 @@ gem 'httparty'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'bootsnap'
 gem 'listen'
+gem 'activeadmin'
 # gem 'therubyracer'
 
 group :heroku do

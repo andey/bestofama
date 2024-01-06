@@ -40,13 +40,29 @@ class Op < ActiveRecord::Base
   has_attached_file :avatar, :styles => {:medium => "230x230#", :thumb => "100x100#"}
 
   # Basic Relations
-  has_many :amas, through: :users
+  has_many :op_users
+  has_many :users, through: :op_users
   has_many :participated, through: :users, source: :amas_participated
-  has_many :comments, through: :users
 
   # Link Relations
   has_many :links, :class_name => 'OpsLink'
   accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => lambda { |l| l[:link].blank? }
+
+  def amas
+    Ama.where(user_id: users.ids)
+  end
+
+  def participated
+    Ama.where(id: comments.pluck(:ama_id)).where.not(id: amas.ids)
+  end
+
+  def users
+    User.where(id: OpsUser.where(op_id: id).pluck(:user_id))
+  end
+
+  def comments
+    Comment.where(user_id: users.ids)
+  end
 
   # When the avatar source is changed, download the image
   def download_avatar

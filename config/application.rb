@@ -1,19 +1,22 @@
-require File.expand_path('../boot', __FILE__)
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
-if defined?(Bundler)
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
-end
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
 module Bestofama
   class Application < Rails::Application
-    config.encoding = "utf-8"
-    config.filter_parameters += [:password]
-    config.active_support.escape_html_entities_in_json = true
-    config.assets.enabled = true
-    config.assets.version = '1.0'
-    config.secret_key_base = 'c1ad4b219d69cca4970a0ab0b2e543a732226274bc655a53383f7cf7e437aebb6c48d629df92401967962ef93add4589cb4f3f81a0e0ad969d00b474c78b5e01'
-    config.i18n.enforce_available_locales = false
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.0
+
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end

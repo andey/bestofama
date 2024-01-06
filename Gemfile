@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.6.7'
+ruby '3.2.2'
 
-gem 'rails', '5.0.7.2'
+gem 'rails', '6.1.7.6'
 gem 'pg'
 gem 'puma'
 gem 'jquery-rails'
@@ -25,7 +25,9 @@ gem 'aws-sdk-s3'
 gem 'paper_trail'
 gem 'httparty'
 gem 'meta-tags', :require => 'meta_tags'
-gem 'therubyracer'
+gem 'bootsnap'
+gem 'listen'
+# gem 'therubyracer'
 
 group :heroku do
   gem 'rails_12factor'

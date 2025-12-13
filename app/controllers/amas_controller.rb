@@ -25,9 +25,6 @@ class AmasController < ApplicationController
   def show
     @ama = Ama.find_by_key(params[:id]) || raise_404
 
-    # Fetch over_18 from Reddit API if not already set
-    @ama.update_over_18
-
     @op_id = @ama.user_id
     @guests_ids = @ama.users.map(&:id)
 

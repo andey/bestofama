@@ -79,6 +79,32 @@ class Ama < ActiveRecord::Base
     self.destroy
   end
 
+  # Fetch and update over_18 from Reddit API if not already set
+  def update_over_18
+    ap "Updating over_18 for AMA #{key}"
+
+
+    return unless over_18.nil?
+
+    begin
+      response = HTTParty.get(
+        "https://www.reddit.com/comments/#{key}.json",
+        timeout: 5
+      )
+      
+      if response.code == 200
+        data = JSON.parse(response.body)
+        over_18_value = data.dig(0, "data", "children", 0, "data", "over_18")
+        if !over_18_value.nil?
+          update_attribute(:over_18, over_18_value)
+        end
+      end
+    rescue => e
+      # Silently fail if API call fails or times out
+      Rails.logger.error("Failed to fetch over_18 for AMA #{key}: #{e.message}")
+    end
+  end
+
   protected
 
   # Update Tagging's karma

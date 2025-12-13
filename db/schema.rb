@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_06_020916) do
+ActiveRecord::Schema.define(version: 2025_12_13_223304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", id: :serial, force: :cascade do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2024_01_06_020916) do
     t.datetime "updated_at", null: false
     t.integer "comments", default: 0
     t.integer "responses", default: 0
+    t.boolean "over_18"
     t.index ["date"], name: "index_amas_on_date"
     t.index ["key"], name: "index_amas_on_key", unique: true
   end

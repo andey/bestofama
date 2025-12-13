@@ -81,9 +81,6 @@ class Ama < ActiveRecord::Base
 
   # Fetch and update over_18 from Reddit API if not already set
   def update_over_18
-    ap "Updating over_18 for AMA #{key}"
-
-
     return unless over_18.nil?
 
     begin

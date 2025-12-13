@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_12_13_223304) do
+ActiveRecord::Schema.define(version: 2025_12_13_234851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2025_12_13_223304) do
     t.integer "comments", default: 0
     t.integer "responses", default: 0
     t.boolean "over_18"
+    t.bigint "hit_count", default: 0
     t.index ["date"], name: "index_amas_on_date"
     t.index ["key"], name: "index_amas_on_key", unique: true
   end

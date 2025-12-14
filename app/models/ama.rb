@@ -105,7 +105,9 @@ class Ama < ActiveRecord::Base
           update_attribute(:over_18, over_18_value)
         end
       else
-        raise "STOPPING HERE"
+        Rails.logger.error("Failed to fetch over_18 for AMA #{key}: #{response.code}"
+        Rails.logger.error("Sleeping for 30 seconds")
+        sleep 30
       end
     rescue => e
       # Silently fail if API call fails or times out

@@ -85,15 +85,10 @@ class Ama < ActiveRecord::Base
 
     begin
       Rails.logger.info("Fetching update for AMA #{key}")
-
-      # Proxy configuration from environment variable
-      # Format: http://username:password@host:port
-      proxy_url = 'update-proxy.bestofama.com:2334'
       
       response = HTTParty.get(
         "https://www.reddit.com/comments/#{key}.json",
-        timeout: 5,
-        http_proxy: proxy_url
+        timeout: 5
       )
 
       Rails.logger.info("Response Code: #{response.code}")
@@ -105,7 +100,7 @@ class Ama < ActiveRecord::Base
           update_attribute(:over_18, over_18_value)
         end
       else
-        Rails.logger.error("Failed to fetch over_18 for AMA #{key}: #{response.code}"
+        Rails.logger.error("Failed to fetch over_18 for AMA #{key}: #{response.code}")
         Rails.logger.error("Sleeping for 30 seconds")
         sleep 30
       end

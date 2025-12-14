@@ -84,9 +84,16 @@ class Ama < ActiveRecord::Base
     return unless over_18.nil?
 
     begin
+      Rails.logger.info("Fetching update for AMA #{key}")
+
+      # Proxy configuration from environment variable
+      # Format: http://username:password@host:port
+      proxy_url = ENV['HTTP_PROXY']
+      
       response = HTTParty.get(
         "https://www.reddit.com/comments/#{key}.json",
-        timeout: 5
+        timeout: 5,
+        http_proxy: proxy_url
       )
       
       if response.code == 200

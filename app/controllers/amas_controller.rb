@@ -28,9 +28,6 @@ class AmasController < ApplicationController
     # Increment hit counter
     @ama.increment!(:hit_count)
 
-    # Update over_18 from Reddit API if not already set
-    @ama.update_over_18
-
     @op_id = @ama.user_id
     @guests_ids = @ama.users.map(&:id)
 

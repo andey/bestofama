@@ -88,13 +88,15 @@ class Ama < ActiveRecord::Base
 
       # Proxy configuration from environment variable
       # Format: http://username:password@host:port
-      proxy_url = ENV['HTTP_PROXY']
+      proxy_url = 'https://43.159.28.126:2334:ud7ac4eb6561f05c2-zone-custom:ud7ac4eb6561f05c2'
       
       response = HTTParty.get(
         "https://www.reddit.com/comments/#{key}.json",
         timeout: 5,
         http_proxy: proxy_url
       )
+
+      Rails.logger.info("Response Code: #{response.code}")
       
       if response.code == 200
         data = JSON.parse(response.body)
@@ -102,6 +104,8 @@ class Ama < ActiveRecord::Base
         if !over_18_value.nil?
           update_attribute(:over_18, over_18_value)
         end
+      else
+        raise "STOPPING HERE"
       end
     rescue => e
       # Silently fail if API call fails or times out

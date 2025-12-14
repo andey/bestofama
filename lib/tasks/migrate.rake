@@ -13,12 +13,6 @@ namespace :migrate do
     end
   end
 
-
-  # Make all comments Relevant
-  task :make_all_comments_relevant => :environment do
-    Comment.update_all(relevant: true)
-  end
-
     # Make all comments Relevant
   task :mark_all_relevant_children_comments => :environment do
     Comment.where(relevant: true).each do |c|

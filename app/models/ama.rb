@@ -86,23 +86,14 @@ class Ama < ActiveRecord::Base
     begin
       Rails.logger.info("Fetching update for AMA #{key}")
       
-      response = HTTParty.get(
-        "https://www.reddit.com/comments/#{key}.json",
-        timeout: 5
-      )
-
-      Rails.logger.info("Response Code: #{response.code}")
+      reddit = Reddit.new
+      data = reddit.getAMA(self.key)
       
-      if response.code == 200
-        data = JSON.parse(response.body)
+      if data
         over_18_value = data.dig(0, "data", "children", 0, "data", "over_18")
         if !over_18_value.nil?
           update_attribute(:over_18, over_18_value)
         end
-      else
-        Rails.logger.error("Failed to fetch over_18 for AMA #{key}: #{response.code}")
-        Rails.logger.error("Sleeping for 30 seconds")
-        sleep 30
       end
     rescue => e
       # Silently fail if API call fails or times out

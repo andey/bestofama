@@ -42,36 +42,6 @@ namespace :update do
     @ama.fetch() unless !@ama
   end
 
-  task :old_ama => :environment do
-    @ama = Ama.order(:updated_at).first
-    puts @ama.title
-    @ama.fetch() unless !@ama
-  end
-
-  task :upcoming => :environment do
-    google = 'http://www.google.com/calendar/feeds/amaverify@gmail.com/public/basic?orderby=starttime&sortorder=ascending&futureevents=true&alt=json'
-    http = Net::HTTP.new("www.google.com")
-    request = Net::HTTP::Get.new(google)
-    response = http.request(request)
-    json = JSON.parse(response.read_body)
-
-    json["feed"]["entry"].each do |entry|
-
-      u = Upcoming.new
-      u.url = entry['id']['$t'].to_s
-      u.description = entry['content']['$t'].to_s
-      u.title = entry['title']['$t'].to_s
-
-      if u.title =~ /\[([^\]]*)\]\(([^\)]*)\)/
-        match = u.title.match(/\[([^\]]*)\]\(([^\)]*)\)/)
-        u.name = match[1]
-        u.wikipedia = match[2]
-      end
-
-      u.save
-    end
-  end
-
   # Update Tag with DuckDuckGo abstract definition
   task :tag => :environment do
     require 'api/duckduckgo.com'

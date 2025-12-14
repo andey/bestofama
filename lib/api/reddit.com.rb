@@ -2,11 +2,13 @@
 
 class Reddit
   include HTTParty
+  PROXY_CREDENTIALS = URI.parse(ENV['HTTP_PROXY'])
   base_uri 'www.reddit.com'
+  http_proxy PROXY_CREDENTIALS.host, PROXY_CREDENTIALS.port, PROXY_CREDENTIALS.user, PROXY_CREDENTIALS.password
 
   def get(path)
     begin
-      options = {:format => 'json', :headers => {'User-Agent' => 'bestofama.com / andey@reddit.com'}}
+      options = {:format => 'json', :headers => {'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36'}}
       response = self.class.get(path, options)
       return response.code == 200 ? JSON.parse(response.body) : nil
     rescue
@@ -20,6 +22,10 @@ class Reddit
 
   def getIAMAs
     return Rails.env == 'test' ? JSON.parse(File.read("spec/api/reddit.com/r/IAmA.json")) : get("/r/IAmA.json")
+  end
+
+  def getIP
+    return get("https://api.ipify.org?format=json")
   end
 
   def getUser(username)

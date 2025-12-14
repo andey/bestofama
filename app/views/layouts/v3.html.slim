@@ -10,6 +10,10 @@ html lang="en"
 
   body.public id="#{params[:controller]}_#{params[:action]}"
     .container
+      - if params[:controller] == 'amas' && params[:action] == 'show' && @ama && @ama.over_18
+        .row.text-center
+          = render 'layouts/juciyads'
+
       .row
         .col-xs-12.col-sm-12.col-md-12.col-lg-12
           .navbar.navbar-default role="navigation"

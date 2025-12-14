@@ -2,9 +2,10 @@
 
 class Reddit
   include HTTParty
-  PROXY_CREDENTIALS = URI.parse(ENV['HTTP_PROXY'])
+  #PROXY_CREDENTIALS = URI.parse(ENV['HTTP_PROXY'])
   base_uri 'www.reddit.com'
-  http_proxy PROXY_CREDENTIALS.host, PROXY_CREDENTIALS.port, PROXY_CREDENTIALS.user, PROXY_CREDENTIALS.password
+  #http_proxy PROXY_CREDENTIALS.host, PROXY_CREDENTIALS.port, PROXY_CREDENTIALS.user, PROXY_CREDENTIALS.password
+  http_proxy '127.0.0.1', 8118
 
   def get(path)
     begin

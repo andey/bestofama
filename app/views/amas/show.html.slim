@@ -24,7 +24,7 @@ section itemscope='itemscope' itemtype="http://schema.org/SocialEvent"
           .well.well-small.ama-content
             blockquote itemprop='description'= @ama.content.html_safe
 
-        p.ama-meta
+        p.ama-meta adult=@ama.over_18.to_s
           strong Comments
           | :&nbsp;
           = @ama.comments

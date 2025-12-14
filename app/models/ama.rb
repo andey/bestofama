@@ -88,7 +88,7 @@ class Ama < ActiveRecord::Base
 
       # Proxy configuration from environment variable
       # Format: http://username:password@host:port
-      proxy_url = 'https://43.159.28.126:2334:ud7ac4eb6561f05c2-zone-custom:ud7ac4eb6561f05c2'
+      proxy_url = 'update-proxy.bestofama.com:2334'
       
       response = HTTParty.get(
         "https://www.reddit.com/comments/#{key}.json",
